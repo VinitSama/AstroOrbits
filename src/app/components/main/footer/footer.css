@@ -1,0 +1,104 @@
+.footer-container{
+    padding: 80px;
+    background-color: var(--secondary-color);
+}
+
+.logo-col-1 {
+    color: var(--fourth-color);
+}
+
+.logo-col-2 {
+    color: var(--primary-color);
+}
+
+.footer-information{
+    height: 305px;
+    display: flex;
+}
+
+.main-information {
+    width: 215px;
+    margin-right: auto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.logo{
+    display: flex;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.address{
+    margin-top: 92px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    align-self: stretch;
+    color: var(--fourth-color);
+}
+
+.address-label{
+    color: var(--primary-color);
+}
+
+.social-media{
+    margin-top: 16px;
+    color: var(--fourth-color);
+}
+
+.svg-links{
+    margin-top: 12px;
+}
+
+.icon {
+    margin-right: 11px;
+}
+
+.link-container{
+    display: flex;
+    margin: 0;
+    margin-left: auto;
+}
+
+.link-group {
+    font-style: normal;
+    line-height: normal;
+    justify-self: right;
+    margin-left: auto;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.last-link {
+    margin-right: 0;
+}
+
+.link-group h3{
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    margin-bottom: 3px;
+    /* font-family: "Josefin Sans"; */
+}
+
+.link {
+    margin-top: 14px;
+    height: 14px;
+    padding: 0;
+}
+
+.url-text {
+    color: var(--fourth-color);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+}

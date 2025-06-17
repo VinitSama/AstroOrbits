@@ -1,0 +1,9 @@
+<div class="zodiac-card">
+    <div class="svg-container" [innerHTML]="safeSvg"></div>
+    <div class="title">
+        {{zodiacCard.title}}
+    </div>
+    <div *ngIf="detailed" class="details">
+        {{zodiacCard.details}}
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.section-tag-container{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+.circle-svg{
+    margin: 0 9px;
+}
+
+.title{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--secondary-color);
+}

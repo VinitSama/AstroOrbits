@@ -1,0 +1,54 @@
+.header-container{
+    display: flex;
+}
+
+.logo{
+    height: 100px;
+    display: flex;
+    padding-left: 40px;
+    align-items: center;
+    width: 100%;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.logo-col-1 {
+    color: var(--secondary-color);
+}
+
+.logo-col-2 {
+    color: var(--primary-color);
+}
+
+.header-options{
+    margin: auto;
+    margin-right: 40px;
+    display: flex;
+}
+
+.login {
+    margin-left: 10px;
+    padding: 12px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+}
+
+.language {
+    padding: 12px;
+    display: flex;
+}
+.language svg {
+    margin-right: 4px;
+}
+.language select {
+    border: none;
+    outline: none;
+}

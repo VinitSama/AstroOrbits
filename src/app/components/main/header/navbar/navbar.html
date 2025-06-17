@@ -1,0 +1,37 @@
+<div class="navbar-container">
+    <ul class="navbar-list">
+        <li *ngFor="let item of navbarItems; trackBy: trackByFn; let i = index" class="list-item"
+                [ngClass]="{ 'first-item': i === 0, 'last-item': i === navbarItems.length - 1 }" >
+            <ng-container *ngIf="!item.dropDownPresent">
+                <div class="item-name">
+                    {{item.name}}
+                    <div *ngIf="item.tagPresent" class="tag" [style.background-color]="item.tagSettings?.eclipseColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+                            <circle cx="5.85706" cy="5.5" r="4.5" [attr.fill]="item.tagSettings?.circleColor" [attr.stroke]="item.tagSettings?.eclipseColor"/>
+                        </svg>
+                        {{item.tagSettings?.name}}
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="item.dropDownOption">
+                <div class="dropdown-item" [ngClass]="{'first-item': i===0, 'last-item': i===navbarItems.length - 1}" >
+                    <select [ngModel]="item.name" [id]="i === navbarItems.length - 1 ? 'select-l' : 'select-' + i">
+                        <option *ngFor="let option of item.dropDownOption" [value]="option">
+                            {{option}}
+                        </option>
+                    </select>
+                </div>
+                <!-- <div class="dropdown-item">
+                    <div mat-menu-item [matMenuTriggerFor]="menu" class="trigger-div">
+                        {{ item.name }}
+                    </div>
+                    <mat-menu #menu="matMenu">
+                        <ng-container *ngFor="let option of item.dropDownOption">
+                        <button mat-menu-item>{{ option }}</button>
+                        </ng-container>
+                    </mat-menu>
+                </div> -->
+            </ng-container>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,10 @@
+.astrology-section{
+    margin: 56px 160px 0px;
+}
+
+.astrology-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 56px;
+}

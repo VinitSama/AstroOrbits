@@ -1,0 +1,13 @@
+<div class="today-prediction-section">
+    <div class="section-title">
+        <app-section-tag [sectionTitle]="title" [svgColor]="svgColor"></app-section-tag>
+    </div>
+    <div class="brief">
+        {{brief}}
+    </div>
+    <div class="zodiac-prediction-container">
+        <div *ngFor="let card of zodiacCards">
+            <app-zodiac-card [zodiacCard]="card" [svgColor]="svgColor" [detailed]="detailed" ></app-zodiac-card>
+        </div>
+    </div>
+</div>

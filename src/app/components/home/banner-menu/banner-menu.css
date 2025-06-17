@@ -1,0 +1,38 @@
+.menu{
+    width: 314px;
+    height: 364px;
+    margin-left: auto;
+    margin-right: 40px;
+}
+
+.menu-items{
+    height: 110.6px;
+    /* width: 100%; */
+    align-items: center;
+    display: flex;
+    /* flex-direction: column; */
+    cursor: pointer;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--tertiary-color);
+    border: 1px solid var(--light-primary-color);
+    border-radius: 7px;
+}
+
+.menu-items img {
+    background-color: var(--primary-color);
+    padding: 14px;
+    margin-left: 32px;
+    margin-right: 12px;
+    border-radius: 50%;
+    height: 52px;
+}
+
+.menu-items svg {
+    margin-left: auto;
+    margin-right: 32px;
+}
+

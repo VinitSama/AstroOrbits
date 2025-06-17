@@ -1,0 +1,27 @@
+[data-theme="main-light"] {
+    --primary-color: #14e0ff;
+    --secondary-color: #3B3B3B;
+    --tertiary-color: #181818;
+    --fourth-color:#fff;
+    --heading: #000;
+    --sub-title: #767676;
+    --light-primary-color: #FFF0D1;
+    --blog-author-color: #5E5E5E;
+    --blog-brief-color: #767676;
+    --why-astrology-bg: #F8F8F8;
+    --breadcrumb-color: #777777;
+    --zodiac-card-details: #6E6E6E;
+}    
+
+[data-theme="main-dark"] {
+    --primary-color: #FFB114;
+    --secondary-color: #3B3B3B;
+    --tertiary-color: #181818;
+    --fourth-color:#fff;
+    --heading: #000;
+    --sub-title: #767676;
+    --light-primary-color: #FFF0D1;
+    --blog-author-color: #5E5E5E;
+    --blog-brief-color: #767676;
+    --why-astrology-bg: #F8F8F8;
+}    

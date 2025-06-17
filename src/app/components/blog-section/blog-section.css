@@ -1,0 +1,25 @@
+.blog-section-container{
+    margin: 56px 172px;
+    padding-bottom: 56px;
+}
+
+.blog-container {
+    margin: 32px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.view-more-btn {
+    justify-self: center;
+    display: flex;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--tertiary-color);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: min-content;
+    text-wrap: nowrap;
+    border-radius: 7px;
+}

@@ -1,0 +1,10 @@
+<div class="astrology-section">
+    <div class="section-title">
+        <app-section-tag [svgColor]="svgColor" [sectionTitle]="title" ></app-section-tag>
+    </div>
+    <div class="astrology-card-container">
+        <div *ngFor="let card of astrologyCards">
+            <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
+        </div>
+    </div>
+</div>

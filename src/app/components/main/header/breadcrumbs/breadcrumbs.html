@@ -1,0 +1,13 @@
+<div class="breadcrumb-container" *ngIf="showBreadcrumbs">
+  <ul class="breadcrumb-list">
+    <li *ngFor="let crumb of breadcrumbs; let last = last" class="breadcrumb-item">
+        <a *ngIf="!last" [routerLink]="crumb.url" class="label">{{ crumb.label }}</a>
+        <span *ngIf="last" class="label last" >{{ crumb.label }}</span>
+        <div *ngIf="!last" class="arrow-svg"> 
+            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5.25 11L8.75 7.5L5.25 4" stroke="#696969" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </li>
+  </ul>
+</div>

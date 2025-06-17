@@ -1,0 +1,42 @@
+.card-container {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    /* background-image: url('../../../../assets/images/sample-text.jpg');  */
+    background-size: cover;
+    background-position: center;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-top: 32px;
+}
+
+.text-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 8px 12px;
+    color: white;
+    font-size: 14px;
+    line-height: 1.2em;
+    /* background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));  */
+    background: linear-gradient(to top, var(--primary-color) 40%, #00000000);
+    border-radius: 0 0 7px 7px;
+}
+
+.text-overlay h3 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

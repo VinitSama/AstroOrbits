@@ -1,0 +1,33 @@
+.metric-card-container{
+    width: 256px;
+}
+
+.value{
+    color: var(--secondary-color);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.title{
+    color: var(--primary-color);
+    text-align: center;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 12px;
+}
+
+.brief{
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

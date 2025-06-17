@@ -1,0 +1,5 @@
+.metric-section-container{
+    margin: 56px 70px;
+    display: flex;
+    justify-content: space-evenly;
+}
