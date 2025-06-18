@@ -19,7 +19,7 @@ export class BlogSection {
 
   @Input() svgColor!: ISvgColors;
   @Input() showView: boolean = true;
-  title = "Blogs";
+  @Input() title: string = "Blogs";
   blogCards: IBlogCard[] = [
     {
       imageUrl: '',

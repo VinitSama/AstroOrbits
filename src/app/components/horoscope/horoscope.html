@@ -1,5 +1,10 @@
 <div class="horoscope-page-container">
-    <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true" [title]="title" ></app-zodiac-prediction>
-
-    <app-blog-section [svgColor]="svgColor" [showView]="false" ></app-blog-section>
+    <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true" [title]="zodiacSectionTtitle" [brief]="zodiacSectionBrief" ></app-zodiac-prediction>
+    <app-presice-section [svgColor]="svgColor" ></app-presice-section>
+    <app-horoscope-type [svgColor]="svgColor"></app-horoscope-type>
+    <div class="blog-section">
+        <div class="blog-container">
+            <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading" ></app-blog-section>
+        </div>
+    </div>
 </div>

@@ -7,7 +7,11 @@
     </div>
     <app-zodiac-prediction [svgColor]="svgColor" [detailed]="false" [title]="zodiacPredictionTitle"></app-zodiac-prediction>
     <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
-    <app-blog-section [svgColor]="svgColor"></app-blog-section>
+    <div class="blog-section">
+        <div class="blog-container">
+            <app-blog-section [svgColor]="svgColor" [showView]="true" [title]="blogSectionHeading"></app-blog-section>
+        </div>
+    </div>
     <app-metric-section></app-metric-section>
     <app-why-astrology-section [svgColor]="svgColor" ></app-why-astrology-section>
 </div>

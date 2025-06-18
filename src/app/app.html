@@ -1,9 +1,11 @@
-<ng-container *ngIf="showLayout=='main'">
-    <app-main>
+<div class="app-container">
+    <ng-container *ngIf="showLayout=='main'">
+        <app-main>
+            <router-outlet></router-outlet>
+        </app-main>
+    </ng-container>
+    
+    <ng-container *ngIf="showLayout=='no-main'">
         <router-outlet></router-outlet>
-    </app-main>
-</ng-container>
-
-<ng-container *ngIf="showLayout=='no-main'">
-    <router-outlet></router-outlet>
-</ng-container>
+    </ng-container>
+</div>

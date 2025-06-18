@@ -1,5 +1,5 @@
 export interface IZodiacCard {
-    svg: string | null;
+    svg: string;
     title: string | null;
     details?: string;
 }

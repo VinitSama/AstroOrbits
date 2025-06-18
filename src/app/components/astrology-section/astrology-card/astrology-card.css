@@ -8,6 +8,7 @@
     border-radius: 7px;
     overflow: hidden;
     margin-top: 32px;
+    cursor: pointer;
 }
 
 .text-overlay {

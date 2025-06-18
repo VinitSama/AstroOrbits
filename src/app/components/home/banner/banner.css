@@ -1,17 +1,18 @@
-.banner-container{
-    margin: 0 10px 0 40px;
+
+.banner-container {
     display: flex;
-    justify-items: right;
+    overflow: hidden;
+    margin: 0 10px 0 40px;
+    flex-grow: 1;
 }
-.banner{
+
+.banner {
     background: var(--primary-color);
     border-radius: 4px;
-    z-index: 1;
-    display: flex;
     height: 364px;
-    /* max-width: 1036px; */
-    /* width: 100%; */
     flex-grow: 1;
+    display: flex;
+    position: relative;
     overflow: hidden;
 }
 
@@ -34,18 +35,37 @@
 }
 
 .glow {
-      /* position: absolute;
+       /* position: absolute;
       top: 50%;
       left: 50%; */
       margin-top: 240px;
       margin-left: auto;
-      margin-right: -70px;
-      width: 250px; /* Adjust size of the glow */
+      margin-right: -830px;
+      width: 250px;
       height: 250px;
-      background-color: #ffffff8c; /* Yellow Glow */
+      background-color: #ffffff9b;
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 600px 50px #ffffffe7; /* Glowing shadow */
-      filter: blur(15px); /* Create the blur effect */
-      z-index: 3; /* Make sure the glow is behind the image */
+      box-shadow: 0 0 600px 50px #ffffffe7;
+      filter: blur(15px);
+      z-index: 3;
 }
+
+.banner-image {
+    position: relative;
+    margin-top: 40px;
+    margin-left: auto;
+    right: -60px;
+    height: 332px;
+    z-index: 4;
+    border-radius: 0 0 4px 0;
+}
+
+
+
+
+
+
+
+
+

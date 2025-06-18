@@ -1,0 +1,31 @@
+<div class="charts-page">
+    <div class="option-container">
+        <div class="option" [ngClass]="{'selected': selectedOption == 'lagna'}" (click)="chooseOption('lagna')" >
+            <div class="title">
+                <div class="svg-image">
+                    <img src="/images/lagna.svg" alt="lagna decorative image">
+                </div>
+                Lagna
+            </div>
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12.333H19" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 5.33301L19 12.333L12 19.333" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="option" [ngClass]="{'selected': selectedOption == 'more'}" (click)="chooseOption('more')" >
+            <div class="title">
+                <div class="svg-image">
+                    <img src="/images/palm.svg" alt="palm decorative image">
+                </div>
+                More Charts
+            </div>
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12.333H19" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 5.33301L19 12.333L12 19.333" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+    <div class="chart">
+        <img src="/images/chart.png" alt="Kundli Chart Image">
+    </div>
+</div>

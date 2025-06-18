@@ -1,0 +1,5 @@
+<div class="option-container">
+    <div *ngFor="let option of dayOptions" class="option" [ngClass]="{'selected': option == selectedOption}" (click)="optionSelect(option)">
+        {{option}}
+    </div>
+</div>

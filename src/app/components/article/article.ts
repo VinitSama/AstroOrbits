@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { IArticle } from '../../../interfaces/iarticle';
+import { IArticle } from '../../interfaces/iarticle';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-article',
   imports: [
-    CommonModule,
+    CommonModule
   ],
   templateUrl: './article.html',
   styleUrl: './article.css'

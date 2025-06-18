@@ -1,0 +1,21 @@
+.kundli-form-container{
+    padding: 56px 40px;
+}
+
+.section-tag{
+    margin-bottom: 32px;
+}
+
+.article-container{
+    padding: 56px 40px;
+    background-color: var(--secondary-bg-color);
+}
+
+.article{
+    margin: 0 auto;
+    max-width: 1100px;
+}
+
+.blog{
+    margin: 56px 40px;
+}

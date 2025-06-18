@@ -1,0 +1,11 @@
+<div class="result-container">
+    <div class="svg-container">
+        <div class="moon-sign-svg" [innerHTML]="safeSvg" ></div>
+    </div>
+    <div class="moon-sign">{{moonSign}}</div>
+    <div class="report">{{report}}</div>
+    <div class="btn-container">
+        <div class="btn" (click)="forForm()" >Check For Another Person</div>
+        <div class="btn focus" (click)="forHoroscope()" >Check Horoscope</div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="kundli-result-page" >
+    <div class="static-element">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="resultPageTitle"></app-section-tag>
+        </div>
+        <div class="result-options">
+            <div *ngFor="let option of resultPageOptions" class="option" [ngClass]="{'selected': option.opened}" (click)="optionClick(option.id)" >{{option.title}}</div>
+        </div>
+    </div>
+    <div class="dynamic-elemet">
+        <div class="selected-content" *ngIf="nowOpened == 0">
+            <app-kundli-basic-details></app-kundli-basic-details>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 1">
+            <app-kundli-prediction></app-kundli-prediction>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 2">
+            <app-position-of-planets></app-position-of-planets>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 3">
+            <app-charts></app-charts>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 4">
+            <app-doshas></app-doshas>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 5">
+            <app-dashaa></app-dashaa>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 6">
+            <app-remedies></app-remedies>
+        </div>
+    </div>
+    <div class="blogs">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading" ></app-blog-section>
+    </div>
+
+</div>

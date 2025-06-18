@@ -1,0 +1,46 @@
+.doshas-page{
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.option-container{
+    display: flex;
+    width: 100%;
+    gap: 32px;
+}
+.option{
+    align-items: center;
+    padding: 8px 32px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 7px;
+    border: 1px solid var(--light-primary-color);
+    cursor: pointer;
+}
+.title{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--tertiary-color);
+}
+.svg-image{
+    display: flex;
+    align-content: center;
+    height: 32px;
+    padding: 5px 14px;
+    border-radius: 15px;
+    background-color: var(--primary-color);
+}
+.selected{
+    background-color: var(--light-primary-color);
+}
+
+.chart{
+    margin: 32px auto 0 auto;
+}

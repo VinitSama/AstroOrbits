@@ -1,0 +1,5 @@
+<div class="tables-container">
+    <div class="detail-table" *ngFor="let table of tables">
+        <app-details-table [heading]="table.title" [detailTable]="table.kundliDetail" ></app-details-table>
+    </div>
+</div>

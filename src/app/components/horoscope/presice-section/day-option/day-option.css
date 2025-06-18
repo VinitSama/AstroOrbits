@@ -1,0 +1,25 @@
+.option-container{
+    display: flex;
+    width: 1100px;
+    margin: 32px auto;
+    background-color: var(--secondary-bg-color);
+    cursor: pointer;
+    /* align-items: center; */
+}
+
+.option{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-color);
+    /* gap: 10px; */
+    /* flex: 1 0 0; */
+}
+
+.selected{
+    border-radius: 7px;
+    background-color: var(--primary-color);
+}

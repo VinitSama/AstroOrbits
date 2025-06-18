@@ -1,12 +1,14 @@
-.blog-section-container{
-    margin: 56px 172px;
-    padding-bottom: 56px;
+.section-title{
+    margin-bottom: 32px;
 }
 
 .blog-container {
-    margin: 32px 0;
+    /* margin: 32px 0; */
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    justify-self: center;
+    gap: 24px;
 }
 
 .view-more-btn {
@@ -22,4 +24,5 @@
     width: min-content;
     text-wrap: nowrap;
     border-radius: 7px;
+    margin-top: 32px;
 }

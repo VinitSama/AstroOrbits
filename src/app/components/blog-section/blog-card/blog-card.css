@@ -2,6 +2,7 @@
     height: 380px;
     width: 360px;
     padding: 16px;
+    cursor: pointer;
 }
 
 .blog-image {

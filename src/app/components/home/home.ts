@@ -19,8 +19,8 @@ import { ThemeService } from '../../services/theme.service';
     AstrologySection,
     BlogSection,
     MetricSection,
-    WhyAstrologySection
-  ],
+    WhyAstrologySection,
+],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -28,6 +28,7 @@ export class Home implements OnInit {
 
   svgColor!: ISvgColors;
   zodiacPredictionTitle = "Today's Astrology Prediction";
+  blogSectionHeading = "Blogs";
 
   private themeUpdateSubscription!: Subscription; 
 

@@ -1,0 +1,23 @@
+
+.page-dynamic-content{
+    padding: 56px 40px;
+}
+
+.article-section{
+    background-color: var(--secondary-bg-color);
+    padding: 56px 40px;
+}
+
+.section-tag{
+    margin-bottom: 32px;
+}
+
+.article{
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.blog-container{
+    padding: 56px 40px;
+}

@@ -3,15 +3,15 @@ import { IArticle } from '../../interfaces/iarticle';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { SectionTag } from '../section-tag/section-tag';
 import { CommonModule } from '@angular/common';
-import { Article } from './article/article';
+import { Article } from "../article/article";
 
 @Component({
   selector: 'app-why-astrology-section',
   imports: [
     SectionTag,
     CommonModule,
-    Article,
-  ],
+    Article
+],
   templateUrl: './why-astrology-section.html',
   styleUrl: './why-astrology-section.css'
 })

@@ -14,7 +14,7 @@ export class BannerMenu {
 
   constructor(private router: Router) {}
 
-  goToPage(page: 'horoscope') {
+  goToPage(page: 'horoscope' | 'kundli') {
     this.router.navigate(['home', page]);
   }
 
