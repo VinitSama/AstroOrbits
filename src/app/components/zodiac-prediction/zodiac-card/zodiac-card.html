@@ -1,4 +1,4 @@
-<div class="zodiac-card">
+<div class="zodiac-card" [routerLink]="['/home/horoscope', 'today', zodiacCard.title]">
     <div class="svg-container" [innerHTML]="safeSvg"></div>
     <div class="title">
         {{zodiacCard.title}}

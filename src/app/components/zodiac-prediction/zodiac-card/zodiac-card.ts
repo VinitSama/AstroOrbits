@@ -3,11 +3,13 @@ import { ISvgColors } from '../../../interfaces/isvg-link';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IZodiacCard } from '../../../interfaces/izodiac-card';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-zodiac-card',
   imports: [
     CommonModule,
+    RouterLink,
   ],
   templateUrl: './zodiac-card.html',
   styleUrl: './zodiac-card.css'
