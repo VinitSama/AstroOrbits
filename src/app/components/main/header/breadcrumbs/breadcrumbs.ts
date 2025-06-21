@@ -36,7 +36,11 @@ export class Breadcrumbs implements OnInit {
     for (let child of children) {
       const routeSnapshot = child.snapshot;
       const routeUrl: string = routeSnapshot.url.map(segment => segment.path).join('/');
-      const label = routeSnapshot.data['label'] || this.formatLabel(routeUrl);
+      let label = routeSnapshot.data['breadcrumb'] || this.formatLabel(routeUrl);
+
+      if (typeof label === 'function') {
+        label = label(routeSnapshot);
+      }
 
       if (!label || routeSnapshot.data['skipBreadcrumb']){
         return this.buildBreadcrumbs(child, url, breadcrumbs);

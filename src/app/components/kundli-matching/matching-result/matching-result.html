@@ -1,0 +1,28 @@
+<div class="kundli-matching-page">
+    <div class="static-element">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="resultPageTitle"></app-section-tag>
+        </div>
+        <div class="result-options">
+            <div *ngFor="let option of resultPageOptions" class="option" [ngClass]="{'selected': option.opened}" (click)="optionClick(option.id)" >{{option.title}}</div>
+        </div>
+    </div>
+    <div class="dynamic-content">
+        <div class="selected-content" *ngIf="nowOpened == 0">
+            <app-matching-basic-details [svgColor]="svgColor"></app-matching-basic-details>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 1">
+            <app-doshas [svgColor]="svgColor" ></app-doshas>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 2">
+            <app-position-of-planets></app-position-of-planets>
+        </div>
+        <div class="selected-content" *ngIf="nowOpened == 3">
+            <app-charts [svgColor]="svgColor"></app-charts>
+        </div>
+    </div>
+
+    <div class="blogs">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading" ></app-blog-section>
+    </div>
+</div>

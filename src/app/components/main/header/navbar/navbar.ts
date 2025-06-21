@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { INavbarItem } from '../../../../interfaces/inavbar-item';
+import { IDropDownOption, INavbarItem } from '../../../../interfaces/inavbar-item';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
+import { Router } from '@angular/router';
+import { TNavigationLink } from '../../../../types/tnavogation-link';
 
 @Component({
   selector: 'app-navbar',
@@ -24,20 +26,32 @@ export class Navbar {
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
+      navigationLink: "kundli" ,
     },
     {
-      name: 'Kundli Prediction',
+      name: 'Free Kundli Matching',
       dropDownPresent: true,
       tagPresent: false,
-      dropDownOption: ['Kundli Prediction','opion2'],
+      dropDownOption: [
+        {
+          name: "Free Kundli Matching",
+          navigationLink: "kundli-matching",
+        },
+        {
+          name: "Option2",
+          navigationLink: null,
+        },
+      ],
       tagSettings: null,
+      navigationLink: null,
     },
     {
-      name: 'Panchang',
-      dropDownPresent: true,
+      name: "Today's Panchang",
+      dropDownPresent: false,
       tagPresent: false,
-      dropDownOption: ['Panchang', 'option2'],
+      dropDownOption: null,
       tagSettings: null,
+      navigationLink: "panchang",
     },
     {
       name: 'Horoscope',
@@ -45,13 +59,15 @@ export class Navbar {
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
+      navigationLink: "horoscope",
     },
     {
-      name: 'Free Reading',
+      name: 'Mantras',
       dropDownPresent: false,
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
+      navigationLink: null,
     },
     {
       name: 'Numerology',
@@ -59,6 +75,7 @@ export class Navbar {
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
+      navigationLink: null,
     },
     {
       name: 'Tarot',
@@ -66,17 +83,20 @@ export class Navbar {
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
+      navigationLink: null,
     },
     {
-      name: 'Live Puja',
+      name: 'Love Calculator',
       dropDownPresent: false,
-      tagPresent: true,
+      tagPresent: false,
       dropDownOption: null,
-      tagSettings: {
-        name: 'Watch',
-        circleColor: '#E90000',
-        eclipseColor: '#FFC2C2'
-      },
+      tagSettings: null,
+      navigationLink: "love-calculator",
+      // tagSettings: {
+      //   name: 'Watch',
+      //   circleColor: '#E90000',
+      //   eclipseColor: '#FFC2C2'
+      // },
     },
     {
       name: 'Blogs',
@@ -84,11 +104,31 @@ export class Navbar {
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
+      navigationLink: null,
     },
   ];
 
+  constructor(private router: Router) {}
+
   trackByFn(index: number, item: any): any {
     return item.name;
+  }
+
+  goToPage(page: TNavigationLink | null) {
+    if (page){
+      this.router.navigate(['home', page]);
+    }
+  }
+
+  openedDropdown: number | null = null;
+
+  toggleDropdown(index: number): void {
+    this.openedDropdown = this.openedDropdown === index ? null : index;
+  }
+
+  selectDropdownOption(option: IDropDownOption): void {
+    this.openedDropdown = null; // close dropdown
+    this.goToPage(option.navigationLink);
   }
 
 }

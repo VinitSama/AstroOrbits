@@ -4,7 +4,7 @@
             <app-section-tag [svgColor]="svgColor" [sectionTitle]="kundliFormTitle" ></app-section-tag>
         </div>
         <div class="kundli-form">
-            <app-kundli-form (formValueEmitter)="onFormSubmit($event)" ></app-kundli-form>
+            <app-kundli-form (normalSubmitEmitter)="onFormSubmit($event)" ></app-kundli-form>
         </div>
     </div>
     <div class="article-container">

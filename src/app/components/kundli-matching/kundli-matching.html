@@ -1,0 +1,32 @@
+<div class="kundli-matching-page">
+    <div class="kundli-form-wrapper">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="formSectionHeading" ></app-section-tag>
+        </div>
+        <div class="form-container">
+            <div class="gender-option-container">
+                <div class="gender-option" [ngClass]="{'selected-gender': selectedGender == 'm'}" (click)="chooseGenderOption('m')" >
+                    Boy's Kundli
+                </div>
+                <div class="gender-option" [ngClass]="{'selected-gender': selectedGender == 'f'}" (click)="chooseGenderOption('f')" >
+                    Girls's Kundli
+            </div>
+        </div>
+        <div class="kundli-form">
+            <app-kundli-form [submitBtnOption]="2" [showGenderOption]="false" [gender]="selectedGender"[ngStyle]="{ display: selectedGender === 'm' ? 'block' : 'none' }" (formValueEmitter)="onBoyFormChange($event)" (useParentSubmitEmitter)="submit()" ></app-kundli-form>
+            <app-kundli-form [submitBtnOption]="2" [showGenderOption]="false" [gender]="selectedGender"[ngStyle]="{ display: selectedGender === 'f' ? 'block' : 'none' }" (formValueEmitter)="onGirlFormChange($event)" (useParentSubmitEmitter)="submit()" ></app-kundli-form>
+        </div>
+    </div>
+    </div>
+    <div class="article-container">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="articleSectionHeading" ></app-section-tag>
+        </div>
+        <div class="article">
+            <app-article [article]="article" ></app-article>
+        </div>
+    </div>
+    <div class="blog">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading" ></app-blog-section>
+    </div>
+</div>

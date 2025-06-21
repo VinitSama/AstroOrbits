@@ -1,0 +1,20 @@
+<div class="detail-table-container">
+    <div class="heading">
+        {{heading}}
+    </div>
+    <div class="table">
+        <ng-container *ngFor="let detail of detailTable; let i = index" >
+            <div class="row" *ngIf="i%2 == 0">
+                <div class="detail">
+                    <div class="detail-name">{{detailTable[i].name}}</div>
+                    <div class="detail-value">{{detailTable[i].value}}</div>
+                </div>
+                <div class="detail" *ngIf="detailTable[i + 1]">
+                    <div class="detail-name">{{detailTable[i + 1].name}}</div>
+                    <div class="detail-value">{{detailTable[i + 1].value}}</div>
+                </div>
+                <div class="detail extra" *ngIf="!detailTable[i+1]"></div>
+            </div>
+        </ng-container>
+    </div>
+</div>

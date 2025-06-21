@@ -1,0 +1,25 @@
+<div class="panchang-page">
+    <div class="section-tag heading">
+        <app-section-tag [svgColor]="svgColor" [sectionTitle]="panchangPageHeading" ></app-section-tag>
+    </div>
+
+    <div class="table-conatiner">
+        <div class="table" *ngFor="let table of tables">
+            <app-panchang-table [svgColor]="svgColor" [table]="table" (showTodayEmitter)="changeHeading($event)"></app-panchang-table>
+        </div>
+    </div>
+
+    <div class="article-container">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="articleHeading" ></app-section-tag>
+        </div>
+        <div class="article">
+            <app-article [article]="article"></app-article>
+        </div>
+    </div>
+
+    <div class="blog">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading"></app-blog-section>
+    </div>
+
+</div>

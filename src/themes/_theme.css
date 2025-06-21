@@ -1,5 +1,5 @@
 [data-theme="main-light"] {
-    --primary-color: #FFB114;
+    --primary-color: #14ffd0;
     --secondary-color: #3B3B3B;
     --tertiary-color: #181818;
     --fourth-color:#fff;
@@ -15,6 +15,7 @@
     --form-label:#956400;
     --form-option: #FFCA6B;
     --warning: #ff0000;
+    --vastushastra-option: #FBC56D;
 }    
 
 [data-theme="main-dark"] {

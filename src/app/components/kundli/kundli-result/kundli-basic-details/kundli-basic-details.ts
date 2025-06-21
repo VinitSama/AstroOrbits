@@ -1,18 +1,14 @@
 import { Component } from '@angular/core';
 import { IKundliDetail } from '../../../../interfaces/ikundli-detail';
 import { CommonModule } from '@angular/common';
-import { DetailsTable } from './details-table/details-table';
-
-interface IDetailTable {
-  title: string;
-  kundliDetail: IKundliDetail[];
-}
+import { DetailsTable } from '../../../details-table/details-table';
+import { IDetailTable } from '../../../../interfaces/idetail-table';
 
 @Component({
   selector: 'app-kundli-basic-details',
   imports: [
     CommonModule,
-    DetailsTable,
+    DetailsTable
   ],
   templateUrl: './kundli-basic-details.html',
   styleUrl: './kundli-basic-details.css'

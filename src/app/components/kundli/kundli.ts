@@ -4,11 +4,11 @@ import { Subscription } from 'rxjs';
 import { ThemeService } from '../../services/theme.service';
 import { BlogSection } from "../blog-section/blog-section";
 import { SectionTag } from "../section-tag/section-tag";
-import { KundliForm } from "./kundli-form/kundli-form";
 import { IKundliForm } from '../../interfaces/ikundli-form';
 import { Article } from "../article/article";
 import { IArticle } from '../../interfaces/iarticle';
 import { ActivatedRoute, Router } from '@angular/router';
+import { KundliForm } from '../kundli-form/kundli-form';
 
 @Component({
   selector: 'app-kundli',

@@ -1,0 +1,19 @@
+<div class="vastushastra-page">
+    <div class="wrapper">
+        <div class="article-container">
+            <div class="section-tag">
+                <app-section-tag [svgColor]="svgColor" [sectionTitle]="pageHeading"></app-section-tag>
+            </div>
+            <div class="article">
+                <app-article [article]="vastushastraContent"></app-article>
+            </div>
+            <div class="option-container">
+                <div class="option" *ngFor="let option of vastushastraOptions">{{option}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading"></app-blog-section>
+    </div>
+</div>

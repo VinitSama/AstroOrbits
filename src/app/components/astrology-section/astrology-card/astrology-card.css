@@ -28,6 +28,7 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
+    color: #000;
     line-height: normal;
 }
 
@@ -40,4 +41,5 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    color: var(--secondary-color);
 }

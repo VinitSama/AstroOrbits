@@ -96,4 +96,8 @@ select {
 
 .tag svg {
     margin-right: 4px;
-} 
+}
+
+.dropdown-container{
+    align-content: center;
+}

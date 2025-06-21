@@ -1,0 +1,71 @@
+<div class="vastushastra-page">
+    <div class="wrapper">
+        <div class="article-container">
+            <div class="section-tag">
+                <app-section-tag [svgColor]="svgColor" [sectionTitle]="pageHeading"></app-section-tag>
+            </div>
+            <div class="form-container" *ngIf="showForm">
+                <div class="form-option-container">
+                    <div class="form-option" [ngClass]="{'selected-option': selectedOption == 'User'}" (click)="chooseFormOption('User')" >
+                        Your Name
+                    </div>
+                    <div class="form-option" [ngClass]="{'selected-option': selectedOption == 'Partner'}" (click)="chooseFormOption('Partner')" >
+                        Partner's Name
+                    </div>
+                </div>
+                <div class="form">
+                    <div class="column">
+                        <div class="label">
+                            Full Name
+                        </div>
+                        <div class="input-feild">
+                            <ng-container *ngIf="selectedOption == 'User'">
+                                <input class="input" [formControl]="userName" placeholder="Enter Your Full Name">
+                            </ng-container>
+                            <ng-container *ngIf="selectedOption == 'Partner'">
+                                <input class="input" [formControl]="partnerName" placeholder="Enter Partner's Full Name">
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="label">
+                            Gender
+                        </div>
+                        <div class="gender-option-container">
+                            <div class="gender-option left" (click)="chooseGender('m')" [ngClass]="{'selected-gender': (selectedOption=='User' && gender.user == 'm') || (selectedOption=='Partner' && gender.partner == 'm')}" >Male</div>
+                            <div class="gender-option right" (click)="chooseGender('f')" [ngClass]="{'selected-gender': (selectedOption=='User' && gender.user == 'f') || (selectedOption=='Partner' && gender.partner == 'f')}" >Female</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-container" (click)="toggleForm(false)">
+                    <div class="submit-btn">Submit</div>
+                </div>
+            </div>
+
+            <div class="result-section" *ngIf="!showForm">
+                <div class="result-container">
+                    <app-result-progress [score]="resultScore" [subHeading]="'Love Compatibility'"></app-result-progress>
+                    <div class="names">
+                        {{userName.value}} & {{partnerName.value}}
+                    </div>
+                    <div class="breif">{{resultBrief}}</div>
+                    <div class="result-option-container">
+                        <div class="result-option" (click)="toggleForm(true)">Check another love compatibility</div>
+                        <div class="result-option selected">Check Love Horoscope</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="article">
+                <app-article [article]="loveCalculatorContent"></app-article>
+            </div>
+            <div class="option-container">
+                <div class="option" *ngFor="let option of loveCalculatorOptions">{{option}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading"></app-blog-section>
+    </div>
+</div>

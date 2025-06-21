@@ -1,4 +1,8 @@
-import { Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, Routes } from '@angular/router';
+
+function capitalize(value: string): string {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
 
 export const routes: Routes = [
     {
@@ -43,7 +47,86 @@ export const routes: Routes = [
                         path: '',
                         loadComponent: () => import('./components/horoscope/horoscope').then(m => m.Horoscope),
                         data: {breadcrumb: null},
+                    },
+                    {
+                        path: ':day/:zodiac',
+                        loadComponent: () => import('./components/horoscope/particular/particular').then(m => m.Particular),
+                        data: {
+                            layout: 'main',
+                            breadcrumb: (route: ActivatedRouteSnapshot) => {
+                                const zodiac = route.params['zodiac'];
+                                return `${capitalize(zodiac)} Free Horoscope`;
+                            }
+                        },
+                        children: [
+                            {
+                                path: '',
+                                data: {
+                                    breadcrumb: (route: ActivatedRouteSnapshot) => {
+                                        const day = route.params['day'];
+                                        return capitalize(day);
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                path: 'panchang',
+                data: {layout: 'main', breadcrumb: "Today's Panchang"},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./components/panchang/panchang').then(m => m.Panchang),
+                        data: {breadcrumb: null},
 
+                    },
+                ]
+            },
+            {
+                path: 'vastushastra',
+                data: {layout: 'main', breadcrumb: "Vastushastra"},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./components/vastushastra/vastushastra').then(m => m.Vastushastra),
+                        data: {breadcrumb: null},
+
+                    },
+                ]
+            },
+            {
+                path: 'love-calculator',
+                data: {layout: 'main', breadcrumb: "Love Calculator"},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./components/love-calculator/love-calculator').then(m => m.LoveCalculator),
+                        data: {breadcrumb: null},
+
+                    },
+                ]
+            },
+            {
+                path: 'kundli-matching',
+                data: {layout: 'main', breadcrumb: 'Kundli Matching'},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./components/kundli-matching/kundli-matching').then(m => m.KundliMatching),
+                        data: {breadcrumb: null},
+                    },
+                    {
+                        path: 'result',
+                        data: {layout: 'main', breadcrumb: 'Result'},
+                        children: [
+                            {
+                                path: '',
+                                loadComponent: () => import('./components/kundli-matching/matching-result/matching-result').then(m => m.MatchingResult),
+                                data: {breadcrumb: null},
+                            },
+                        ]
                     },
                 ]
             },

@@ -6,12 +6,12 @@ import { ThemeService } from '../../../services/theme.service';
 import { CommonModule } from '@angular/common';
 import { KundliBasicDetails } from "./kundli-basic-details/kundli-basic-details";
 import { KundliPrediction } from "./kundli-prediction/kundli-prediction";
-import { PositionOfPlanets } from "./position-of-planets/position-of-planets";
-import { Charts } from "./charts/charts";
-import { Doshas } from "./doshas/doshas";
 import { Dashaa } from "./dashaa/dashaa";
 import { Remedies } from "./remedies/remedies";
 import { BlogSection } from "../../blog-section/blog-section";
+import { PositionOfPlanets } from '../../position-of-planets/position-of-planets';
+import { Doshas } from '../../doshas/doshas';
+import { Charts } from '../../charts/charts';
 
 @Component({
   selector: 'app-kundli-result',
@@ -20,12 +20,12 @@ import { BlogSection } from "../../blog-section/blog-section";
     CommonModule,
     KundliBasicDetails,
     KundliPrediction,
-    PositionOfPlanets,
-    Charts,
-    Doshas,
     Dashaa,
     Remedies,
-    BlogSection
+    BlogSection,
+    PositionOfPlanets,
+    Doshas,
+    Charts
 ],
   templateUrl: './kundli-result.html',
   styleUrl: './kundli-result.css'

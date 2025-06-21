@@ -1,0 +1,35 @@
+<div class="doshas-page">
+    <div class="option-container">
+        <div class="option" *ngFor="let option of options; let i = index" [ngClass]="{'selected': selectedOption == option.name}" (click)="chooseOption(option.name)" (click)="smoothScrolling(i)" >
+            <div class="title">
+                <div class="svg-image">
+                    <img [src]="svgFile[i]" alt="UI decorative image">
+                </div>
+                {{option.name}}
+            </div>
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12.333H19" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 5.33301L19 12.333L12 19.333" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="doshas-container">
+        <div class="dosha" *ngFor="let dosha of doshas; let i = index" [id] = "'dosha-' + i" >
+            <div class="header">
+                <div class="title-svg">
+                    <img src="/images/buletin.svg" alt="decorative buletine image">
+                </div>
+                {{dosha.name}}
+            </div>
+            <div class="brief">{{dosha.brief}}</div>
+            <div class="result" *ngIf="dosha.showResult">
+                <div class="header">Result</div>
+                <div class="solution-container" *ngIf="dosha.result?.openResult" >{{dosha.result?.solution}}</div>
+                <div class="solution-btn-container" *ngIf="!dosha.result?.openResult" >
+                    <div class="solution-btn" (click)="showResult(i)" >Get Solution</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

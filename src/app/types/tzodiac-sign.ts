@@ -1,0 +1,1 @@
+export type TZodiacSign = "Aries" | "Taurus" | "Gemini" | "Cancer" | "Leo" | "Libra" | "Scorpio" | "Sagittarius" | "Capricorn" | "Aquarius" | "Pisces" | "Virgo";

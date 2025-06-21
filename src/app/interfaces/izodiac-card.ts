@@ -1,5 +1,7 @@
+import { TZodiacSign } from "../types/tzodiac-sign";
+
 export interface IZodiacCard {
     svg: string;
-    title: string | null;
+    title: TZodiacSign | null;
     details?: string;
 }
