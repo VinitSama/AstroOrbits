@@ -16,6 +16,13 @@
     --form-option: #FFCA6B;
     --warning: #ff0000;
     --vastushastra-option: #FBC56D;
+    --horoscope-option-border: #FFE5B7;
+    --horoscope-option-fill: #FFFAF1;
+    --horoscope-option-border-selected: #FFEED0;
+    --horoscope-option-box-shadow: rgba(255, 177, 20, 0.10);
+    --horoscope-banner: #FFDD98;
+    
+
 }    
 
 [data-theme="main-dark"] {

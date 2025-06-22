@@ -1,6 +1,7 @@
 <div class="breadcrumb-container" *ngIf="showBreadcrumbs">
   <ul class="breadcrumb-list">
     <li *ngFor="let crumb of breadcrumbs; let last = last" class="breadcrumb-item">
+        <span *ngIf="crumb.url && !crumb.url" class="label non-clickable">{{ crumb.label }}</span>
         <a *ngIf="!last" [routerLink]="crumb.url" class="label">{{ crumb.label }}</a>
         <span *ngIf="last" class="label last" >{{ crumb.label }}</span>
         <div *ngIf="!last" class="arrow-svg"> 

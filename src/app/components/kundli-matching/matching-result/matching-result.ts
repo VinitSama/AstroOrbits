@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SectionTag } from "../../section-tag/section-tag";
 import { CommonModule } from '@angular/common';
-import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../services/theme.service';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { BlogSection } from "../../blog-section/blog-section";
@@ -60,16 +59,11 @@ export class MatchingResult implements OnInit {
   ];
 
   blogSectionHeading = "You may also like";
-
-  private themeUpdateSubscription!: Subscription; 
   
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
-    this.themeUpdateSubscription = this.themeService.getThemeSubject().subscribe(()=>{
-      this.loadSVGColor();
-    })
   }
 
   private loadSVGColor() {

@@ -67,7 +67,7 @@ export class Navbar {
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
-      navigationLink: null,
+      navigationLink: "mantras",
     },
     {
       name: 'Numerology',

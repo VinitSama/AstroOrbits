@@ -82,6 +82,18 @@ export const routes: Routes = [
                 ]
             },
             {
+                path: 'mantras',
+                data: {layout: 'main', breadcrumb: "Mantras"},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./components/mantras/mantras').then(m => m.Mantras),
+                        data: {breadcrumb: null},
+
+                    },
+                ]
+            },
+            {
                 path: 'vastushastra',
                 data: {layout: 'main', breadcrumb: "Vastushastra"},
                 children: [

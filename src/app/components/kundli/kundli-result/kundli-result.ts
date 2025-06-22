@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SectionTag } from "../../section-tag/section-tag";
 import { ISvgColors } from '../../../interfaces/isvg-link';
-import { Subscription } from 'rxjs';
 import { ThemeService } from '../../../services/theme.service';
 import { CommonModule } from '@angular/common';
 import { KundliBasicDetails } from "./kundli-basic-details/kundli-basic-details";
@@ -81,15 +80,10 @@ export class KundliResult {
 
   blogSectionHeading = "You may also like";
 
-  private themeUpdateSubscription!: Subscription; 
-
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
-    this.themeUpdateSubscription = this.themeService.getThemeSubject().subscribe(()=>{
-      this.loadSVGColor();
-    })
   }
 
   private loadSVGColor() {

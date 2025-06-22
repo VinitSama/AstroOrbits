@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { ThemeService } from '../../services/theme.service';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { MoonSignForm } from "./moon-sign-form/moon-sign-form";
@@ -42,10 +41,6 @@ export class MoonSign {
   }
 
   blogSectionHeading = "You may also like";
-
-
-  private themeUpdateSubscription!: Subscription;
-
   
   moonSign: string = "Aries";
   moonSignReport: string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -54,9 +49,6 @@ export class MoonSign {
 
   ngOnInit(): void {
     this.loadSVGColor();
-    this.themeUpdateSubscription = this.themeService.getThemeSubject().subscribe(()=>{
-      this.loadSVGColor();
-    })
   }
 
   private loadSVGColor() {

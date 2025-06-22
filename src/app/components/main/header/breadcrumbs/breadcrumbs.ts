@@ -26,6 +26,7 @@ export class Breadcrumbs implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.breadcrumbs = this.buildBreadcrumbs(this.activatedRoute.root);
+        console.log(this.breadcrumbs)
         this.canShow();
       })
   }
@@ -42,16 +43,22 @@ export class Breadcrumbs implements OnInit {
         label = label(routeSnapshot);
       }
 
-      if (!label || routeSnapshot.data['skipBreadcrumb']){
+      if (!label){
         return this.buildBreadcrumbs(child, url, breadcrumbs);
       }
+
       if(routeUrl){
         url += `/${routeUrl}`;
       }
+      const skip = routeSnapshot.data['skipBreadcrumb'];
+      breadcrumbs.push({
+        label,
+        url: skip ? null : url,
+      });
 
-      breadcrumbs.push({ url,label });
       return this.buildBreadcrumbs(child, url, breadcrumbs);
     }
+
     return breadcrumbs;
   }
 

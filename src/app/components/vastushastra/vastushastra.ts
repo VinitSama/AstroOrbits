@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ISvgColors } from '../../interfaces/isvg-link';
-import { Subscription } from 'rxjs';
 import { ThemeService } from '../../services/theme.service';
 import { IArticle } from '../../interfaces/iarticle';
 import { SectionTag } from "../section-tag/section-tag";
@@ -33,16 +32,11 @@ export class Vastushastra {
   vastushastraOptions = ["Lorem Ipsum","Lorem Ipsum","Lorem Ipsum","Lorem Ipsum",]
 
   blogSectionHeading = "You may also like";
-
-  private themeUpdateSubscription!: Subscription; 
   
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
-    this.themeUpdateSubscription = this.themeService.getThemeSubject().subscribe(()=>{
-      this.loadSVGColor();
-    })
   }
 
   private loadSVGColor() {

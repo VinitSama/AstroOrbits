@@ -1,0 +1,178 @@
+
+.all-zodiac{
+    display: flex;
+    max-width: 1100px;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.svg-container{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    align-content: center;
+    justify-items: center;
+    margin: 0 auto;
+    border: var(--horoscope-option-border);
+    background-color: var(--horoscope-option-fill);
+    cursor: pointer;
+}
+
+.open-zodiac-page-svg{
+    border: 1px solid var(--primary-color);
+    background-color: var(--horoscope-option-border-selected);
+    box-shadow: 0px 10px 30px 0px var(--horoscope-option-box-shadow);
+}
+
+.baner-container{
+    padding: 56px 40px;
+}
+
+.section-tag{
+    margin-bottom: 32px;
+}
+
+.baner{
+    margin: 0 auto;
+    max-width: 1100px;
+    /* padding: 24px; */
+    max-height: min-content;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 7px;
+    background: linear-gradient(180deg, var(--horoscope-banner) 0%, #FFF 100%);
+}
+
+.wrapper {
+    padding: 24px 0;
+    align-items: center;
+}
+
+.banner-svg-container{
+    /* padding-top: 24px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(50% 50% at 50% 50%, #FFF0D1 51.92%, #FFD582 100%);
+}
+
+.main-content{
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+.day-container{
+    display: flex;
+    padding: 12px;
+    border-radius: 7px;
+    background-color: var(--secondary-bg-color);
+    margin-bottom: 10px;
+}
+
+.day-options{
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.selected-day{
+    background-color: var(--primary-color);
+}
+
+
+.report-container{
+    display: flex;
+    flex-direction: column;
+    padding: 56px 40px;
+    border-radius: 7px;
+    background-color: var(--light-primary-color);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.header .date{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.lucky-information-container{
+    display: flex;
+    border-radius: 7px;
+    background-color: #fff;
+    margin: 32px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.lucky-information{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+}
+
+.information-value{
+    font-weight: 400;
+}
+
+.precise-horoscope-option{
+    padding: 56px 40px;
+}
+
+.precise-option-container{
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--secondary-color);
+}
+
+.precise-option{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+    border-radius: 7px;
+}
+
+.option-svg{
+    margin: 0 auto;
+}
+
+.selected-precise{
+    box-shadow: 0px 10px 30px 0px var(--horoscope-option-box-shadow);
+    background-color: var(--horoscope-option-border);
+}
+
+.precise-horoscope{
+    padding: 56px 40px;
+    background-color: var(--secondary-bg-color);
+}
+.article{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.blog{
+    padding: 56px 40px;
+}

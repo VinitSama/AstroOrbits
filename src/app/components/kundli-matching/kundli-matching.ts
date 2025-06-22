@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SectionTag } from "../section-tag/section-tag";
-import { Subscription } from 'rxjs';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { ThemeService } from '../../services/theme.service';
 import { Article } from "../article/article";
@@ -40,15 +39,11 @@ export class KundliMatching implements OnInit {
   boyFormData: IKundliForm | null = null;
   girlFormData: IKundliForm | null = null;
 
-  private themeUpdateSubscription!: Subscription; 
 
   constructor(private themeService: ThemeService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
-    this.themeUpdateSubscription = this.themeService.getThemeSubject().subscribe(()=>{
-      this.loadSVGColor();
-    })
   }
 
   onBoyFormChange(data: IKundliForm) {

@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-zodiac-card',
   imports: [
     CommonModule,
-    RouterLink,
+    RouterLink
   ],
   templateUrl: './zodiac-card.html',
   styleUrl: './zodiac-card.css'

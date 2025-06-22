@@ -34,6 +34,10 @@
     align-items: center;
 }
 
+.non-clickable{
+  cursor: pointer;
+}
+
 .label {
     text-decoration: none;
     font-size: 14px;

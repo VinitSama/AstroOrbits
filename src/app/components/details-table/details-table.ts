@@ -14,5 +14,14 @@ export class DetailsTable {
 
   @Input() heading!: String;
   @Input() detailTable!: IKundliDetail[];
+  @Input() columns: number = 2;
+
+  get groupedDetails(): IKundliDetail[][] {
+    const grouped: IKundliDetail[][] = [];
+    for (let i = 0; i < this.detailTable.length; i += this.columns) {
+      grouped.push(this.detailTable.slice(i, i + this.columns));
+    }
+    return grouped;
+  }
 
 }

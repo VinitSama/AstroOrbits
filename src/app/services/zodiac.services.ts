@@ -581,7 +581,7 @@ export class ZodiacServices {
 </defs>
 </svg>
             `,
-      title: 'Aries',
+      title: 'Virgo',
       details: "21/3 - 19/4",
     },
     {
@@ -1123,7 +1123,7 @@ export class ZodiacServices {
   getSvg(title: string): string {
     let card = this.zodiacCards.find(c => c.title?.toLocaleLowerCase() == title.toLocaleLowerCase());
     if (card) {
-      return card.svg;
+      return card.svg as string;
     }
     return "wrong title";
   }

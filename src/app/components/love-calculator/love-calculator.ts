@@ -61,16 +61,10 @@ export class LoveCalculator {
   resultScore: number =80;
   resultBrief: string = "Your love is the he best love; the kind that awakens the soul; that makes both of you reach for more.";
   
-
-  private themeUpdateSubscription!: Subscription; 
-  
   constructor(private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
-    this.themeUpdateSubscription = this.themeService.getThemeSubject().subscribe(()=>{
-      this.loadSVGColor();
-    })
   }
 
   private loadSVGColor() {

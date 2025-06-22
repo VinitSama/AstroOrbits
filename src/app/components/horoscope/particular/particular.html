@@ -1,7 +1,88 @@
 <div class="horoscope-particular-report">
     <div class="all-zodiac">
-        <div class="zodiac-svg" *ngFor="let zodiac of zodiacDetails">
-            <div class="svg-container" [innerHTML]="zodiac.svg" ></div>
+        <div class="zodiac-svg" *ngFor="let card of zodiacDetails">
+            <div class="svg-container" [innerHTML]="makeInnerHTMLSafe(card.svg)" [ngClass]="{'open-zodiac-page-svg': card.title == zodiac}" (click)="onZodiacClick(card.title)">
+                {{card.title}}
+            </div>
         </div>
+    </div>
+
+    <div class="baner-container">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="bannerSectionHeading"></app-section-tag>
+        </div>
+        <div class="baner">
+            <img src="/images/sun-logo-left.svg" alt="sun-design-image">
+            <div class="wrapper">
+                <div class="banner-svg-container">
+                    <div class="banner-svg" [innerHTML]="openSvg"></div>
+                </div>
+            </div>
+            <img src="/images/sun-logo-right.svg" alt="sun-design-image">
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="day-container">
+            <div class="day-options" *ngFor="let option of daysOption"[ngClass]="{'selected-day':option==day}">{{option}}</div>
+        </div>
+        <div class="report-container">
+            <div class="header">
+                <div class="zodiac-name">{{zodiac}}{{' '}}{{day+"'s "}}Horoscope</div>
+                <div class="date">{{dateToDisplay() | date: "fullDate"}}</div>
+            </div>
+            <div class="paragraph">
+                {{report.brief}}
+            </div>
+            <div class="lucky-information-container">
+                <div class="lucky-information">
+                    <div class="information-name">Lucky Number</div>
+                    <div class="information-value">{{report.luckyInformation.luckyNumber}}</div>
+                </div>
+                <div class="lucky-information">
+                    <div class="information-name">Mood</div>
+                    <div class="information-value">{{report.luckyInformation.mood}}</div>
+                </div>
+                <div class="lucky-information">
+                    <div class="information-name">Positivity</div>
+                    <div class="information-value">{{report.luckyInformation.positivity}}%</div>
+                </div>
+                <div class="lucky-information">
+                    <div class="information-name">Lucky Color</div>
+                    <div class="information-value">{{report.luckyInformation.luckyColor}}</div>
+                </div>
+            </div>
+            <div class="remedy" *ngIf="report.remedy">
+                <div class="header">Remedy</div>
+                <div class="paragraph">{{report.remedy}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="precise-horoscope-option">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="'Precise Horoscope'"></app-section-tag>
+        </div>
+        <div class="precise-option-container">
+            <div class="precise-option" *ngFor="let op of presiceHoroscope; let i = index " [ngClass]="{'selected-precise': i==openPrecise}" (click)="changeArticle(i)">
+                <div class="option-svg">
+                    <img [src]="getSvgFile(i)" alt="">
+                </div>
+                <div class="option-name">
+                    {{zodiac + " " + op.name}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="precise-horoscope">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="presiceHoroscope[openPrecise].name"></app-section-tag>
+        </div>
+        <div class="article">
+            <app-article [article]="article"></app-article>
+        </div>
+    </div>
+    <div class="blog">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="'Blogs'"></app-blog-section>
     </div>
 </div>
