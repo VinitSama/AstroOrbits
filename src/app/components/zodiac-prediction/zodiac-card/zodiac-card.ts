@@ -19,6 +19,7 @@ export class ZodiacCard {
   @Input() zodiacCard!: IZodiacCard;
   @Input() svgColor!: ISvgColors;
   @Input() detailed: boolean = false;
+  @Input() day: string = "Today";
 
   safeSvg!: SafeHtml;
 

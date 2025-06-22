@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SectionTag } from "../../section-tag/section-tag";
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { DayOption } from "./day-option/day-option";
@@ -18,6 +18,7 @@ import { HoroscopeReport } from "./horoscope-report/horoscope-report";
 export class PresiceSection {
 
   @Input() svgColor!: ISvgColors;
+  @Output() daySelectorEmitter = new EventEmitter<string>();
 
   title = "Precise Horoscope";
   dayOption = ['Yesterday','Tomorrow','Today','Weekly','Monthly','Yearly'];
@@ -73,6 +74,7 @@ export class PresiceSection {
     if (report) {
       this.selectedOption = option;
       this.selectedReport = report[0];
+      this.daySelectorEmitter.emit(option)
     }
   }
 

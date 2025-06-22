@@ -1,6 +1,6 @@
 <div class="horoscope-page-container">
-    <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true" [title]="zodiacSectionTtitle" [brief]="zodiacSectionBrief" ></app-zodiac-prediction>
-    <app-presice-section [svgColor]="svgColor" ></app-presice-section>
+    <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true" [title]="zodiacSectionTtitle" [brief]="zodiacSectionBrief" [day]="day" ></app-zodiac-prediction>
+    <app-presice-section [svgColor]="svgColor" (daySelectorEmitter)="onDayChange($event)" ></app-presice-section>
     <app-horoscope-type [svgColor]="svgColor"></app-horoscope-type>
     <div class="blog-section">
         <div class="blog-container">

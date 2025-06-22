@@ -4,6 +4,8 @@
     margin: 32px auto;
     background-color: var(--secondary-bg-color);
     cursor: pointer;
+    padding: 12px;
+    border-radius: 7px;
     /* align-items: center; */
 }
 
