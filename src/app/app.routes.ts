@@ -56,17 +56,37 @@ export const routes: Routes = [
                         },
                         children: [
                             {
-                            path: ':zodiac',
-                            loadComponent: () =>
-                                import('./components/horoscope/particular/particular').then(m => m.Particular),
-                            data: {
-                                layout: 'main',
-                                breadcrumb: (route: ActivatedRouteSnapshot) =>
-                                `${capitalize(route.params['zodiac'])} Free Horoscope`,
-                            }
+                                path: ':zodiac',
+                                loadComponent: () =>
+                                    import('./components/horoscope/particular/particular').then(m => m.Particular),
+                                data: 
+                                {
+                                    layout: 'main',
+                                    breadcrumb: (route: ActivatedRouteSnapshot) =>
+                                    `${capitalize(route.params['zodiac'])} Free Horoscope`,
+                                }
                             }
                         ]
                     }
+                ]
+            },
+            {
+                path: 'mantras',
+                data: {layout: 'main', breadcrumb: "Mantras"},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./components/mantras/mantras').then(m => m.Mantras),
+                        data: {breadcrumb: null},
+                    },
+                    {
+                        path: ':mantra',
+                        loadComponent: () => import('./components/mantras/mantra-specific/mantra-specific').then(m => m.MantraSpecific),
+                        data: {
+                            layout: 'main',
+                            breadcrumb: (route: ActivatedRouteSnapshot) => capitalize(route.params['mantra']),
+                        } 
+                    },
                 ]
             },
             {
@@ -82,13 +102,25 @@ export const routes: Routes = [
                 ]
             },
             {
-                path: 'mantras',
-                data: {layout: 'main', breadcrumb: "Mantras"},
+                path: 'numerology',
+                data: {layout: 'main', breadcrumb: "Numerology"},
                 children: [
                     {
-                        path: '',
-                        loadComponent: () => import('./components/mantras/mantras').then(m => m.Mantras),
-                        data: {breadcrumb: null},
+                        path: ':option',
+                        data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot) => {
+                            const option = capitalize(route.params['option']);
+                            return !option ? null : option;
+                        } },
+                        children: [
+                            {
+                                path: ':num',
+                                loadComponent: () => import('./components/numerlogy/numerlogy').then(m => m.Numerlogy),
+                                data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot)=> {
+                                    const num = route.params['num'];
+                                    return !num ? null : num;
+                                }}
+                            }
+                        ]
 
                     },
                 ]

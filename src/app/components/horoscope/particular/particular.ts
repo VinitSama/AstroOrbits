@@ -5,7 +5,7 @@ import { IZodiacCard } from '../../../interfaces/izodiac-card';
 import { ZodiacServices } from '../../../services/zodiac.services';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { SectionTag } from "../../section-tag/section-tag";
@@ -93,10 +93,9 @@ export class Particular implements OnInit{
   ngOnInit(): void {
     this.loadSVGColor();
     this.loadCards();
-    this.loadFromRouteIfNeeded()
-    this.setOpenSvg();
-    this.bannerSectionHeading = `${this.zodiac} Horoscope`;
-    this.changeArticle(this.openPrecise);
+    this.route.paramMap.subscribe(params => {
+      this.loadFromRouteIfNeeded(params);
+    });
   }
 
   setDay(str: string){
@@ -131,38 +130,29 @@ export class Particular implements OnInit{
     this.zodiacDetails = this.zodiacService.getAllCards();
   }
 
-  private loadFromRouteIfNeeded(){
-    if (!this.zodiac || !this.day) {
-      this.route.paramMap.subscribe(params => {
-        const zodiacParam = params.get('zodiac');
-        const dayParam = params.get('day');
+  private loadFromRouteIfNeeded(params: ParamMap){
+    const zodiacParam = params.get('zodiac');
+    const dayParam = params.get('day');
 
-        if (zodiacParam && this.isValidZodiac(zodiacParam)) {
-          this.zodiac = zodiacParam as TZodiacSign;
-        }
-
-        this.day = dayParam ?? 'Today';
-      });
+    if (zodiacParam && this.isValidZodiac(zodiacParam)) {
+      this.zodiac = zodiacParam as TZodiacSign;
     }
+
+    this.day = (dayParam as TDates) || 'Today';
+
+    this.bannerSectionHeading = `${this.zodiac} Horoscope`;
+    this.setOpenSvg();
+    this.changeArticle(this.openPrecise);
+    //make api function and call here
+    //make api function and call here
+    //make api function and call here
+    //make api function and call here
+    //make api function and call here
+    //make api function and call here
   }
 
   onZodiacClick(title: TZodiacSign | null){
     this.router.navigate(['/home/horoscope', this.day, title]);
-    
-    setTimeout(() => {
-      this.loadFromRouteIfNeeded();
-      console.log(this.zodiac, this.day);
-      this.setOpenSvg();
-    }, 1);
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
   }
 
   private sanitizeSvg(svg: string) {
@@ -173,7 +163,7 @@ export class Particular implements OnInit{
   private setSize(svg: string){
     return svg
       .replace(/height="[^"]*"/, 'height="40px"')
-      .replace(/width="[^"]*"/, 'width="auto"');
+      .replace(/width="[^"]*"/, 'width="100%"');
   }
 
   makeInnerHTMLSafe(svg: string){
@@ -208,13 +198,17 @@ export class Particular implements OnInit{
     const d = new Date();
     if (this.day=="Today"){
       return d;
-    } else if (this.day == "Tommorow") {
+    } else if (this.day == "Tomorrow") {
       d.setDate(d.getDate() + 1);
       return d;
     } else if (this.day == "Yesterday") {
-      d.setDate(d.getDate() + 1);
+      d.setDate(d.getDate() - 1);
       return d;
     }
     return;
+  }
+
+  setDate(date: TDates) {
+    this.day = date
   }
 }

@@ -1,1 +1,25 @@
-<p>mantras works!</p>
+<div class="mantras-page">
+    <div class="page-container">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="'Mantras'"></app-section-tag>
+        </div>
+        <div class="article">
+            <app-article [article]="articles[0]"></app-article>
+        </div>
+        <div class="table">
+            <app-mantra-table></app-mantra-table>
+        </div>
+        <div class="article">
+            <app-article [article]="articles[1]"></app-article>
+        </div>
+        <div class="article">
+            <app-article [article]="articles[2]"></app-article>
+        </div>
+        <div class="article">
+            <app-article [article]="articles[3]"></app-article>
+        </div>
+        <div class="blog">
+            <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="'You may also like'"></app-blog-section>
+        </div>
+    </div>
+</div>

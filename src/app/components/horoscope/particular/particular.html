@@ -24,7 +24,7 @@
     
     <div class="main-content">
         <div class="day-container">
-            <div class="day-options" *ngFor="let option of daysOption"[ngClass]="{'selected-day':option==day}">{{option}}</div>
+            <div class="day-options" *ngFor="let option of daysOption"[ngClass]="{'selected-day':option==day}" (click)="setDate(option)" >{{option}}</div>
         </div>
         <div class="report-container">
             <div class="header">

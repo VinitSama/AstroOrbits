@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HoroscopeReport } from './horoscope-report';
+import { MantraSpecific } from './mantra-specific';
 
-describe('HoroscopeReport', () => {
-  let component: HoroscopeReport;
-  let fixture: ComponentFixture<HoroscopeReport>;
+describe('MantraSpecific', () => {
+  let component: MantraSpecific;
+  let fixture: ComponentFixture<MantraSpecific>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HoroscopeReport]
+      imports: [MantraSpecific]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HoroscopeReport);
+    fixture = TestBed.createComponent(MantraSpecific);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

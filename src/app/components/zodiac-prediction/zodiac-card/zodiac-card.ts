@@ -44,5 +44,13 @@ export class ZodiacCard {
       this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(this.zodiacCard.svg);
     }
   }
+
+  smoothScrolling():void {
+    const element = document.getElementById('header-logo');
+
+    if( element ){
+      element.scrollIntoView({behavior: 'smooth', block: 'start'})
+    }
+  }
   
 }

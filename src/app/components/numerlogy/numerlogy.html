@@ -1,1 +1,60 @@
-<p>numerlogy works!</p>
+<div class="numerlogy-page">
+    <div class="num-option-wrapper">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="pageHeading"></app-section-tag>
+        </div>
+        <div class="num-option-container">
+            <div class="num-option" *ngFor="let n of numOption" [ngClass]="{'selected-num': n == num}" (click)="setNumber(n)">
+                <div class="num-option-line" *ngIf="n!=num">
+                    <img src="/images/numerology/bstarc.svg" alt="">
+                    <div class="num-name">{{n}}</div>
+                    <img class="star" src="/images/numerology/sstarc.svg" alt="">
+                </div>
+                <div class="num-option-line" *ngIf="n==num">
+                    <img src="/images/numerology/bstars.svg" alt="">
+                    <div class="num-name">{{n}}</div>
+                    <img class="star" src="/images/numerology/sstars.svg" alt="">
+                </div>
+                <div class="num-option-sub">Number {{n}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="report-section-wrapper">
+        <div class="date-option-container">
+            <div class="date-option" *ngFor="let d of dateOption" [ngClass]="{'selected-date': d == selectedDateOption}" (click)="setDate(d)">
+                {{d}}
+            </div>
+        </div>
+        <div class="report-container">
+            <div class="heading">
+                <div class="report-name">{{report.heading}}</div>
+                <div class="report-date">{{report.date}}</div>
+            </div>
+            <div class="report">{{report.report}}</div>
+        </div>
+    </div>
+    <div class="other-option-wrapper">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="'Other Numerology'"></app-section-tag>
+        </div>
+        <div class="other-option-container">
+            <div class="other-option" *ngFor="let o of otherOption; let i=index" (click)="setOption(o)">
+                <div class="svg-option">
+                    <img [src]="'/images/numerology/' + (i+1) + '.svg'" alt="numerology option decoration">
+                </div>
+                <div class="option-name">{{o}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="article-container">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="optionHeading"></app-section-tag>
+        </div>
+        <div class="article">
+            <app-article [article]="article"></app-article>
+        </div>
+    </div>
+    <div class="blog">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="'You may also like'"></app-blog-section>
+    </div>
+</div>

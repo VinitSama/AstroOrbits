@@ -1,5 +1,5 @@
 [data-theme="main-light"] {
-    --primary-color: #14ffd0;
+    --primary-color: #FFB114;
     --secondary-color: #3B3B3B;
     --tertiary-color: #181818;
     --fourth-color:#fff;
@@ -21,6 +21,7 @@
     --horoscope-option-border-selected: #FFEED0;
     --horoscope-option-box-shadow: rgba(255, 177, 20, 0.10);
     --horoscope-banner: #FFDD98;
+    --numerology-num-option: #E39700;
     
 
 }    

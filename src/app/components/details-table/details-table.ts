@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IKundliDetail } from '../../interfaces/ikundli-detail';
 import { CommonModule } from '@angular/common';
+import { IMantraDetails } from '../../interfaces/imantra-details';
 
 @Component({
   selector: 'app-details-table',

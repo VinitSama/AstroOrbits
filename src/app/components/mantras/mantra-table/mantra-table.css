@@ -1,0 +1,45 @@
+.detail-table-container{
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto 12px auto;
+    padding: 10px;
+    background-color: var(--light-primary-color);
+    color: var(--secondary-color);
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.heading{
+    padding: 10px;
+    font-size: 24px;
+}
+
+.table{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.row{
+    background-color: var(--light-primary-color);
+    display: flex;
+    width: 100%;
+    gap: 1px;
+}
+.detail{
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+    cursor: pointer;
+}
+
+.extra{
+    background-color: var(--light-primary-color);
+    cursor: default;
+}
+
+.detail-name{
+    font-weight: 600;
+}

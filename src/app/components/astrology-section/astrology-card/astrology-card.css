@@ -15,12 +15,12 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    padding: 8px 12px;
+    padding: 50px 12px 8px 12px;
     color: white;
     font-size: 14px;
     line-height: 1.2em;
     /* background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));  */
-    background: linear-gradient(to top, var(--primary-color) 40%, #00000000);
+    background: linear-gradient(to top, var(--primary-color) 10%, #00000000);
     border-radius: 0 0 7px 7px;
 }
 

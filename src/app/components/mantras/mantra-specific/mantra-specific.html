@@ -1,0 +1,48 @@
+<div class="mantra-specific-page">
+    <div class="dynamic">
+        <div class="section-tag" id="mantra-specific-page-start">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="mantraName"></app-section-tag>
+        </div>
+        <div class="column-container">
+            <div class="column">
+                <div class="brief">{{brief}}</div>
+                <div class="meaning">
+                    <div class="heading">Meaning of {{mantraName}}</div>
+                    <ul>
+                        <li class="bullets" *ngFor="let b of meaning.bullets" >
+                            {{b}}
+                        </li>
+                    </ul>
+                    <div class="brief">{{meaning.brief}}</div>
+                </div>
+                <div class="importance">
+                    <div class="heading">Importance of {{mantraName}}</div>
+                    <div class="content" [innerHTML]="importance"></div>
+                </div>
+                <div class="kinds">
+                    <div class="heading">Kinds of {{mantraName}}</div>
+                    <div class="brief">{{kinds.brief}}</div>
+                    <div class="type" *ngFor="let t of kinds.types">
+                        <div class="type-line"><span class="type-name">{{t.name+ ": "}}</span>{{t.mantra}}</div>
+                        <div class="type-line">{{t.effect}}</div>
+                    </div>
+                </div>
+                <div class="mythology">
+                    <div class="heading">Mythology Behind {{mantraName}}</div>
+                    <div class="brief" [innerHTML]="mythology"></div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="mantra-container">
+                    <div class="mantra" *ngFor="let mantra of mantras" [innerHTML]="mantra"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mantra-table">
+            <app-mantra-table></app-mantra-table>
+        </div>
+    </div>
+    <div class="blog">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="'You may also like'"></app-blog-section>
+    </div>
+</div>

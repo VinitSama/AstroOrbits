@@ -16,6 +16,15 @@ export class BannerMenu {
 
   goToPage(page: 'horoscope' | 'kundli' | 'vastushastra') {
     this.router.navigate(['home', page]);
+    this.smoothScrolling();
+  }
+
+  private smoothScrolling():void {
+    const element = document.getElementById('header-logo');
+
+    if( element ){
+      element.scrollIntoView({behavior: 'smooth', block: 'start'})
+    }
   }
 
 }

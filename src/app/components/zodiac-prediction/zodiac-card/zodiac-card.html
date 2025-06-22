@@ -1,4 +1,4 @@
-<div class="zodiac-card" [routerLink]="['/home/horoscope', 'Today', zodiacCard.title]">
+<div class="zodiac-card" [routerLink]="['/home/horoscope', 'Today', zodiacCard.title]" (click)="smoothScrolling()">
     <div class="svg-container" [innerHTML]="safeSvg"></div>
     <div class="title">
         {{zodiacCard.title}}

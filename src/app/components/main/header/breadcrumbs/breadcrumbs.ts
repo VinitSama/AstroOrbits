@@ -43,7 +43,7 @@ export class Breadcrumbs implements OnInit {
         label = label(routeSnapshot);
       }
 
-      if (!label){
+      if (!label || label == "0"){
         return this.buildBreadcrumbs(child, url, breadcrumbs);
       }
 

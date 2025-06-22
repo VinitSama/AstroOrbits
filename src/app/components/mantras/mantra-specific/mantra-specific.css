@@ -1,0 +1,54 @@
+.dynamic{
+    padding: 56px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.column-container{
+    display: flex;
+    gap: 32px;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--secondary-color);
+}
+
+.column{
+    width: 100%;
+}
+
+.heading{
+    font-weight: 600;
+    font-size: 16px;
+    margin: 32px 0;
+}
+
+.type-line {
+    margin: 15px 0;
+}
+
+.type-name{
+    font-weight: 600;
+}
+
+.blog{
+    padding: 56px 40px;
+}
+
+.mantra-container{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.mantra{
+    border-radius: 7px;
+    padding: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    background-color: var(--primary-color);
+}

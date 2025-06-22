@@ -75,7 +75,7 @@ export class Navbar {
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
-      navigationLink: null,
+      navigationLink: "numerology",
     },
     {
       name: 'Tarot',
@@ -115,7 +115,9 @@ export class Navbar {
   }
 
   goToPage(page: TNavigationLink | null) {
-    if (page){
+    if (page == 'numerology'){
+      this.router.navigate(['home',page,"0","0"])
+    } else if (page){
       this.router.navigate(['home', page]);
     }
   }
