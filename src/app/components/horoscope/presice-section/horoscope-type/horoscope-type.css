@@ -43,7 +43,7 @@
 
 .article-wrapper{
     background-color: var(--secondary-bg-color);
-    padding: 56px 40px;
+    padding: 56px 0;
 }
 /* 
 .article-container{

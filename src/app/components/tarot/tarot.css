@@ -1,0 +1,16 @@
+.container{
+    padding: 56px 0;
+}
+
+.bgcolor{
+    background-color: var(--secondary-bg-color);
+}
+
+.section-tag{
+    margin-bottom: 32px;
+}
+
+.article{
+    max-width: 1100px;
+    margin: 0 auto;
+}

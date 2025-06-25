@@ -43,3 +43,22 @@
     line-height: normal;
     color: var(--secondary-color);
 }
+
+@media (max-width: 1025px) {
+    .card-container{
+        width: 200px;
+        height: 270px;
+    }
+}
+@media (max-width: 850px) {
+    .card-container{
+        width: 170px;
+        height: 260px;
+    }
+}
+
+@media (max-width: 750px) {
+    .card-container{
+        margin-right: 20px;
+    }
+}

@@ -101,3 +101,31 @@ select {
 .dropdown-container{
     align-content: center;
 }
+
+@media (max-width: 990px) {
+    .navbar-container{
+        padding: 0;
+        height: 90vh;
+    }
+
+    .navbar-list{
+        flex-direction: column;
+        height: 100%;
+        margin: 0;
+    }
+
+    .list-item{
+        border: none;
+        border-bottom: 1px solid #fff;
+    }
+
+    .first-item {
+        border-radius: 7px 7px 0 0;
+    }
+
+    .last-item {
+        border-radius: 0 0 7px 7px;
+        border: none;
+    }
+    
+}

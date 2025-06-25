@@ -1,0 +1,6 @@
+<div class="menu-overlay" (click)="closeMenu()">
+    <div class="menu-content" (click)="$event.stopPropagation()">
+        <div class="close-btn" (click)="closeMenu()">✕</div>
+        <app-navbar (close)="closeMenu()"></app-navbar>
+    </div>
+</div>

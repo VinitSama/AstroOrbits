@@ -1,9 +1,9 @@
 <div class="header-container">
-    <div class="logo" id="header-logo">
+    <div class="logo" id="header-logo" [routerLink]="'home'">
         <div class="logo-col-1">ASTRO</div>
         <div class="logo-col-2">ORBITS</div>
     </div>
-    <div class="header-options">
+    <div class="header-options" *ngIf="mode == 'large'">
         <div class="language">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.5307 6.056H10.4241V8.26667C10.4241 9.26133 9.61341 10.072 8.61874 10.072H7.20007V10.952C7.20007 11.5787 7.70941 12.088 8.33607 12.088H11.7547L12.9521 13.2853C13.0027 13.336 13.0694 13.3627 13.1387 13.3627C13.1734 13.3627 13.2081 13.3547 13.2427 13.3413C13.3414 13.3013 13.4054 13.2027 13.4054 13.096V12.088H13.5307C14.1574 12.088 14.6667 11.5787 14.6667 10.952V7.192C14.6667 6.56533 14.1574 6.056 13.5307 6.056ZM12.7494 8.304H12.0294V10.1067C12.0294 10.2533 11.9094 10.3733 11.7627 10.3733C11.6161 10.3733 11.4961 10.2533 11.4961 10.1067V8.304H10.7761C10.6267 8.304 10.5094 8.184 10.5094 8.03733C10.5094 7.888 10.6267 7.77067 10.7761 7.77067H12.7494C12.8987 7.77067 13.0161 7.888 13.0161 8.03733C13.0161 8.184 12.8987 8.304 12.7494 8.304Z" [attr.fill]="svgColor.tertiary"/>
@@ -18,6 +18,11 @@
         </div>
         <button class="login" routerLink="home/test">Login</button>
     </div>
+    <div class="hamburger-menu header-options" *ngIf="mode != 'large'" (click)="toggleMenu()">
+        Menu
+    </div>
 </div>
-<app-navbar></app-navbar>
+<app-navbar *ngIf="mode == 'large'"></app-navbar>
 <app-breadcrumbs></app-breadcrumbs>
+
+<app-menu *ngIf="showMenu" (close)="toggleMenu()"></app-menu>

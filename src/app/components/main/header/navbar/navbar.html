@@ -3,7 +3,7 @@
         <li *ngFor="let item of navbarItems; trackBy: trackByFn; let i = index" class="list-item"
                 [ngClass]="{ 'first-item': i === 0, 'last-item': i === navbarItems.length - 1 }" >
             <ng-container *ngIf="!item.dropDownPresent">
-                <div class="item-name" (click)="goToPage(item.navigationLink)">
+                <div class="item-name" (click)="goToPage(item.navigationLink)" (click)="closeFn()">
                     {{item.name}}
                     <div *ngIf="item.tagPresent" class="tag" [style.background-color]="item.tagSettings?.eclipseColor">
                         <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
@@ -14,23 +14,6 @@
                 </div>
             </ng-container>
             <ng-container *ngIf="item.dropDownOption">
-                <!-- <div class="dropdown-item" [ngClass]="{'first-item': i===0, 'last-item': i===navbarItems.length - 1}" >
-                    <select [(ngModel)]="selectedOptions[i]" [id]="i === navbarItems.length - 1 ? 'select-l' : 'select-' + i" (change)="selectedOptions[i]?.navigationLink !== undefined && goToPage(selectedOptions[i].navigationLink)">
-                        <option *ngFor="let option of item.dropDownOption;" [value]="option">
-                            {{option.name}}
-                        </option>
-                    </select>
-                </div> -->
-                <!-- <div class="dropdown-item">
-                    <div mat-menu-item [matMenuTriggerFor]="menu" class="trigger-div">
-                        {{ item.name }}
-                    </div>
-                    <mat-menu #menu="matMenu">
-                        <ng-container *ngFor="let option of item.dropDownOption">
-                        <button mat-menu-item>{{ option }}</button>
-                        </ng-container>
-                    </mat-menu>
-                </div> -->
                 <ng-container *ngIf="item.dropDownPresent && item.dropDownOption?.length">
                     <div class="dropdown-container" [class.open]="openedDropdown === i">
                     <div class="item-name dropdown-toggle" (click)="toggleDropdown(i)">
@@ -41,7 +24,7 @@
                         <div 
                         class="dropdown-item" 
                         *ngFor="let option of item.dropDownOption" 
-                        (click)="selectDropdownOption(option)">
+                        (click)="selectDropdownOption(option)" (click)="closeFn()">
                         {{ option.name }}
                         </div>
                     </div>
@@ -50,4 +33,5 @@
             </ng-container>
         </li>
     </ul>
+
 </div>

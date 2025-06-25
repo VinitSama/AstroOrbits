@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit } from '@angular/core';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { ThemeService } from '../../services/theme.service';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
 import { CommonModule } from '@angular/common';
+import { ResposiveService } from '../../services/resposive.service';
 
 @Component({
   selector: 'app-main',
@@ -19,7 +20,7 @@ export class Main implements OnInit {
 
   svgColor!: ISvgColors;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService, private responsiveService: ResposiveService) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
@@ -28,5 +29,14 @@ export class Main implements OnInit {
   private loadSVGColor() {
     this.svgColor = this.themeService.getSvgColor();
   }
+
+  headerModeSelector = computed(() => {
+    if (this.responsiveService.largeWidth()){
+      console.log('large')
+      return 'large';
+    }
+    console.log('small  ')
+    return 'small';
+  })
 
 }

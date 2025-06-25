@@ -1,5 +1,7 @@
 .astrology-section{
-    margin: 56px 160px 0px;
+    margin: 0 auto;
+    max-width: 1100px;
+    margin-top: 56px;
 }
 
 .astrology-card-container{
@@ -7,4 +9,17 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 56px;
+}
+
+@media (max-width: 750px) {
+    .astrology-card-container{
+        padding: 10px;
+        overflow-x: auto;
+        flex-wrap: nowrap;-ms-overflow-style: none; 
+        scrollbar-width: none;
+    }
+
+    .astrology-card-container::-webkit-scrollbar {
+        display: none;
+    }
 }

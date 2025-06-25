@@ -1,0 +1,27 @@
+.tarot-card{
+    display: flex;
+    width: 137px;
+    height: 203px;
+    padding: 45px 17px;
+    flex-direction: column;
+    align-items: center;
+    gap: 42px;
+    border-radius: 10px;
+    background: radial-gradient(129.06% 87.93% at 50% -19.21%, #332000 0%, #181818 100%);
+    cursor: pointer;
+    border: 3px solid #fff;
+}
+
+.logo {
+    display: flex;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.logo1{
+    color: #fff;
+}
+
+.logo2{
+    color: var(--primary-color);
+}

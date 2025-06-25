@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IDropDownOption, INavbarItem } from '../../../../interfaces/inavbar-item';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { TNavigationLink } from '../../../../types/tnavogation-link';
+import { TResponsive } from '../../../../types/responsive';
 
 @Component({
   selector: 'app-navbar',
@@ -83,7 +84,7 @@ export class Navbar {
       tagPresent: false,
       dropDownOption: null,
       tagSettings: null,
-      navigationLink: null,
+      navigationLink: "tarot",
     },
     {
       name: 'Love Calculator',
@@ -108,6 +109,8 @@ export class Navbar {
     },
   ];
 
+  @Output() close = new EventEmitter<void>();
+
   constructor(private router: Router) {}
 
   trackByFn(index: number, item: any): any {
@@ -131,6 +134,10 @@ export class Navbar {
   selectDropdownOption(option: IDropDownOption): void {
     this.openedDropdown = null; // close dropdown
     this.goToPage(option.navigationLink);
+  }
+
+  closeFn() {
+    this.close.emit();
   }
 
 }

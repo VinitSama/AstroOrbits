@@ -1,0 +1,45 @@
+<div class="reading-page">
+    <div class="reading-wrapper">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="selctedOption + ' Reading'"></app-section-tag>
+        </div>
+        <div class="brief">
+            {{brief}}
+        </div>
+        <div class="reading-container" *ngIf="!noQues.includes(selctedOption)">
+            <div class="question-container">
+                <ng-container *ngIf="askName == selctedOption">
+                    <div class="label">Full Name*</div>
+                    <input class="input-field" [formControl]="questionControl" placeholder="Enter your Full Name" />
+                </ng-container>
+                <ng-container *ngIf="askQues.includes(selctedOption)">
+                    <div class="label">Ask Question*</div>
+                    <input class="input-field" [formControl]="questionControl" placeholder="Enter your Question" />
+                </ng-container>
+                <ng-container *ngIf="askDOB == selctedOption">
+                    <div class="label">Ask Question*</div>
+                    <input class="input-field" [formControl]="questionControl" placeholder="Enter your Date of Birth" />
+                </ng-container>
+                <div class="warning">
+                    <div *ngIf="questionControl.invalid &&  submitted" style="color: rgb(255, 255, 255); font-size: 12px;">
+                        *This field is required.
+                    </div>
+                </div>
+                <div class="submit-butn" (click)="onSubmit()">
+                    Submit
+                </div>
+            </div>
+        </div>
+        <div class="brief">
+            {{brief}}
+        </div>
+    </div>
+    <div class="container">
+        <app-tarot-menu [svgColor]="svgColor" [selectedOption]="selctedOption"></app-tarot-menu>
+    </div>
+    <div class="container">
+        <app-blog-section [showView]="false" [svgColor]="svgColor" [title]="'You may also like'"></app-blog-section>
+    </div>
+</div>
+
+<app-tarot-popup *ngIf="popUp.show" (closed)="closePopUp()" [option]="popUp.option"></app-tarot-popup>

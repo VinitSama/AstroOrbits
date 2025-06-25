@@ -12,6 +12,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    cursor: pointer;
 }
 
 .logo-col-1 {
@@ -51,4 +52,11 @@
 .language select {
     border: none;
     outline: none;
+}
+
+@media (max-width: 575px) {
+    .logo{
+        padding-left: 20px;
+        font-size: 20px;
+    }
 }

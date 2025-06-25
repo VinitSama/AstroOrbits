@@ -1,1 +1,16 @@
-<p>tarot works!</p>
+<div class="tarot-page">
+    <div class="container">
+        <app-tarot-menu [svgColor]="svgColor"></app-tarot-menu>
+    </div>
+    <div class="container bgcolor">
+        <div class="section-tag">
+            <app-section-tag [svgColor]="svgColor" [sectionTitle]="'What You Should Know About Tarot Cards?'"></app-section-tag>
+        </div>
+        <div class="article">
+            <app-article [article]="article"></app-article>
+        </div>
+    </div>
+    <div class="container">
+        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="'You may also like'"></app-blog-section>
+    </div>
+</div>

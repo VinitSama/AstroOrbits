@@ -27,7 +27,7 @@
 }
 
 .baner-container{
-    padding: 56px 40px;
+    padding: 56px 0;
 }
 
 .section-tag{
@@ -95,7 +95,7 @@
 .report-container{
     display: flex;
     flex-direction: column;
-    padding: 56px 40px;
+    padding: 56px 0;
     border-radius: 7px;
     background-color: var(--light-primary-color);
 }
@@ -134,7 +134,7 @@
 }
 
 .precise-horoscope-option{
-    padding: 56px 40px;
+    padding: 56px 0;
 }
 
 .precise-option-container{
@@ -166,7 +166,7 @@
 }
 
 .precise-horoscope{
-    padding: 56px 40px;
+    padding: 56px 0;
     background-color: var(--secondary-bg-color);
 }
 .article{
@@ -174,5 +174,5 @@
     margin: 0 auto;
 }
 .blog{
-    padding: 56px 40px;
+    padding: 56px 0;
 }

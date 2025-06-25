@@ -1,10 +1,13 @@
 .today-prediction-section{
-    margin: 56px 100px 0 100px;
+    max-width: 1300px;
+    margin: 0 auto;
+    margin-top: 56px;
 }
 
 .zodiac-prediction-container {
     margin-top: 32px;
     justify-self: center;
+    max-width: 1200px;
     display:  flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -28,4 +31,27 @@
     color: var(--secondary-color);
     text-align: center;
     margin: 32px auto 0 auto;
+}
+
+
+@media (max-width:1100px) {
+    .zodiac-prediction-container{
+        max-width: 900px;
+    }
+}
+
+
+@media (max-width: 576px) {
+    .zodiac-prediction-container{
+        display: flex;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-self: unset;
+        padding-left: 10px;
+        /* gap: 12px;
+        padding: 10px; */
+
+        scrollbar-width: none;      
+        -ms-overflow-style: none; 
+    }
 }

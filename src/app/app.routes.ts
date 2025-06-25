@@ -102,6 +102,24 @@ export const routes: Routes = [
                 ]
             },
             {
+                path: 'tarot',
+                data: {layout: 'main', breadcrumb: "Tarot"},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./components/tarot/tarot').then(m => m.Tarot),
+                        data: {breadcrumb: null},
+                    },
+                    {
+                        path: ':option',
+                        loadComponent: () => import('./components/tarot/tarot-reading/tarot-reading').then(m => m.TarotReading),
+                        data: {layout: 'main',
+                            breadcrumb: (route: ActivatedRouteSnapshot) => route.params['option']
+                        }
+                    }
+                ]
+            },
+            {
                 path: 'numerology',
                 data: {layout: 'main', breadcrumb: "Numerology"},
                 children: [

@@ -1,5 +1,5 @@
 .article-container{
-    padding: 56px 40px;
+    padding: 56px 0;
     width: 100%;
     /* margin: 56px auto ; */
     background-color: var(--secondary-bg-color);
@@ -15,5 +15,5 @@
 }
 
 .blog-section{
-    padding: 56px 40px;
+    padding: 56px 0;
 }

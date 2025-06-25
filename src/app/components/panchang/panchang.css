@@ -14,7 +14,7 @@
 }
 
 .article-container{
-    padding: 56px 40px;
+    padding: 56px 0;
     background-color: var(--secondary-bg-color);
     margin: 0 auto;
 }
