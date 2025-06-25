@@ -1,4 +1,6 @@
-
+.numerlogy-page{
+    padding: 0 10px;
+}
 .num-option-wrapper{
     max-width: 1100px;
     width: 100%;
@@ -82,7 +84,7 @@
     border-radius: 7px;
     background-color: var(--light-primary-color);
     color: var(--secondary-color);
-    padding: 56px 0;
+    padding: 56px 40px;
 }
 
 .heading{
@@ -143,4 +145,40 @@
 
 .blog{
     padding: 56px 0  ;
+}
+
+@media (max-width:990px) {
+    .other-option-wrapper{
+        padding: 0;
+    }
+    .other-option-container{
+        flex-wrap: wrap;
+        max-width: 570px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:770px) {
+    .num-option-container{
+        justify-content: unset;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -ms-overflow-style: none;
+        scrollbar-width: none; 
+    }
+
+    .num-option-container::-webkit-scrollbar {
+        display: none;
+    }
+    .date-option-container{
+        justify-content: unset;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -ms-overflow-style: none;
+        scrollbar-width: none; 
+    }
+
+    .date-option-container::-webkit-scrollbar {
+        display: none;
+    }
 }

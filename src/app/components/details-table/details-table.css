@@ -41,3 +41,14 @@
 .detail-name{
     font-weight: 600;
 }
+
+
+@media (max-width:440px) {
+    .row{
+        flex-direction: column;
+    }
+
+    .extra{
+        display: none;
+    }
+}

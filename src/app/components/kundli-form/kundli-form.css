@@ -108,3 +108,17 @@
     border-radius: 7px;
     margin-top: 17px;
 }
+
+@media (max-width:440px) {
+    .row{
+        flex-direction: column;
+    }
+
+    .form-container{
+        width: 100%;
+    }
+
+    .empty{
+        display: none;
+    }
+}

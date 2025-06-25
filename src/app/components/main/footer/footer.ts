@@ -117,55 +117,6 @@ export class Footer {
       ]
     },
     {
-      heading: 'Important Links',
-      links: [
-        {
-          text: "Home",
-          url: ""
-        },
-        {
-          text: "About Us",
-          url: ""
-        },
-        {
-          text: "Blog",
-          url: ""
-        },
-        {
-          text: "Management",
-          url: ""
-        },
-        {
-          text: "How it Works",
-          url: ""
-        },
-        {
-          text: "Media",
-          url: ""
-        },
-        {
-          text: "Awards",
-          url: ""
-        },
-        {
-          text: "Privacy Policies",
-          url: ""
-        },
-        {
-          text: "FAQs",
-          url: ""
-        },
-        {
-          text: "Contact Us",
-          url: ""
-        },
-        {
-          text: "Terms and Conditions",
-          url: ""
-        },
-      ]
-    },
-    {
       heading: "Horoscope",
       links: [
         {

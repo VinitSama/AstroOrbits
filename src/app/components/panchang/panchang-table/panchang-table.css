@@ -71,3 +71,19 @@
 .detail-name{
     font-weight: 600;
 }
+
+@media (max-width:770px) {
+    .heading{
+        flex-direction: column;
+        gap: 6px;
+    }
+    .title{
+        font-size: 18px;
+    }
+    .option{
+        font-size: 12px;
+    }
+    .detail{
+        font-size: 14px;
+    }
+}

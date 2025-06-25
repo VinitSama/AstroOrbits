@@ -5,19 +5,12 @@
     flex-wrap: wrap;
     gap: 16px;
     width: 100%;
+    padding: 0 10px;
 }
 
 .option{
     text-align: center;
     padding: 0 20px;
-}
-
-.option-separation1{
-    margin-right: 12px;
-}
-
-.option-separation2{
-    margin-left: 12px;
 }
 
 .logo {
@@ -55,6 +48,20 @@
 }
 
 .article{
-    width: 1100px;
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 0 10px;
+}
+
+@media (max-width:770px) {
+    .option-container{
+        gap: 0;
+        justify-content: space-between;
+    }
+    .logo{
+        font-size: 13px;
+    }
+    .option{
+        padding: 10px 0;
+    }
 }

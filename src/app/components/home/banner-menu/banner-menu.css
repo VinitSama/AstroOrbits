@@ -3,11 +3,13 @@
     height: 364px;
     margin-left: auto;
     margin-right: 40px;
+    padding-right: 10px;
 }
 
 .menu-items{
     height: 110.6px;
     /* width: 100%; */
+    width: 320px;
     align-items: center;
     display: flex;
     /* flex-direction: column; */
@@ -34,5 +36,11 @@
 .menu-items svg {
     margin-left: auto;
     margin-right: 32px;
+}
+
+@media (max-width: 700px) {
+    .menu-items{
+        width: 100%;
+    }
 }
 

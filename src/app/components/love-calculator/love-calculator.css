@@ -1,3 +1,6 @@
+.love-calculator-page{
+    padding: 0 10px;
+}
 .article-container{
     padding: 56px 0;
     margin: 0 auto;
@@ -172,8 +175,15 @@
     background-color: #fff;
     font-size: 12px;
     cursor: pointer;
+    align-content: center;
 }
 
 .selected{
     background-color: var(--primary-color);
+}
+
+@media (max-width:440px) {
+    .form{
+        flex-direction: column;
+    }
 }

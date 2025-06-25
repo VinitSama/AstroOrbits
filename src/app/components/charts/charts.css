@@ -43,3 +43,18 @@
 .chart{
     margin: 32px auto 0 auto;
 }
+
+@media (max-width:440px) {
+    .option-container{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .chart{
+        padding: 10px 10px 10px 5px;
+    }
+
+    .chart-img{
+        width: 100%;
+    }
+}

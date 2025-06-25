@@ -18,7 +18,7 @@
 
 .main-information {
     width: 215px;
-    margin-right: auto;
+    margin-right: 20px;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
@@ -63,6 +63,7 @@
 .link-container{
     display: flex;
     margin: 0;
+    justify-content: space-between;
     margin-left: auto;
 }
 
@@ -92,7 +93,7 @@
 
 .link {
     margin-top: 14px;
-    height: 14px;
+    height: 16px;
     padding: 0;
 }
 
@@ -101,4 +102,32 @@
     text-decoration: none;
     font-size: 12px;
     font-weight: 400;
+}
+
+@media (max-width: 770px) {
+    .footer-information{
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+        gap: 20px;
+    }
+
+    .footer-container{
+        padding: 40px;
+    }
+
+    .link-container{
+        margin: 0;
+        flex-wrap: wrap;
+    }
+    
+    .address{
+        margin-top: 30px;
+    }
+    
+    .link-group{
+        margin: 0;
+        margin-top: 40px;
+    }
 }

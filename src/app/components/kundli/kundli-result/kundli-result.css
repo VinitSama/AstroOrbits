@@ -46,3 +46,16 @@
 .selected-content{
     padding-bottom: 56px;
 }
+
+@media (max-width:800px) {
+    .result-options{
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .result-options::-webkit-scrollbar {
+        display: none;
+    }
+}

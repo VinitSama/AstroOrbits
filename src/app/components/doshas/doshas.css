@@ -89,3 +89,16 @@
     text-wrap: nowrap;
     cursor: pointer;
 }
+
+@media (max-width: 990px) {
+    .option-container{
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -ms-overflow-style: none;
+        scrollbar-width: none; 
+    }
+
+    .option-container::-webkit-scrollbar {
+        display: none;
+    }
+}

@@ -16,6 +16,10 @@
     margin: 32px 0;
 }
 
+.article{
+    padding: 0 10px;
+}
+
 .blog{
     margin-top: 56px;
 }

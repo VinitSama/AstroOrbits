@@ -43,3 +43,17 @@
 .detail-name{
     font-weight: 600;
 }
+
+@media (max-width: 440px) {
+    .detail{
+        padding: 20px 4px;
+        justify-content: center;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .detail-name{
+        text-align: center;
+        width: 100%;
+    }
+}

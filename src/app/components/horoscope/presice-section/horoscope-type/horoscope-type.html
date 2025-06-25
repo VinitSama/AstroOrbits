@@ -1,6 +1,6 @@
 <div class="horoscope-type-container">
     <div class="option-container">
-        <div *ngFor="let option of options; let i=index" class="option" (click)="changeHoroscopeType(option.title)" [ngClass]="{'option-separation1': i == 1, 'option-separation2' : i == 2 }" >
+        <div *ngFor="let option of options; let i=index" class="option" (click)="changeHoroscopeType(option.title)">
             <div class="logo" [innerHTML]="option.safeSvg"></div>
             <div class="title">{{option.title}}</div>
         </div>
