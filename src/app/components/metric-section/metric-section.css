@@ -1,5 +1,11 @@
 .metric-section-container{
-    margin: 56px 70px;
+    margin: 56px auto;
     display: flex;
     justify-content: space-evenly;
+}
+
+@media (max-width: 450px) {
+    .metric-section-container{
+        flex-wrap: wrap;
+    }
 }

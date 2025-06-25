@@ -1,8 +1,19 @@
 .why-astrology-section-container{
     background: var(--secondary-bg-color);
-    padding: 56px 170px;
+    padding: 56px 20px;
 }
 
 .section-tag{
     margin-bottom: 32px;
+}
+
+.article{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (max-width:440px) {
+    .why-astrology-section-container{
+        padding: 30px 0;
+    }
 }

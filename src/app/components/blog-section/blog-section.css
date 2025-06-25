@@ -26,3 +26,16 @@
     border-radius: 7px;
     margin-top: 32px;
 }
+
+@media (max-width:770px) {
+    .blog-container{
+        overflow-x: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        justify-self: unset;
+    }
+
+    .blog-container::-webkit-scrollbar {
+        display: none;
+    }
+}

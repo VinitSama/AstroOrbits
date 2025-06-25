@@ -31,3 +31,15 @@
     font-weight: 400;
     line-height: normal;
 }
+
+@media (max-width: 770px) {
+   .metric-card-container{
+        width: 100%;
+   }
+}
+@media (max-width: 450px) {
+   .metric-card-container{
+        width: 140px;
+        margin-bottom: 20px;
+   }
+}
