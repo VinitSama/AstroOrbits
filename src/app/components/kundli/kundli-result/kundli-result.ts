@@ -19,7 +19,7 @@ import { Charts } from '../../charts/charts';
     CommonModule,
     KundliBasicDetails,
     KundliPrediction,
-    Dashaa,
+    // Dashaa,
     Remedies,
     BlogSection,
     PositionOfPlanets,
