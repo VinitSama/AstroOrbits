@@ -9,6 +9,7 @@ import { Article } from "../article/article";
 import { BlogSection } from "../blog-section/blog-section";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ResultProgress } from "../result-progress/result-progress";
+import { InformationSection } from "../information-section/information-section";
 
 type TFormOption = 'User' | 'Partner';
 type TGender = "m" | "f";
@@ -21,7 +22,8 @@ type TGender = "m" | "f";
     Article,
     BlogSection,
     ReactiveFormsModule,
-    ResultProgress
+    ResultProgress,
+    InformationSection
 ],
   templateUrl: './love-calculator.html',
   styleUrl: './love-calculator.css'
@@ -31,6 +33,10 @@ export class LoveCalculator {
   svgColor!: ISvgColors;
   
   pageHeading: "Love Calculator" | "Love Calculator Result" = "Love Calculator" ;
+
+  headers= ["What is Janam Kundlli?", "How It Helps You in Life Decision?"];
+  para=["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."];
+  svgs = ['/images/buletin.svg','/images/buletin.svg'];
 
   loveCalculatorContent: IArticle = {
     title: "",

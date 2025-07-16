@@ -1,6 +1,6 @@
 <div class="navbar-container">
-    <ul class="navbar-list">
-        <li *ngFor="let item of navbarItems; trackBy: trackByFn; let i = index" class="list-item"
+    <div class="navbar-list">
+        <div *ngFor="let item of navbarItems; trackBy: trackByFn; let i = index" class="list-item"
                 [ngClass]="{ 'first-item': i === 0, 'last-item': i === navbarItems.length - 1 }" >
             <ng-container *ngIf="!item.dropDownPresent">
                 <div class="item-name" (click)="goToPage(item.navigationLink)" (click)="closeFn()">
@@ -13,25 +13,52 @@
                     </div>
                 </div>
             </ng-container>
-            <ng-container *ngIf="item.dropDownOption">
-                <ng-container *ngIf="item.dropDownPresent && item.dropDownOption?.length">
-                    <div class="dropdown-container" [class.open]="openedDropdown === i">
-                    <div class="item-name dropdown-toggle" (click)="toggleDropdown(i)">
-                        {{ item.name }}
-                        <span class="arrow">&#9662;</span> <!-- Down arrow -->
-                    </div>
-                    <div class="dropdown-list" *ngIf="openedDropdown === i">
-                        <div 
-                        class="dropdown-item" 
-                        *ngFor="let option of item.dropDownOption" 
-                        (click)="selectDropdownOption(option)" (click)="closeFn()">
-                        {{ option.name }}
+
+
+
+            <ng-container *ngIf="item.dropDownPresent && item.dropDownOption?.length">
+                <!-- <button matButton [matMenuTriggerFor]="menu" class="menu-button"> -->
+                <button mat-button [matMenuTriggerFor]="menu" class="menu-button" #trigger="matMenuTrigger" (click)="openMenu(trigger)" (mouseenter)="handleHover(i, trigger)"  [disableRipple]="true">
+                    <div class="menu-button-name">
+                        {{item.name}}
+                        <div class="menu-arrow-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                <path d="M3.5 5.75L7 9.25L10.5 5.75" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
                         </div>
                     </div>
-                    </div>
-                </ng-container>
-            </ng-container>
-        </li>
-    </ul>
+                </button>
 
+                <mat-menu #menu="matMenu" (closed)="onMenuClosed(trigger)">
+                    <div class="menu-container">
+                        <div class="menu-item" *ngFor="let i of item.dropDownOption"(click)="goToPage(i.navigationLink)">{{i.name}}
+                            <div class="menu-option-svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                    <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7 3.41666L11.0833 7.5L7 11.5833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </mat-menu>
+            </ng-container>
+                
+
+            <!-- <ng-container *ngIf="item.dropDownPresent && item.dropDownOption?.length">
+                <div class="item-name dropdown-trigger"
+                    (mouseenter)="hoveredIndex = i"
+                    (mouseleave)="hoveredIndex = null">
+                    {{ item.name }}
+                    <div class="dropdown-menu" *ngIf="hoveredIndex === i">
+                    <div *ngFor="let option of item.dropDownOption"
+                        class="dropdown-item"
+                        (click)="goToPage(option.navigationLink); closeFn()">
+                        {{ option.name }}
+                    </div>
+                    </div>
+                </div>
+            </ng-container> -->
+        </div>
+    </div>
+    
 </div>

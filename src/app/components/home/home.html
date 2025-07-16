@@ -1,9 +1,16 @@
 <div class="home-container">
-    <div class="whole-banner">
+    <!-- <div class="whole-banner">
         <div class="banner">
             <app-banner></app-banner>
         </div>
         <app-banner-menu [svgColor]="svgColor"></app-banner-menu>
+    </div> -->
+    <app-new-banner></app-new-banner>
+    <div class="banner-second">
+        <app-banner-second></app-banner-second>
+    </div>
+    <div>
+        <app-menu-card [heading]="'Free Kundali'" [sub]="'Know you kundali in free with accurate details'" [svg]="testsvg"></app-menu-card>
     </div>
     <app-zodiac-prediction [svgColor]="svgColor" [detailed]="false" [title]="zodiacPredictionTitle"></app-zodiac-prediction>
     <app-astrology-section [svgColor]="svgColor"></app-astrology-section>

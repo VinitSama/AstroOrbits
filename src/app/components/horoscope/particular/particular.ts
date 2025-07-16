@@ -12,6 +12,7 @@ import { SectionTag } from "../../section-tag/section-tag";
 import { Article } from "../../article/article";
 import { IArticle } from '../../../interfaces/iarticle';
 import { BlogSection } from "../../blog-section/blog-section";
+import { HoroscopeService } from '../../../services/horoscope.service';
 
 type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
 
@@ -37,6 +38,8 @@ export class Particular implements OnInit{
   article!: IArticle;
 
   bannerSectionHeading!: string;
+
+  horoscope!: any;
 
   daysOption: TDates[] = ["Yesterday", "Tomorrow", "Today", "Weekly", "Monthly", "Yearly"];
 
@@ -88,7 +91,7 @@ export class Particular implements OnInit{
     },
   ]
 
-  constructor(private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router) {}
+  constructor(private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeService: HoroscopeService) {}
   
   ngOnInit(): void {
     this.loadSVGColor();
@@ -98,15 +101,6 @@ export class Particular implements OnInit{
     });
   }
 
-  setDay(str: string){
-    try{
-      if (this.daysOption.includes(str as TDates)) {
-        this.day = str
-      }
-    } catch {
-      //
-    }
-  }
   getSvgFile(i: number){
     const svg = '/images/horoscope-precise/' + (i+1) + '.svg';
     return svg;
@@ -130,6 +124,68 @@ export class Particular implements OnInit{
     this.zodiacDetails = this.zodiacService.getAllCards();
   }
 
+  private apiCall(day: string){
+    if (day == 'Today'){
+      this.horoscopeService.zodiacTodayHoroscope(this.zodiac).subscribe({
+        next: response => {
+          this.horoscope = response;
+          console.log('Horoscope:', response);
+          this.makeReport();
+        },
+        error: err => {
+          console.error('API error:', err);
+        }
+      });
+    } else if (day=='Tomorrow'){
+      this.horoscopeService.zodiacTomorrowHoroscope(this.zodiac).subscribe({
+        next: response => {
+          this.horoscope = response;
+          console.log('Horoscope:', response);
+          this.makeReport();
+        },
+        error: err => {
+          console.error('API error:', err);
+        }
+      });
+    } else if (day=='Weekly'){
+      this.horoscopeService.zodiacWeeklyHoroscope(this.zodiac).subscribe({
+        next: response => {
+          this.horoscope = response;
+          console.log('Horoscope:', response);
+          this.makeReport();
+        },
+        error: err => {
+          console.error('API error:', err);
+        }
+      });
+    } else if (day=='Yearly'){
+      this.horoscopeService.zodiacYearlyHoroscope(this.zodiac).subscribe({
+        next: response => {
+          this.horoscope = response;
+          console.log('Horoscope:', response);
+          this.makeReport();
+        },
+        error: err => {
+          console.error('API error:', err);
+        }
+      });
+    }
+    
+  }
+  private makeReport(){
+    const response = this.horoscope?.response;
+    if (response){
+      this.report.brief = response?.bot_response;
+      this.report.luckyInformation = {
+        luckyColor: response?.lucky_color,
+        luckyNumber: response.lucky_number[0],
+        mood: "Innovative",
+        positivity: 80,
+      }
+    }
+    console.log(this.report)
+  }
+
   private loadFromRouteIfNeeded(params: ParamMap){
     const zodiacParam = params.get('zodiac');
     const dayParam = params.get('day');
@@ -143,12 +199,10 @@ export class Particular implements OnInit{
     this.bannerSectionHeading = `${this.zodiac} Horoscope`;
     this.setOpenSvg();
     this.changeArticle(this.openPrecise);
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
-    //make api function and call here
+    
+    this.apiCall(this.day);
+    console.log(this.horoscope);
+    
   }
 
   onZodiacClick(title: TZodiacSign | null){
@@ -205,10 +259,12 @@ export class Particular implements OnInit{
       d.setDate(d.getDate() - 1);
       return d;
     }
-    return;
+    return d;
   }
 
   setDate(date: TDates) {
-    this.day = date
+    this.day = date;
+    console.log(this.day);
+    this.apiCall(this.day);
   }
 }

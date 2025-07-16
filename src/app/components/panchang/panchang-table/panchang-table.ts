@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { IPanchangTable } from '../../../interfaces/ipanchang-table';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-panchang-table',
   imports: [
     CommonModule,
+    RouterLink
   ],
   templateUrl: './panchang-table.html',
   styleUrl: './panchang-table.css'
@@ -15,7 +17,7 @@ export class PanchangTable{
 
   @Input() svgColor!: ISvgColors;
   @Input() table!: IPanchangTable;
-  @Output() showTodayEmitter = new EventEmitter<boolean>();
+  @Output() showTodayEmitter = new EventEmitter<number>();
 
   panchangDate: Date = new Date();
 
@@ -23,7 +25,7 @@ export class PanchangTable{
     const newDate = new Date(this.panchangDate);
     newDate.setDate(this.panchangDate.getDate() + day);
     this.panchangDate = newDate;
-    this.showTodayEmitter.emit(this.ispanchangDateToday());
+    this.showTodayEmitter.emit(day);
   }
 
   ispanchangDateToday() {

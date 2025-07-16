@@ -7,7 +7,6 @@
   background-color: rgba(0, 0, 0, 0.5); /* dark background overlay */
   display: flex;
   justify-content: flex-end;
-  z-index: 1000;
 }
 
 /* .menu-content {

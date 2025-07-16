@@ -1,46 +1,45 @@
 .header-container{
     display: flex;
+    background-color: var(--primary-color);
+    padding: 0 32px;
+    height: 90px;
+    justify-content: space-between;
 }
 
 .logo{
-    height: 100px;
     display: flex;
-    padding-left: 40px;
     align-items: center;
-    width: 100%;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    cursor: pointer;
-}
-
-.logo-col-1 {
-    color: var(--secondary-color);
-}
-
-.logo-col-2 {
-    color: var(--primary-color);
 }
 
 .header-options{
-    margin: auto;
-    margin-right: 40px;
+    /* margin: auto; */
     display: flex;
+    gap: 10px;
 }
 
-.login {
-    margin-left: 10px;
-    padding: 12px;
+.header-options div{
+    margin: auto;
+}
+
+.logo-svgs{
+    display: flex;
+    cursor: pointer;
+    gap:8px;
+    align-items: center;
+}
+
+.login-btn{
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    background-color: var(--primary-color);
+    text-wrap: nowrap;
+    background: #fff;
+    border-radius: 7px;
+    padding: 12px;
+    color: var(--secondary-color);
 }
+
 
 .language {
     padding: 12px;

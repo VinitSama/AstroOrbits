@@ -1,6 +1,6 @@
 [data-theme="main-light"] {
     --primary-color: #FFB114;
-    --secondary-color: #3B3B3B;
+    --secondary-color: #240028;
     --tertiary-color: #181818;
     --fourth-color:#fff;
     --primary-bg-color:#fff;
@@ -23,6 +23,9 @@
     --horoscope-banner: #FFDD98;
     --numerology-num-option: #E39700;
     
+
+
+    --option-border: #E9E9E9;
 
 }    
 

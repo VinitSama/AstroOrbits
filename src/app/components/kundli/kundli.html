@@ -7,6 +7,9 @@
             <app-kundli-form (normalSubmitEmitter)="onFormSubmit($event)" ></app-kundli-form>
         </div>
     </div>
+    <div class="information-section">
+        <app-information-section [headers]="headers" [para]="para" [svgs]="svgs"></app-information-section>
+    </div>
     <div class="article-container">
         <div class="section-tag">
             <app-section-tag [svgColor]="svgColor" [sectionTitle]="articleSectionHeading" ></app-section-tag>

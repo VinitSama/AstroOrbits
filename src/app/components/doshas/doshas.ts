@@ -16,6 +16,7 @@ type TDoshaOption = "Manglik" | "Kalsarpa" | "Sadhesati" | "Pitra";
 export class Doshas {
 
   @Input() svgColor!: ISvgColors;
+  @Input() option: 1 | 2 = 1;
 
 
   selectedOption: TDoshaOption = "Manglik";

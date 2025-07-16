@@ -17,6 +17,9 @@
             <app-kundli-form [submitBtnOption]="2" [showGenderOption]="false" [gender]="selectedGender"[ngStyle]="{ display: selectedGender === 'f' ? 'block' : 'none' }" (formValueEmitter)="onGirlFormChange($event)" (useParentSubmitEmitter)="submit()" ></app-kundli-form>
         </div>
     </div>
+    <div class="information-section">
+        <app-information-section [headers]="headers" [para]="para" [svgs]="svgs"></app-information-section>
+    </div>
     </div>
     <div class="article-container">
         <div class="section-tag">

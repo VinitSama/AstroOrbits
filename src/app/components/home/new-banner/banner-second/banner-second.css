@@ -1,0 +1,34 @@
+.banner-container{
+    display: flex;
+    background: url('/images/new-banner/new-banner-bg1.jpg') lightgray 50% / cover no-repeat;
+    max-width: 1200px;
+    justify-content: space-between;
+    margin: auto;
+    border-radius: 7px;
+    color: #fff;
+}
+
+.information{
+    margin: 50px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.question{
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.button{
+    padding: 12px;
+    color: var(--secondary-color);
+    font-weight: 700;
+    background: #fff;
+    text-wrap: nowrap;
+    cursor: pointer;
+    max-width: min-content;
+    border-radius: 7px;
+}

@@ -2,22 +2,25 @@
     padding: 80px;
     background-color: var(--secondary-color);
 }
-
-.logo-col-1 {
-    color: var(--fourth-color);
+.logo{
+    display: flex;
+    align-items: center;
 }
 
-.logo-col-2 {
-    color: var(--primary-color);
+.logo-svgs{
+    display: flex;
+    cursor: pointer;
+    gap:8px;
+    align-items: center;
 }
 
 .footer-information{
-    height: 305px;
+    max-height: max-content;
     display: flex;
 }
 
 .main-information {
-    width: 215px;
+    max-width: min-content;
     margin-right: 20px;
     font-size: 12px;
     font-style: normal;
@@ -75,6 +78,7 @@
     margin-right: 80px;
     display: flex;
     flex-direction: column;
+    gap: 17px;
     /* justify-content: space-between; */
 }
 
@@ -88,11 +92,9 @@
     font-weight: 600;
     margin: 0;
     margin-bottom: 3px;
-    /* font-family: "Josefin Sans"; */
 }
 
 .link {
-    margin-top: 14px;
     height: 16px;
     padding: 0;
 }

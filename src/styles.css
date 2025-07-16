@@ -19,6 +19,14 @@ body {
     
 }
 
-/* div{
+div{
     border: 2px solid salmon;
-} */
+}
+
+.mat-mdc-menu-content{
+    padding: 0 !important;
+}
+
+.mat-mdc-menu-panel{
+    border-radius: 7px !important;
+}
