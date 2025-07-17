@@ -1,15 +1,26 @@
 .zodiac-card{
-  width: 180px;
-  height: 180px;
-  /* margin-right: 32px; */
-  margin-bottom: 32px;
+  width: var(--box-size);
+  height: var(--box-size);
   align-items: center;
   cursor: pointer;
 }
 
+.zodiac-card.mar-bot{
+  margin-bottom: 32px;
+}
+
 .svg-container{
-  height: 94px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.svg-container.circle{
+  width: var(--box-size);
+  height: var(--box-size);
+  border-radius: 50%;
+  background: #fff;
 }
 
 .title{

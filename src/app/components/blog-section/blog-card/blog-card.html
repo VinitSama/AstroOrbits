@@ -1,5 +1,5 @@
 <div class="blog-card-container">
-    <div class="blog-image" [style.background]="safeImageUrl"></div>
+    <div class="blog-image" [ngStyle]="{'--image-url':safeImageUrl}"></div>
     <div class="blog-data-container">
         <div class="author-tag-container">
             <div class="tag">

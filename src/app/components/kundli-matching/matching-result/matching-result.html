@@ -1,7 +1,7 @@
 <div class="kundli-matching-page">
     <div class="static-element">
         <div class="section-tag">
-            <app-section-tag [svgColor]="svgColor" [sectionTitle]="resultPageTitle"></app-section-tag>
+            <app-section-tag [sectionTitle]="resultPageTitle"></app-section-tag>
         </div>
         <div class="result-options">
             <div *ngFor="let option of resultPageOptions" class="option" [ngClass]="{'selected': option.opened}" (click)="optionClick(option.id)" >{{option.title}}</div>
@@ -23,6 +23,6 @@
     </div>
 
     <div class="blogs">
-        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading" ></app-blog-section>
+        <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading" ></app-blog-section>
     </div>
 </div>

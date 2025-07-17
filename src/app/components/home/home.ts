@@ -1,31 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 // import { Banner } from "./banner/banner";
 // import { BannerMenu } from "./banner-menu/banner-menu";
-import { ZodiacPrediction } from "../zodiac-prediction/zodiac-prediction";
+// import { ZodiacPrediction } from "../zodiac-prediction/zodiac-prediction";
 import { AstrologySection } from "../astrology-section/astrology-section";
 import { BlogSection } from "../blog-section/blog-section";
-import { MetricSection } from "../metric-section/metric-section";
-import { WhyAstrologySection } from "../why-astrology-section/why-astrology-section";
+// import { MetricSection } from "../metric-section/metric-section";
+// import { WhyAstrologySection } from "../why-astrology-section/why-astrology-section";
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { Subscription } from 'rxjs';
 import { ThemeService } from '../../services/theme.service';
 import { NewBanner } from "./new-banner/new-banner";
 import { BannerSecond } from "./new-banner/banner-second/banner-second";
-import { MenuCard } from "../menu-card-container/menu-card/menu-card";
+// import { MenuCard } from "../menu-card-container/menu-card/menu-card";
+import { MenuCardContainer } from "../menu-card-container/menu-card-container";
+import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
+import { ReviewSection } from "../review-section/review-section";
 
 @Component({
   selector: 'app-home',
   imports: [
     // Banner,
     // BannerMenu,
-    ZodiacPrediction,
+    // ZodiacPrediction,
     AstrologySection,
     BlogSection,
-    MetricSection,
-    WhyAstrologySection,
+    // MetricSection,
+    // WhyAstrologySection,
     NewBanner,
     BannerSecond,
-    MenuCard
+    // MenuCard,
+    MenuCardContainer,
+    RudrakshSection,
+    ReviewSection
 ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -34,7 +40,7 @@ export class Home implements OnInit {
 
   svgColor!: ISvgColors;
   zodiacPredictionTitle = "Today's Astrology Prediction";
-  blogSectionHeading = "Blogs";
+  blogSectionHeading = "A Spot to start your learning";
 
 
   testsvg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">

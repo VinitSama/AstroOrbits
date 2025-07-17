@@ -20,8 +20,9 @@ export class ZodiacPrediction implements OnInit {
 
   @Input() svgColor!: ISvgColors;
   @Input() detailed: boolean = false;
-  @Input() title!: string;
+  @Input() title: string = "";
   @Input() day: string = 'Today';
+  @Input() showSectionTag: boolean = true;
 
   zodiacCards!: IZodiacCard[];
 

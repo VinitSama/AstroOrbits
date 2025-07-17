@@ -1,7 +1,14 @@
-<div class="card-container" [style.backgroundImage]="safeImageUrl">
+<div class="card-wrapper">
+    <div class="card-container" [style.backgroundImage]="safeImageUrl"></div>
+    <div class="information">
+        <h3 class="title">{{ card.title }}</h3>
+        <p class="card-text">{{ card.text }}</p>
+    </div>
+</div>
+<!-- <div class="card-container" [style.backgroundImage]="safeImageUrl">
     <div class="text-overlay">
         <h3>{{ card.title }}</h3>
         <p class="card-text">{{ card.text }}</p>
     </div>
 
-</div>
+</div> -->

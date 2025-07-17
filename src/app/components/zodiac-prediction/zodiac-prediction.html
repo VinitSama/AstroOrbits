@@ -1,6 +1,6 @@
 <div class="today-prediction-section">
-    <div class="section-title">
-        <app-section-tag [sectionTitle]="title" [svgColor]="svgColor"></app-section-tag>
+    <div class="section-title" *ngIf="showSectionTag">
+        <app-section-tag [sectionTitle]="title"></app-section-tag>
     </div>
     <div class="zodiac-prediction-container">
         <div *ngFor="let card of zodiacCards">

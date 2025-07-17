@@ -10,15 +10,21 @@
         <app-banner-second></app-banner-second>
     </div>
     <div>
-        <app-menu-card [heading]="'Free Kundali'" [sub]="'Know you kundali in free with accurate details'" [svg]="testsvg"></app-menu-card>
+        <app-menu-card-container [svgColor]="svgColor"></app-menu-card-container>
     </div>
-    <app-zodiac-prediction [svgColor]="svgColor" [detailed]="false" [title]="zodiacPredictionTitle"></app-zodiac-prediction>
-    <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
+    <div>
+        <app-rudraksh-section></app-rudraksh-section>
+    </div>
+    <!-- <app-zodiac-prediction [svgColor]="svgColor" [detailed]="false" [title]="zodiacPredictionTitle"></app-zodiac-prediction> -->
     <div class="blog-section">
         <div class="blog-container">
-            <app-blog-section [svgColor]="svgColor" [showView]="true" [title]="blogSectionHeading"></app-blog-section>
+            <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>
         </div>
     </div>
-    <app-metric-section></app-metric-section>
-    <app-why-astrology-section [svgColor]="svgColor" ></app-why-astrology-section>
+    <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
+    <div>
+        <app-review-section></app-review-section>
+    </div>
+    <!-- <app-metric-section></app-metric-section>
+    <app-why-astrology-section [svgColor]="svgColor" ></app-why-astrology-section> -->
 </div>

@@ -1,6 +1,6 @@
 <div class="precise-section-container">
     <div class="section-tag">
-        <app-section-tag [sectionTitle]="title" [svgColor]="svgColor" ></app-section-tag>
+        <app-section-tag [sectionTitle]="title" ></app-section-tag>
     </div>
     <app-day-option [dayOptions]="dayOption" [selectedOption]="selectedOption" (daySelectEmitter)="changeReport($event)" ></app-day-option>
     <app-horoscope-report [horoscopeReport]="selectedReport"></app-horoscope-report>

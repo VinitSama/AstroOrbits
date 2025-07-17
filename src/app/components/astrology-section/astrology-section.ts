@@ -17,47 +17,47 @@ import { CommonModule } from '@angular/common';
 })
 export class AstrologySection {
 @Input() svgColor!: ISvgColors;
-  title = 'Free Astrology Services';
+  title = 'Our Free Services';
   astrologyCards: IAstrologyCard[] = [
     {
       title: 'Match Making',
-      text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.',
-      imageUrl: '',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+      imageUrl: './images/services/1.jpg',
     },
     {
       title: 'Panchang',
-      text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.',
-      imageUrl: '',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+      imageUrl: './images/services/2.jpg',
     },
     {
       title: 'Tarot Reading',
-      text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.',
-      imageUrl: '',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+      imageUrl: './images/services/3.jpg',
     },
     {
-      title: 'Tarot Reading',
-      text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.',
-      imageUrl: '',
+      title: 'Love',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+      imageUrl: './images/services/4.jpg',
     },
     {
-      title: 'Tarot Reading',
-      text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.',
-      imageUrl: '',
+      title: 'Vastu',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+      imageUrl: './images/services/5.jpg',
     },
     {
-      title: 'Tarot Reading',
-      text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.',
-      imageUrl: '',
+      title: 'Zodiac Signs',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+      imageUrl: './images/services/6.jpg',
     },
     {
-      title: 'Tarot Reading',
-      text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.',
-      imageUrl: '',
+      title: 'Spirituality',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+      imageUrl: './images/services/7.jpg',
     },
     {
-      title: 'Tarot Reading',
-      text: 'Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.',
-      imageUrl: '',
+      title: 'Planet Trasits',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ',
+      imageUrl: './images/services/8.jpg',
     },
   ]
 

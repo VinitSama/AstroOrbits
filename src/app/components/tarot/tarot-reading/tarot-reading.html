@@ -1,7 +1,7 @@
 <div class="reading-page">
     <div class="reading-wrapper">
         <div class="section-tag">
-            <app-section-tag [svgColor]="svgColor" [sectionTitle]="selctedOption + ' Reading'"></app-section-tag>
+            <app-section-tag [sectionTitle]="selctedOption + ' Reading'"></app-section-tag>
         </div>
         <div class="brief">
             {{brief}}
@@ -38,7 +38,7 @@
         <app-tarot-menu [svgColor]="svgColor" [selectedOption]="selctedOption"></app-tarot-menu>
     </div>
     <div class="container">
-        <app-blog-section [showView]="false" [svgColor]="svgColor" [title]="'You may also like'"></app-blog-section>
+        <app-blog-section [svgColor]="svgColor" [title]="'You may also like'"></app-blog-section>
     </div>
 </div>
 

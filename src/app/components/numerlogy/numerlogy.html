@@ -1,7 +1,7 @@
 <div class="numerlogy-page">
     <div class="num-option-wrapper">
         <div class="section-tag">
-            <app-section-tag [svgColor]="svgColor" [sectionTitle]="pageHeading"></app-section-tag>
+            <app-section-tag [sectionTitle]="pageHeading"></app-section-tag>
         </div>
         <div class="num-option-container">
             <div class="num-option" *ngFor="let n of numOption" [ngClass]="{'selected-num': n == num}" (click)="setNumber(n)">
@@ -35,7 +35,7 @@
     </div>
     <div class="other-option-wrapper">
         <div class="section-tag">
-            <app-section-tag [svgColor]="svgColor" [sectionTitle]="'Other Numerology'"></app-section-tag>
+            <app-section-tag [sectionTitle]="'Other Numerology'"></app-section-tag>
         </div>
         <div class="other-option-container">
             <div class="other-option" *ngFor="let o of otherOption; let i=index" (click)="setOption(o)">
@@ -48,13 +48,13 @@
     </div>
     <div class="article-container">
         <div class="section-tag">
-            <app-section-tag [svgColor]="svgColor" [sectionTitle]="optionHeading"></app-section-tag>
+            <app-section-tag [sectionTitle]="optionHeading"></app-section-tag>
         </div>
         <div class="article">
             <app-article [article]="article"></app-article>
         </div>
     </div>
     <div class="blog">
-        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="'You may also like'"></app-blog-section>
+        <app-blog-section [svgColor]="svgColor"  [title]="'You may also like'"></app-blog-section>
     </div>
 </div>

@@ -1,9 +1,7 @@
 [data-theme="main-light"] {
-    --primary-color: #FFB114;
-    --secondary-color: #240028;
+    
     --tertiary-color: #181818;
     --fourth-color:#fff;
-    --primary-bg-color:#fff;
     --secondary-bg-color: #F8F8F8;
     --heading: #000;
     --sub-title: #767676;
@@ -12,20 +10,27 @@
     --blog-brief-color: #767676;
     --breadcrumb-color: #777777;
     --zodiac-card-details: #6E6E6E;
-    --form-label:#956400;
-    --form-option: #FFCA6B;
     --warning: #ff0000;
     --vastushastra-option: #FBC56D;
     --horoscope-option-border: #FFE5B7;
     --horoscope-option-fill: #FFFAF1;
     --horoscope-option-border-selected: #FFEED0;
     --horoscope-option-box-shadow: rgba(255, 177, 20, 0.10);
-    --horoscope-banner: #FFDD98;
     --numerology-num-option: #E39700;
     
-
-
+    
+    --primary-color: #FFB114;
+    --secondary-color: #240028;
     --option-border: #E9E9E9;
+    --page-background: #FFFCF6;
+    --primary-bg-color:#FFFCF6;
+    --fore-dark-grey: #3b3b3b;
+    --form-label: #956400;
+    --form-border: #F2F2F2;
+    --form-option: #FFCA6B;
+    --placeholder: #757575;
+    --horoscope-banner: #FFDD98;
+    --light-bg-color: #FFF5E2;
 
 }    
 

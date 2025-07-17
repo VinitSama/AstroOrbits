@@ -2,7 +2,7 @@
 
     <div class="page-dynamic-content">
         <div class="section-tag">
-            <app-section-tag [svgColor]="svgColor" [sectionTitle]="dynamicSectionHeading" ></app-section-tag>
+            <app-section-tag [sectionTitle]="dynamicSectionHeading" ></app-section-tag>
         </div>
         <div class="moon-sign-form" *ngIf="showForm">
             <app-moon-sign-form (formValueEmitter)="formSubmit($event)" ></app-moon-sign-form>
@@ -15,7 +15,7 @@
     <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true"  [title]="zodiacSectionTitle" ></app-zodiac-prediction>
     <div class="article-section">
         <div class="section-tag">
-            <app-section-tag [sectionTitle]="articleSectionHeading" [svgColor]="svgColor"></app-section-tag>
+            <app-section-tag [sectionTitle]="articleSectionHeading" ></app-section-tag>
         </div>
         <div class="article">
             <app-article [article]="article"></app-article>
@@ -23,7 +23,7 @@
     </div>
     <div class="blog-section">
         <div class="blog-container">
-            <app-blog-section [showView]="false" [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>
+            <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>
         </div>
     </div>
     

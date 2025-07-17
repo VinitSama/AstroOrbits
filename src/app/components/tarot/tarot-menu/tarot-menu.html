@@ -1,6 +1,6 @@
 <div class="menu-section">
     <div class="section-tag">
-        <app-section-tag [svgColor]="svgColor" [sectionTitle]="'Tarot Card Reading'"></app-section-tag>
+        <app-section-tag [sectionTitle]="'Tarot Card Reading'"></app-section-tag>
     </div>
     <div class="menu-container">
         <div class="option" *ngFor="let o of menuOption; let i = index" [ngClass]="{'selected':selectedOption == o}" (click)="onOptionClick(o)">

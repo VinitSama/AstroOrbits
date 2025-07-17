@@ -2,14 +2,12 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IKundliForm } from '../../interfaces/ikundli-form';
 import { CommonModule } from '@angular/common';
-import { DateMask } from '../../directives/date-mask';
 
 @Component({
   selector: 'app-kundli-form',
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DateMask,
   ],
   templateUrl: './kundli-form.html',
   styleUrl: './kundli-form.css'

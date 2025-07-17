@@ -1,1 +1,154 @@
-<p>menu-card-container works!</p>
+<div class="menu-container">
+    <div class="section-tag">
+        <app-section-tag [sectionTitle]="'How Can We Guide You?'" [subHeading]="'Choose your path to clarity. Get Detailed reports or join live community sessions.'"></app-section-tag>
+    </div>
+    <div class="card-section">
+        <div class="card-wrapper">
+            <app-menu-card [svg]="cards[0].svg" [heading]="cards[0].heading" [sub]="cards[0].sub" [blurColor]="cards[0].blurColor">
+                <div class="container-wrapper">
+                    <form [formGroup]="kundliForm" (ngSubmit)="kundliSubmit()" class="form-container">
+                        <div class="form-section">
+                            <label>
+                                <div class="input-label" >Full Name:</div>
+                                <input type="text" placeholder="Enter your Full Name" formControlName="fullName" />
+                            </label>
+                            
+                            <div class="row">
+                                <div>
+                                    <label>
+                                        <div class="input-label">Date of Birth:</div>
+                                        <input [type]="dobFocused ? 'date' : 'text'" (focus)="dobFocused = true" (blur)="dobFocused = false" placeholder="Enter DOB" formControlName="dob" />
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <div class="input-label">Time of Birth:</div>
+                                        <input [type]="tobFocused ? 'time' : 'text'" (focus)="tobFocused = true" (blur)="tobFocused = false" placeholder="Enter TOB" formControlName="tob" />
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <label>
+                                <div class="input-label">Location:</div>
+                                <input type="text" placeholder="Enter Location of Birth" formControlName="location" />
+                            </label>
+                            
+                            <label>
+                                <div class="input-label">Gender:</div>
+                                <div class="gender-buttons">
+                                    <button type="button"
+                                    [class.selected]="kundliForm.value.gender === 'Male'"
+                                    (click)="selectGender('Male')" class="gender">Male</button>
+                                    
+                                    <button type="button"
+                                    [class.selected]="kundliForm.value.gender === 'Female'"
+                                    (click)="selectGender('Female')" class="gender">Female</button>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <button class="submit" type="submit">Get Kundali</button>
+                    </form>
+                    <div class="sub-link">Dive into Detailed view? <span class="click">Click Here</span></div>
+                </div>
+            </app-menu-card>
+            <app-menu-card [svg]="cards[1].svg" [heading]="cards[1].heading"[sub]="cards[1].sub" [blurColor]="cards[1].blurColor">
+                <div class="zodiac-container">
+                    <!-- <app-zodiac-prediction [showSectionTag]="false" [svgColor]="svgColor"></app-zodiac-prediction> -->
+                    <div class="zodiac-prediction-container">
+                        <app-zodiac-card *ngFor="let card of zodiacCards" [boxSize]="'60px'" [svgSize]="'40px'" [showName]="false" [zodiacCard]="card" [svgColor]="svgColor"></app-zodiac-card>
+                    </div>
+                    <div class="zodiac-form">
+                        <div class="dropdown-container">
+                            <div class="input-label">Sign</div>
+                            <div class="dropdown">
+                                {{zodiacSelect}}
+                                <div class="dropdown-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                        <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="submit purple" type="submit">Submit</button>
+                    </div>
+                    <div class="sub-link">Don’t Know your Sign? <span class="click">Click Here</span></div>
+                </div>
+            </app-menu-card>
+            <app-menu-card [svg]="cards[2].svg" [heading]="cards[2].heading"[sub]="cards[2].sub" [blurColor]="cards[2].blurColor">
+                <div class="container-wrapper">
+                    <div class="love-calculator-container">
+                        <div class="progress-bar">
+                            <app-result-progress [subHeading]="'Love Compatibility'"></app-result-progress>
+                        </div>
+                        <div class="love-form">
+                            <form [formGroup]="calculatorForm" (ngSubmit)="calculatorSubmit()" class="calculator-form">
+                                <label>
+                                    <div class="input-label">Full Name:</div>
+                                    <input type="text" placeholder="Enter Full Name" formControlName="boyName" />
+                                </label>
+                                <label>
+                                    <div class="input-label">Full Name:</div>
+                                    <input type="text" placeholder="Enter Full Name" formControlName="girlName" />
+                                </label>
+                                <button class="submit" type="submit">Calculate Now</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="sub-link">Detailed Compatibility Report? <span class="click">Click Here</span></div>
+                </div>
+            </app-menu-card>
+        </div>
+        <div class="card-wrapper spread">
+            <div>
+            <app-menu-card [width]="'100%'" [svg]="cards[3].svg" [heading]="cards[3].heading"[sub]="cards[3].sub" [blurColor]="cards[3].blurColor">
+                <div class="panchang-container">
+                    <div class="panchang-section">
+                        <div class="panchang-row">
+                            <div class="panchang-name">Hindi Tithi:</div>
+                            <div class="panchang-value">{{panchang['tithi'] || ''}}</div>
+                        </div>
+                    </div>
+                    <div class="panchang-segment">
+                        <div class="panchang-section">
+                            <div class="panchang-row">
+                                <div class="panchang-name">Month Amanta:</div>
+                                <div class="panchang-value">{{panchang['month'] || ''}}</div>
+                            </div>
+                            <div class="panchang-row">
+                                <div class="panchang-name">Nakshatra:</div>
+                                <div class="panchang-value">{{panchang['nakshatra'] || ''}}</div>
+                            </div>
+                        </div>
+                        <div class="panchang-section">
+                            <div class="panchang-row">
+                                <div class="panchang-name">Day:</div>
+                                <div class="panchang-value">{{panchang['day'] || ''}}</div>
+                            </div>
+                            <div class="panchang-row">
+                                <div class="panchang-name">Samvat:</div>
+                                <div class="panchang-value">{{panchang['samvat'] || ''}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </app-menu-card>
+            </div>
+            <div>
+            <app-menu-card [width]="'100%'" [svg]="cards[4].svg" [heading]="cards[4].heading"[sub]="cards[4].sub" [blurColor]="cards[4].blurColor">
+                <div class="container-wrapper">
+                    <div class="tarot-form">
+                        <form (ngSubmit)="tarotSubmit()">
+                            <label>
+                                <div class="input-label">Full Name:</div>
+                                <input placeholder="Enter your Full Name" type="text" [formControl]="tarotFormControl" />
+                            </label>
+                        </form>
+                        <button class="submit" type="submit">Submit</button>
+                    </div>
+                </div>
+            </app-menu-card>
+            </div>
+        </div>
+    </div>
+</div>

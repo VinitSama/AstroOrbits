@@ -1,0 +1,68 @@
+.card-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.image{
+    width: 100%;
+    height: 200px;
+    object-fit: fill;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.information{
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.brief{
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.price-section{
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    align-items: baseline;
+}
+
+.discounted-price{
+    font-size: 18px;
+    font-weight: 500
+}
+
+.price{
+    opacity: 0.5;
+}
+
+.buy-button{
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    text-align: center;
+    width: 100%;
+    background: var(--primary-color);
+    border-radius: 7px;
+    cursor: pointer;
+}

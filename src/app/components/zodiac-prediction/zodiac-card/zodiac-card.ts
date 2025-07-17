@@ -20,16 +20,23 @@ export class ZodiacCard {
   @Input() svgColor!: ISvgColors;
   @Input() detailed: boolean = false;
   @Input() day: string = "Today";
+  @Input() svgSize: string = '94px';
+  @Input() boxSize: string = '180px';
+  @Input() showName: boolean = true;
 
   safeSvg!: SafeHtml;
+  isCircle = false;
 
   constructor(private sanitizer: DomSanitizer){}
 
   ngOnInit(): void {
-    this.changeSvgColor();
+    this.changeSvg();
+    if (this.boxSize != '180px'){
+      this.isCircle = true;
+    }
   }
 
-  changeSvgColor() {
+  changeSvg() {
     if (!this.zodiacCard.svg){
       return;
     }
@@ -37,13 +44,7 @@ export class ZodiacCard {
     targets.forEach(t => {
       this.zodiacCard.svg = this.zodiacCard.svg?.replace(new RegExp(t,"g"),this.svgColor[t]) || '';
     });
-    this.safeTransformSvg()
-  }
-
-  safeTransformSvg() {
-    if (this.zodiacCard.svg) {
-      this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(this.zodiacCard.svg);
-    }
+    this.changeSize()
   }
 
   smoothScrolling():void {
@@ -52,6 +53,24 @@ export class ZodiacCard {
     if( element ){
       element.scrollIntoView({behavior: 'smooth', block: 'start'})
     }
+  }
+
+  changeSize(): void {
+    const svgString = this.zodiacCard.svg;
+    
+    const newSvgString = svgString.replace(
+      /(<svg[^>]+)(height="[^"]*")/g, 
+      (match, p1) => `${p1} height="${this.svgSize}"`
+    );
+    if (this.svgSize=='94px'){
+      this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(newSvgString);
+      return;
+    }
+    const newWidth = newSvgString.replace(
+      /(<svg[^>]+)(width="[^"]*")/g, 
+      (match, p1) => `${p1} width="${this.svgSize}"`
+    )
+    this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(newWidth);
   }
   
 }

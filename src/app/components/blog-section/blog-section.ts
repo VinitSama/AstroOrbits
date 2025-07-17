@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 export class BlogSection {
 
   @Input() svgColor!: ISvgColors;
-  @Input() showView: boolean = true;
+  // @Input() showView: boolean = true;
   @Input() title: string = "Blogs";
   blogCards: IBlogCard[] = [
     {

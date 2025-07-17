@@ -1,0 +1,15 @@
+<div class="card-container">
+    <img class="image" [src]="card.imageURL" alt="{{card.name}}" />
+    <div class="information">
+        <div class="header">
+            <div class="title">{{card.name}}</div>
+            <div class="brief">{{card.brief}}</div>
+        </div>
+        <div class="price-section">
+            <span class="discounted-price">{{ card.discountedPrice | currency:'INR':'symbol':'1.0-0' }}</span>
+            <span class="price"><s>{{card.price | currency:'INR':'symbol':'1.0-0' }}</s></span>
+            <span class="discount">{{card.discount}}% off</span>
+        </div>
+        <div class="buy-button">Buy Now</div>
+    </div>
+</div>

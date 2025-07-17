@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="article-container">
             <div class="section-tag">
-                <app-section-tag [svgColor]="svgColor" [sectionTitle]="pageHeading"></app-section-tag>
+                <app-section-tag [sectionTitle]="pageHeading"></app-section-tag>
             </div>
             <div class="article">
                 <app-article [article]="vastushastraContent"></app-article>
@@ -14,6 +14,6 @@
     </div>
 
     <div class="blog">
-        <app-blog-section [svgColor]="svgColor" [showView]="false" [title]="blogSectionHeading"></app-blog-section>
+        <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>
     </div>
 </div>

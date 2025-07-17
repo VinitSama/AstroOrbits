@@ -11,7 +11,9 @@ import { SafeHtml } from '@angular/platform-browser';
   styleUrl: './menu-card.css'
 })
 export class MenuCard {
-  @Input() svg: SafeHtml | string =  '';
+  @Input() svg: SafeHtml =  '';
   @Input() heading: string = 'Test';
   @Input() sub: string = 'testsub';
+  @Input() width: string = "380px";
+  @Input() blurColor: string = "";
 }

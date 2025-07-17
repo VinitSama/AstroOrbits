@@ -8,9 +8,13 @@
 .blog-image {
     width: 100%;
     height: 211px;
-    object-fit: fill;
+    background-image: var(--image-url);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     margin-bottom: 17px;
     border-radius: 7px;
+    overflow: hidden;
 }
 
 .author-tag-container{
@@ -42,6 +46,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    line-clamp: 2;
     overflow: hidden;
     font-size: 18px;
     font-style: normal;
@@ -53,6 +58,7 @@
 .brief {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-size: 12px;

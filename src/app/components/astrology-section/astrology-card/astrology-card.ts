@@ -16,9 +16,6 @@ export class AstrologyCard {
   safeImageUrl:string = '';
 
   ngOnInit(): void {
-    if(!this.card.imageUrl){
-      this.card.imageUrl = '/images/sample-text.jpg';
-    }
     this.safeImageUrl = 'url('+this.card.imageUrl+')'
   }
 

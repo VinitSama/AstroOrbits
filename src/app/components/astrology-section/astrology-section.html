@@ -1,10 +1,17 @@
 <div class="astrology-section">
     <div class="section-title">
-        <app-section-tag [svgColor]="svgColor" [sectionTitle]="title" ></app-section-tag>
+        <app-section-tag [sectionTitle]="title" ></app-section-tag>
     </div>
     <div class="astrology-card-container">
-        <div *ngFor="let card of astrologyCards">
-            <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
+        <div class="container-wrapper">
+            <div class="card" *ngFor="let card of astrologyCards | slice:0:4">
+                <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
+            </div>
+        </div>
+        <div class="container-wrapper">
+            <div class="card" *ngFor="let card of astrologyCards | slice:4">
+                <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
+            </div>
         </div>
     </div>
 </div>

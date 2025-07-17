@@ -1,0 +1,10 @@
+<div class="rudraksh-section-container">
+    <div class="section-tag">
+        <app-section-tag [sectionTitle]="'Start by adding New Energy in your life'"></app-section-tag>
+    </div>
+    <div class="card-container">
+        <div class="card" *ngFor="let c of card">
+            <app-rudraksh-card [card]="c"></app-rudraksh-card>
+        </div>
+    </div>
+</div>

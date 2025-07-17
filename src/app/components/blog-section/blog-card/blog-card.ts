@@ -1,10 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IBlogCard } from '../../../interfaces/iblog-card';
 import { ISvgColors } from '../../../interfaces/isvg-link';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-blog-card',
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './blog-card.html',
   styleUrl: './blog-card.css'
 })

@@ -1,13 +1,15 @@
-<div class="card-background">
-    <div class="header-container">
-        <div class="svg-container" [innerHTML]="svg">
+<div class="card-background" [ngStyle]="{'max-width': width, '--blur-color': blurColor}">
+    <div class="card-container">
+        <div class="header-container">
+            <div class="svg-container" [innerHTML]="svg">
+            </div>
+            <div class="header">
+                <div class="heading">{{heading}}</div>
+                <div class="sub">{{sub}}</div>
+            </div>
         </div>
-        <div class="header">
-            <div class="header">{{heading}}</div>
-            <div class="sub">{{sub}}</div>
+        <div class="information">
+            <ng-content></ng-content>
         </div>
-    </div>
-    <div class="information">
-        <ng-content></ng-content>
     </div>
 </div>

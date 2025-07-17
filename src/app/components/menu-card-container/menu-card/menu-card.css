@@ -1,3 +1,75 @@
 .card-background{
-    background-image: linear-gradient(to right bottom, #8f23af, #a266cb, #ba9be2, #d9cdf3, #ffffff);
+    padding: 32px;
+    position: relative;
+    border-radius: 7px;
+    border: 1px solid #FFF;
+    overflow: hidden;
+    z-index: 0;
+    height: 100%;
+    box-shadow: 0px 20px 60px 0px rgba(157, 105, 0, 0.10);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2000px;
+        height: 2000px;
+        background: radial-gradient(
+        circle at top left,
+        var(--blur-color) 0%,
+        transparent 50%
+        );
+        filter: blur(1px);
+        transform: translate(-39%, -39%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+    }
+}
+
+.card-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 24px;
+}
+
+.header-container{
+    display: flex;
+    gap: 19px;
+    align-items: center;
+    color: var(--secondary-color);
+}
+
+.svg-container{
+    background: #FFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 14px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heading{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.sub{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.information{
+    height: 100%;
+    margin-top: auto
 }

@@ -11,10 +11,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ResultProgress implements OnInit {
   
-  @Input() score: number = 0;
+  @Input() score: number = -1;
   @Input() subHeading: string = '';
 
-  readonly radius = 45;
+  readonly radius = 60;
   readonly circumference = 2 * Math.PI * this.radius;
   color = '#ff0000';
   progressOffset = this.circumference;
@@ -32,6 +32,8 @@ export class ResultProgress implements OnInit {
 
   getStrokeDashOffset(score: number): number {
     return this.circumference - (score / 100) * this.circumference;
+    // const clamped = Math.max(0, Math.min(score, 100));
+    // return this.circumference * (1 - clamped / 100);
   }
 
   getColor(score: number, bias: number = 80): string {
