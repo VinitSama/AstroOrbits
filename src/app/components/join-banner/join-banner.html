@@ -1,0 +1,41 @@
+<div class="container-wrapper">
+    <div class="banner-component">
+        <div class="information-container">
+            <div class="information">
+                <div class="header">
+                    <div class="title">Join Astroorbits</div>
+                    <div class="sub">We have multiple reasons to join </div>
+                </div>
+                <div class="brief">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                </div>
+            </div>
+            <form class="form" (ngSubmit)="submit()" [formGroup]="phoneForm">
+                <div class="input-filed">
+                    <span class="country-code-container" [matMenuTriggerFor]="codeMenu">
+                        +{{selctedCode}}
+                        <span class="dropdown-svg">
+                            <div> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                    <path d="M4 6.22266L8 10.2227L12 6.22266" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </span>
+                        <span class="pipe">|</span>
+                    </span>
+                    <input class="number-input" formControlName="phoneNo" placeholder="Enter Phone Number">
+                </div>
+                <button type="submit" class="submit">Join Now</button>
+            </form>
+        </div>
+        <div class="image-container">
+            <img src="./images/join-banner.png" alt="join banner image">
+        </div>
+    </div>
+</div>
+
+<mat-menu #codeMenu="matMenu" class="custom-code-menu" yPosition="below">
+    <div class="code-container">
+        <div class="code" *ngFor="let c of codes" (click)="changeCode(c)">+{{c}}</div>
+    </div>
+</mat-menu>

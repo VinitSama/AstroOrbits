@@ -3,7 +3,7 @@
         <div *ngFor="let item of navbarItems; trackBy: trackByFn; let i = index" class="list-item"
                 [ngClass]="{ 'first-item': i === 0, 'last-item': i === navbarItems.length - 1 }" >
             <ng-container *ngIf="!item.dropDownPresent">
-                <div class="item-name" (click)="goToPage(item.navigationLink)" (click)="closeFn()">
+                <div class="item-name" (click)="goToPage(item.navigationLink,i)" (click)="closeFn()">
                     {{item.name}}
                     <div *ngIf="item.tagPresent" class="tag" [style.background-color]="item.tagSettings?.eclipseColor">
                         <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
@@ -13,12 +13,8 @@
                     </div>
                 </div>
             </ng-container>
-
-
-
             <ng-container *ngIf="item.dropDownPresent && item.dropDownOption?.length">
-                <!-- <button matButton [matMenuTriggerFor]="menu" class="menu-button"> -->
-                <button mat-button [matMenuTriggerFor]="menu" class="menu-button" #trigger="matMenuTrigger" (click)="openMenu(trigger)" (mouseenter)="handleHover(i, trigger)"  [disableRipple]="true">
+                <div [matMenuTriggerFor]="menu" class="item-name" #trigger="matMenuTrigger" (click)="openMenu(trigger)" (mouseenter)="handleHover(i, trigger)">
                     <div class="menu-button-name">
                         {{item.name}}
                         <div class="menu-arrow-svg">
@@ -27,11 +23,10 @@
                             </svg>
                         </div>
                     </div>
-                </button>
-
+                </div>
                 <mat-menu #menu="matMenu" (closed)="onMenuClosed(trigger)">
                     <div class="menu-container">
-                        <div class="menu-item" *ngFor="let i of item.dropDownOption"(click)="goToPage(i.navigationLink)">{{i.name}}
+                        <div class="menu-item" *ngFor="let d of item.dropDownOption"(click)="goToPage(d.navigationLink,i)">{{d.name}}
                             <div class="menu-option-svg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                                     <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
@@ -42,23 +37,7 @@
                     </div>
                 </mat-menu>
             </ng-container>
-                
-
-            <!-- <ng-container *ngIf="item.dropDownPresent && item.dropDownOption?.length">
-                <div class="item-name dropdown-trigger"
-                    (mouseenter)="hoveredIndex = i"
-                    (mouseleave)="hoveredIndex = null">
-                    {{ item.name }}
-                    <div class="dropdown-menu" *ngIf="hoveredIndex === i">
-                    <div *ngFor="let option of item.dropDownOption"
-                        class="dropdown-item"
-                        (click)="goToPage(option.navigationLink); closeFn()">
-                        {{ option.name }}
-                    </div>
-                    </div>
-                </div>
-            </ng-container> -->
+            <div class="selected-marker" *ngIf="selected == i"></div>
         </div>
     </div>
-    
 </div>

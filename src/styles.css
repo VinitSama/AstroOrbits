@@ -28,4 +28,5 @@ body {
 
 .mat-mdc-menu-panel{
     border-radius: 7px !important;
+    min-width: unset !important;
 }

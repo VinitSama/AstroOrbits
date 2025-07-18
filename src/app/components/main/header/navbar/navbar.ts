@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class Navbar {
 
   hoveredIndex: number | null = null;
+  selected: number = 0;
   navbarItems: INavbarItem[] = [         // can be fetch from API for diffrent Navbar for different webpages
     // {
     //   name: 'Free Kundli',
@@ -214,7 +215,6 @@ export class Navbar {
       navigationLink: null,
     },
   ];
-
   @Output() close = new EventEmitter<void>();
 
   constructor(private router: Router) {}
@@ -223,13 +223,16 @@ export class Navbar {
     return item.name;
   }
 
-  goToPage(page: TNavigationLink | null) {
+  goToPage(page: TNavigationLink | null, i: number) {
     if (page == 'home') {
       this.router.navigate([page])
+      this.selected = i;
     }else if (page == 'numerology'){
       this.router.navigate(['home',page,"0","0"])
+      this.selected = i;
     } else if (page){
       this.router.navigate(['home', page]);
+      this.selected = i;
     }
   }
 
@@ -261,12 +264,12 @@ export class Navbar {
 onMenuClosed(trigger: MatMenuTrigger) {
   if (this.activeTrigger === trigger) {
     this.activeTrigger = null;
-    this.openedDropdown = null;
+    this.openedDropdown = -1;
   }
 }
 
 handleHover(index: number, trigger: MatMenuTrigger) {
-  if (this.openedDropdown === null) {
+  if (this.openedDropdown !== null) {
     this.openMenu(trigger);
     this.openedDropdown = index;
   }

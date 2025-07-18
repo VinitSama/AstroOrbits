@@ -12,7 +12,6 @@
     --zodiac-card-details: #6E6E6E;
     --warning: #ff0000;
     --vastushastra-option: #FBC56D;
-    --horoscope-option-border: #FFE5B7;
     --horoscope-option-fill: #FFFAF1;
     --horoscope-option-border-selected: #FFEED0;
     --horoscope-option-box-shadow: rgba(255, 177, 20, 0.10);
@@ -31,6 +30,10 @@
     --placeholder: #757575;
     --horoscope-banner: #FFDD98;
     --light-bg-color: #FFF5E2;
+    --form-field-bg: #F0F0F0;
+    --horoscope-option-border: #FFE5B7;
+    --love-calculator-form: #FF9292;
+    --tarot-calculator-form: #A883F2;
 
 }    
 

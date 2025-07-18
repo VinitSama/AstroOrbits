@@ -91,7 +91,7 @@
                                     <div class="input-label">Full Name:</div>
                                     <input type="text" placeholder="Enter Full Name" formControlName="girlName" />
                                 </label>
-                                <button class="submit" type="submit">Calculate Now</button>
+                                <button class="submit" style="background-color: var(--love-calculator-form);" type="submit">Calculate Now</button>
                             </form>
                         </div>
                     </div>
@@ -137,15 +137,17 @@
             <div>
             <app-menu-card [width]="'100%'" [svg]="cards[4].svg" [heading]="cards[4].heading"[sub]="cards[4].sub" [blurColor]="cards[4].blurColor">
                 <div class="container-wrapper">
-                    <div class="tarot-form">
-                        <form (ngSubmit)="tarotSubmit()">
+                    <form class="tarot-form" [formGroup]="tarotForm" (ngSubmit)="tarotSubmit()"> 
+                        <div class="tarot-form-field">
+                            <div> 
                             <label>
                                 <div class="input-label">Full Name:</div>
-                                <input placeholder="Enter your Full Name" type="text" [formControl]="tarotFormControl" />
+                                <input placeholder="Enter your Full Name" type="text" formControlName="fullName" />
                             </label>
-                        </form>
-                        <button class="submit" type="submit">Submit</button>
-                    </div>
+                            </div>
+                            <button class="submit" style="background-color: var(--tarot-calculator-form)" type="submit">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </app-menu-card>
             </div>

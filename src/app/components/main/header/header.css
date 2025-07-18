@@ -48,9 +48,12 @@
 .language svg {
     margin-right: 4px;
 }
-.language select {
+
+#language-dropdown{
     border: none;
     outline: none;
+    background: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 @media (max-width: 575px) {

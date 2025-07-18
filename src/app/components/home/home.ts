@@ -15,6 +15,9 @@ import { BannerSecond } from "./new-banner/banner-second/banner-second";
 import { MenuCardContainer } from "../menu-card-container/menu-card-container";
 import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
 import { ReviewSection } from "../review-section/review-section";
+import { JoinBanner } from "../join-banner/join-banner";
+import { FAQSection } from "../faq-section/faq-section";
+import { AboutSection } from "../about-section/about-section";
 
 @Component({
   selector: 'app-home',
@@ -31,7 +34,10 @@ import { ReviewSection } from "../review-section/review-section";
     // MenuCard,
     MenuCardContainer,
     RudrakshSection,
-    ReviewSection
+    ReviewSection,
+    JoinBanner,
+    FAQSection,
+    AboutSection
 ],
   templateUrl: './home.html',
   styleUrl: './home.css'

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuCard } from "./menu-card/menu-card";
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { IZodiacCard } from '../../interfaces/izodiac-card';
@@ -140,7 +140,7 @@ export class MenuCardContainer implements OnInit {
 
   kundliForm: FormGroup;
   calculatorForm: FormGroup;
-  tarotFormControl = new FormControl('', Validators.required);
+  tarotForm: FormGroup;
   zodiacSelect: string = "Select Sign";
   panchang!: any;
   dobFocused = false;
@@ -159,6 +159,10 @@ export class MenuCardContainer implements OnInit {
       boyName: ['', Validators.required],
       girlName: ['', Validators.required]
     });
+
+    this.tarotForm = this.fb.group({
+      fullName: ['', Validators.required]
+    })
   }
 
   ngOnInit(): void {
@@ -232,14 +236,26 @@ export class MenuCardContainer implements OnInit {
   }
 
   kundliSubmit() {
-    console.log('Form Value:', this.kundliForm.value);
+    if (this.kundliForm.valid) {
+      console.log('form value: ', this.kundliForm.value);
+    } else {
+      console.log('Form is invalid');
+    }
   }
   
   calculatorSubmit(){
-    console.log('form value: ', this.calculatorForm.value);
+    if (this.calculatorForm.valid) {
+      console.log('form value: ', this.calculatorForm.value);
+    } else {
+      console.log('Form is invalid');
+    }
   }
   tarotSubmit(){
-    console.log('form value: ', this.tarotFormControl.value);
+    if (this.tarotForm.valid) {
+      console.log('form value: ', this.tarotForm.value);
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
   zodiacCards!: IZodiacCard[];

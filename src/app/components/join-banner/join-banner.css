@@ -1,0 +1,128 @@
+.container-wrapper{
+    width: 100%;
+    padding: 80px 0;
+}
+.banner-component{
+    max-width: 1200px;
+    padding: 32px 80px;
+    background: url('/images/new-banner/new-banner-bg1.jpg') lightgray 50% / cover no-repeat ;
+    border-radius: 7px;
+    display: flex;
+    color: #fff;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.information-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 267px;
+}
+
+.information{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.sub{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.brief{
+    font-size: 14px;
+    font-weight: 400;
+    max-width: 632px;
+}
+
+.form{
+    display: flex;
+    gap: 6px;
+}
+
+.input-filed{
+    background: var(--form-field-bg);
+    border-radius: 7px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    color: var(--fore-dark-grey);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.country-code-container{
+    padding: 12px 0 12px 12px;
+    display: flex;
+    margin-top: -2px;
+    cursor: pointer;
+}
+
+.dropdown-svg div{
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+.number-input{
+    padding: 12px;
+    padding-left: 4px;
+    background: inherit;
+    border: none;
+    outline: none;
+    border-radius: 7px;
+}
+
+.submit{
+    padding: 12px;
+    border-radius: 7px;
+    color: #fff;
+    background: var(--primary-color);
+    font-size: 14px;
+    font-weight: 400;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+::ng-deep .custom-code-menu{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+::ng-deep .custom-code-menu::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.code-container{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.code-container::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.code{
+    text-align: center;
+    padding: 8px 4px;
+    border-bottom: 1px solid #000 ;
+    cursor: pointer;
+}
+
+.code:last-child{
+    border: none;
+}

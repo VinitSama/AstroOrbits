@@ -1,0 +1,19 @@
+.faq-container{
+    width: 100%;
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.card-container{
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 auto;
+}
+
+.card{
+    width: 100%;
+}
