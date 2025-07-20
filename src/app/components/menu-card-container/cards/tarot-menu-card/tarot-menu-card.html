@@ -1,0 +1,15 @@
+<app-menu-card [card]="card">
+    <div class="container-wrapper">
+        <form class="tarot-form" [formGroup]="tarotForm" (ngSubmit)="tarotSubmit()"> 
+            <div class="tarot-form-field">
+                <div> 
+                <label>
+                    <div class="input-label">Full Name:</div>
+                    <input placeholder="Enter your Full Name" type="text" formControlName="fullName" />
+                </label>
+                </div>
+                <button class="submit" style="background-color: var(--tarot-calculator-form)" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</app-menu-card>

@@ -3,7 +3,6 @@ import { IZodiacCard } from '../../interfaces/izodiac-card';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { CommonModule } from '@angular/common';
 import { ZodiacCard } from './zodiac-card/zodiac-card';
-import { SectionTag } from '../section-tag/section-tag';
 import { ZodiacServices } from '../../services/zodiac.services';
 
 @Component({
@@ -11,7 +10,6 @@ import { ZodiacServices } from '../../services/zodiac.services';
   imports: [
     CommonModule,
     ZodiacCard,
-    SectionTag,
   ],
   templateUrl: './zodiac-prediction.html',
   styleUrl: './zodiac-prediction.css'
@@ -20,9 +18,7 @@ export class ZodiacPrediction implements OnInit {
 
   @Input() svgColor!: ISvgColors;
   @Input() detailed: boolean = false;
-  @Input() title: string = "";
   @Input() day: string = 'Today';
-  @Input() showSectionTag: boolean = true;
 
   zodiacCards!: IZodiacCard[];
 

@@ -18,6 +18,7 @@ import { ReviewSection } from "../review-section/review-section";
 import { JoinBanner } from "../join-banner/join-banner";
 import { FAQSection } from "../faq-section/faq-section";
 import { AboutSection } from "../about-section/about-section";
+import { HeaderService } from '../../services/header.service';
 
 @Component({
   selector: 'app-home',
@@ -68,13 +69,11 @@ export class Home implements OnInit {
 
   private themeUpdateSubscription!: Subscription; 
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService, private headerService: HeaderService) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
-    this.themeUpdateSubscription = this.themeService.getThemeSubject().subscribe(()=>{
-      this.loadSVGColor();
-    })
+    this.headerService.setColorSubject(true);
   }
 
   private loadSVGColor() {

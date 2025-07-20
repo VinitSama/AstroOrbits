@@ -1,0 +1,32 @@
+<app-menu-card [card]="card">
+    <div class="panchang-container">
+        <div class="panchang-section">
+            <div class="panchang-row">
+                <div class="panchang-name">Hindi Tithi:</div>
+                <div class="panchang-value">{{panchang['tithi'] || ''}}</div>
+            </div>
+        </div>
+        <div class="panchang-segment">
+            <div class="panchang-section">
+                <div class="panchang-row">
+                    <div class="panchang-name">Month Amanta:</div>
+                    <div class="panchang-value">{{panchang['month'] || ''}}</div>
+                </div>
+                <div class="panchang-row">
+                    <div class="panchang-name">Nakshatra:</div>
+                    <div class="panchang-value">{{panchang['nakshatra'] || ''}}</div>
+                </div>
+            </div>
+            <div class="panchang-section">
+                <div class="panchang-row">
+                    <div class="panchang-name">Day:</div>
+                    <div class="panchang-value">{{panchang['day'] || ''}}</div>
+                </div>
+                <div class="panchang-row">
+                    <div class="panchang-name">Samvat:</div>
+                    <div class="panchang-value">{{panchang['samvat'] || ''}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</app-menu-card>

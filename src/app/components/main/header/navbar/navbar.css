@@ -1,10 +1,12 @@
 .navbar-container{
     padding: 0 40px;
     position: relative;
-    background-color: var(--primary-color);
     overflow: visible !important;
+    font-family: var(--secondary-font);
 }
-
+.set-color{
+    background-color: var(--primary-color);
+}
 .navbar-list {
     list-style: none;
     display: flex;

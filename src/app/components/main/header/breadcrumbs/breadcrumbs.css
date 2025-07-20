@@ -20,12 +20,13 @@
 
 .breadcrumb-container{
     margin: 24px 0;
+    font-family: var(--secondary-font);
 }
 
 .breadcrumb-list{
     display: flex;
     list-style: none;
-    /* align-items: center; */
+    padding-left: 130px;
     margin: 0;
 }
 
@@ -56,6 +57,14 @@
     margin: 0 7px;
     display: flex;
     align-items: center;
+}
+
+.set-label-color{
+  color: var(--tertiary-color);
+}
+
+.set-last-color{
+  color: #fff;
 }
 
 @media (max-width: 575px) {

@@ -3,11 +3,12 @@
   height: var(--box-size);
   align-items: center;
   cursor: pointer;
+  font-family: var(--secondary-font);
 }
 
-.zodiac-card.mar-bot{
+/* .zodiac-card.mar-bot{
   margin-bottom: 32px;
-}
+} */
 
 .svg-container{
   display: flex;

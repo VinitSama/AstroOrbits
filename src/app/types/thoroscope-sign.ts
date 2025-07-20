@@ -1,0 +1,1 @@
+export type THoroscopeSign = "moon" | "sun";

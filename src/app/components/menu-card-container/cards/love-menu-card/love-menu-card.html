@@ -1,0 +1,23 @@
+<app-menu-card [card]="card">
+    <div class="container-wrapper">
+        <div class="love-calculator-container">
+            <div class="progress-bar">
+                <app-result-progress [subHeading]="'Love Compatibility'"></app-result-progress>
+            </div>
+            <div class="love-form">
+                <form [formGroup]="calculatorForm" (ngSubmit)="calculatorSubmit()" class="calculator-form">
+                    <label>
+                        <div class="input-label">Full Name:</div>
+                        <input type="text" placeholder="Enter Full Name" formControlName="boyName" />
+                    </label>
+                    <label>
+                        <div class="input-label">Full Name:</div>
+                        <input type="text" placeholder="Enter Full Name" formControlName="girlName" />
+                    </label>
+                    <button class="submit" style="background-color: var(--love-calculator-form);" type="submit">Calculate Now</button>
+                </form>
+            </div>
+        </div>
+        <app-click-link></app-click-link>
+    </div>
+</app-menu-card>

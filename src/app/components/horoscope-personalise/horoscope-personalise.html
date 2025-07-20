@@ -1,0 +1,15 @@
+<div class="horoscope-container">
+    <app-section-tag [sectionTitle]="'Get your Personalised Horoscope'"></app-section-tag>
+    <div class="personalise-container">
+        <div class="card" *ngFor="let c of horoscope">
+            <div class="header-wrapper">
+                <img class="svg-container" [src]="`./images/horoscope-type/${c.svg}.svg`">
+                <div class="header-container">
+                    <div class="name">{{c.name}}</div>
+                    <div class="brief">{{c.brief}}</div>
+                </div>
+            </div>
+            <div class="button" [ngStyle]="{'--button-col':c.buttonCol}">{{c.button}}</div>
+        </div>
+    </div>
+</div>

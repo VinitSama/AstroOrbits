@@ -1,4 +1,4 @@
-<div class="navbar-container">
+<div class="navbar-container" [ngClass]="{'set-color':showColor}">
     <div class="navbar-list">
         <div *ngFor="let item of navbarItems; trackBy: trackByFn; let i = index" class="list-item"
                 [ngClass]="{ 'first-item': i === 0, 'last-item': i === navbarItems.length - 1 }" >

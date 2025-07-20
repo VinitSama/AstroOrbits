@@ -1,4 +1,4 @@
-<div class="section-tag-container">
+<div class="section-tag-container" [ngClass]="{'extra-gap': subHeadCol}">
     <h2 class="title">{{sectionTitle}}</h2>
-    <div class="sub-heading" *ngIf="subHeading">{{subHeading}}</div>
+    <div class="sub-heading" [ngClass]="{'sub-color': subHeadCol}" *ngIf="subHeading">{{subHeading}}</div>
 </div>

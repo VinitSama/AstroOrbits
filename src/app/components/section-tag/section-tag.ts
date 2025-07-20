@@ -14,4 +14,5 @@ export class SectionTag {
 
   @Input() sectionTitle: string = '';
   @Input() subHeading: string = "Choose your path to clarity. Get Detailed reports or join live community sessions.";
+  @Input() subHeadCol: boolean = false;
 }

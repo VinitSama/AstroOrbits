@@ -1,11 +1,11 @@
-<div class="card-background" [ngStyle]="{'max-width': width, '--blur-color': blurColor}">
+<div class="card-background" [ngStyle]="{'max-width': card.width, '--blur-color': card.blurColor}">
     <div class="card-container">
         <div class="header-container">
-            <div class="svg-container" [innerHTML]="svg">
+            <div class="svg-container" [innerHTML]="card.svg">
             </div>
             <div class="header">
-                <div class="heading">{{heading}}</div>
-                <div class="sub">{{sub}}</div>
+                <div class="heading">{{card.heading}}</div>
+                <div class="sub">{{card.sub}}</div>
             </div>
         </div>
         <div class="information">

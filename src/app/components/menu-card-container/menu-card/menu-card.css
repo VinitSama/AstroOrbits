@@ -62,14 +62,29 @@
 .heading{
     font-size: 20px;
     font-weight: 700;
+    font-family: var(--primary-font);
 }
 
 .sub{
     font-size: 12px;
     font-weight: 400;
+    font-family: var(--secondary-font);
 }
 
 .information{
     height: 100%;
-    margin-top: auto
+    margin-top: auto;
+    font-family: var(--secondary-font);
+}
+
+.information input {
+    font-family: var(--secondary-font);
+}
+
+.information input:placeholder-shown {
+    font-family: var(--secondary-font);
+}
+
+.information input::placeholder {
+    font-family: var(--secondary-font);
 }

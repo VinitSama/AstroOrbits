@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IBreadcrumb } from '../../../../interfaces/ibreadcrumb';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './breadcrumbs.css'
 })
 export class Breadcrumbs implements OnInit {
-
+  @Input() showColor: boolean = true;
   breadcrumbs: IBreadcrumb[] = [];
 
   showBreadcrumbs: boolean = false;

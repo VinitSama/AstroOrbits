@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Navbar } from './navbar/navbar';
@@ -7,6 +7,8 @@ import { Breadcrumbs } from './breadcrumbs/breadcrumbs';
 import { RouterLink } from '@angular/router';
 import { TResponsive } from '../../../types/responsive';
 import { Menu } from "./menu/menu";
+import { HeaderService } from '../../../services/header.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -21,16 +23,25 @@ import { Menu } from "./menu/menu";
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
-export class Header {
+export class Header implements OnInit{
 
   @Input() svgColor!: ISvgColors;
-  @Input() showBreadcrumbs: boolean = false;
   @Input() mode: TResponsive = 'large';
 
+  showColor: boolean = true;
   showMenu: boolean = false;
-  
   languageOptions: string[] = ['English','Hindi']
   languageDropDownControl = new FormControl<string>(this.languageOptions[0])
+
+  showColorSubscription!: Subscription;
+
+  constructor(private headerService: HeaderService) {  }
+
+  ngOnInit(): void {
+    this.showColorSubscription = this.headerService.getColorSubject().subscribe((val) =>{
+      this.showColor = val;
+    })
+  }
 
   toggleMenu() {
     this.showMenu = !this.showMenu;

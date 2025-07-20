@@ -3,6 +3,7 @@
     width: 360px;
     padding: 16px;
     cursor: pointer;
+    font-family: var(--secondary-font);
 }
 
 .blog-image {

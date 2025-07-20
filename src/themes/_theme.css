@@ -1,6 +1,5 @@
-[data-theme="main-light"] {
+:root{
     
-    --tertiary-color: #181818;
     --fourth-color:#fff;
     --secondary-bg-color: #F8F8F8;
     --heading: #000;
@@ -8,7 +7,6 @@
     --light-primary-color: #FFF0D1;
     --blog-author-color: #5E5E5E;
     --blog-brief-color: #767676;
-    --breadcrumb-color: #777777;
     --zodiac-card-details: #6E6E6E;
     --warning: #ff0000;
     --vastushastra-option: #FBC56D;
@@ -20,6 +18,7 @@
     
     --primary-color: #FFB114;
     --secondary-color: #240028;
+    --tertiary-color: #784007;
     --option-border: #E9E9E9;
     --page-background: #FFFCF6;
     --primary-bg-color:#FFFCF6;
@@ -34,18 +33,13 @@
     --horoscope-option-border: #FFE5B7;
     --love-calculator-form: #FF9292;
     --tarot-calculator-form: #A883F2;
+    --breadcrumb-color: #777777;
+    --blur-primary-color: #FFB11466;
 
-}    
 
-[data-theme="main-dark"] {
-    --primary-color: #FFB114;
-    --secondary-color: #3B3B3B;
-    --tertiary-color: #181818;
-    --fourth-color:#fff;
-    --heading: #000;
-    --sub-title: #767676;
-    --light-primary-color: #FFF0D1;
-    --blog-author-color: #5E5E5E;
-    --blog-brief-color: #767676;
-    --secondary-bg-color: #F8F8F8;
-}    
+
+
+    --primary-font: 'Josefin Sans', sans-serif;
+    --secondary-font: 'Inter', sans-serif;
+
+}  

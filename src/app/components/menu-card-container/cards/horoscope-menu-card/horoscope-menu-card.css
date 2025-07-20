@@ -1,0 +1,70 @@
+.zodiac-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.zodiac-prediction-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.zodiac-form{
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--form-label);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dropdown-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dropdown{
+    padding: 12px;
+    cursor: pointer;
+    border: 1px solid var(--form-border);
+    color: var(--placeholder);
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown-svg{
+    display: flex;
+    align-items: center;
+}
+
+
+.submit{
+    cursor: pointer;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 7px;
+    border: 1px solid var(--horoscope-banner);
+    background-color: var(--primary-color);
+    width: 100%;
+}
+
+.sub-link{
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+}
+.click{
+    font-weight: 700;
+    cursor: pointer;
+}
+.purple{
+    color: #fff;
+    background-color: var(--secondary-color);
+}

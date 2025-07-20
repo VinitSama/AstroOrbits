@@ -20,6 +20,7 @@
 .question{
     font-size: 64px;
     font-weight: 700;
+    font-family: var(--primary-font);
 }
 
 .button{
@@ -31,4 +32,5 @@
     cursor: pointer;
     max-width: min-content;
     border-radius: 7px;
+    font-family: var(--secondary-font);
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IDropDownOption, INavbarItem } from '../../../../interfaces/inavbar-item';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './navbar.css'
 })
 export class Navbar {
-
+  @Input() showColor: boolean = true;
   hoveredIndex: number | null = null;
   selected: number = 0;
   navbarItems: INavbarItem[] = [         // can be fetch from API for diffrent Navbar for different webpages

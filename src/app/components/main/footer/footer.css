@@ -1,6 +1,7 @@
 .footer-container{
     padding: 80px;
     background-color: var(--secondary-color);
+    font-family: var(--primary-font);
 }
 .logo{
     display: flex;
@@ -78,7 +79,7 @@
     margin-right: 80px;
     display: flex;
     flex-direction: column;
-    gap: 17px;
+    gap: 14px;
     /* justify-content: space-between; */
 }
 

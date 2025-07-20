@@ -1,0 +1,33 @@
+.panchang-container{
+    margin-bottom: 0;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    text-wrap: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    gap: 12px;
+}
+
+.panchang-segment{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.panchang-section{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;   
+}
+
+.panchang-row{
+    display: flex;
+    max-width: min-content;
+    gap: 4px;
+}
+
+.panchang-name{
+    font-weight: 600;
+}

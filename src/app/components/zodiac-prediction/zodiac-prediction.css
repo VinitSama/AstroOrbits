@@ -1,26 +1,30 @@
 .today-prediction-section{
     max-width: 1300px;
     margin: 0 auto;
-    margin-top: 56px;
 }
 
-.zodiac-prediction-container {
-    margin-top: 32px;
+/* .zodiac-prediction-container {
     justify-self: center;
     max-width: 1200px;
     display:  flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 32px;
+} */
 
 
-
-    /* column-width: 180px;
-    column-count: auto;
-    column-gap: 16px;
-    max-width: 100%;
-    margin: 0;
-    padding-top: 20px; */
+.zodiac-prediction-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  justify-content: space-between;
+  margin: 0 auto;
 }
+.zodiac-prediction-container > div {
+  margin: 16px 0;
+  box-sizing: border-box;
+}
+
 
 .brief{
     width: 828px;

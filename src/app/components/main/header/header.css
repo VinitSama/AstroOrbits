@@ -1,10 +1,12 @@
 .header-container{
     display: flex;
-    background-color: var(--primary-color);
     padding: 0 32px;
     height: 90px;
     justify-content: space-between;
+    background: inherit;
+    font-family: var(--secondary-font);
 }
+
 
 .logo{
     display: flex;
@@ -52,7 +54,7 @@
 #language-dropdown{
     border: none;
     outline: none;
-    background: var(--primary-color);
+    background: inherit;
     color: var(--secondary-color);
 }
 
@@ -61,4 +63,8 @@
         padding-left: 20px;
         font-size: 20px;
     }
+}
+
+.set-color{
+    background-color: var(--primary-color);
 }

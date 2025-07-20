@@ -24,9 +24,18 @@ body {
 
 .mat-mdc-menu-content{
     padding: 0 !important;
+    font-family: var(--secondary-font) !important;
 }
 
 .mat-mdc-menu-panel{
     border-radius: 7px !important;
     min-width: unset !important;
+}
+
+input{
+    font-family: var(--secondary-font) !important;
+}
+
+input::placeholder{
+    font-family: var(--secondary-font) !important;
 }

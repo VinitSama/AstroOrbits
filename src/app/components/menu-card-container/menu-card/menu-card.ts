@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
+import { IMenuCard } from '../../../interfaces/imenu-card';
 
 @Component({
   selector: 'app-menu-card',
@@ -10,10 +11,12 @@ import { SafeHtml } from '@angular/platform-browser';
   templateUrl: './menu-card.html',
   styleUrl: './menu-card.css'
 })
-export class MenuCard {
-  @Input() svg: SafeHtml =  '';
-  @Input() heading: string = 'Test';
-  @Input() sub: string = 'testsub';
-  @Input() width: string = "380px";
-  @Input() blurColor: string = "";
+export class MenuCard implements OnInit{
+  @Input() card!: IMenuCard;
+
+  ngOnInit(): void {
+    if (!this.card.width){
+      this.card.width = "380px";
+    }
+  }
 }

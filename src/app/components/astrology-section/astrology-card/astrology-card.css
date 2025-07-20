@@ -6,6 +6,7 @@
     background: var(--light-bg-color);
     padding: 16px;
     border-radius: 8px;
+    font-family: var(--secondary-font);
 }
 .card-container {
     width: 100%;
@@ -19,6 +20,9 @@
     width: 178px;
     margin: auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .title{
