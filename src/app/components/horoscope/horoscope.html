@@ -119,8 +119,27 @@
         </div>
     </div>
     <app-horoscope-personalise [horoscope]="horoscopeType"></app-horoscope-personalise>
+    <div class="insight-section">
+        <app-section-tag [sectionTitle]="'Featured Astrological Insights'"></app-section-tag>
+        <div class="insight-container">
+            <div class="insight-card" *ngFor="let c of insightCard">
+                <app-astrological-insight-card [card]="c"></app-astrological-insight-card>
+            </div>
+        </div>
+    </div>
     <div class="first-section"> 
         <app-rudraksh-section></app-rudraksh-section>
+    </div>
+    <div class="menu-section">
+        <app-section-tag [sectionTitle]="'Still feel something is missing? Try'"></app-section-tag>
+        <div class="menu-container">
+            <app-kundli-menu-card></app-kundli-menu-card>
+            <div class="menu-stack">
+                <app-tarot-menu-card [width]="'380px'"></app-tarot-menu-card>
+                <app-numerology-menu-card [width]="'380px'"></app-numerology-menu-card>
+            </div>
+            <app-love-menu-card></app-love-menu-card>
+        </div>
     </div>
     <div class="section">
         <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>

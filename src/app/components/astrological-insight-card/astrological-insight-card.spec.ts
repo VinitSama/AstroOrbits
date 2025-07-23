@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuCardContainer } from './menu-card-container';
+import { AstrologicalInsightCard } from './astrological-insight-card';
 
-describe('MenuCardContainer', () => {
-  let component: MenuCardContainer;
-  let fixture: ComponentFixture<MenuCardContainer>;
+describe('AstrologicalInsightCard', () => {
+  let component: AstrologicalInsightCard;
+  let fixture: ComponentFixture<AstrologicalInsightCard>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuCardContainer]
+      imports: [AstrologicalInsightCard]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MenuCardContainer);
+    fixture = TestBed.createComponent(AstrologicalInsightCard);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

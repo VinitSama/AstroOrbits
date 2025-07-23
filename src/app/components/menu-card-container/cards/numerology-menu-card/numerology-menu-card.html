@@ -1,1 +1,11 @@
-<p>numerology-menu-card works!</p>
+<app-menu-card [card]="card">
+    <div class="numerology-form">
+        <form [formGroup]="numerologyForm" (ngSubmit)="numerologySubmit()" class="calculator-form">
+            <label>
+                <div class="input-label">Time of Birth</div>
+                <input [type]="tobFocused ? 'time': 'text'" (focus)="tobFocused = true" placeholder="Enter TOB" formControlName="TOB" />
+            </label>
+            <button class="submit" style="background-color: var(--numerology-form);" type="submit">Calculate Now</button>
+        </form>
+    </div>
+</app-menu-card>

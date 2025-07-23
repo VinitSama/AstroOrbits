@@ -1,0 +1,1 @@
+export type TPlanetSvg = "sun" | "moon" | "mars" | "mercury" | "jupiter" | "venus" | "saturn" | "rahu" | "ketu" | "uranus" | "neptune" | "pluto" | "ascendant";

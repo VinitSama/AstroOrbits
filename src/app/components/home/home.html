@@ -10,7 +10,27 @@
         <app-banner-second></app-banner-second>
     </div>
     <div>
-        <app-menu-card-container [svgColor]="svgColor"></app-menu-card-container>
+        <!-- <app-menu-card-container [svgColor]="svgColor"></app-menu-card-container> -->
+         <div class="menu-container">
+            <div class="section-tag">
+                <app-section-tag [sectionTitle]="'How Can We Guide You?'" [subHeading]="'Choose your path to clarity. Get Detailed reports or join live community sessions.'"></app-section-tag>
+            </div>
+            <div class="card-section">
+                <div class="card-wrapper">
+                    <app-kundli-menu-card></app-kundli-menu-card>
+                    <app-horoscope-menu-card [svgColor]="svgColor"></app-horoscope-menu-card>
+                    <app-love-menu-card></app-love-menu-card>
+                </div>
+                <div class="card-wrapper spread">
+                    <div>
+                    <app-panchang-menu-card></app-panchang-menu-card>
+                    </div>
+                    <div>
+                    <app-tarot-menu-card></app-tarot-menu-card>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
         <app-rudraksh-section></app-rudraksh-section>

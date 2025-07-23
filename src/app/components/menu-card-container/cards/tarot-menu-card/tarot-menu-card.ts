@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenuCard } from "../../menu-card/menu-card";
 import { IMenuCard } from '../../../../interfaces/imenu-card';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -14,6 +14,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrl: './tarot-menu-card.css'
 })
 export class TarotMenuCard implements OnInit {
+
+  @Input() width: string = "100%";
 
   card: IMenuCard = {
     svg: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -52,7 +54,6 @@ export class TarotMenuCard implements OnInit {
     heading: "Free Tarot Reading",
     sub: "Shuffle and pick one card for your reading",
     blurColor:'#1C0046',
-    width: "100%",
   };
 
   tarotForm: FormGroup;
@@ -65,6 +66,8 @@ export class TarotMenuCard implements OnInit {
 
   ngOnInit(): void {
     this.svgSantization();
+    this.card.width = this.width;
+    console.log(this.card)
   }
 
   private svgSantization(){

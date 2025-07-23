@@ -16,6 +16,12 @@ import { AstrologySection } from "../astrology-section/astrology-section";
 import { ReviewSection } from "../review-section/review-section";
 import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
+import { KundliMenuCard } from "../menu-card-container/cards/kundli-menu-card/kundli-menu-card";
+import { NumerologyMenuCard } from "../menu-card-container/cards/numerology-menu-card/numerology-menu-card";
+import { TarotMenuCard } from "../menu-card-container/cards/tarot-menu-card/tarot-menu-card";
+import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-menu-card";
+import { IInsightCard } from '../../interfaces/iinsight-card';
+import { AstrologicalInsightCard } from "../astrological-insight-card/astrological-insight-card";
 
 @Component({
   selector: 'app-horoscope',
@@ -30,7 +36,12 @@ import { FAQSection } from "../faq-section/faq-section";
     AstrologySection,
     ReviewSection,
     AboutSection,
-    FAQSection
+    FAQSection,
+    KundliMenuCard,
+    NumerologyMenuCard,
+    TarotMenuCard,
+    LoveMenuCard,
+    AstrologicalInsightCard
 ],
   templateUrl: './horoscope.html',
   styleUrl: './horoscope.css'
@@ -40,11 +51,6 @@ export class Horoscope implements OnInit {
   svgColor!: ISvgColors;
   zodiacSectionTtitle = 'Horoscope';
   zodiacSectionBrief = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  articleTitle = "What is Horoscope";
-  article: IArticle = {
-    title:'',
-    content:"horoscope is an astrological chart created based on the positions of the Sun, Moon, and other celestial bodies at the time of a person's birth. It provides insights into an individual's personality, likes, dislikes, thoughts, love life, career, health, and more. Horoscopes offer a glimpse into future events and can be used to make informed decisions.<br><br>Horoscopic traditions are primarily associated with the Western Zodiac. Vedic Astrology, on the other hand, uses a different system with the Kundali (birth chart). While some debate the scientific validity of horoscopes, their accuracy in reflecting individual traits continues to intrigue many.<br><br>By reading your daily horoscope, weekly horoscope, monthly horoscope, or yearly horoscope, you can gain valuable insights into various aspects of your life. Understanding the positions of the planets and their influence on your zodiac sign can help you navigate challenges and opportunities. Whether you're interested in your love life, career prospects, financial situation, or health, your horoscope can provide guidance and support.<br><br>Horoscopes are sometimes referred to as figura charts, astrological graphs, star charts, or natal charts. Regardless of the name, the purpose remains the same: to offer astrological insights and predictions based on the positions of celestial bodies.<br><br>People also want to know about Yesterday’s horoscope, Daily Horoscope and Tomorrow’s Horoscope"
-  }
   blogSectionHeading = "A Spot to start your learning";
   day = "Today";
   selectedSign: THoroscopeSign = "moon";
@@ -93,7 +99,7 @@ export class Horoscope implements OnInit {
       name: "Yearly - 2025",
       brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     },
-  ]
+  ];
   selectedDay: string = "";
   horoscopeType: IPersonalisedHoroscope[] = [
     {
@@ -124,7 +130,27 @@ export class Horoscope implements OnInit {
       svg: "finance",
       buttonCol: "#E3EDFF"
     },
-  ]
+  ];
+  insightCard: IInsightCard[] = [
+    {
+      name: "Mars Transit Impact",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      button: "Learn how it affects you",
+      svgName: "mars",
+    },
+    {
+      name: "Mercury Retrograde Guide",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      button: "Learn how it affects you",
+      svgName: "mercury",
+    },
+    {
+      name: "Full Moon Manifestation",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      button: "Learn how it affects you",
+      svgName: "moon",
+    },
+  ];
   constructor(private themeService: ThemeService, private headerService: HeaderService) {}
 
   ngOnInit(): void {

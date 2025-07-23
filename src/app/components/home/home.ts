@@ -12,13 +12,18 @@ import { ThemeService } from '../../services/theme.service';
 import { NewBanner } from "./new-banner/new-banner";
 import { BannerSecond } from "./new-banner/banner-second/banner-second";
 // import { MenuCard } from "../menu-card-container/menu-card/menu-card";
-import { MenuCardContainer } from "../menu-card-container/menu-card-container";
 import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
 import { ReviewSection } from "../review-section/review-section";
 import { JoinBanner } from "../join-banner/join-banner";
 import { FAQSection } from "../faq-section/faq-section";
 import { AboutSection } from "../about-section/about-section";
 import { HeaderService } from '../../services/header.service';
+import { SectionTag } from "../section-tag/section-tag";
+import { KundliMenuCard } from "../menu-card-container/cards/kundli-menu-card/kundli-menu-card";
+import { HoroscopeMenuCard } from "../menu-card-container/cards/horoscope-menu-card/horoscope-menu-card";
+import { PanchangMenuCard } from "../menu-card-container/cards/panchang-menu-card/panchang-menu-card";
+import { TarotMenuCard } from "../menu-card-container/cards/tarot-menu-card/tarot-menu-card";
+import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-menu-card";
 
 @Component({
   selector: 'app-home',
@@ -33,12 +38,17 @@ import { HeaderService } from '../../services/header.service';
     NewBanner,
     BannerSecond,
     // MenuCard,
-    MenuCardContainer,
     RudrakshSection,
     ReviewSection,
     JoinBanner,
     FAQSection,
-    AboutSection
+    AboutSection,
+    SectionTag,
+    KundliMenuCard,
+    HoroscopeMenuCard,
+    PanchangMenuCard,
+    TarotMenuCard,
+    LoveMenuCard
 ],
   templateUrl: './home.html',
   styleUrl: './home.css'

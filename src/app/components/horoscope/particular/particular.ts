@@ -9,10 +9,10 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { SectionTag } from "../../section-tag/section-tag";
-import { Article } from "../../article/article";
 import { IArticle } from '../../../interfaces/iarticle';
 import { BlogSection } from "../../blog-section/blog-section";
 import { HoroscopeService } from '../../../services/horoscope.service';
+import { HeaderService } from '../../../services/header.service';
 
 type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
 
@@ -21,7 +21,6 @@ type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearl
   imports: [
     CommonModule,
     SectionTag,
-    Article,
     BlogSection,
 ],
   templateUrl: './particular.html',
@@ -36,8 +35,6 @@ export class Particular implements OnInit{
   svgColor!:ISvgColors;
   openSvg!: SafeHtml;
   article!: IArticle;
-
-  bannerSectionHeading!: string;
 
   horoscope!: any;
 
@@ -91,9 +88,10 @@ export class Particular implements OnInit{
     },
   ]
 
-  constructor(private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeService: HoroscopeService) {}
+  constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeService: HoroscopeService) {}
   
   ngOnInit(): void {
+    this.headerService.setColorSubject(true);
     this.loadSVGColor();
     this.loadCards();
     this.route.paramMap.subscribe(params => {
@@ -196,7 +194,6 @@ export class Particular implements OnInit{
 
     this.day = (dayParam as TDates) || 'Today';
 
-    this.bannerSectionHeading = `${this.zodiac} Horoscope`;
     this.setOpenSvg();
     this.changeArticle(this.openPrecise);
     
@@ -209,8 +206,8 @@ export class Particular implements OnInit{
     this.router.navigate(['/home/horoscope', this.day, title]);
   }
 
-  private sanitizeSvg(svg: string) {
-    const setColor = this.changeSvgColor(svg);
+  private sanitizeSvg(svg: string, selected: boolean = false) {
+    const setColor = this.changeSvgColor(svg, selected);
     return this.sanitizer.bypassSecurityTrustHtml(setColor);
   }
 
@@ -220,8 +217,11 @@ export class Particular implements OnInit{
       .replace(/width="[^"]*"/, 'width="100%"');
   }
 
-  makeInnerHTMLSafe(svg: string){
+  makeInnerHTMLSafe(svg: string, selected: boolean = false){
     const setSize =this.setSize(svg);
+    if (selected) {
+      return this.sanitizeSvg(setSize, true);
+    }
     return this.sanitizeSvg(setSize);
   }
 
@@ -232,13 +232,19 @@ export class Particular implements OnInit{
     ].includes(zodiac);
   }
 
-  private changeSvgColor(svg: string):string {
+  private changeSvgColor(svg: string, selected: boolean = false):string {
     if (!svg){
       return svg;
     }
     let targets: Array<'primary' | 'secondary' | 'tertiary' | 'stroke'> = ['primary','secondary', 'tertiary' , 'stroke']
     targets.forEach(t => {
-      svg = svg?.replace(new RegExp(t,"g"),this.svgColor[t]) || '';
+      if (selected && t == 'secondary'){
+        svg = svg?.replace(new RegExp(t,"g"),this.svgColor['primary']) || '';
+      } else if (selected && t == 'primary'){
+        svg = svg?.replace(new RegExp(t,"g"),this.svgColor['stroke']) || '';
+      } else {
+        svg = svg?.replace(new RegExp(t,"g"),this.svgColor[t]) || '';
+      }
     });
     return svg;
   }

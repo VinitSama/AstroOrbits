@@ -1,24 +1,19 @@
 <div class="horoscope-particular-report">
-    <div class="all-zodiac">
-        <div class="zodiac-svg" *ngFor="let card of zodiacDetails">
-            <div class="svg-container" [innerHTML]="makeInnerHTMLSafe(card.svg)" [ngClass]="{'open-zodiac-page-svg': card.title == zodiac}" (click)="onZodiacClick(card.title)">
-                {{card.title}}
-            </div>
-        </div>
-    </div>
-
-    <div class="baner-container">
-        <div class="section-tag">
-            <app-section-tag [sectionTitle]="bannerSectionHeading"></app-section-tag>
-        </div>
-        <div class="baner">
-            <img class="banner-img" src="/images/sun-logo-left.svg" alt="sun-design-image">
-            <div class="wrapper">
-                <div class="banner-svg-container">
-                    <div class="banner-svg" [innerHTML]="openSvg"></div>
+    <div class="zodiac-wrapper">
+        <div class="all-zodiac">
+            <div class="zodiac-svg" *ngFor="let card of zodiacDetails">
+                <div class="svg-container" [innerHTML]="makeInnerHTMLSafe(card.svg, card.title == zodiac)" [ngClass]="{'open-zodiac-page-svg': card.title == zodiac}" (click)="onZodiacClick(card.title)">
+                    {{card.title}}
                 </div>
             </div>
-            <img class="banner-img" src="/images/sun-logo-right.svg" alt="sun-design-image">
+        </div>
+        
+        <div class="baner-container">
+            <div class="information"> 
+                <div class="information-name">{{zodiac}}</div>
+                <div class=""></div>
+            </div>
+            <div class=""></div>
         </div>
     </div>
     
@@ -77,9 +72,6 @@
     <div class="precise-horoscope">
         <div class="section-tag">
             <app-section-tag [sectionTitle]="presiceHoroscope[openPrecise].name"></app-section-tag>
-        </div>
-        <div class="article">
-            <app-article [article]="article"></app-article>
         </div>
     </div>
     <div class="blog">
