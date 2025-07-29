@@ -13,6 +13,18 @@ import { IArticle } from '../../../interfaces/iarticle';
 import { BlogSection } from "../../blog-section/blog-section";
 import { HoroscopeService } from '../../../services/horoscope.service';
 import { HeaderService } from '../../../services/header.service';
+import { THoroscopeSign } from '../../../types/thoroscope-sign';
+import { HoroscopePersonalise } from "../../horoscope-personalise/horoscope-personalise";
+import { IPersonalisedHoroscope } from '../../../interfaces/ipersonalised-horoscope';
+import { AstrologicalInsightCard } from "../../astrological-insight-card/astrological-insight-card";
+import { IInsightCard } from '../../../interfaces/iinsight-card';
+import { KundliMenuCard } from "../../menu-card-container/cards/kundli-menu-card/kundli-menu-card";
+import { TarotMenuCard } from "../../menu-card-container/cards/tarot-menu-card/tarot-menu-card";
+import { NumerologyMenuCard } from "../../menu-card-container/cards/numerology-menu-card/numerology-menu-card";
+import { LoveMenuCard } from "../../menu-card-container/cards/love-menu-card/love-menu-card";
+import { AstrologySection } from "../../astrology-section/astrology-section";
+import { AboutSection } from "../../about-section/about-section";
+import { FAQSection } from "../../faq-section/faq-section";
 
 type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
 
@@ -20,8 +32,16 @@ type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearl
   selector: 'app-particular',
   imports: [
     CommonModule,
+    HoroscopePersonalise,
     SectionTag,
-    BlogSection,
+    AstrologicalInsightCard,
+    KundliMenuCard,
+    TarotMenuCard,
+    NumerologyMenuCard,
+    LoveMenuCard,
+    AstrologySection,
+    AboutSection,
+    FAQSection
 ],
   templateUrl: './particular.html',
   styleUrl: './particular.css'
@@ -32,14 +52,14 @@ export class Particular implements OnInit{
   @Input() day!: string;
   @Input() openPrecise: number = 0;
   
+  brief: string = "Discover what the stars have in store for you today. Select your zodiac sign and unlock personalized cosmic insights.";
   svgColor!:ISvgColors;
   openSvg!: SafeHtml;
-  article!: IArticle;
-
+  // article!: IArticle;
   horoscope!: any;
+  zodiacSign: THoroscopeSign = 'moon';
 
-  daysOption: TDates[] = ["Yesterday", "Tomorrow", "Today", "Weekly", "Monthly", "Yearly"];
-
+  daysOption: TDates[] = ["Today", "Tomorrow", "Yesterday", "Weekly", "Monthly", "Yearly"];
   zodiacDetails!: IZodiacCard [];
 
   report: IZodiacHoroscope = {
@@ -52,6 +72,49 @@ export class Particular implements OnInit{
       positivity: 85,
     }
   }
+
+  showPreciseHoroscope: boolean = false;
+  opendPreciseIndex: number = 0;
+
+  horoscopeTypes: {name: string, value: number}[] = [
+    {
+      name: "Love",
+      value: 4
+    },
+    {
+      name: "Health",
+      value: 3,
+    },
+    {
+      name: "Career",
+      value: 5
+    },
+    {
+      name: "Finance",
+      value: 4
+    },
+  ]
+
+  insightCard: IInsightCard[] = [
+    {
+      name: "Mars Transit Impact",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      button: "Learn how it affects you",
+      svgName: "mars",
+    },
+    {
+      name: "Mercury Retrograde Guide",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      button: "Learn how it affects you",
+      svgName: "mercury",
+    },
+    {
+      name: "Full Moon Manifestation",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      button: "Learn how it affects you",
+      svgName: "moon",
+    },
+  ];
 
   presiceHoroscope: {name: string, value: string}[] = [
     {
@@ -88,6 +151,39 @@ export class Particular implements OnInit{
     },
   ]
 
+
+   horoscopeType: IPersonalisedHoroscope[] = [
+    {
+      name: "Love",
+      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+      button: "Learn how it affects you",
+      svg: "love",
+      buttonCol: "#FFECF2"
+    },
+    {
+      name: "Health",
+      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+      button: "Learn how it affects you",
+      svg: "health",
+      buttonCol: "#F1FFEA"
+    },
+    {
+      name: "Career",
+      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+      button: "Learn how it affects you",
+      svg: "career",
+      buttonCol: "#EDE7FF"
+    },
+    {
+      name: "Finance",
+      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+      button: "Learn how it affects you",
+      svg: "finance",
+      buttonCol: "#E3EDFF"
+    },
+  ];
+
+
   constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeService: HoroscopeService) {}
   
   ngOnInit(): void {
@@ -97,6 +193,23 @@ export class Particular implements OnInit{
     this.route.paramMap.subscribe(params => {
       this.loadFromRouteIfNeeded(params);
     });
+    // this.setOpenSvg();
+  }
+
+  onPrisiceChange(i: number){
+    this.opendPreciseIndex = i;
+    this.showPreciseHoroscope = true;
+  }
+
+  onSignClick(sign: THoroscopeSign){
+    this.zodiacSign = sign;
+  }
+
+  onDayClick(day: TDates){
+    this.day = day;
+    this.apiCall(this.day);
+    this.setOpenSvg();
+    // this.changeArticle(this.openPrecise);
   }
 
   getSvgFile(i: number){
@@ -104,15 +217,22 @@ export class Particular implements OnInit{
     return svg;
   }
 
-  changeArticle(i:number){
-    if (i<this.presiceHoroscope.length) {
-      this.openPrecise = i;
-      this.article = {
-        title: "",
-        content: this.presiceHoroscope[this.openPrecise].value
-      }
+  daySPrint(day: string){
+    if (this.daysOption.includes(day as TDates) && this.daysOption.indexOf(day as TDates) < 3){
+      return true;
     }
+    return false;
   }
+
+  // changeArticle(i:number){
+  //   if (i<this.presiceHoroscope.length) {
+  //     this.openPrecise = i;
+  //     this.article = {
+  //       title: "",
+  //       content: this.presiceHoroscope[this.openPrecise].value
+  //     }
+  //   }
+  // }
 
   private loadSVGColor() {
     this.svgColor = this.themeService.getSvgColor();
@@ -172,7 +292,7 @@ export class Particular implements OnInit{
   }
   private makeReport(){
     const response = this.horoscope?.response;
-    if (response){
+    if ( this.horoscope?.status == 200 && response ){
       this.report.brief = response?.bot_response;
       this.report.luckyInformation = {
         luckyColor: response?.lucky_color,
@@ -195,7 +315,7 @@ export class Particular implements OnInit{
     this.day = (dayParam as TDates) || 'Today';
 
     this.setOpenSvg();
-    this.changeArticle(this.openPrecise);
+    // this.changeArticle(this.openPrecise);
     
     this.apiCall(this.day);
     console.log(this.horoscope);
@@ -203,7 +323,7 @@ export class Particular implements OnInit{
   }
 
   onZodiacClick(title: TZodiacSign | null){
-    this.router.navigate(['/home/horoscope', this.day, title]);
+    this.router.navigate(['/home/horoscope', title]);
   }
 
   private sanitizeSvg(svg: string, selected: boolean = false) {
@@ -218,11 +338,9 @@ export class Particular implements OnInit{
   }
 
   makeInnerHTMLSafe(svg: string, selected: boolean = false){
+    
     const setSize =this.setSize(svg);
-    if (selected) {
-      return this.sanitizeSvg(setSize, true);
-    }
-    return this.sanitizeSvg(setSize);
+    return this.sanitizeSvg(setSize, selected);
   }
 
   private isValidZodiac(zodiac: string): zodiac is TZodiacSign {
@@ -236,16 +354,23 @@ export class Particular implements OnInit{
     if (!svg){
       return svg;
     }
-    let targets: Array<'primary' | 'secondary' | 'tertiary' | 'stroke'> = ['primary','secondary', 'tertiary' , 'stroke']
-    targets.forEach(t => {
-      if (selected && t == 'secondary'){
-        svg = svg?.replace(new RegExp(t,"g"),this.svgColor['primary']) || '';
-      } else if (selected && t == 'primary'){
-        svg = svg?.replace(new RegExp(t,"g"),this.svgColor['stroke']) || '';
-      } else {
+    let targets: Array<'primary' | 'secondary' | 'tertiary' | 'stroke'> = ['primary','secondary', 'tertiary' , 'stroke'];
+    if (selected){
+      targets.forEach(t => {
+        if (t == 'secondary'){
+          svg = svg?.replace(new RegExp(t,"g"),this.svgColor['primary']) || '';
+        } else if (t == 'primary'){
+          console.log(this.svgColor['stroke'])
+          svg = svg?.replace(new RegExp(t,"g"),this.svgColor['stroke']) || '';
+        } else {
+          svg = svg?.replace(new RegExp(t,"g"),this.svgColor[t]) || '';
+        }
+      });
+    } else {
+      targets.forEach(t => {
         svg = svg?.replace(new RegExp(t,"g"),this.svgColor[t]) || '';
-      }
-    });
+      });
+    }
     return svg;
   }
 

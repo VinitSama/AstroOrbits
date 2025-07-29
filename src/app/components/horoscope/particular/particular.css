@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    padding-bottom: 112px;
 }
 
 .all-zodiac{
@@ -23,9 +24,10 @@
     justify-items: center;
     margin: 0 auto;
     border: var(--horoscope-option-border);
-    background-color: var(--horoscope-option-fill);
+    background-color: #FFF;
     cursor: pointer;
 }
+
 
 .open-zodiac-page-svg{
     border: 1px solid #FFF;
@@ -33,232 +35,250 @@
     box-shadow: 0px 10px 30px 0px rgba(37, 0, 41, 0.1);
 }
 
+
+
 .baner-container{
-    padding: 56px 10px;
-    z-index: 10;
-}
-
-.section-tag{
-    margin-bottom: 32px;
-}
-
-.baner{
-    margin: 0 auto;
-    max-width: 1100px;
-    /* padding: 24px; */
-    max-height: min-content;
     display: flex;
+    max-width: 1200px;
+    width: 100%;
+    padding-right: 80px;
     justify-content: space-between;
-    border-radius: 7px;
-    z-index: 10;
-    background: linear-gradient(180deg, var(--horoscope-banner) 0%, #FFF 100%);
-}
-
-.baner-img{
-    z-index: 10;
-}
-.wrapper {
-    padding: 24px 0;
     align-items: center;
-    z-index: 20;
+    margin: 0 auto;
 }
 
-.banner-svg-container{
-    /* padding-top: 24px; */
+.information{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: radial-gradient(50% 50% at 50% 50%, #FFF0D1 51.92%, #FFD582 100%);
+    gap: 12px;
+    max-width: 533px;
 }
 
-.main-content{
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-    font-weight: 400;
-    font-size: 14px;
+.information-name{
+    font-family: var(--primary-font);
+    font-size: 64px;
+    font-weight: 700;
     color: var(--secondary-color);
 }
 
-.day-container{
-    display: flex;
-    padding: 12px;
-    border-radius: 7px;
-    background-color: var(--secondary-bg-color);
-    margin-bottom: 10px;
+.information-brief{
+    font-size: 16px;
+    font-weight: 400;
 }
 
-.day-options{
-    width: 100%;
-    text-align: center;
-    padding: 16px;
+.banner-svg{
+    background: radial-gradient(50% 50% at 50% 50%, #FFF0D1 51.92%, #FFF 100%);
+    box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.horoscope-wrapper, .horoscope-information, .horoscope-options{
+    display: flex;
+    gap: 24px;
+}
+
+.horoscope-wrapper{
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: -56px;
+    padding-bottom: 80px;
+}
+
+.horoscope-information{
+    background-color: #fff;
     border-radius: 7px;
+    padding: 24px;
+    font-family: var(--secondary-font);
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-size: 400;
+    flex-direction: column;
+}
+
+.horoscope-name{
+    font-family: var(--primary-font);
+    font-size: 24px;
+}
+
+.horoscope-brief{
+    font-size: 14px;
+}
+
+.horoscope-types-container{
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.horoscope-type{
+    width: 100%;
+    border-radius: 7px;
+    background-color: var(--horoscope-banner);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
     cursor: pointer;
 }
 
-.selected-day{
-    background-color: var(--primary-color);
-}
-
-
-.report-container{
+.horoscope-type-stars{
     display: flex;
-    flex-direction: column;
-    padding: 56px 10px;
-    border-radius: 7px;
-    background-color: var(--light-primary-color);
-}
-
-.header{
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 16px;
-}
-
-.header .date{
-    font-size: 16px;
-    font-weight: 400;
-}
-
-.lucky-information-container{
-    display: flex;
-    border-radius: 7px;
-    background-color: #fff;
-    margin: 32px 0;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.lucky-information{
     width: 100%;
+    justify-content: space-between;
+}
+
+.horoscope-lucky{
+    display: flex;
+    gap: 16px;
+    color: var(--fore-dark-grey);
+    width: 100%;
+}
+
+.horoscope-lucky-info{
     display: flex;
     justify-content: space-between;
+    width: 100%;
     padding: 24px;
 }
 
-.information-value{
-    font-weight: 400;
+.horoscope-lucky-name{
+    font-weight: 600;
 }
 
-.precise-horoscope-option{
-    padding: 56px 0;
-}
-
-.precise-option-container{
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
+.horoscope-options{
+    flex-direction: column;
     font-size: 14px;
     font-weight: 400;
-    color: var(--secondary-color);
-    text-wrap: nowrap;
+    font-family: var(--secondary-font);
 }
 
-.precise-option{
+.sign-buttons-container{
+    display: flex;
+    padding: 12px;
+    border-radius: 9999px;
+    border: 1px solid #FFF;
+    background: rgba(255, 255, 255, 0.20);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15.8px);
+    -webkit-backdrop-filter: blur(15.8px);
+}
+
+.sign-button{
+    display: flex;
+    padding: 12px;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    align-items: center;
+    text-wrap: nowrap;
+    width: 156px;
+    cursor: pointer;
+    border-radius: 9999px;
+}
+
+.sign-buttons-svg{
+    padding: 6px;
+    display: flex;
+    border-radius: 50%;
+    background-color: #FFF;
+}
+
+.active-sign{
+    background: var(--primary-color);
+}
+
+.day-option-container{
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: 16px;
+    gap: 16px;
+}
+
+.day-option{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100%;
+    padding: 12px;
     border-radius: 7px;
 }
 
-.option-svg{
+.arrow-svg{
+    display: flex;
+    align-items: center;
+}
+
+.active-day{
+    background: var(--secondary-color);
+    color: #FFF;
+}
+
+.insight-section{
+  width: 100%;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.insight-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 16px;
+}
+
+.insight-card{
+  background: #FFF;
+  box-shadow: 0px 20px 60px 0px rgba(158, 105, 0, 0.05);
+}
+
+.menu-container{
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.card-section{
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.selected-precise{
-    box-shadow: 0px 10px 30px 0px var(--horoscope-option-box-shadow);
-    background-color: var(--horoscope-option-border);
+.card-wrapper{
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.precise-horoscope{
-    padding: 56px 0;
-    background-color: var(--secondary-bg-color);
-}
-.article{
-    max-width: 1100px;
+.special-click-link{
+    display: flex;
+    gap: 8px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
     margin: 0 auto;
-    padding: 0 10px;
 }
-.blog{
-    padding: 56px 0;
+
+.link-svg{
+    display: flex;
+    align-content: center;
+}
+
+.link{
+    cursor: pointer;
+    font-weight: 700;
+    padding-left: 6px;
 }
 
 @media (max-width: 770px) {
-    .all-zodiac{
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        -ms-overflow-style: none;
-        scrollbar-width: none; 
-    }
-
-    .all-zodiac::-webkit-scrollbar {
-        display: none;
-    }
-
-    .zodiac-svg{
-        gap: 10px   ;
-    }
-    
-    .lucky-information-container{
-        /* overflow-x: auto;
-        flex-wrap: nowrap;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        text-wrap: nowrap; */
-        
-        flex-direction: column;
-        margin: 32px 10px;
-    }
-    
-    .lucky-information-container::-webkit-scrollbar {
-        display: none;
-    }
-    .information-value{
-        margin-left: 30px;
-    }
-}
-
-@media (max-width:570px) {
-    .banner-img{
-        display: none;
-    }
-    .baner{
-        background: none;
-    }
-    .wrapper{
-        margin: 0 auto;
-    }
-
-    .day-container{
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        margin: 0 10px;
-    }
-
-    .day-container::-webkit-scrollbar {
-        display: none;
-    }
-    .precise-option-container{
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-        
-    }
-
-    .precise-option-container::-webkit-scrollbar {
-        display: none;
-    }
 }

@@ -66,4 +66,5 @@
     font-weight: 500;
     border-radius: 7px;
     background-color: var(--button-col);
+    cursor: pointer;
 }

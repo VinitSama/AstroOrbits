@@ -43,20 +43,34 @@ export class Breadcrumbs implements OnInit {
         label = label(routeSnapshot);
       }
 
-      if (!label || label == "0"){
+      if (!label || label == "0") {
         return this.buildBreadcrumbs(child, url, breadcrumbs);
       }
 
-      if(routeUrl){
+      if (routeUrl) {
         url += `/${routeUrl}`;
       }
       const skip = routeSnapshot.data['skipBreadcrumb'];
-      breadcrumbs.push({
+      const skipPrevious = routeSnapshot.data['skipPreviousBreadcrumb'];
+      // Make a copy to avoid mutating the original array
+      let newBreadcrumbs = breadcrumbs.slice();
+      if (skipPrevious && newBreadcrumbs.length > 0) {
+        newBreadcrumbs.pop();
+      }
+
+      // Check if breadcrumb with same label and url already exists
+      const exists = newBreadcrumbs.some(bc => bc.label === label && bc.url === (skip ? null : url));
+      if (exists || skip) {
+        // Skip adding duplicate or skipped breadcrumbs
+        return this.buildBreadcrumbs(child, url, newBreadcrumbs);
+      }
+
+      newBreadcrumbs.push({
         label,
         url: skip ? null : url,
       });
 
-      return this.buildBreadcrumbs(child, url, breadcrumbs);
+      return this.buildBreadcrumbs(child, url, newBreadcrumbs);
     }
 
     return breadcrumbs;

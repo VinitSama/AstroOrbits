@@ -19,9 +19,13 @@
 } */
 
 .breadcrumb-container{
-    margin: 24px 0;
+    padding: 24px 0;
     font-family: var(--secondary-font);
 }
+
+/* .set-color{
+  background-color: var(--primary-color);
+} */
 
 .breadcrumb-list{
     display: flex;

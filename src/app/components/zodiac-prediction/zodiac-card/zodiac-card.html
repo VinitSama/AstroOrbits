@@ -1,4 +1,4 @@
-<div class="zodiac-card" [routerLink]="['/home/horoscope', day, zodiacCard.title]" (click)="smoothScrolling()" [ngStyle]="{'--box-size': boxSize}" [ngClass]="{'mar-bot': !isCircle}">
+<div class="zodiac-card" [routerLink]="['/home/horoscope', zodiacCard.title]" (click)="smoothScrolling()" [ngStyle]="{'--box-size': boxSize}" [ngClass]="{'mar-bot': !isCircle}">
     <div class="svg-container" [innerHTML]="safeSvg" [ngClass]="{'circle': isCircle}"></div>
     <div class="title" *ngIf="showName">
         {{zodiacCard.title}}

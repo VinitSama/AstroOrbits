@@ -30,7 +30,13 @@ export class PanchangMenuCard implements OnInit {
     width: "100%",
   };
   
-  panchang!: any;
+  panchang= {
+      tithi: "",
+      month: "",
+      day:"",
+      nakshatra: "",
+      samvat: "",
+    }
 
   constructor(private panchangService: PanchangService, private sanitizer: DomSanitizer) { }
 

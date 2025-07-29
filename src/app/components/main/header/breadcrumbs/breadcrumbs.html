@@ -1,4 +1,4 @@
-<div class="breadcrumb-container" *ngIf="showBreadcrumbs">
+<div class="breadcrumb-container" [ngClass]="{'set-color': showColor}" *ngIf="showBreadcrumbs">
   <ul class="breadcrumb-list">
     <li *ngFor="let crumb of breadcrumbs; let last = last" class="breadcrumb-item">
         <span *ngIf="crumb.url && !crumb.url" class="label non-clickable">{{ crumb.label }}</span>

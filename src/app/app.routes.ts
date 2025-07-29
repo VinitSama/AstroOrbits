@@ -49,21 +49,31 @@ export const routes: Routes = [
                         data: {breadcrumb: null},
                     },
                     {
-                        path: ':day',
+                        path: 'd/:day',
                         data: {
-                            breadcrumb: (route: ActivatedRouteSnapshot) => capitalize(route.params['day']),
+                            layout: 'main',
                             skipBreadcrumb: true,
                         },
                         children: [
                             {
-                                path: ':zodiac',
+                                path: '',
+                                loadComponent: () => import('./components/horoscope/horoscope').then(m => m.Horoscope),
+                            },
+                        ]
+                    },
+                    {
+                        path: ':zodiac',
+                        children: [
+                            {
+                                path: '',
                                 loadComponent: () =>
                                     import('./components/horoscope/particular/particular').then(m => m.Particular),
                                 data: 
                                 {
                                     layout: 'main',
                                     breadcrumb: (route: ActivatedRouteSnapshot) =>
-                                    `${capitalize(route.params['zodiac'])} Free Horoscope`,
+                                    `${capitalize(route.params['zodiac'])}`,
+                                    skipPreviousBreadcrumb: true,
                                 }
                             }
                         ]

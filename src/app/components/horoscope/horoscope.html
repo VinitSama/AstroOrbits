@@ -1,7 +1,9 @@
 <div class="horoscope-page-container">
     <div class="section-title">
-        <app-section-tag [sectionTitle]="zodiacSectionTtitle" [subHeadCol]="true" [subHeading]="zodiacSectionBrief"></app-section-tag>
+        <app-section-tag [sectionTitle]="zodiacSectionTtitle" [subHeadCol]="true" [subHeading]="showDayDetails ? '' : zodiacSectionBrief"></app-section-tag>
+        <div class="day-selector" *ngIf="showDayDetails">{{selectedDayBrief}}</div>
     </div>
+
     <div class="horoscope-card-wrapper">
         <div class="horoscope-cards">
             <div class="sign-toggle">
@@ -53,9 +55,9 @@
                 </div>
                 <app-click-link></app-click-link>
             </div>
-            <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true" [day]="day"></app-zodiac-prediction>
+            <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true"></app-zodiac-prediction>
         </div>
-        <div class="special-click-link">
+        <div class="special-click-link" *ngIf="!showDayDetails">
             <div class="link-svg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
                     <g clip-path="url(#clip0_836_1190)">
@@ -111,11 +113,13 @@
     </div>
     <div class="day-selector-wrapper">
         <div class="day-selector-container">
-            <div class="day-selector" *ngFor="let d of daySelector">
-                <div class="selector-name">{{d.name}}</div>
-                <div class="selector-brief">{{d.brief}}</div>
-                <div class="read-more">Read More</div>
-            </div>
+            <ng-container *ngFor="let d of daySelector">
+                <div class="day-selector" *ngIf="selectedDay !== d.name" >
+                    <div class="selector-name">{{d.name}}</div>
+                    <div class="selector-brief">{{d.brief}}</div>
+                    <div class="read-more" (click)="onDaySelect(d.name)">Read More</div>
+                </div>
+            </ng-container>
         </div>
     </div>
     <app-horoscope-personalise [horoscope]="horoscopeType"></app-horoscope-personalise>

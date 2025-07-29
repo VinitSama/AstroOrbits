@@ -22,6 +22,7 @@ import { TarotMenuCard } from "../menu-card-container/cards/tarot-menu-card/taro
 import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-menu-card";
 import { IInsightCard } from '../../interfaces/iinsight-card';
 import { AstrologicalInsightCard } from "../astrological-insight-card/astrological-insight-card";
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-horoscope',
@@ -52,7 +53,9 @@ export class Horoscope implements OnInit {
   zodiacSectionTtitle = 'Horoscope';
   zodiacSectionBrief = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   blogSectionHeading = "A Spot to start your learning";
-  day = "Today";
+  showDayDetails: boolean = false;
+  selectedDay: string = "";
+  selectedDayBrief: string = "";
   selectedSign: THoroscopeSign = "moon";
   trendingTags: {
     name: string;
@@ -100,7 +103,6 @@ export class Horoscope implements OnInit {
       brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     },
   ];
-  selectedDay: string = "";
   horoscopeType: IPersonalisedHoroscope[] = [
     {
       name: "Love",
@@ -151,23 +153,55 @@ export class Horoscope implements OnInit {
       svgName: "moon",
     },
   ];
-  constructor(private themeService: ThemeService, private headerService: HeaderService) {}
+  constructor(private themeService: ThemeService, private headerService: HeaderService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
     this.headerService.setColorSubject(false);
+    this.route.paramMap.subscribe(params => {
+      this.loadFromRouteIfNeeded(params);
+    });
+  }
+
+  private loadFromRouteIfNeeded(params: ParamMap){
+    const dayParam = params.get('day');
+    if (dayParam) {
+      this.selectedDay = dayParam;
+      this.showDayDetails = true;
+      this.zodiacSectionTtitle = `${this.selectedDay} Horoscope`;
+      this.selectedDayBrief = this.daySelector.find(d => d.name === this.selectedDay)?.brief || '';
+    } else {
+      this.selectedDay = "";
+      this.showDayDetails = false;
+      this.zodiacSectionTtitle = 'Horoscope';
+    }
   }
 
   private loadSVGColor() {
     this.svgColor = this.themeService.getSvgColor();
   }
 
-  onDayChange(day: string) {
-    this.day = day;
-  }
+  // onDayChange(day: string) {
+  //   this.day = day;
+  // }
 
   changeSign(sign: THoroscopeSign){
     this.selectedSign = sign;
+  }
+
+  onDaySelect(day: string) {
+    this.selectedDay = day;
+    console.log("Selected Day: ", this.selectedDay);
+    this.router.navigate(['/home/horoscope', 'd', this.selectedDay]);
+    this.smoothScrolling();
+  }
+
+  private smoothScrolling():void {
+    const element = document.getElementById('header-logo');
+
+    if( element ){
+      element.scrollIntoView({behavior: 'smooth', block: 'start'})
+    }
   }
 
 }
