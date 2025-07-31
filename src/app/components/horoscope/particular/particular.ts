@@ -9,13 +9,9 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { SectionTag } from "../../section-tag/section-tag";
-import { IArticle } from '../../../interfaces/iarticle';
-import { BlogSection } from "../../blog-section/blog-section";
 import { HoroscopeService } from '../../../services/horoscope.service';
 import { HeaderService } from '../../../services/header.service';
 import { THoroscopeSign } from '../../../types/thoroscope-sign';
-import { HoroscopePersonalise } from "../../horoscope-personalise/horoscope-personalise";
-import { IPersonalisedHoroscope } from '../../../interfaces/ipersonalised-horoscope';
 import { AstrologicalInsightCard } from "../../astrological-insight-card/astrological-insight-card";
 import { IInsightCard } from '../../../interfaces/iinsight-card';
 import { KundliMenuCard } from "../../menu-card-container/cards/kundli-menu-card/kundli-menu-card";
@@ -25,6 +21,8 @@ import { LoveMenuCard } from "../../menu-card-container/cards/love-menu-card/lov
 import { AstrologySection } from "../../astrology-section/astrology-section";
 import { AboutSection } from "../../about-section/about-section";
 import { FAQSection } from "../../faq-section/faq-section";
+import { IPersonalisedContainer } from '../../../interfaces/ipersonalised-container';
+import { PersonalizeSection } from "../../personalize-section/personalize-section";
 
 type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
 
@@ -32,7 +30,6 @@ type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearl
   selector: 'app-particular',
   imports: [
     CommonModule,
-    HoroscopePersonalise,
     SectionTag,
     AstrologicalInsightCard,
     KundliMenuCard,
@@ -41,7 +38,8 @@ type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearl
     LoveMenuCard,
     AstrologySection,
     AboutSection,
-    FAQSection
+    FAQSection,
+    PersonalizeSection
 ],
   templateUrl: './particular.html',
   styleUrl: './particular.css'
@@ -152,36 +150,40 @@ export class Particular implements OnInit{
   ]
 
 
-   horoscopeType: IPersonalisedHoroscope[] = [
-    {
-      name: "Love",
-      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
-      button: "Learn how it affects you",
-      svg: "love",
-      buttonCol: "#FFECF2"
-    },
-    {
-      name: "Health",
-      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
-      button: "Learn how it affects you",
-      svg: "health",
-      buttonCol: "#F1FFEA"
-    },
-    {
-      name: "Career",
-      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
-      button: "Learn how it affects you",
-      svg: "career",
-      buttonCol: "#EDE7FF"
-    },
-    {
-      name: "Finance",
-      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
-      button: "Learn how it affects you",
-      svg: "finance",
-      buttonCol: "#E3EDFF"
-    },
-  ];
+  horoscopeType: IPersonalisedContainer = {
+    heading: "Get your Personalised Horoscope",
+    subHeading: "",
+    cards: [
+      {
+        name: "Love",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "love",
+        buttonCol: "#FFECF2"
+      },
+      {
+        name: "Health",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "health",
+        buttonCol: "#F1FFEA"
+      },
+      {
+        name: "Career",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "career",
+        buttonCol: "#EDE7FF"
+      },
+      {
+        name: "Finance",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "finance",
+        buttonCol: "#E3EDFF"
+      },
+    ]
+  };
 
 
   constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeService: HoroscopeService) {}

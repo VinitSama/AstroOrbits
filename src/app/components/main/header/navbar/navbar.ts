@@ -227,10 +227,12 @@ export class Navbar {
     if (page == 'home') {
       this.router.navigate([page])
       this.selected = i;
-    }else if (page == 'numerology'){
-      this.router.navigate(['home',page,"0","0"])
-      this.selected = i;
-    } else if (page){
+    }
+    // else if (page == 'numerology'){
+    //   this.router.navigate(['home',page,"0","0"])
+    //   this.selected = i;
+    // } 
+    else if (page){
       this.router.navigate(['home', page]);
       this.selected = i;
     }

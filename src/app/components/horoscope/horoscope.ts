@@ -2,18 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { ThemeService } from '../../services/theme.service';
 import { ZodiacPrediction } from "../zodiac-prediction/zodiac-prediction";
-import { IArticle } from '../../interfaces/iarticle';
 import { HeaderService } from '../../services/header.service';
 import { SectionTag } from "../section-tag/section-tag";
 import { THoroscopeSign } from '../../types/thoroscope-sign';
 import { ClickLink } from "../click-link/click-link";
 import { CommonModule } from '@angular/common';
-import { IPersonalisedHoroscope } from '../../interfaces/ipersonalised-horoscope';
-import { HoroscopePersonalise } from "../horoscope-personalise/horoscope-personalise";
 import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
 import { BlogSection } from "../blog-section/blog-section";
 import { AstrologySection } from "../astrology-section/astrology-section";
-import { ReviewSection } from "../review-section/review-section";
 import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
 import { KundliMenuCard } from "../menu-card-container/cards/kundli-menu-card/kundli-menu-card";
@@ -23,6 +19,10 @@ import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-m
 import { IInsightCard } from '../../interfaces/iinsight-card';
 import { AstrologicalInsightCard } from "../astrological-insight-card/astrological-insight-card";
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ITrendingContainer } from '../../interfaces/itrending-tag';
+import { TrendingTags } from "../trending-tags/trending-tags";
+import { IPersonalisedContainer } from '../../interfaces/ipersonalised-container';
+import { PersonalizeSection } from "../personalize-section/personalize-section";
 
 @Component({
   selector: 'app-horoscope',
@@ -31,18 +31,18 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
     SectionTag,
     ClickLink,
     CommonModule,
-    HoroscopePersonalise,
     RudrakshSection,
     BlogSection,
     AstrologySection,
-    ReviewSection,
     AboutSection,
     FAQSection,
     KundliMenuCard,
     NumerologyMenuCard,
     TarotMenuCard,
     LoveMenuCard,
-    AstrologicalInsightCard
+    AstrologicalInsightCard,
+    TrendingTags,
+    PersonalizeSection
 ],
   templateUrl: './horoscope.html',
   styleUrl: './horoscope.css'
@@ -57,31 +57,20 @@ export class Horoscope implements OnInit {
   selectedDay: string = "";
   selectedDayBrief: string = "";
   selectedSign: THoroscopeSign = "moon";
-  trendingTags: {
-    name: string;
-    percent: number;
-  }[] = [
-    {
-      name: "Sagittarius",
-      percent: 16.26
-    },
-    {
-      name: "Libra",
-      percent: 22.38
-    },
-    {
-      name: "Sagittarius",
-      percent: 16.26
-    },
-    {
-      name: "Sagittarius",
-      percent: 16.26
-    },
-    {
-      name: "Sagittarius",
-      percent: 16.26
-    },
-  ];
+  trendingTags: ITrendingContainer = 
+  {
+    heading: "Trending near you",
+    tags: [
+      { name: "Sagittarius", number: 16.26 },
+      { name: "Libra", number: 22.38 },
+      { name: "Sagittarius", number: 16.26 },
+      { name: "Sagittarius", number: 16.26 },
+      { name: "Sagittarius", number: 16.26 }
+    ],
+    showPercentage: true,
+    checkMore: false,
+  };
+
   daySelector: {
     name: string;
     brief: string;
@@ -103,36 +92,40 @@ export class Horoscope implements OnInit {
       brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     },
   ];
-  horoscopeType: IPersonalisedHoroscope[] = [
-    {
-      name: "Love",
-      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
-      button: "Learn how it affects you",
-      svg: "love",
-      buttonCol: "#FFECF2"
-    },
-    {
-      name: "Health",
-      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
-      button: "Learn how it affects you",
-      svg: "health",
-      buttonCol: "#F1FFEA"
-    },
-    {
-      name: "Career",
-      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
-      button: "Learn how it affects you",
-      svg: "career",
-      buttonCol: "#EDE7FF"
-    },
-    {
-      name: "Finance",
-      brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
-      button: "Learn how it affects you",
-      svg: "finance",
-      buttonCol: "#E3EDFF"
-    },
-  ];
+  horoscopeType: IPersonalisedContainer = {
+    heading: "Get your Personalised Horoscope",
+    subHeading: "",
+    cards: [
+      {
+        name: "Love",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "love",
+        buttonCol: "#FFECF2"
+      },
+      {
+        name: "Health",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "health",
+        buttonCol: "#F1FFEA"
+      },
+      {
+        name: "Career",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "career",
+        buttonCol: "#EDE7FF"
+      },
+      {
+        name: "Finance",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "finance",
+        buttonCol: "#E3EDFF"
+      },
+    ]
+  };
   insightCard: IInsightCard[] = [
     {
       name: "Mars Transit Impact",

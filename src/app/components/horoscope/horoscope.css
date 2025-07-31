@@ -112,42 +112,6 @@
     padding-left: 6px;
 }
 
-.trending-wrapper{
-  width: 100%;
-  padding: 32px 0;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-color);
-}
-
-.tag-container{
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  font-family: var(--secondary-font);
-}
-
-.tag-svg{
-  display: flex;
-  align-items: center;
-}
-
-.header-tag{
-  display: flex;
-  padding: 8px;
-  gap: 13px;
-}
-
-.normal-tag{
-  padding: 8px 16px;
-  background: rgba(36, 0, 40, 0.10);
-  color: var(--secondary-color);
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-}
-
-
 .day-selector-wrapper{
   width: 100%;
   padding: 48px 0;

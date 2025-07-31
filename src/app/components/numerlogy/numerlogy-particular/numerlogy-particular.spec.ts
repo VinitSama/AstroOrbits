@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HoroscopePersonalise } from './horoscope-personalise';
+import { NumerlogyParticular } from './numerlogy-particular';
 
-describe('HoroscopePersonalise', () => {
-  let component: HoroscopePersonalise;
-  let fixture: ComponentFixture<HoroscopePersonalise>;
+describe('NumerlogyParticular', () => {
+  let component: NumerlogyParticular;
+  let fixture: ComponentFixture<NumerlogyParticular>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HoroscopePersonalise]
+      imports: [NumerlogyParticular]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HoroscopePersonalise);
+    fixture = TestBed.createComponent(NumerlogyParticular);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

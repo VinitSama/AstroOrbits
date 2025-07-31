@@ -1,0 +1,14 @@
+<div class="card-container" [ngClass]="{'larger': type == 2}">
+    <div class="graphic-element">
+        <img src="./images/numerology/Numerology_Graphic_Elements.svg" alt="graphic element">
+    </div>
+    <div class="container"> 
+        <ng-container *ngIf="type == 1">
+            <div class="number">{{num}}</div>
+            <div class="sub">Number {{num}}</div>
+        </ng-container>
+        <ng-container *ngIf="type == 2">
+            <div class="selected-num">{{num}}</div>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="particular-page">
+    <div class="decorative-bg">
+        <div class="num-option-wrapper">
+            <div class="num-option" *ngFor="let n of numOptions" (click)="setNumber(n)">
+                <div class="num-option-icon" [ngClass]="{'selected-num-option': selectedNum === n}">
+                    <div>{{n}}</div></div>
+                <div class="num-option-name">Number {{n}}</div>
+            </div>
+        </div>
+        <div class="selected-num-wrapper">
+            <div class="selected-num-container">
+                <div class="selected-num">Number {{selectedNum}}</div>
+                <div class="selected-num-nature-container">
+                    <div class="selected-num-nature" *ngFor="let n of nature">{{n}}</div>
+                </div>
+            </div>
+            <app-numerlogy-card [num]="selectedNum" [type]="2"></app-numerlogy-card>
+        </div>
+    </div>
+    <div class="numerology-content-wrapper">
+        <div class="numerology-content-container">
+            <div class="numerology-info-container">
+                <div class="numerology-info-name">Number {{selectedNum}}</div>
+                <div class="numerology-info-brief">{{report.breif}}</div>
+                <div class="numerology-lucky-container">
+                    <div class="numerology-lucky-card" *ngFor="let  l of report.lucky">
+                        <div class="numerology-lucky-name">{{l.name}}</div>
+                        <div class="numerology-lucky-value">{{l.value}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="numerlogy-types-container">
+                <div class="numerlogy-types-card" *ngFor="let t of numerologyTypes">
+                    <div class="numerlogy-types-svg">
+                        <img [src]="`./images/numerology/${t}.svg`" [alt]="t">
+                    </div>
+                    <div class="numerlogy-types-name">{{t}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="day-container">
+            <div class="day-card" *ngFor="let d of dayOptions" [ngClass]="{'selected-day': selectedDay === d}" (click)="setDay(d)">
+                <div class="day-card-name">{{d}}</div>
+                <div class="day-card-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                        <path d="M2.91699 7.5H11.0837" [attr.stroke]="selectedDay !== d ? svgColor.secondary : '#fff'" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 3.41669L11.0833 7.50002L7 11.5834" [attr.stroke]="selectedDay !== d ? svgColor.secondary : '#fff'" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-personalize-section [personalisedInfo]="personaliseInfo"></app-personalize-section>
+    <div class="page-menu-wrapper">
+        <app-section-tag [sectionTitle]="'Still feel something is missing? Try'"></app-section-tag>
+        <div class="page-menu-container">
+            <app-kundli-menu-card></app-kundli-menu-card>
+            <app-horoscope-menu-card [svgColor]="svgColor"></app-horoscope-menu-card>
+            <app-love-menu-card></app-love-menu-card>
+        </div>
+    </div>
+    <div class="section">
+        <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
+    </div>
+    <div class="section">
+        <app-about-section></app-about-section>
+    </div>
+    <div class="last-section">
+        <app-faq-section></app-faq-section>
+    </div>
+</div>

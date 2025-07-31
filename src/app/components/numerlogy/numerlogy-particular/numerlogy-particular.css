@@ -1,0 +1,235 @@
+.decorative-bg{
+    background: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 112px;
+}
+
+.num-option-wrapper{
+    padding: 24px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.num-option{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.num-option-icon{
+    background: #fff;
+    border-radius: 50px;
+    border: 1px solid #FFF;
+    width: 56px;
+    height: 56px;
+    font-family: var(--primary-font);
+    color: var(--secondary-color);
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.num-option-icon div{
+    margin-top: 6px;
+}
+
+.num-option-name{
+    color: var(--option-color);
+    font-family: var(--secondary-font);
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.selected-num-option{
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+.selected-num-wrapper{
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: space-between;
+    padding-right: 80px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.selected-num-container{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.selected-num{
+    font-family: var(--primary-font);
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.selected-num-nature-container{
+    display: flex;
+    gap: 12px;
+}
+
+.selected-num-nature{
+    font-size: 12px;
+    font-weight: 400;
+    padding: 8px 12px;
+    border-radius: 99999px;
+    border: 1px solid #000;
+}
+
+.numerology-content-wrapper{
+    max-width: 1200px;
+    width: 100%;
+    margin: -56px auto 0;
+    display: flex;
+    gap: 24px;
+}
+
+.numerology-content-container{
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+}
+
+.numerology-info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    color: var(--secondary-color);
+    font-weight: 400;
+    font-family: var(--secondary-font);
+    border-radius: 7px;
+    background: #FFF;
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.05);
+}
+
+.numerology-info-name{
+    font-family: var(--primary-font);
+    font-size: 24px;
+}
+
+.numerology-lucky-container{
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.numerology-lucky-card{
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border-radius: 7px;
+    width: 100%;
+    background-color: var(--horoscope-banner);
+}
+
+.numerology-lucky-value{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+.numerlogy-types-container{
+    display: flex;
+    gap: 24px;
+}
+
+.numerlogy-types-card{
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 7px;
+    width: 100%;
+    background-color: #fff;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.numerlogy-types-svg{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--horoscope-banner);
+}
+
+.numerlogy-types-name{
+    font-family: var(--secondary-font);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--fore-dark-grey);
+}
+
+.day-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 7px;
+    background: #fff;
+    max-width: 337px;
+    width: 100%;
+    height: fit-content;
+}
+
+.day-card{
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--secondary-font);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--secondary-color);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.day-card-svg{
+    display: flex;
+    align-items: center;
+}
+
+.selected-day{
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+.page-menu-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 80px 0;
+}
+
+.page-menu-container{
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.last-section{
+    padding-bottom: 80px;
+}

@@ -134,23 +134,36 @@ export const routes: Routes = [
                 data: {layout: 'main', breadcrumb: "Numerology"},
                 children: [
                     {
-                        path: ':option',
-                        data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot) => {
-                            const option = capitalize(route.params['option']);
-                            return !option ? null : option;
-                        } },
-                        children: [
-                            {
-                                path: ':num',
-                                loadComponent: () => import('./components/numerlogy/numerlogy').then(m => m.Numerlogy),
-                                data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot)=> {
-                                    const num = route.params['num'];
-                                    return !num ? null : num;
-                                }}
-                            }
-                        ]
-
+                        path: '',
+                        loadComponent: () => import('./components/numerlogy/numerlogy').then(m => m.Numerlogy),
+                        data: {breadcrumb: "Numerology"},
                     },
+                    // {
+                    //     path: ':option',
+                    //     data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot) => {
+                    //         const option = capitalize(route.params['option']);
+                    //         return !option ? null : option;
+                    //     } },
+                    //     children: [
+                    //         {
+                    //             path: ':num',
+                    //             loadComponent: () => import('./components/numerlogy/numerlogy').then(m => m.Numerlogy),
+                    //             data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot)=> {
+                    //                 const num = route.params['num'];
+                    //                 return !num ? null : num;
+                    //             }}
+                    //         }
+                    //     ]
+
+                    // },
+                    {
+                        path: ':num',
+                        loadComponent: () => import('./components/numerlogy/numerlogy-particular/numerlogy-particular').then(m => m.NumerlogyParticular),
+                        data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot) => {
+                            const num = route.params['num'];
+                            return `Number ${!num ? null : num}`;
+                        }}
+                    }
                 ]
             },
             {

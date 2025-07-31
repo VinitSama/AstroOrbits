@@ -1,184 +1,172 @@
-.numerlogy-page{
-    padding: 0 10px;
-}
-.num-option-wrapper{
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 56px 0;
-}
-
 .section-tag{
-    margin-bottom: 32px;
+    padding: 48px 0;
 }
 
-.num-option-container{
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-}
-
-.num-option{
-    padding: 12px;
-    background-color: var(--light-primary-color);
-    color: var(--numerology-num-option);
-    border-radius: 7px;
-    cursor: pointer;
-}
-
-.selected-num{
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-}
-
-.num-option-line{
-    display: flex;
-    justify-content: center;
-    font-size: 32px;
-    font-weight: 600;
-    align-items: self-start;
-}
-
-.star {
-    margin-top: 30px;
-}
-
-.num-option-sub{
-    font-weight: 600;
-    font-size: 12px;
-}
-
-.report-section-wrapper{
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 56px 0;
-    font-size: 14px;
-    font-size: 400;
-}
-
-.date-option-container{
-    display: flex;
-    background-color: var(--secondary-bg-color);
-    border-radius: 7px;
-    text-align: center;
-    color: var(--tertiary-color);
-    margin-bottom: 8px;
-    padding: 12px;
-}
-
-.date-option{
-    width: 100%;
-    padding: 16px;
-    cursor: pointer;
-    border-radius: 7px;
-}
-
-.selected-date{
-    background: var(--primary-color);
-}
-
-.report-container{
+.menu-wrapper{
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    border-radius: 7px;
-    background-color: var(--light-primary-color);
-    color: var(--secondary-color);
-    padding: 56px 40px;
+    gap: 32px;
+    padding-bottom: 56px;
 }
 
-.heading{
+.menu-container{
     display: flex;
+    gap: 48px;
+    margin: auto;
+}
+
+
+.form-section{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--form-label);
+}
+
+input{
+    padding: 12px;
+    border: 1px solid var(--form-border);
+    outline: none;
+    font-size: 12px;
+    font-weight: 400;
+    width: 100%;
+    border-radius: 7px;
+}
+input::placeholder {
+  color: var(--placeholder)
+}
+
+.submit{
+    cursor: pointer;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 7px;
+    border: 1px solid var(--horoscope-banner);
+    background-color: var(--primary-color);
+    width: 100%;
+}
+
+.numerology-card-conatiner{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 368px;
+}
+
+.special-click-link{
+    display: flex;
+    gap: 8px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+.link-svg{
+    display: flex;
+    align-content: center;
+}
+
+.link{
+    cursor: pointer;
+    font-weight: 700;
+    padding-left: 6px;
+}
+
+.master-number-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 80px;
+}
+
+.master-number-container{
+    display: flex;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+}
+
+.master-number-card{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.05);
+}
+
+.master-number-info-wrapper{
+    display: flex;
+    gap: 24px;
+    font-weight: 400;
+}
+
+.master-number-info{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.master-number-name{
+    font-size: 24px;
+    font-family: var(--primary-font);
+}
+
+.master-number-breif{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.master-number-button{
+    background: var(--primary-color);
+    font-weight: 500;
+    font-size: 12px;
+    padding: 6px 12px;
+    height: 40px;
+    border-radius: 7px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-menu-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 80px 0;
+}
+
+.page-menu-container{
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
     justify-content: space-between;
 }
 
-.report-name{
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.other-option-wrapper{
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 32px 40px 56px 40px;
-}
-
-.other-option-container{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 16px;
-}
-
-.other-option{
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-    cursor: pointer;
-}
-
-.svg-option{
-    padding: 40px;
-    width: 130px;
-    height: 130px;
-    margin: auto;
-    border-radius: 50%;
-    background: var(--primary-color);
-}
-
-.option-name{
-    text-align: center;
-    font: 600 16px;
-    color: var(--secondary-color);
-}
-
-.article-container{
-    padding: 56px 0;
-    background: var(--secondary-bg-color);
-}
-
-.article{
-    max-width: 1100px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.blog{
-    padding: 56px 0  ;
+.last-section{
+    padding-bottom: 80px;
 }
 
 @media (max-width:990px) {
-    .other-option-wrapper{
-        padding: 0;
-    }
-    .other-option-container{
-        flex-wrap: wrap;
-        max-width: 570px;
-        margin: 0 auto;
-    }
-}
-
-@media (max-width:770px) {
-    .num-option-container{
-        justify-content: unset;
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        -ms-overflow-style: none;
-        scrollbar-width: none; 
-    }
-
-    .num-option-container::-webkit-scrollbar {
-        display: none;
-    }
-    .date-option-container{
-        justify-content: unset;
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        -ms-overflow-style: none;
-        scrollbar-width: none; 
-    }
-
-    .date-option-container::-webkit-scrollbar {
-        display: none;
-    }
+    
 }

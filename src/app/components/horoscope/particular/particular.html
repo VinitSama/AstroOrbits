@@ -50,8 +50,8 @@
             </div>
         </div>
         <div *ngIf="showPreciseHoroscope" class="horoscope-information">
-            <div class="horoscope-name">{{horoscopeType[opendPreciseIndex].name}}</div>
-            <div class="horoscope-brief">{{horoscopeType[opendPreciseIndex].brief}}</div>
+            <div class="horoscope-name">{{horoscopeType.cards[opendPreciseIndex].name}}</div>
+            <div class="horoscope-brief">{{horoscopeType.cards[opendPreciseIndex].brief}}</div>
         </div>
         <div class="horoscope-options">
             <div class="sign-buttons-container">
@@ -150,7 +150,7 @@
         </div>
     </div>
 
-    <app-horoscope-personalise [horoscope]="horoscopeType" (horoscopeIndexEmitter)="onPrisiceChange($event)"></app-horoscope-personalise>
+    <app-personalize-section [personalisedInfo]="horoscopeType" (horoscopeIndexEmitter)="onPrisiceChange($event)"></app-personalize-section>"
 
     <div class="menu-container">
         <div class="section-tag">

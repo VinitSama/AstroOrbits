@@ -1,19 +1,19 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IPersonalisedHoroscope } from '../../interfaces/ipersonalised-horoscope';
 import { CommonModule } from '@angular/common';
 import { SectionTag } from "../section-tag/section-tag";
+import { IPersonalisedContainer } from '../../interfaces/ipersonalised-container';
 
 @Component({
-  selector: 'app-horoscope-personalise',
+  selector: 'app-personalize-section',
   imports: [
-    CommonModule, 
+    CommonModule,
     SectionTag
-  ],
-  templateUrl: './horoscope-personalise.html',
-  styleUrl: './horoscope-personalise.css'
+],
+  templateUrl: './personalize-section.html',
+  styleUrl: './personalize-section.css'
 })
-export class HoroscopePersonalise {
-  @Input() horoscope!: IPersonalisedHoroscope[];
+export class PersonalizeSection {
+  @Input() personalisedInfo!: IPersonalisedContainer;
   @Output() horoscopeIndexEmitter = new EventEmitter<number>();
 
   onClick(index: number): void {
