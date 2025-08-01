@@ -1,5 +1,10 @@
-.section-tag{
+.section-title{
     padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: auto;
+    max-width: 1200px;
 }
 
 .menu-wrapper{
@@ -165,6 +170,106 @@ input::placeholder {
 
 .last-section{
     padding-bottom: 80px;
+}
+
+
+.day-selector-wrapper{
+  width: 100%;
+  padding: 48px 0;
+}
+
+.day-selector-container{
+  max-width: 1200px;
+  display: flex;
+  gap: 16px;
+  justify-self: center;
+  font-family: var(--secondary-font);
+}
+
+.day-selector{
+  width: 100%;
+  border-radius: 7px;
+  border-top: 5px solid var(--primary-color);
+  background: #FFF;
+  box-shadow: 0px 20px 60px 0px hsla(40, 100%, 31%, 0.05);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--secondary-color);
+}
+
+.selector-name{
+  font-size: 24px;
+  font-weight: 400;
+  font-family: var(--primary-font);
+}
+
+.selector-brief{
+  font-size: 14px;
+  font-weight: 400;
+  display: -webkit-box; 
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.read-more{
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 999px;
+  max-width: fit-content;
+  cursor: pointer;
+  border: 0.5px solid var(--secondary-color);
+}
+
+.type-selector{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    padding: 24px;
+    border-radius: 7px;
+    border-top: 5px solid #FFB114;
+    background: #FFF;
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.05);
+}
+
+.type-selector-header{
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    gap: 24px;
+    color: var(--fore-dark-grey);
+    font-weight: 600;
+    align-items: center;
+}
+
+.type-selector-svg{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    padding: 40px;
+    justify-content: center;
+    align-items: center;
+    background: var(--horoscope-banner);
+    border-radius: 50%;
+}
+
+.type-selector-brief{
+    color: var(--secondary-color);
+    font-size: 14px;
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
 @media (max-width:990px) {

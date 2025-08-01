@@ -1,6 +1,9 @@
 <div class="numerlogy-page">
-    <div class="section-tag">
-        <app-section-tag [sectionTitle]="'Numerology'" [subHeading]="sectionBrief" [subHeadCol]="true"></app-section-tag>
+    <div class="section-title">
+        <!-- <app-section-tag [sectionTitle]="'Numerology'" [subHeading]="sectionBrief" [subHeadCol]="true"></app-section-tag> -->
+        <app-section-tag [sectionTitle]="pageHeading" [subHeadCol]="true" [subHeading]="showDayInfo ? '' : showTypeInfo ? '' : sectionBrief"></app-section-tag>
+        <div class="day-selector" *ngIf="showDayInfo">{{selectedDayBrief}}</div>
+        <div class="day-selector" *ngIf="showTypeInfo && !showDayInfo">{{selectedTypeBrief}}</div>
     </div>
     <div class="menu-wrapper">
         <div class="menu-container">
@@ -52,7 +55,7 @@
         </div>
     </div>
     <app-trending-tags [tagInfo]="trendingTags"></app-trending-tags>
-    <div class="master-number-wrapper">
+    <div class="master-number-wrapper" *ngIf="!showDayInfo && !showTypeInfo">
         <app-section-tag [sectionTitle]="'Master Numbers: The Spiritual Powerhouse'"></app-section-tag>
         <div class="master-number-container">
             <div class="master-number-card" *ngFor="let c of masterCards;">
@@ -67,7 +70,40 @@
             </div>
         </div>
     </div>
-    <app-personalize-section [personalisedInfo]="personaliseSection"></app-personalize-section>
+    <app-personalize-section *ngIf="!showDayInfo && !showTypeInfo" [personalisedInfo]="personaliseSection"></app-personalize-section>
+    <ng-container *ngIf="showDayInfo">
+        <div class="day-selector-wrapper">
+            <div class="day-selector-container">
+                <ng-container *ngFor="let d of daySelector">
+                    <div class="day-selector" *ngIf="selectedDay !== d.name" >
+                        <div class="selector-name">{{`${d.name}${d.name === 'Yearly' ? ' - ' + thisYear: ""}`}}</div>
+                        <div class="selector-brief">{{d.brief}}</div>
+                        <div class="read-more" (click)="onDaySelect(d.name)">Read More</div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showTypeInfo">
+        <div class="day-selector-wrapper">
+            <div class="day-selector-container">
+                <ng-container *ngFor="let t of typeSelector">
+                    <div class="type-selector" *ngIf="selectedType !== t.name">
+                        <div class="type-selector-header">
+                            <div class="type-selector-svg">
+                                <img [src]="'./images/numerology/'+t.name+'.svg'" [alt]="t.name">
+                            </div>
+                            <div class="type-selector-name">{{t.name}}</div>
+                        </div>
+                        <div class="type-selector-brief">{{t.brief}}</div>
+                        <div class="type-selector-btn-container">
+                            <div class="read-more" (click)="onTypeSelect(t.name)">Read More</div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
     <app-rudraksh-section></app-rudraksh-section>
     <div class="page-menu-wrapper">
         <app-section-tag [sectionTitle]="'Still feel something is missing? Try'"></app-section-tag>

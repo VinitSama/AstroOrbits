@@ -63,9 +63,8 @@ export class PanchangMenuCard implements OnInit {
   }
 
   private makePanchangObject(response: any){
-    console.log(response)
     const res = response?.response;
-    if (!res){
+    if (!res || response['status'] != 200){
       return;
     }
     this.panchang = {

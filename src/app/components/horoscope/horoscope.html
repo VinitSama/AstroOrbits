@@ -90,14 +90,13 @@
         <div class="day-selector-container">
             <ng-container *ngFor="let d of daySelector">
                 <div class="day-selector" *ngIf="selectedDay !== d.name" >
-                    <div class="selector-name">{{d.name}}</div>
+                    <div class="selector-name">{{`${d.name}${d.name === 'Yearly' ? " - " + thisYear: ""}`}}</div>
                     <div class="selector-brief">{{d.brief}}</div>
                     <div class="read-more" (click)="onDaySelect(d.name)">Read More</div>
                 </div>
             </ng-container>
         </div>
     </div>
-    <!-- <app-horoscope-personalise [horoscope]="horoscopeType"></app-horoscope-personalise> -->
      <app-personalize-section [personalisedInfo]="horoscopeType"></app-personalize-section>
     <div class="insight-section">
         <app-section-tag [sectionTitle]="'Featured Astrological Insights'"></app-section-tag>

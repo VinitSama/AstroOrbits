@@ -70,13 +70,25 @@ export class Numerlogy implements OnInit {
 </svg>`,
   }
 
-  option: string = '';
-  num: number = 0;
+
+  selectedDay: string = "";
+  selectedType: string = "";
+  showDayInfo: boolean = false;
+  showTypeInfo: boolean = false;
+  validTypes = ["Life Path Number", "Angle Number", "Master Number", "Ruling Number"];
+  validDays = ["Daily", "Weekly", "Monthly", "Yearly", "Angel"];
+  thisYear: string = '2025'
+  pageHeading: string = "Numerology"
+  selectedDayBrief: string = "";
+  selectedTypeBrief: string = "";
+
+  // option: string = '';
+  // num: number = 0;
   svgColor!: ISvgColors;
-  pageHeading = "Numerology";
+  // pageHeading = "Numerology";
   numOption = [1,2,3,4,5,6,7,8,9];
-  dateOption = ["Daily", "Weekly", "Monthly", "Yearly"];
-  selectedDateOption = "Daily";
+  // dateOption = ["Daily", "Weekly", "Monthly", "Yearly"];
+  // selectedDateOption = "Daily";
   sectionBrief = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   report: {
     heading: string;
@@ -87,7 +99,7 @@ export class Numerlogy implements OnInit {
     date: "Monday 16, 2025",
     report: "Astroyogi astrologers anything that you do today, be it your work or personal matters will have far reaching effects, due to the presence of Moon in Capricorn. The Capricorn Moon helps you understand the purpose of your life and gives you the determination to continue working hard and courage to face any difficulties. Forget about the past and concentrate on the present. What you always wanted to achieve is now just inches away, all you need to do is make the effort to reach out and grab it. But, be wary of people and things that might prevent you from achieving your goals. A special friend of the opposite sex might talk you into doing a favour for him/her which might not go down well with your spouse or partner and may cause a bit of tension in the home. Letting your partner know how much you care will reclaim the peace in the house. Also, today is a good travel so why not take advantage of this and chill out."
   }
-  otherOption = ["Life Path", "Ruling", "Personality", "Angel", "Master"]
+  // otherOption = ["Life Path", "Ruling", "Personality", "Angel", "Master"]
   showResult = false;
   numerologyForm: FormGroup;
   dobFocused = false;
@@ -165,6 +177,50 @@ export class Numerlogy implements OnInit {
       },
     ]
   };
+
+   daySelector: {
+    name: string;
+    brief: string;
+  }[] = [
+    {
+      name: "Daily",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      name: "Weekly",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      name: "Monthly",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      name: "Yearly",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+  ];
+
+  typeSelector: {
+    name: string;
+    brief: string;
+  }[] = [
+    {
+      name: "Life Path Number",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      name: "Angle Number",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      name: "Master Number",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+    {
+      name: "Ruling Number",
+      brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+    },
+  ];
   
   constructor(private themeService: ThemeService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private sanitizer: DomSanitizer, private headerService: HeaderService) {
     this.numerologyForm = this.fb.group({
@@ -175,11 +231,12 @@ export class Numerlogy implements OnInit {
   
   ngOnInit(): void {
     this.loadSvgColors();
-    // this.route.paramMap.subscribe(params => {
-    //   this.loadFromRouteIfNeeded(params);
-    // });
+    this.route.paramMap.subscribe(params => {
+      this.loadFromRouteIfNeeded(params);
+    });
     this.svgSantization();
-    this.headerService.setColorSubject(false)
+    this.headerService.setColorSubject(false);
+    this.setThisYear();
   }
 
   formSubmit() {
@@ -188,6 +245,10 @@ export class Numerlogy implements OnInit {
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  private setThisYear() {
+    this.thisYear =  new Date().getFullYear().toString();
   }
 
   private svgSantization(){
@@ -199,25 +260,78 @@ export class Numerlogy implements OnInit {
     this.svgColor = this.themeService.getSvgColor();
   }
 
-  // private loadFromRouteIfNeeded(params: ParamMap){
-  //   const option = params.get('option');
-  //   const num = params.get('num');
-  //   this.option = option ?? "";
-  //   if (option == "0") {
-  //     this.option = "";
-  //   }
-  //   this.num = Number(num) ?? 0; 
-  //   //make api function and call here
-  //   //make api function and call here
-  //   //make api function and call here
-  //   //make api function and call here
-  //   //make api function and call here
-  //   //make api function and call here
-  // }
+  private loadFromRouteIfNeeded(params: ParamMap){
+    const dayParam = params.get('day');
+    const typeParam = params.get('type');
+    this.showDayInfo = false;
+    this.showTypeInfo = false;
+    if (dayParam) {
+      this.setDay(dayParam);
+    } if (typeParam && !this.showDayInfo){
+      this.setType(typeParam);
+    }
+    console.log(this.showDayInfo,this.showTypeInfo)
+  }
 
+  private setDay(day: string) {
+    const capDay = this.capitalize(day);
+    if (this.validDays.includes(capDay)) {
+      this.selectedDay = capDay;
+      this.showDayInfo = true;
+      this.showTypeInfo = false;
+      this.pageHeading = `${capDay} Numerology`;
+      this.selectedDayBrief = this.daySelector.find(d => d.name === this.selectedDay)?.brief || '';
+    }
+    else {
+      this.selectedDay = '';
+      this.pageHeading = "Numerology";
+    }
+  }
+
+  private setType(type: string) {
+    const capType = this.capitalize(type);
+    if (this.validTypes.includes(capType)) {
+      this.selectedType = capType;
+      this.showTypeInfo = true;
+      this.showDayInfo = false;
+      this.pageHeading = capType;
+      this.selectedTypeBrief = this.typeSelector.find(t => t.name === this.selectedType)?.brief || "";
+    } else {
+      this.selectedType = '';
+      this.pageHeading = 'Numerology';
+    }
+  }
+
+  onDaySelect(day: string) {
+    this.router.navigate(['/home/numerology', 'd', day]);
+    this.smoothScrolling();
+  }
+  
+  onTypeSelect(type: string) {
+    this.router.navigate(['/home/numerology', 't', type]);
+    this.smoothScrolling();
+  }
+
+  private smoothScrolling():void {
+    const element = document.getElementById('header-logo');
+
+    if( element ){
+      element.scrollIntoView({behavior: 'smooth', block: 'start'})
+    }
+  }
+
+  private capitalize(s: string): string {
+    return s.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase());
+    // return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+  }
 
   goToParticular(num: number) {
-    this.router.navigate(['home', 'numerology', num]);
+    if (this.showTypeInfo){
+      this.router.navigate(['home/numerology/t',this.selectedType,num])
+    }
+    else {
+      this.router.navigate(['home', 'numerology', num]);
+    }
   }
 
 }

@@ -26,7 +26,7 @@
                 </div>
                 <mat-menu #menu="matMenu" (closed)="onMenuClosed(trigger)">
                     <div class="menu-container">
-                        <div class="menu-item" *ngFor="let d of item.dropDownOption"(click)="goToPage(d.navigationLink,i)">{{d.name}}
+                        <div class="menu-item" *ngFor="let d of item.dropDownOption; let j = index"(click)="goToPage(d.navigationLink,i,j)">{{d.name}}
                             <div class="menu-option-svg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
                                     <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>

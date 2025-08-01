@@ -163,6 +163,35 @@ export const routes: Routes = [
                             const num = route.params['num'];
                             return `Number ${!num ? null : num}`;
                         }}
+                    },
+                    {
+                        path: 'd/:day',
+                        data: {
+                            layout: 'main',
+                            skipBreadcrumb: true,
+                        },
+                        loadComponent: () => import('./components/numerlogy/numerlogy').then(m => m.Numerlogy),
+                    },
+                    {
+                        path: 't/:type',
+                        data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot) => {
+                                    const type = route.params['type'];
+                                    return !type ? null : capitalize(type);
+                                }},
+                        children: [
+                            {
+                                path:'',
+                                loadComponent: () => import('./components/numerlogy/numerlogy').then(m => m.Numerlogy),
+                            },
+                            {
+                                path: ':num',
+                                loadComponent: () => import('./components/numerlogy/numerlogy-particular/numerlogy-particular').then(m => m.NumerlogyParticular),
+                                data: {layout: 'main', breadcrumb: (route: ActivatedRouteSnapshot) => {
+                                    const num = route.params['num'];
+                                    return `Number ${!num ? null : num}`;
+                                }}
+                            }
+                        ]
                     }
                 ]
             },

@@ -54,6 +54,7 @@ export class Horoscope implements OnInit {
   zodiacSectionBrief = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   blogSectionHeading = "A Spot to start your learning";
   showDayDetails: boolean = false;
+  thisYear: string = '2025'
   selectedDay: string = "";
   selectedDayBrief: string = "";
   selectedSign: THoroscopeSign = "moon";
@@ -88,7 +89,7 @@ export class Horoscope implements OnInit {
       brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     },
     {
-      name: "Yearly - 2025",
+      name: "Yearly",
       brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     },
   ];
@@ -154,6 +155,12 @@ export class Horoscope implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.loadFromRouteIfNeeded(params);
     });
+    this.setThisYear;
+  }
+
+  
+  private setThisYear() {
+    this.thisYear =  new Date().getFullYear().toString();
   }
 
   private loadFromRouteIfNeeded(params: ParamMap){
@@ -183,9 +190,7 @@ export class Horoscope implements OnInit {
   }
 
   onDaySelect(day: string) {
-    this.selectedDay = day;
-    console.log("Selected Day: ", this.selectedDay);
-    this.router.navigate(['/home/horoscope', 'd', this.selectedDay]);
+    this.router.navigate(['/home/horoscope', 'd', day]);
     this.smoothScrolling();
   }
 

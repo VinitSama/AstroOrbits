@@ -48,10 +48,12 @@ export class Navbar {
         {
           name: "Free Kundli",
           navigationLink: "kundli",
+          subLink: "",
         },
         {
           name: "Match Making",
           navigationLink: "kundli-matching",
+          subLink: ""
         },
       ],
       tagSettings: null,
@@ -65,18 +67,22 @@ export class Navbar {
         {
           name: "Daily",
           navigationLink: "horoscope",
+          subLink: "Daily"
         },
         {
           name: "Weekly",
           navigationLink: "horoscope",
+          subLink: "Weekly"
         },
         {
           name: "Monthly",
           navigationLink: "horoscope",
+          subLink: "Monthly"
         },
         {
           name: "Yearly",
           navigationLink: "horoscope",
+          subLink: "Yearly"
         },
       ],
       tagSettings: null,
@@ -90,22 +96,27 @@ export class Navbar {
         {
           name: "Daily Numerology",
           navigationLink: "numerology",
+          subLink: "Daily"
         },
         {
           name: "Weekly Numerology",
           navigationLink: "numerology",
+          subLink: "Weekly"
         },
         {
           name: "Monthly Numerology",
           navigationLink: "numerology",
+          subLink: "Monthly"
         },
         {
           name: "Yearly Numerology",
           navigationLink: "numerology",
+          subLink: "Yearly"
         },
         {
           name: "Angle Number",
           navigationLink: "numerology",
+          subLink: "Angle"
         },
       ],
       tagSettings: null,
@@ -119,22 +130,27 @@ export class Navbar {
         {
           name: "Daily",
           navigationLink: "tarot",
+          subLink: "Daily"
         },
         {
           name: "Shuffle",
           navigationLink: "tarot",
+          subLink: "Shuffle"
         },
         {
           name: "Love",
           navigationLink: "tarot",
+          subLink: "Love"
         },
         {
           name: "Career",
           navigationLink: "tarot",
+          subLink: "Career"
         },
         {
           name: "Fortune",
           navigationLink: "tarot",
+          subLink: "Fortune"
         },
       ],
       tagSettings: null,
@@ -147,39 +163,48 @@ export class Navbar {
       dropDownOption: [
         {
           name:"Today's Pachang",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Today"
         },
         {
           name:"Monthly Pachang",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Monthly"
         },
         {
           name:"Hora Muhurat",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Hora Muhurat"
         },
         {
           name:"Chodhadiya Muhurat",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Chodhadiya Muhurat"
         },
         {
           name:"Sun Rise",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Sun Rise"
         },
         {
           name:"Sun Set",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Sun Set"
         },
         {
           name:"Moon Rise",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Moon Rise"
         },
         {
           name:"Moon Set",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Moon Set"
         },
         {
           name:"Festivals",
-          navigationLink: "panchang"
+          navigationLink: "panchang",
+          subLink: "Festivals"
         },
       ],
       tagSettings: null,
@@ -223,16 +248,26 @@ export class Navbar {
     return item.name;
   }
 
-  goToPage(page: TNavigationLink | null, i: number) {
+  goToPage(page: TNavigationLink | null, i: number, j: number = -1) {
     if (page == 'home') {
       this.router.navigate([page])
       this.selected = i;
-    }
-    // else if (page == 'numerology'){
-    //   this.router.navigate(['home',page,"0","0"])
-    //   this.selected = i;
-    // } 
-    else if (page){
+        }
+        else if (page == 'numerology'){
+      const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
+        ? this.navbarItems[i].dropDownOption[j].subLink
+        : '';
+      this.router.navigate(['home', page, "d", subLink]);
+      this.selected = i;
+        }
+        else if (page == 'horoscope'){
+      const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
+        ? this.navbarItems[i].dropDownOption[j].subLink
+        : '';
+      this.router.navigate(['home', page, "d", subLink]);
+      this.selected = i;
+        }
+        else if (page){
       this.router.navigate(['home', page]);
       this.selected = i;
     }

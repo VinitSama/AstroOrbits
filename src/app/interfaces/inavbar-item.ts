@@ -18,4 +18,5 @@ interface ITagSetting {
 export interface IDropDownOption {
     name: string;
     navigationLink: TNavigationLink | null;
+    subLink: string;
 }
