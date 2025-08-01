@@ -119,4 +119,8 @@ export class NumerlogyParticular implements OnInit {
     this.selectedDay = day;
   }
 
+  goToType(t: string) {
+    this.router.navigate(['home/numerology','t',t,this.selectedNum]);
+  }
+
 }

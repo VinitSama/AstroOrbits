@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="numerlogy-types-container">
-                <div class="numerlogy-types-card" *ngFor="let t of numerologyTypes">
+                <div class="numerlogy-types-card" *ngFor="let t of numerologyTypes" (click)="goToType(t)">
                     <div class="numerlogy-types-svg">
                         <img [src]="`./images/numerology/${t}.svg`" [alt]="t">
                     </div>
