@@ -1,25 +1,94 @@
 <div class="kundli-page">
-    <div class="kundli-form-container">
-        <div class="section-tag">
-            <app-section-tag [sectionTitle]="kundliFormTitle" ></app-section-tag>
-        </div>
-        <div class="kundli-form">
-            <app-kundli-form (normalSubmitEmitter)="onFormSubmit($event)" ></app-kundli-form>
+    <div class="kundli-form-wrapper">
+        <app-section-tag [sectionTitle]="'Kundli'" [subHeadCol]="true" [subHeading]="kundliFormSub"></app-section-tag>
+        <div class="kundli-form-banner">
+            <div class="kundli-form-container">
+                <div class="kundli-form-box">
+                    <app-kundli-form (normalSubmitEmitter)="loadResults($event)"></app-kundli-form>
+                </div>
+                <div class="first-design-card"></div>
+                <div class="second-design-card"></div>
+            </div>
+            <div class="feature-container">
+                <div class="feature-card" *ngFor="let c of features">
+                    <div class="feature-svg">
+                        <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
+                    </div>
+                    <div class="feature-info">
+                        <div class="feature-heading">{{c.heading}}</div>
+                        <div class="feature-subHeading">{{c.subHeading}}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="information-section">
-        <app-information-section [headers]="headers" [para]="para" [svgs]="svgs"></app-information-section>
-    </div>
-    <div class="article-container">
-        <div class="section-tag">
-            <app-section-tag [sectionTitle]="articleSectionHeading" ></app-section-tag>
+    <div class="kundli-report-wrapper">
+        <app-section-tag [sectionTitle]="'Your Kundli Report will Consist'"></app-section-tag>
+        <div class="kundli-report-conatiner">
+            <div class="section-wrapper">
+                <div class="dosha-container set-1">
+                    <div class="row">
+                        <div class="doshas-card gap-1" *ngFor="let c of doshas.slice(0,2)">
+                            <div class="dosha-info-container">
+                                <div class="dosha-graphics">
+                                    <div class="svg-contaier">
+                                        <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                                    </div>
+                                    <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
+                                </div>
+                                <div class="dosha-info-box">
+                                    <div class="dosha-name">{{c.name}}</div>
+                                    <div class="dosha-brief">{{c.brief}}</div>
+                                </div>
+                            </div>
+                            <div class="dosha-click-lick">Check My status</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="doshas-card gap-1" *ngFor="let c of doshas.slice(2,4)">
+                            <div class="dosha-info-container">
+                                <div class="dosha-graphics">
+                                    <div class="svg-contaier">
+                                        <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                                    </div>
+                                    <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
+                                </div>
+                                <div class="dosha-info-box">
+                                    <div class="dosha-name">{{c.name}}</div>
+                                    <div class="dosha-brief">{{c.brief}}</div>
+                                </div>
+                            </div>
+                            <div class="dosha-click-lick">Check My status</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="other-report-container">
+                    <div class="other-report-card" *ngFor="let c of kundliFeatureCards">
+                        <app-kundli-feature-card [card]="c"></app-kundli-feature-card>
+                    </div>
+                </div>
+            </div>
+            <div class="dosha-container set-2">
+                <div class="doshas-card gap-2" *ngFor="let c of doshas.slice(4)">
+                    <div class="dosha-info-container">
+                        <div class="dosha-graphics">
+                            <div class="svg-contaier">
+                                <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                            </div>
+                            <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
+                        </div>
+                        <div class="dosha-info-box">
+                            <div class="dosha-name">{{c.name}}</div>
+                            <div class="dosha-brief">{{c.brief}}</div>
+                        </div>
+                    </div>
+                    <div class="dosha-click-lick">Check My status</div>
+                </div>
+            </div>
         </div>
-        <div class="article">
-            <app-article [article]="article" ></app-article>
-        </div>
     </div>
-    <div class="blog">
-        <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading" ></app-blog-section>
-    </div>
-    
+    <app-rudraksh-section></app-rudraksh-section>
+    <app-astrology-section></app-astrology-section>
+    <app-about-section></app-about-section>
+    <app-faq-section></app-faq-section>
 </div>

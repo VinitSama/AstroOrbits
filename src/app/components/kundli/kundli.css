@@ -1,22 +1,222 @@
-.kundli-form-container{
-    padding: 56px 0;
+.kundli-form-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding: 80px 0;
 }
 
-.section-tag{
-    margin-bottom: 32px;
-}
-
-.article-container{
-    padding: 56px 0;
-    background-color: var(--secondary-bg-color);
-}
-
-.article{
+.kundli-form-banner{
+    background: url('/images/new-banner/new-banner-bg1.jpg') lightgray 50% / cover no-repeat;
+    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    max-width: 1100px;
-    padding: 0 10px;
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 14px;
+    align-items: center;
 }
 
-.blog{
-    margin: 56px 40px;
+.kundli-form-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.kundli-form-box{
+    max-width: 430px;
+    width: 100%;
+    z-index: 3;
+}
+
+.first-design-card{
+    width: 195px;
+    height: 400px;
+    border-radius: 7px;
+    background: #A99895;
+    z-index: 2;
+    margin-left: -183px;
+}
+
+.second-design-card{
+    width: 180px;
+    height: 369px;
+    border-radius: 7px;
+    background: #5A4457;
+    z-index: 1;
+    margin-left: -168px;
+}
+
+.feature-container{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 537px;
+    gap: 32px;
+}
+
+.feature-card{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    color: #fff;
+    font-weight: 400;
+    max-width: 252.5px;
+    width: 100%;
+    text-align: center;
+    max-height: fit-content;
+}
+
+.feature-svg{
+    padding: 12px;
+    max-width: min-content;
+    border-radius: 50%;
+    background: rgba(255, 248, 235, 0.20);
+}
+
+.feature-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.feature-heading{
+    font-family: var(--primary-font);
+    font-size: 16px;
+
+}
+
+.feature-subHeading{
+    font-family: var(--secondary-font);
+    font-size: 12px;
+}
+
+.kundli-report-wrapper{
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.kundli-report-conatiner{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.section-wrapper{
+    display: flex;
+    gap: 24px;
+}
+
+.dosha-container{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.set-1{
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1;
+}
+
+.row{
+    display: flex;
+    height: 100%;
+    gap: 24px;
+}
+
+.doshas-card{
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    width: 100%;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
+    height: 100%;
+    color: var(--secondary-color);
+}
+
+.gap-1{
+    justify-content: space-between;
+    max-width: 324px;
+}
+
+.gap-2{
+    gap: 16px;
+}
+
+.dosha-info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.dosha-graphics{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.svg-contaier{
+    width: 56px;
+    height: 56px;
+    background: var(--horoscope-banner);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.risk-tag{
+    color: #fff;
+    border-radius: 9999px;
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    font-size: 10px;
+    padding: 8px;
+}
+
+.dosha-info-box{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dosha-name{
+    font-family: var(--primary-font);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.dosha-brief{
+    font-family: var(--secondary-font);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.dosha-click-lick{
+    font-family: var(--secondary-font);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.other-report-container{
+    max-width: 504px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
 }

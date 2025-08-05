@@ -1,16 +1,20 @@
 <div class="planet-page-container">
+    <div class="summary" *ngIf="summaryCard">
+        <app-kundli-feature-card [card]="summaryCard"></app-kundli-feature-card>
+    </div>
+
     <div class="table-container">
         <div class="cloumn-container">
-            <div class="header">Symbol</div>
-            <div class="column">
+            <div class="header first">Symbol</div>
+            <div class="column firstc">
                 <div class="planet-img cell" *ngFor="let planet of positionOfPlanet; let i = index">
                     <img [src]="svgFile[i]" alt="planet imgae">
                 </div>
             </div>
         </div>
-        <div class="cloumn-container" *ngFor="let header of tableHeaders" >
-            <div class="header">{{header.label}}</div>
-            <div class="column">
+        <div class="cloumn-container" *ngFor="let header of tableHeaders, let i=index" >
+            <div class="header" [ngClass]="{'last': i==tableHeaders.length-1}">{{header.label}}</div>
+            <div class="column" [ngClass]="{'lastc': i==tableHeaders.length-1}">
                 <div class="cell" *ngFor="let planet of positionOfPlanet" >
                     <ng-container *ngIf="planet[header.key]" >{{planet[header.key]}}</ng-container>
                     <ng-container *ngIf="!planet[header.key]" >-</ng-container>

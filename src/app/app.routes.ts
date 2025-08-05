@@ -252,7 +252,7 @@ export const routes: Routes = [
                     },
                     {
                         path: 'result',
-                        data: {layout: 'main', breadcrumb: 'Result'},
+                        data: {layout: 'main', breadcrumb: 'Free Kundli'},
                         children: [
                             {
                                 path: '',
@@ -261,6 +261,11 @@ export const routes: Routes = [
                             },
                         ]
                     },
+                    {
+                        path: "details/:option",
+                        loadComponent: () => import('./components/kundli/kundli-result/kundli-detail-report/kundli-detail-report').then(m => m.KundliDetailReport),
+                        data: {breadcrumb: 'Free Kundli'}
+                    }
                 ]
             },
         ]

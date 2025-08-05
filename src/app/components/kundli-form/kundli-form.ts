@@ -24,10 +24,13 @@ export class KundliForm implements OnInit, OnChanges {
   @Output() useParentSubmitEmitter = new EventEmitter<any>(); //for submiBtnOption = 1
 
   submitted: boolean = false;
+  dobFocused: boolean = false;
+  tobFocused: boolean = false;
+  blurColor: string = "#FFB114";
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    DOB: new FormControl('', [Validators.required, this.dateValidator]),
+    DOB: new FormControl('', [Validators.required]),
     time: new FormControl('', [Validators.required]),
     place: new FormControl('' ,[Validators.required]),
   })
@@ -49,6 +52,7 @@ export class KundliForm implements OnInit, OnChanges {
         this.formValueEmitter.emit(updated);
       }
     });
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -99,24 +103,82 @@ export class KundliForm implements OnInit, OnChanges {
     this.useParentSubmitEmitter.emit();
   }
 
-  dateValidator(control: AbstractControl) {
-    const value = control.value;
-    const digits = value.replace(/\D/g, '');
-    if (digits.length !== 8) return { invalidDate: true };
-    const day = parseInt(digits.substring(0, 2), 10);
-    const month = parseInt(digits.substring(2, 4), 10);
-    const year = parseInt(digits.substring(4, 8), 10);
-    const isValid = !(year < 1000 ||
-      year > new Date(year, month, 0).getFullYear() ||
-      month < 1 || month > 12 ||
-      day < 1 || day > new Date(year, month, 0).getDate());
-    const inputDate = new Date(year, month - 1, day);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    if (inputDate > today) {
-      return { invalidDate: true, dateInFuture: true };
-    }
-    return isValid ? null : { invalidDate: true };
+  
+
+  // dateValidator(control: AbstractControl) {
+  //   const value = control.value;
+  //   if (!value) return { invalidDate: true };
+
+  //   const parts = value.split('-');
+  //   if (parts.length !== 3) return { invalidDate: true };
+
+  //   const [dayStr, monthStr, yearStr] = parts;
+
+  //   const day = parseInt(dayStr, 10);
+  //   const month = parseInt(monthStr, 10);
+  //   const year = parseInt(yearStr, 10);
+
+  //   if (isNaN(day) || isNaN(month) || isNaN(year)) {
+  //     return { invalidDate: true };
+  //   }
+
+  //   // Check if the date components are in valid range
+  //   const isValid = !(year < 1000 ||
+  //     year > 9999 ||
+  //     month < 1 || month > 12 ||
+  //     day < 1 || day > new Date(year, month, 0).getDate());
+
+  //   if (!isValid) {
+  //     return { invalidDate: true };
+  //   }
+
+  //   // Check for future date
+  //   const inputDate = new Date(year, month - 1, day);
+  //   const today = new Date();
+  //   today.setHours(0, 0, 0, 0);
+
+  //   if (inputDate > today) {
+  //     return { invalidDate: true, dateInFuture: true };
+  //   }
+
+  //   return null; // valid date
+  // }
+
+
+  private isPickerOpen = false;
+
+openDatePicker(input: HTMLInputElement) {
+  if (this.isPickerOpen) return;
+
+  this.dobFocused = true;
+
+  // Set flag and clear it after delay (simulate calendar state)
+  this.isPickerOpen = true;
+
+  setTimeout(() => {
+    this.isPickerOpen = false;
+  }, 300); // Adjust delay to match calendar closing time
+
+  if (input.showPicker) {
+    input.showPicker();
+  } else {
+    input.focus();
+    this.dobFocused = false;
   }
+}
+
+  openTimePicker(input: HTMLInputElement) {
+    this.tobFocused = true;
+    if (input.showPicker) {
+      input.showPicker();
+    } else {
+      input.focus();
+      this.tobFocused = false;
+    }
+  }
+
+  stopPropagation(event: Event): void {
+  event.stopPropagation();
+}
 
 }

@@ -36,7 +36,7 @@ export class ZodiacCard {
     }
   }
 
-  changeSvg() {
+  private changeSvg() {
     if (!this.zodiacCard.svg){
       return;
     }
@@ -55,7 +55,7 @@ export class ZodiacCard {
     }
   }
 
-  changeSize(): void {
+  private changeSize(): void {
     const svgString = this.zodiacCard.svg;
     
     const newSvgString = svgString.replace(
