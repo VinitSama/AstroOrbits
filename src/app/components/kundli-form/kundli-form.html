@@ -53,10 +53,10 @@
                 <div class="gender-field">
                     <div class="gender">Gender</div>
                     <div class="gender-options">
-                        <div class="male" [ngClass]="{'selected-gender': gender == 'm'}">
+                        <div class="male" [ngClass]="{'selected-gender': gender == 'm'}" (click)="changeGender('m')">
                             Male
                         </div>
-                        <div class="female" [ngClass]="{'selected-gender': gender == 'f'}">
+                        <div class="female" [ngClass]="{'selected-gender': gender == 'f'}" (click)="changeGender('f')">
                             Female
                         </div>
                     </div>
