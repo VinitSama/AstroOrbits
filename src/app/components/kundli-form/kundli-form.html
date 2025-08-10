@@ -1,5 +1,5 @@
 <div class="kundli-form-container">
-    <div class="form-container" [ngStyle]="{'--blur-color': blurColor}">
+    <div class="form-container" [ngStyle]="{'--blur-color': blurColor}" [ngClass]="{'set-bg': submitBtnOption == 1}">
         <form [formGroup]="form">
             <div class="row">
                 <div class="input-field">
@@ -67,11 +67,11 @@
                     <div class="submit" (click)="onSubmit()">Get My Free Kundali</div>
                 </div>
             </ng-container>
-            <ng-container *ngIf="submitBtnOption == 2">
+            <!-- <ng-container *ngIf="submitBtnOption == 2">
                 <div class="submit-container">
                     <div class="submit" (click)="submitThroughParent()">Submit</div>
                 </div>
-            </ng-container>
+            </ng-container> -->
         </form>
     </div>
 </div>

@@ -180,8 +180,7 @@
     gap: 24px;
     border-radius: 7px;
     border: 1px solid #FFB114;
-    /* background: linear-gradient(0deg, rgba(36, 0, 40, 0.80) 0%, rgba(36, 0, 40, 0.80) 100%), url(<path-to-image>) lightgray 50% / cover no-repeat; */
-    background: var(--secondary-color);
+    background: linear-gradient(0deg, rgba(36, 0, 40, 0.80) 0%, rgba(36, 0, 40, 0.80) 100%), url('/images/kundli/kundli-report-partner-design-bg.jpg') lightgray 50% / cover no-repeat;
     box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
     padding: 32px;
 }

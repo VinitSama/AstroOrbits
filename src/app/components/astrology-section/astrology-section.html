@@ -4,14 +4,18 @@
     </div>
     <div class="astrology-card-container">
         <div class="container-wrapper">
-            <div class="card" *ngFor="let card of astrologyCards | slice:0:4">
-                <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
-            </div>
+            @for (card of astrologyCards | slice:0:4; track card) {
+                <div class="card">
+                    <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
+                </div>
+            }
         </div>
         <div class="container-wrapper">
-            <div class="card" *ngFor="let card of astrologyCards | slice:4">
-                <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
-            </div>
+            @for (card of astrologyCards | slice:4; track card) {
+                <div class="card">
+                    <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
+                </div>
+            }
         </div>
     </div>
 </div>

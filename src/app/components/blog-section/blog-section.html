@@ -3,17 +3,10 @@
         <app-section-tag [sectionTitle]="title" ></app-section-tag>
     </div>
     <div class="blog-container">
-        <div *ngFor="let card of blogCards" class="blog-card">
-            <app-blog-card [card]="card" [svgColor]="svgColor"></app-blog-card>
-        </div>
+        @for (card of blogCards; track card) {
+            <div class="blog-card">
+                <app-blog-card [card]="card" [svgColor]="svgColor"></app-blog-card>
+            </div>
+        }
     </div>
-    <!-- <div class="view-btn-container">
-        <div class="view-more-btn" *ngIf="showView">
-            View More
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.58337 8.08325L7.50004 10.9999L10.4167 8.08325" [attr.stroke]="svgColor.secondary" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4.58337 4L7.50004 6.91667L10.4167 4" [attr.stroke]="svgColor.secondary" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-    </div> -->
 </div>

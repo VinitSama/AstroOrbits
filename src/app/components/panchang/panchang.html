@@ -1,25 +1,67 @@
 <div class="panchang-page">
-    <div class="section-tag heading">
-        <app-section-tag [sectionTitle]="panchangPageHeading" ></app-section-tag>
-    </div>
-
-    <div class="table-conatiner">
-        <div class="table" *ngFor="let table of tables">
-            <app-panchang-table [svgColor]="svgColor" [table]="table" (showTodayEmitter)="changeHeading($event)"></app-panchang-table>
+    <div class="info-wrapper">
+        <app-section-tag [sectionTitle]="'Panchang'" [subHeading]="sectionBrief" [subHeadCol]="true"></app-section-tag>
+        <div class="day-selector">
+            <div class="day-adder" (click)="changeDate(-1)">
+                <div class="date">{{forDecreament | date: "dd"}}</div>
+                <div class="month">{{ forDecreament | date: "MMMM yyyy" }}</div>
+                <div class="day" *ngIf="day - 1 in dayMap">{{`(${dayMap[day-1]})`}}</div>
+            </div>
+            <div class="day-information">
+                <div class="hindi-calendar-container">
+                    <div class="claendar-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="32" viewBox="0 0 38 32" fill="none">
+                            <path d="M1.86168 27.7333H7.19501V30.9333C7.19501 31.5224 7.67259 32 8.26168 32H36.1372C36.7263 32 37.2039 31.5224 37.2039 30.9333V3.2C37.2039 2.61092 36.7263 2.13333 36.1372 2.13333H30.8039V1.06667C30.8039 0.477582 30.3263 0 29.7372 0C29.1481 0 28.6706 0.477582 28.6706 1.06667V2.13333H23.2661V1.06667C23.2661 0.477582 22.7885 0 22.1995 0C21.6104 0 21.1328 0.477582 21.1328 1.06667V2.13333H15.7995V1.06667C15.7995 0.477582 15.3219 0 14.7328 0C14.1437 0 13.6661 0.477582 13.6661 1.06667V2.13333H8.26168C7.67259 2.13333 7.19501 2.61092 7.19501 3.2V9.6C7.19501 17.4613 3.92781 23.509 1.1788 25.8473C0.833766 26.1348 0.705838 26.6075 0.858655 27.0298C1.01162 27.4521 1.41254 27.7333 1.86168 27.7333ZM35.0706 29.8667H9.32834V27.7333H29.7372C29.9868 27.7333 30.2284 27.6459 30.4201 27.4861C31.7024 26.4181 33.6886 23.8753 35.0706 20.6185V29.8667ZM9.32834 4.26667H13.6661V5.33333C13.6661 5.92242 14.1437 6.4 14.7328 6.4C15.3219 6.4 15.7995 5.92242 15.7995 5.33333V4.26667H21.1328V5.33333C21.1328 5.92242 21.6104 6.4 22.1995 6.4C22.7885 6.4 23.2661 5.92242 23.2661 5.33333V4.26667H28.6706V5.33333C28.6706 5.92242 29.1481 6.4 29.7372 6.4C30.3263 6.4 30.8039 5.92242 30.8039 5.33333V4.26667H35.0706V8.53333H9.32834V4.26667ZM9.31007 10.666H35.0516C34.8113 17.4325 32.2142 22.7565 29.319 25.6H4.28792C7.56849 21.42 9.13407 15.9774 9.31007 10.666Z" fill="#240028"/>
+                        </svg>
+                    </div>
+                    <div class="hindi-info">
+                        <div class="hindi-header">{{`${today.tithi}, ${today.month}`}}</div>
+                        <div class="hindi-sub">{{`${today.paksha}, ${today.year}`}}</div>
+                    </div>
+                </div>
+                <div class="calendar-info">
+                    <div class="calendar-loc">
+                        {{location}}
+                        <span class="refresh-detail" (click)="changLocation()">
+                            <span style="display: flex; align-items: center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <path d="M0.5 2V5H3.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M11.5 10V7H8.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M10.245 4.50001C9.99142 3.7834 9.56043 3.14271 8.99227 2.63772C8.4241 2.13272 7.73727 1.77989 6.99586 1.61214C6.25445 1.44438 5.48262 1.46718 4.7524 1.67839C4.02219 1.88961 3.35737 2.28236 2.82 2.82001L0.5 5.00001M11.5 7.00001L9.18 9.18001C8.64263 9.71765 7.97781 10.1104 7.2476 10.3216C6.51738 10.5328 5.74555 10.5556 5.00414 10.3879C4.26273 10.2201 3.5759 9.86729 3.00773 9.3623C2.43957 8.85731 2.00858 8.21661 1.755 7.50001" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <span style="margin-left: 4px;">Change Location</span>
+                        </span>
+                    </div>
+                    <div class="calendar-date">{{date | date: "dd MMMM yyyy"}}</div>
+                </div>
+            </div>
+            <div class="day-adder" (click)="changeDate(1)">
+                <div class="date">{{forIncreament | date: "dd"}}</div>
+                <div class="month">{{ forIncreament | date: "MMMM yyyy" }}</div>
+                <div class="day" *ngIf="day + 1 in dayMap">{{`(${dayMap[day+1]})`}}</div>
+            </div>
         </div>
     </div>
-
-    <div class="article-container">
-        <div class="section-tag">
-            <app-section-tag [sectionTitle]="articleHeading" ></app-section-tag>
+    <div class="panchang-wrapper">
+        <div class="main-table">
+            <app-details-table [heading]="`${panchangPageHeading} ${dayHeading}`" [columns]="1" [detailTable]="pachangTable"></app-details-table>
         </div>
-        <div class="article">
-            <app-article [article]="article"></app-article>
+        <div class="holiday-table">
+            <div class="holiday-header">Upcoming Festivals {{date | date: "yyyy"}}</div>
+            <div class="holiday-card-container">
+                @for (c of holidayTable; track c) {
+                    <div class="holiday-card">
+                        <div class="holoday-img-container">
+                            <img class="holoday-img" [src]="c.imgUrl" [alt]="c.name" />
+                        </div>
+                        <div class="holiday-info">
+                            <div class="holoday-header">{{`${c.name} (${dayGap(c.date)})`}}</div>
+                            <div class="holoday-sub">{{`${makeDate(c.date)}` | date: "MMMM dd, yyyy (EEEE)"}}</div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     </div>
-
-    <div class="blog">
-        <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>
-    </div>
-
 </div>

@@ -1,35 +1,41 @@
 <div class="kundli-matching-page">
-    <div class="kundli-form-wrapper">
-        <div class="section-tag">
-            <app-section-tag [sectionTitle]="formSectionHeading" ></app-section-tag>
-        </div>
-        <div class="form-container">
-            <div class="gender-option-container">
-                <div class="gender-option" [ngClass]="{'selected-gender': selectedGender == 'm'}" (click)="chooseGenderOption('m')" >
-                    Boy's Kundli
+    <div class="mathicng-wrapper">
+        <app-section-tag [sectionTitle]="'Match Making'" [subHeadCol]="true" [subHeading]="sectionBrief"></app-section-tag>"
+        <div class="banner-container">
+            <div class="form-wrapper">
+                <div class="form-steps">
+                    @for (step of steps; track $index; let index = $index) {
+                        <div class="step">
+                            <div class="step-svg">
+                                @if (stepsDone >= index) {
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
+                            <path d="M6.66732 2.5L3.00065 6.16667L1.33398 4.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                                }
+                            </div>
+                            <div class="step-name">{{step}}</div>
+                        </div>
+                    }
                 </div>
-                <div class="gender-option" [ngClass]="{'selected-gender': selectedGender == 'f'}" (click)="chooseGenderOption('f')" >
-                    Girls's Kundli
+                <div class="form-banner">
+                    @for (card of formsCard; track $index; let index = $index) {
+                        <div class="form-container" [ngClass]="{'boy': index == 0}" [ngClass]="{'girl': index == 1}">
+                            @if (index == 1) {
+                                <div class="first-girl-design-card"></div>
+                                <div class="second-girl-design-card"></div>
+                            }
+                            <app-menu-card [card]="card">
+                                <app-kundli-form [gender]="index == 0? 'm': 'f'" [showGenderOption]="false" [submitBtnOption]="2"></app-kundli-form>
+                            </app-menu-card>
+                            @if (index == 0) {
+                                <div class="first-boy-design-card"></div>
+                                <div class="second-boy-design-card"></div>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
+            <div class="submit-btn">Generate Kundlies & Check Compatibility</div>
         </div>
-        <div class="kundli-form">
-            <app-kundli-form [submitBtnOption]="2" [showGenderOption]="false" [gender]="selectedGender"[ngStyle]="{ display: selectedGender === 'm' ? 'block' : 'none' }" (formValueEmitter)="onBoyFormChange($event)" (useParentSubmitEmitter)="submit()" ></app-kundli-form>
-            <app-kundli-form [submitBtnOption]="2" [showGenderOption]="false" [gender]="selectedGender"[ngStyle]="{ display: selectedGender === 'f' ? 'block' : 'none' }" (formValueEmitter)="onGirlFormChange($event)" (useParentSubmitEmitter)="submit()" ></app-kundli-form>
-        </div>
-    </div>
-    <div class="information-section">
-        <app-information-section [headers]="headers" [para]="para" [svgs]="svgs"></app-information-section>
-    </div>
-    </div>
-    <div class="article-container">
-        <div class="section-tag">
-            <app-section-tag [sectionTitle]="articleSectionHeading" ></app-section-tag>
-        </div>
-        <div class="article">
-            <app-article [article]="article" ></app-article>
-        </div>
-    </div>
-    <div class="blog">
-        <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading" ></app-blog-section>
     </div>
 </div>

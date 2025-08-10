@@ -1,32 +1,215 @@
-.panchang-page{
-    padding: 0 10px;
-}
-.heading{
-    margin-top: 56px;
-}
-
-.section-tag{
-    margin-bottom: 32px;
-}
-
-.table-conatiner{
+.info-wrapper{
     display: flex;
     flex-direction: column;
+    gap: 32px;
+    padding: 48px 0;
+}
+
+.day-selector{
+    display: flex;
     gap: 16px;
-    margin: 32px auto 56px auto;
+    color: var(--secondary-color);
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
 }
 
-.article-container{
-    padding: 56px 0;
-    background-color: var(--secondary-bg-color);
-    margin: 0 auto;
+.day-adder{
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    align-items: center;
+    text-wrap: nowrap;
+    justify-content: center;
+    cursor: pointer;
 }
 
-.article{
-    max-width: 1100px;
-    margin: 0 auto;
+.date{
+    font-size: 32px;
+    font-weight: 500;
+    font-family: var(--primary-font);
 }
 
-.blog{
-    margin: 56px 0;
+.month{
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--primary-font);
+}
+
+.day{
+    font-size: 12px;
+    font-weight: 400;
+    font-family: var(--secondary-font);
+}
+
+.day-information{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px;
+    align-items: center;
+    font-family: var(--primary-font);
+    border-radius: 7px;
+    border: 1px solid #FFF;
+    /* background: #FFF; */
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
+    overflow: hidden;
+    z-index: 0;
+    height: 100%;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2000px;
+        height: 2000px;
+        background: radial-gradient(
+        circle at top left,
+        #FFBC35 0%,
+        transparent 50%
+        );
+        filter: blur(1px);
+        transform: translate(-39%, -39%);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+    }
+}
+
+.hindi-calendar-container{
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.claendar-svg{
+    background-color: #fff;
+    padding: 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hindi-info{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hindi-header{
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.hindi-sub{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.calendar-info{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.calendar-loc{
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.refresh-detail{
+    margin-left: 8px;
+    background: var(--secondary-color);
+    padding: 6px 8px;
+    border-radius: 9999px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.calendar-date{
+    font-weight: 400;
+    font-size: 24px;
+    text-align: right;
+}
+
+.panchang-wrapper{
+    display: flex;
+    gap: 10px;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+
+}
+
+.main-table{
+    width: 100%;
+}
+
+.holiday-table{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background: var(--light-primary-color);
+    color: var(--secondary-color);
+    font-family: var(--primary-font);
+    border-radius: 7px;
+    width: 100%;
+    max-width: 436px;
+}
+
+.holiday-header{
+    padding: 12px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.holiday-card-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.holiday-card{
+    display: flex;
+    gap: 12px;
+    padding: 8px;
+    align-items: center;
+    background: #fff;
+    border-radius: 7px;
+}
+
+.holoday-img{
+    width: 60px;
+    height: 60px;
+    border-radius: 7px;
+    object-fit: cover;
+}
+
+.holiday-info{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.holoday-header{
+    font-size: 20;
+    font-weight: 700;
+}
+
+.holoday-sub{
+    font-size: 14px;
+    font-family: var(--secondary-font);
+    font-weight: 400;
 }

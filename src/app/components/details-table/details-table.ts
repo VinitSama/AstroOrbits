@@ -25,4 +25,17 @@ export class DetailsTable {
     return grouped;
   }
 
+  getFormattedHeading(): string {
+    if (!this.heading) return '';
+    return this.heading.replace(/(\d{1,2}\/\d{1,2}\/\d{4})/, (match) => {
+      const [day, month, year] = match.split('/').map(Number);
+      const date = new Date(year, month - 1, day);
+      return date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      });
+    });
+  }
+
 }

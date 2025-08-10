@@ -1,44 +1,25 @@
 <div class="detail-table-container">
   <div class="heading">
-    {{ heading }}
+    {{ getFormattedHeading() }}
   </div>
   <div class="table">
-    <ng-container *ngFor="let row of groupedDetails">
-      <div class="row">
-        <div class="detail" *ngFor="let detail of row">
-          <div class="detail-name">{{ detail.name }}</div>
-          <div class="detail-value">{{ detail.value }}</div>
-        </div>
+      @for (row of groupedDetails; track row) {
+        <ng-container>
+        <div class="row">
+          @for (detail of row; track detail) {
+            <div class="detail">
+              <div class="detail-name">{{ detail.name }}</div>
+              <div class="detail-value">{{ detail.value }}</div>
+            </div>
+          }
 
-        <ng-container *ngIf="row.length < columns">
-          <div class="detail extra" *ngFor="let _ of [].constructor(columns - row.length)"></div>
-        </ng-container>
-      </div>
-    </ng-container>
+          @if (row.length < columns) {
+            @for (_ of [].constructor(columns - row.length); track _) {
+              <div class="detail extra"></div>
+            }
+          }
+        </div>
+      </ng-container>
+    }
   </div>
 </div>
-
-
-
-
-
-<!-- <div class="detail-table-container">
-    <div class="heading">
-        {{heading}}
-    </div>
-    <div class="table">
-        <ng-container *ngFor="let detail of detailTable; let i = index" >
-            <div class="row" *ngIf="i%2 == 0">
-                <div class="detail">
-                    <div class="detail-name">{{detailTable[i].name}}</div>
-                    <div class="detail-value">{{detailTable[i].value}}</div>
-                </div>
-                <div class="detail" *ngIf="detailTable[i + 1]">
-                    <div class="detail-name">{{detailTable[i + 1].name}}</div>
-                    <div class="detail-value">{{detailTable[i + 1].value}}</div>
-                </div>
-                <div class="detail extra" *ngIf="!detailTable[i+1]"></div>
-            </div>
-        </ng-container>
-    </div>
-</div> -->
