@@ -168,7 +168,25 @@ openDatePicker(input: HTMLInputElement) {
 }
 
   openTimePicker(input: HTMLInputElement) {
+    // this.tobFocused = true;
+    // if (input.showPicker) {
+    //   input.showPicker();
+    // } else {
+    //   input.focus();
+    //   this.tobFocused = false;
+    // }
+
+    if (this.isPickerOpen) return;
+
     this.tobFocused = true;
+
+    // Set flag and clear it after delay (simulate calendar state)
+    this.isPickerOpen = true;
+
+    setTimeout(() => {
+      this.isPickerOpen = false;
+    }, 300); // Adjust delay to match calendar closing time
+
     if (input.showPicker) {
       input.showPicker();
     } else {
@@ -178,7 +196,29 @@ openDatePicker(input: HTMLInputElement) {
   }
 
   stopPropagation(event: Event): void {
-  event.stopPropagation();
-}
+    event.stopPropagation();
+  }
+
+
+  toggleDatePicker(input: HTMLInputElement, event: MouseEvent): void {
+    event.stopPropagation();
+    if (this.dobFocused) {
+      input.blur();
+    } else {
+      input.focus();
+      setTimeout(() => input.showPicker(), 0);
+    }
+  }
+
+  toggleTimePicker(input: HTMLInputElement, event: MouseEvent): void {
+    event.stopPropagation();
+    if (this.tobFocused) {
+      input.blur();
+    } else {
+      input.focus();
+      setTimeout(() => input.showPicker(), 0);
+    }
+  }
+  
 
 }

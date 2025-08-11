@@ -3,8 +3,10 @@
         <app-section-tag [sectionTitle]="'Most Commonly Asked Questions (FAQs)'" [subHeading]="'Knowing more about would never hurt, just dive deep to be aware of the new trends.'"></app-section-tag>
     </div>
     <div class="card-container">
-        <div class="card" *ngFor="let c of cards; let i = index">
-            <app-faq-card [card]="c"></app-faq-card>
-        </div>
+        @for (c of cards; track $index) {
+            <div class="card">
+                <app-faq-card [card]="c"></app-faq-card>
+            </div>
+        }
     </div>
 </div>

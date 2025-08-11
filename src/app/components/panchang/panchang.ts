@@ -54,11 +54,12 @@ export class Panchang {
     name: string;
     date: string;
     imgUrl: string;
+    gap?: string;
   }[] = [
     {
       name: "Haryali Teej",
       date: "August 27, 2025 (Sunday)",
-      imgUrl: "./images/sample_holiday.jpg"
+      imgUrl: "./images/sample_holiday.jpg",
     }
   ];
 
@@ -72,6 +73,7 @@ export class Panchang {
     this.forIncreament = new Date(this.date);
     this.forDecreament.setDate(this.date.getDate() -1);
     this.forIncreament.setDate(this.date.getDate() +1);
+    this.changeAllHoliday();
   }
 
   private loadPanchang() {
@@ -106,6 +108,7 @@ export class Panchang {
     } else {
       this.dayHeading = this.date.toLocaleDateString('en-US', {dateStyle: 'full'});
     }
+    // this.changeAllHoliday();
   }
 
   getDateForDay(day: number): Date {
@@ -119,8 +122,9 @@ export class Panchang {
     //
   }
 
-  dayGap(date: string): string {
+  private dayGap(date: string): string {
     const today = new Date();
+    // const today = this.date;
     const targetDate = new Date(date);
     const diffTime = Math.abs(targetDate.getTime() - today.getTime());
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -130,6 +134,12 @@ export class Panchang {
       return "1 Day";
     }
     return `${diffDays} Days`;
+  }
+
+  private changeAllHoliday() {
+    this.holidayTable.forEach(h => {
+      h.gap = this.dayGap(h.date);
+    })
   }
 
   makeDate(date: string) {

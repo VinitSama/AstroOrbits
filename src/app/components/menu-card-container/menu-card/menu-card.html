@@ -1,7 +1,7 @@
 <div class="card-background" [ngStyle]="{'max-width': card.width, '--blur-color': card.blurColor}">
     <div class="card-container">
         <div class="header-container">
-            <div class="svg-container" [innerHTML]="card.svg">
+            <div class="svg-container" [ngStyle]="{'width': card.largerSvg, 'height': card.largerSvg}" [innerHTML]="card.svg">
             </div>
             <div class="header">
                 <div class="heading">{{card.heading}}</div>

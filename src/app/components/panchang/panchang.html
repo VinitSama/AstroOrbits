@@ -56,7 +56,7 @@
                             <img class="holoday-img" [src]="c.imgUrl" [alt]="c.name" />
                         </div>
                         <div class="holiday-info">
-                            <div class="holoday-header">{{`${c.name} (${dayGap(c.date)})`}}</div>
+                            <div class="holoday-header">{{`${c.name} (${c.gap})`}}</div>
                             <div class="holoday-sub">{{`${makeDate(c.date)}` | date: "MMMM dd, yyyy (EEEE)"}}</div>
                         </div>
                     </div>

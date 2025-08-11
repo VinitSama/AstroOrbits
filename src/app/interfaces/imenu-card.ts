@@ -6,4 +6,5 @@ export interface IMenuCard {
     sub: string,
     blurColor: string,
     width?: string,
+    largerSvg?: string;
 }

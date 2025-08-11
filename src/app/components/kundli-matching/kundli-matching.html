@@ -1,16 +1,18 @@
 <div class="kundli-matching-page">
     <div class="mathicng-wrapper">
-        <app-section-tag [sectionTitle]="'Match Making'" [subHeadCol]="true" [subHeading]="sectionBrief"></app-section-tag>"
+        <app-section-tag [sectionTitle]="'Match Making'" [subHeadCol]="true" [subHeading]="sectionBrief"></app-section-tag>
         <div class="banner-container">
             <div class="form-wrapper">
                 <div class="form-steps">
                     @for (step of steps; track $index; let index = $index) {
-                        <div class="step">
-                            <div class="step-svg">
+                        <div class="step" [ngClass]="{'first-step': index == 0, 'last-step-done': index == stepsDone, 'step-done': index <= stepsDone, 'last-step': index == steps.length-1 }">
+                            <div class="step-svg-container">
                                 @if (stepsDone >= index) {
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
-                            <path d="M6.66732 2.5L3.00065 6.16667L1.33398 4.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                                    <div class="step-svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
+                                            <path d="M6.66732 2.5L3.00065 6.16667L1.33398 4.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
                                 }
                             </div>
                             <div class="step-name">{{step}}</div>
@@ -21,12 +23,14 @@
                     @for (card of formsCard; track $index; let index = $index) {
                         <div class="form-container" [ngClass]="{'boy': index == 0}" [ngClass]="{'girl': index == 1}">
                             @if (index == 1) {
-                                <div class="first-girl-design-card"></div>
                                 <div class="second-girl-design-card"></div>
+                                <div class="first-girl-design-card"></div>
                             }
-                            <app-menu-card [card]="card">
-                                <app-kundli-form [gender]="index == 0? 'm': 'f'" [showGenderOption]="false" [submitBtnOption]="2"></app-kundli-form>
-                            </app-menu-card>
+                            <div class="form">
+                                <app-menu-card [card]="card">
+                                    <app-kundli-form [gender]="index == 0? 'm': 'f'" [showGenderOption]="false" [submitBtnOption]="2"></app-kundli-form>
+                                </app-menu-card>
+                            </div>
                             @if (index == 0) {
                                 <div class="first-boy-design-card"></div>
                                 <div class="second-boy-design-card"></div>
@@ -35,7 +39,106 @@
                     }
                 </div>
             </div>
-            <div class="submit-btn">Generate Kundlies & Check Compatibility</div>
+            <div class="submit-btn-wrapper">
+                <div class="design-box"></div>
+                <div class="submit-btn">Generate Kundlies & Check Compatibility</div>
+            </div>
         </div>
     </div>
+    <div class="feature-container">
+        @for (c of features; track $index) {
+            <div class="feature-card">
+                <div class="feature-svg">
+                    <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
+                </div>
+                <div class="feature-info">
+                    <div class="feature-heading">{{c.heading}}</div>
+                    <div class="feature-subHeading">{{c.subHeading}}</div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="report-section">
+        <app-section-tag [sectionTitle]="'Your Match Making Report will Consist'"></app-section-tag>
+        <div class="report-wrapper">
+            <div class="report-container-t1">
+                <div class="report-t1-row">
+                    @for (c of kundliFeatureCards.slice(0,2); track $index) {
+                        <app-kundli-feature-card [card]="c"></app-kundli-feature-card>
+                    }
+                </div>
+                <div class="report-t1-row">
+                    @for (c of kundliFeatureCards.slice(2); track $index) {
+                        <app-kundli-feature-card [card]="c"></app-kundli-feature-card>
+                    }
+                </div>
+            </div>
+            <div class="report-container-t2">
+                @for (c of otherReportComponents; track $index) {
+                    <div class="report-card">
+                        <div class="report-information">
+                            <div class="report-svg">
+                                <img [src]="c.svg" [alt]="c.name">
+                            </div>
+                            <div class="report-header">
+                                <div class="report-name">{{c.name}}</div>
+                                <div class="report-brief">{{c.brief}}</div>
+                            </div>
+                        </div>
+                        <div class="report-check">Check Now</div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="report-many-more">And Much More...</div>
+    </div>
+    <div class="compatibility-section">
+        <app-section-tag [sectionTitle]="'Our Compatibility repot are based on'"></app-section-tag>
+        <div class="compatibility-wrapper">
+            <div class="compatibility-container">
+                @for (c of compatibilityCards; track $index; let index = $index) {
+                    @if (index == selectedCompatibilityOption) {
+                        <div class="compatibility-card">
+                            <div class="compatibility-header">
+                                <div class="compatibility-point">POINT {{`${index+1}: ${c.point}`}}</div>
+                                <div class="compatibility-name">{{c.name}}</div>
+                            </div>
+                            <div class="compatibility-brief">{{c.brief}}</div>
+                            <div class="compatibility-check pointer">
+                                <div>Check Compatibility</div>
+                                <div class="compatibility-check-svg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                        <path d="M2.91602 7.5H11.0827" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7 3.41675L11.0833 7.50008L7 11.5834" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    } @else {
+                        <div class="compatibility-card pointer" (mouseenter)="compatibilityHover(index)">
+                            <div class="compatibility-header">
+                                <div class="compatibility-point">POINT {{`${index}: ${c.point}`}}</div>
+                                <div class="compatibility-name">{{c.name}}</div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <div class="compatibility-image">
+                <img class="compatibility-img" [src]="`./images/kundli/compatibility/point-${selectedCompatibilityOption+1}.jpg`" alt="compatibility.jpg">
+            </div>
+        </div>
+    </div>
+    <div class="report-tags-wrapper">
+        <app-section-tag [sectionTitle]="'Matching Report as per your needs'"></app-section-tag>
+        <div class="report-tag-container">
+            @for (c of reportTags; track $index) {
+                <div class="report-tag">{{c}}</div>
+            }
+        </div>
+    </div>
+    <app-rudraksh-section></app-rudraksh-section>
+    <app-astrology-section></app-astrology-section>
+    <app-about-section></app-about-section>
+    <app-faq-section></app-faq-section>
 </div>
