@@ -1,43 +1,51 @@
 <div class="navbar-container" [ngClass]="{'set-color':showColor}">
     <div class="navbar-list">
-        <div *ngFor="let item of navbarItems; trackBy: trackByFn; let i = index" class="list-item"
-                [ngClass]="{ 'first-item': i === 0, 'last-item': i === navbarItems.length - 1 }" >
-            <ng-container *ngIf="!item.dropDownPresent">
-                <div class="item-name" (click)="goToPage(item.navigationLink,i)" (click)="closeFn()">
-                    {{item.name}}
-                    <div *ngIf="item.tagPresent" class="tag" [style.background-color]="item.tagSettings?.eclipseColor">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
-                            <circle cx="5.85706" cy="5.5" r="4.5" [attr.fill]="item.tagSettings?.circleColor" [attr.stroke]="item.tagSettings?.eclipseColor"/>
-                        </svg>
-                        {{item.tagSettings?.name}}
-                    </div>
-                </div>
-            </ng-container>
-            <ng-container *ngIf="item.dropDownPresent && item.dropDownOption?.length">
-                <div [matMenuTriggerFor]="menu" class="item-name" #trigger="matMenuTrigger" (click)="openMenu(trigger)" (mouseenter)="handleHover(i, trigger)">
-                    <div class="menu-button-name">
+        @for (item of navbarItems; track $index; let i = $index) {
+            <div class="list-item"
+                    [ngClass]="{ 'first-item': i === 0, 'last-item': i === navbarItems.length - 1 }" >
+                @if (!item.dropDownPresent) {
+                    <div class="item-name" (click)="goToPage(item.navigationLink,i)" (click)="closeFn()">
                         {{item.name}}
-                        <div class="menu-arrow-svg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-                                <path d="M3.5 5.75L7 9.25L10.5 5.75" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
+                        @if (item.tagPresent){
+                            <div class="tag" [style.background-color]="item.tagSettings?.eclipseColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+                                    <circle cx="5.85706" cy="5.5" r="4.5" [attr.fill]="item.tagSettings?.circleColor" [attr.stroke]="item.tagSettings?.eclipseColor"/>
+                                </svg>
+                                {{item.tagSettings?.name}}
+                            </div>
+                        }
                     </div>
-                </div>
-                <mat-menu #menu="matMenu" (closed)="onMenuClosed(trigger)">
-                    <div class="menu-container">
-                        <div class="menu-item" *ngFor="let d of item.dropDownOption; let j = index"(click)="goToPage(d.navigationLink,i,j)">{{d.name}}
-                            <div class="menu-option-svg">
+                }
+                @else {
+                    <div [matMenuTriggerFor]="menu" class="item-name" #trigger="matMenuTrigger" (click)="openMenu(trigger)" (mouseenter)="handleHover(i, trigger)">
+                        <div class="menu-button-name">
+                            {{item.name}}
+                            <div class="menu-arrow-svg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-                                    <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M7 3.41666L11.0833 7.5L7 11.5833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3.5 5.75L7 9.25L10.5 5.75" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                         </div>
                     </div>
-                </mat-menu>
-            </ng-container>
-            <div class="selected-marker" *ngIf="selected == i"></div>
-        </div>
+                    <mat-menu #menu="matMenu" (closed)="onMenuClosed(trigger)">
+                        <div class="menu-container">
+                            @for (d of item.dropDownOption; track $index; let j = $index) {
+                                <div class="menu-item" (click)="goToPage(d.navigationLink,i,j)">{{d.name}}
+                                    <div class="menu-option-svg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                            <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M7 3.41666L11.0833 7.5L7 11.5833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </mat-menu>
+                }
+                @if (selected == i) {
+                    <div class="selected-marker"></div>
+                }
+            </div>
+        }
     </div>
 </div>

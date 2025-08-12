@@ -1,0 +1,9 @@
+<div class="card">
+    <div class="header">
+        @if (card.svg) {
+            <div class="svg-container" [ngStyle]="{'--svg-bg-col': card.svgBg || ''}" [innerHTML]="card.svg"></div>
+        }
+        <div class="title">{{card.title}}</div>
+    </div>
+    <div class="brief">{{card.brief}}</div>
+</div>

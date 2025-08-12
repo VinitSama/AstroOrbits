@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IKundliDetail } from '../../../../interfaces/ikundli-detail';
 import { CommonModule } from '@angular/common';
 import { DetailsTable } from '../../../details-table/details-table';
 import { IDetailTable } from '../../../../interfaces/idetail-table';
+import { IKundliForm } from '../../../../interfaces/ikundli-form';
 
 @Component({
   selector: 'app-kundli-basic-details',
@@ -13,8 +14,8 @@ import { IDetailTable } from '../../../../interfaces/idetail-table';
   templateUrl: './kundli-basic-details.html',
   styleUrl: './kundli-basic-details.css'
 })
-export class KundliBasicDetails {
-
+export class KundliBasicDetails implements OnInit {
+  @Input() profile!: IKundliForm;
   tables: IDetailTable[] = [
     {
       title: "Basic Details",
@@ -117,6 +118,16 @@ export class KundliBasicDetails {
     },
   ]
 
+  ngOnInit(): void {
+    this.profileSet();
+  }
+  
+  private profileSet() {
+    this.tables[0].kundliDetail[0].value = this.profile.name;
+    this.tables[0].kundliDetail[2].value = `${this.profile.dob} | ${this.profile.time}`;
+    this.tables[0].kundliDetail[4].value = this.profile.place;
+    this.tables[0].kundliDetail[6].value = this.profile.gender == 'm' ? 'Male' : 'Female';
+  }
 
   private parseJsonToIKundliDetail(obj: Record<string, string>): IKundliDetail[] {
     return Object.entries(obj).map(([key, value]) => {

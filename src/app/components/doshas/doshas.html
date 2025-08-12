@@ -1,45 +1,8 @@
 <div class="doshas-page">
-    <div class="option-container">
-        @for (option of options; track option.name; let i = $index) {
-        <div class="option" [ngClass]="{'selected': selectedOption == option.name}" (click)="chooseOption(option.name)" (click)="smoothScrolling(i)" >
-            <div class="title">
-                <div class="svg-image">
-                    <img [src]="svgFile[i]" alt="UI decorative image">
-                </div>
-                {{option.name}}
-            </div>
-            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12.333H19" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 5.33301L19 12.333L12 19.333" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-        }
-    </div>
-
-    <div class="doshas-container">
-        @for (dosha of doshas; track dosha.name; let i = $index) {
-        <div class="dosha" [id] = "'dosha-' + i" >
-            <div class="header">
-                <div class="title-svg">
-                    <img src="/images/buletin.svg" alt="decorative buletine image">
-                </div>
-                {{dosha.name}}
-            </div>
-            <div class="brief">{{dosha.brief}}</div>
-            @if (dosha.showResult) {
-            <div class="result">
-                <div class="header">Result</div>
-                @if (dosha.result?.openResult) {
-                <div class="solution-container">{{dosha.result?.solution}}</div>
-                }
-                @if (!dosha.result?.openResult) {
-                <div class="solution-btn-container">
-                    <div class="solution-btn" (click)="showResult(i)" >Get Solution</div>
-                </div>
-                }
-            </div>
-            }
-        </div>
+    <div class="doshas-content">
+        <app-feature-card-t1 [card]="summaryCard"></app-feature-card-t1>
+        @for (c of doshasCard; track $index) {
+            <app-feature-card-t2 [card]="c"></app-feature-card-t2>
         }
     </div>
 </div>

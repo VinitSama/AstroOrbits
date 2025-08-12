@@ -5,3 +5,8 @@ export interface IKundliForm {
     place: string;
     gender: 'm' | 'f';
 }
+
+export interface IMatchData {
+    boy: IKundliForm;
+    girl: IKundliForm;
+}

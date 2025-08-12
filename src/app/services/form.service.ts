@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IKundliForm } from '../interfaces/ikundli-form';
+import { IKundliForm, IMatchData } from '../interfaces/ikundli-form';
 
 @Injectable({
   providedIn: 'root'
@@ -7,15 +7,24 @@ import { IKundliForm } from '../interfaces/ikundli-form';
 export class FormService {
 
   private kundliFormData!: IKundliForm;
+  private kundliMatchForm!: IMatchData
 
   constructor() { }
 
-  setKundliFormData(formData: IKundliForm): void {
-    this.kundliFormData = formData;
+  setKundliFormData(form: IKundliForm): void {
+    this.kundliFormData = form;
   }
 
   getKundliFormData(): IKundliForm {
     return this.kundliFormData;
   }
+
+  setMatchData(form: IMatchData): void {
+    this.kundliMatchForm = form;
+  }
+
+  getMatchData(): IMatchData {
+    return this.kundliMatchForm;
+  } 
 
 }

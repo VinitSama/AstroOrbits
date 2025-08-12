@@ -7,9 +7,11 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { KundliBasicDetails } from "../kundli-basic-details/kundli-basic-details";
 import { PositionOfPlanets } from "../../../position-of-planets/position-of-planets";
-import { IKundliFeatureCard } from '../../../../interfaces/ikundli-feature-card';
 import { AstrologySection } from "../../../astrology-section/astrology-section";
 import { FAQSection } from "../../../faq-section/faq-section";
+import { IFeatureCard } from '../../../../interfaces/ifeature-card';
+import { Doshas } from "../../../doshas/doshas";
+import { Dashaa } from "../dashaa/dashaa";
 
 @Component({
   selector: 'app-kundli-detail-report',
@@ -18,7 +20,9 @@ import { FAQSection } from "../../../faq-section/faq-section";
     KundliBasicDetails,
     PositionOfPlanets,
     AstrologySection,
-    FAQSection
+    FAQSection,
+    Doshas,
+    Dashaa
 ],
   templateUrl: './kundli-detail-report.html',
   styleUrl: './kundli-detail-report.css'
@@ -111,7 +115,7 @@ export class KundliDetailReport implements OnInit {
     },
   ]
 
-  planetSummaryCard: IKundliFeatureCard = {
+  planetSummaryCard: IFeatureCard = {
     title: "Summary",
     brief: "Here lies the summary of the planetary output Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }

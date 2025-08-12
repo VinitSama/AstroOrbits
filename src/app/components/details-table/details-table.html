@@ -3,10 +3,10 @@
     {{ getFormattedHeading() }}
   </div>
   <div class="table">
-      @for (row of groupedDetails; track row) {
+      @for (row of groupedDetails; track $index) {
         <ng-container>
         <div class="row">
-          @for (detail of row; track detail) {
+          @for (detail of row; track $index) {
             <div class="detail">
               <div class="detail-name">{{ detail.name }}</div>
               <div class="detail-value">{{ detail.value }}</div>

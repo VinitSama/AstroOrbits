@@ -219,12 +219,23 @@ export class Navbar {
     //   navigationLink: "mantras",
     // },   
     {
-      name: 'Love Calculator',
-      dropDownPresent: false,
+      name: 'Calculator',
+      dropDownPresent: true,
       tagPresent: false,
-      dropDownOption: null,
+      dropDownOption: [
+        {
+          name: "Love Calculator",
+          navigationLink: "love-calculator",
+          subLink: "Love Calculator",
+        },
+        {
+          name: "Rudraksh Calculator",
+          navigationLink: "rudraksh-calculator",
+          subLink: "Rudraksh Calculator",
+        },
+      ],
       tagSettings: null,
-      navigationLink: "love-calculator",
+      navigationLink: null,
       // tagSettings: {
       //   name: 'Watch',
       //   circleColor: '#E90000',

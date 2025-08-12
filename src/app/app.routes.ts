@@ -221,7 +221,7 @@ export const routes: Routes = [
             },
             {
                 path: 'kundli-matching',
-                data: {layout: 'main', breadcrumb: 'Kundli Matching'},
+                data: {layout: 'main', breadcrumb: 'Match Making'},
                 children: [
                     {
                         path: '',
@@ -229,15 +229,9 @@ export const routes: Routes = [
                         data: {breadcrumb: null},
                     },
                     {
-                        path: 'result',
-                        data: {layout: 'main', breadcrumb: 'Result'},
-                        children: [
-                            {
-                                path: '',
-                                loadComponent: () => import('./components/kundli-matching/matching-result/matching-result').then(m => m.MatchingResult),
-                                data: {breadcrumb: null},
-                            },
-                        ]
+                        path: 'result/:option',
+                        data: {layout: 'main', breadcrumb: 'Report'},
+                        loadComponent: () => import('./components/kundli-matching/matching-result/matching-result').then(m => m.MatchingResult),
                     },
                 ]
             },

@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { ThemeService } from '../../../services/theme.service';
 import { CommonModule } from '@angular/common';
-import { KundliFeatureCard } from "../kundli-feature-card/kundli-feature-card";
-import { IKundliFeatureCard } from '../../../interfaces/ikundli-feature-card';
 import { IKundliForm } from '../../../interfaces/ikundli-form';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { TZodiacSign } from '../../../types/tzodiac-sign';
@@ -19,12 +17,13 @@ import { NumerologyMenuCard } from "../../menu-card-container/cards/numerology-m
 import { AboutSection } from "../../about-section/about-section";
 import { FAQSection } from "../../faq-section/faq-section";
 import { RudrakshSection } from "../../rudraksh-section/rudraksh-section";
+import { IFeatureCard } from '../../../interfaces/ifeature-card';
+import { FeatureCardT1 } from "../../feature-card-t1/feature-card-t1";
 
 @Component({
   selector: 'app-kundli-result',
   imports: [
     CommonModule,
-    KundliFeatureCard,
     SectionTag,
     HoroscopeMenuCard,
     TarotMenuCard,
@@ -32,7 +31,8 @@ import { RudrakshSection } from "../../rudraksh-section/rudraksh-section";
     NumerologyMenuCard,
     AboutSection,
     FAQSection,
-    RudrakshSection
+    RudrakshSection,
+    FeatureCardT1
 ],
   templateUrl: './kundli-result.html',
   styleUrl: './kundli-result.css'
@@ -49,7 +49,7 @@ export class KundliResult {
     gender: "m",
   }
 
-  summaryCard: IKundliFeatureCard = {
+  summaryCard: IFeatureCard = {
     title: "Summary",
     brief: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis",
     svg: `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
@@ -58,7 +58,7 @@ export class KundliResult {
     svgBg: "#FFF1D6"
   }
 
-  doshas: IKundliFeatureCard[] = [
+  doshas: IFeatureCard[] = [
     {
       title: "Dasha Period",
       brief: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis",

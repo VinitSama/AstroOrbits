@@ -1,10 +1,8 @@
 import { SafeHtml } from "@angular/platform-browser";
 
-export interface IKundliFeatureCard {
+export interface IFeatureCardT2 {
     title: string;
     brief: string;
-    clickLink?: string;
     svg?: string | SafeHtml;
     svgBg?: string;
-    outputId?: number;
 }

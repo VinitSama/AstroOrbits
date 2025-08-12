@@ -16,15 +16,17 @@
         </div>
     </div>
     <div class="details-wrapper">
-        <ng-container *ngIf="selectedOption == 0">
-            <app-kundli-basic-details></app-kundli-basic-details>
-        </ng-container>
-        <ng-container *ngIf="selectedOption == 1"></ng-container>
-        <ng-container *ngIf="selectedOption == 2"></ng-container>
-        <ng-container *ngIf="selectedOption == 3">
+        @if (selectedOption == 0) {
+            <app-kundli-basic-details [profile]="profile"></app-kundli-basic-details>
+        } @else if (selectedOption == 1 ) {
+            <app-doshas></app-doshas>
+        } @else if (selectedOption == 2 ) {
+            <app-dashaa></app-dashaa>
+        } @else if (selectedOption == 3 ) {
             <app-position-of-planets [summaryCard]="planetSummaryCard"></app-position-of-planets>
-        </ng-container>
-        <ng-container *ngIf="selectedOption == 4"></ng-container>
+        } @else if (selectedOption == 4 ) {
+
+        }
     </div>
     <app-astrology-section></app-astrology-section>
     <app-faq-section></app-faq-section>

@@ -1,104 +1,12 @@
 .doshas-page{
-    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+}
+
+.doshas-content{
+    max-width: 1200px;
     width: 100%;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-.option-container{
-    display: flex;
-    width: 100%;
-    gap: 32px;
-}
-.option{
-    align-items: center;
-    padding: 8px 32px;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    border-radius: 7px;
-    border: 1px solid var(--light-primary-color);
-    cursor: pointer;
-}
-.title{
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--tertiary-color);
-}
-.svg-image{
-    display: flex;
-    align-content: center;
-    height: 32px;
-    padding: 5px 14px;
-    border-radius: 15px;
-    background-color: var(--primary-color);
-}
-.selected{
-    background-color: var(--light-primary-color);
-}
-
-.dosha{
-    margin: 32px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--secondary-color);
-}
-
-.header{
-    display: flex;
-    padding: 10px;
-    gap: 10px;
-    align-items: center;
-    font-size: 16px;
-}
-
-.title-svg{
-    padding: 8px;
-    border-radius: 7px;
-    background-color: var(--primary-color);
-    display: flex;
-    align-items: center;
-}
-
-.result{
-    padding: 24px;
-    border-radius: 7px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: var(--light-primary-color);
-}
-
-.solution-container{
-    padding: 10px;
-}
-
-.solution-btn{
-    padding: 12px;
-    border-radius: 7px;
-    background-color: var(--primary-color);
-    color: var(--tertiary-color);
-    max-width: min-content;
-    text-wrap: nowrap;
-    cursor: pointer;
-}
-
-@media (max-width: 990px) {
-    .option-container{
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        -ms-overflow-style: none;
-        scrollbar-width: none; 
-    }
-
-    .option-container::-webkit-scrollbar {
-        display: none;
-    }
+    gap: 24px;
 }

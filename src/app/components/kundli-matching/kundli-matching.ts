@@ -8,12 +8,15 @@ import { MenuCard } from "../menu-card-container/menu-card/menu-card";
 import { IMenuCard } from '../../interfaces/imenu-card';
 import { KundliForm } from "../kundli-form/kundli-form";
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { IKundliFeatureCard } from '../../interfaces/ikundli-feature-card';
-import { KundliFeatureCard } from "../kundli/kundli-feature-card/kundli-feature-card";
 import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
 import { AstrologySection } from "../astrology-section/astrology-section";
 import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
+import { IFeatureCard } from '../../interfaces/ifeature-card';
+import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
+import { IKundliForm, IMatchData } from '../../interfaces/ikundli-form';
+import { FormService } from '../../services/form.service';
+import { Router } from '@angular/router';
 
 type TGender = 'm' | 'f';
 
@@ -24,11 +27,11 @@ type TGender = 'm' | 'f';
     CommonModule,
     MenuCard,
     KundliForm,
-    KundliFeatureCard,
     RudrakshSection,
     AstrologySection,
     AboutSection,
-    FAQSection
+    FAQSection,
+    FeatureCardT1
 ],
   templateUrl: './kundli-matching.html',
   styleUrl: './kundli-matching.css'
@@ -103,9 +106,9 @@ export class KundliMatching implements OnInit {
     "Generate Detailed Report",
   ]
 
-  stepsDone: number = 3;
+  stepsDone: number = -1;
 
-  kundliFeatureCards: IKundliFeatureCard[] = [
+  kundliFeatureCards: IFeatureCard[] = [
     {
       title: "36 Guna Matching",
       brief: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus.Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus..",
@@ -291,14 +294,31 @@ export class KundliMatching implements OnInit {
     "Divisional Charts"
   ]
 
+  forms: IMatchData = {
+    boy: {
+      name: "",
+      dob: "",
+      time: "",
+      place: "",
+      gender: "m",
+    },
+    girl: {
+      name: "",
+      dob: "",
+      time: "",
+      place: "",
+      gender: "f",
+    },
+  };
   selectedCompatibilityOption: number = 0;
 
-  constructor(private themeService: ThemeService, private headerService: HeaderService, private sanitizer: DomSanitizer) {}
+  constructor(private themeService: ThemeService, private headerService: HeaderService, private sanitizer: DomSanitizer, private formService: FormService, private router: Router) {}
 
   ngOnInit(): void {
    this.loadSvgColor();
    this.headerService.setColorSubject(false); 
    this.formSvgSanitizer();
+   this.stepsDone = -1;
   }
 
   private loadSvgColor(): void {
@@ -308,6 +328,7 @@ export class KundliMatching implements OnInit {
   private svgSanitizer( svg: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
+
   private formSvgSanitizer() {
     this.formsCard.forEach(c => {
       c.svg = this.svgSanitizer(c.svg as string);
@@ -318,6 +339,41 @@ export class KundliMatching implements OnInit {
     setTimeout(() => {
       this.selectedCompatibilityOption = ind;
     }, 200);
+  }
+
+  submitForm() {
+    console.log(this.forms);
+    if (this.validForm(this.forms.boy) && this.validForm(this.forms.girl)){
+      this.formService.setMatchData(this.forms);
+      this.router.navigate(["home/kundli-matching/result",0]);
+    }
+  }
+
+  updateForm(form: IKundliForm, gender: 'boy' | 'girl') {
+    this.forms[gender] = form;
+    let c = -1;
+    if (this.validForm(this.forms.boy)){
+      c+=1;
+    } if (this.validForm(this.forms.girl)){
+      c+=1;
+    }
+    this.stepsDone = c;
+  }
+
+  private validForm(form: IKundliForm): boolean {
+    const requiredFields: (keyof IKundliForm)[] = ["dob", "gender", "name", "place", "time"];
+    for (const field of requiredFields) {
+      if (!form[field] || form[field].trim() === "") {
+        return false;
+      }
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(form.dob)) {
+      return false;
+    }
+    if (!/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(form.time)) {
+      return false;
+    }
+    return true;
   }
 
 }

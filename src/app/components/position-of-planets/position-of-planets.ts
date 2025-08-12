@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPlanetInfo, IPlanetInfoDisplayMap } from '../../interfaces/iplanet-info';
 import { CommonModule } from '@angular/common';
-import { KundliFeatureCard } from "../kundli/kundli-feature-card/kundli-feature-card";
-import { IKundliFeatureCard } from '../../interfaces/ikundli-feature-card';
+import { IFeatureCard } from '../../interfaces/ifeature-card';
+import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
 
 @Component({
   selector: 'app-position-of-planets',
   imports: [
     CommonModule,
-    KundliFeatureCard
+    FeatureCardT1
 ],
   templateUrl: './position-of-planets.html',
   styleUrl: './position-of-planets.css'
@@ -148,7 +148,7 @@ export class PositionOfPlanets implements OnInit {
       house: "Ascendant",
     },
   ];
-  @Input() summaryCard?: IKundliFeatureCard;
+  @Input() summaryCard?: IFeatureCard;
 
   planetOrder = ["Sun", "Moon", "Mars", "Mercury","Jupiter","Venus","Saturn","Rahu","Ketu","Uranus","Neptune","Pluto","Ascendant"];
 

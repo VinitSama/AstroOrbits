@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KundliFeatureCard } from './kundli-feature-card';
+import { FeatureCardT1 } from './feature-card-t1';
 
-describe('KundliFeatureCard', () => {
-  let component: KundliFeatureCard;
-  let fixture: ComponentFixture<KundliFeatureCard>;
+describe('FeatureCardT1', () => {
+  let component: FeatureCardT1;
+  let fixture: ComponentFixture<FeatureCardT1>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [KundliFeatureCard]
+      imports: [FeatureCardT1]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(KundliFeatureCard);
+    fixture = TestBed.createComponent(FeatureCardT1);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

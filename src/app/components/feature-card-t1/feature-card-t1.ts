@@ -1,18 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { IKundliFeatureCard } from '../../../interfaces/ikundli-feature-card';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IFeatureCard } from '../../interfaces/ifeature-card';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-kundli-feature-card',
+  selector: 'app-feature-card-t1',
   imports: [
     CommonModule
   ],
-  templateUrl: './kundli-feature-card.html',
-  styleUrl: './kundli-feature-card.css'
+  templateUrl: './feature-card-t1.html',
+  styleUrl: './feature-card-t1.css'
 })
-export class KundliFeatureCard implements OnInit{
-  @Input() card!: IKundliFeatureCard;
+export class FeatureCardT1 {
+  @Input() card!: IFeatureCard;
   @Input() boldClick: boolean = false;
   @Output() clickLinkEmitter = new EventEmitter<number>();
 

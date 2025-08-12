@@ -11,7 +11,7 @@
                         </svg></span><span style="margin-left: 4px;">Change Details</span></span></div>
                 </div>
                 <div class="summary">
-                    <app-kundli-feature-card [card]="summaryCard"></app-kundli-feature-card>
+                    <app-feature-card-t1 [card]="summaryCard"></app-feature-card-t1>
                 </div>
             </div>
             <div class="kundli-chart-container">
@@ -22,13 +22,13 @@
     <div class="report-info-wrapper">
         <div class="dosha-container">
             <div class="row">
-                <app-kundli-feature-card *ngFor="let c of doshas.slice(0,2)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-kundli-feature-card>
+                <app-feature-card-t1 *ngFor="let c of doshas.slice(0,2)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
             </div>
             <div class="row">
-                <app-kundli-feature-card *ngFor="let c of doshas.slice(2,4)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-kundli-feature-card>
+                <app-feature-card-t1 *ngFor="let c of doshas.slice(2,4)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
             </div>
             <div class="row">
-                <app-kundli-feature-card *ngFor="let c of doshas.slice(4)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-kundli-feature-card>
+                <app-feature-card-t1 *ngFor="let c of doshas.slice(4)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
             </div>
         </div>
         <div class="side-panel">

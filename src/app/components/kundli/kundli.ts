@@ -6,14 +6,14 @@ import { CommonModule } from '@angular/common';
 import { HeaderService } from '../../services/header.service';
 import { SectionTag } from "../section-tag/section-tag";
 import { KundliForm } from "../kundli-form/kundli-form";
-import { IKundliFeatureCard } from '../../interfaces/ikundli-feature-card';
-import { KundliFeatureCard } from "./kundli-feature-card/kundli-feature-card";
 import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
 import { AstrologySection } from "../astrology-section/astrology-section";
 import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
 import { IKundliForm } from '../../interfaces/ikundli-form';
 import { FormService } from '../../services/form.service';
+import { IFeatureCard } from '../../interfaces/ifeature-card';
+import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
 
 @Component({
   selector: 'app-kundli',
@@ -21,11 +21,11 @@ import { FormService } from '../../services/form.service';
     CommonModule,
     SectionTag,
     KundliForm,
-    KundliFeatureCard,
     RudrakshSection,
     AstrologySection,
     AboutSection,
-    FAQSection
+    FAQSection,
+    FeatureCardT1
 ],
   templateUrl: './kundli.html',
   styleUrl: './kundli.css'
@@ -118,7 +118,7 @@ export class Kundli {
     },
   ]
 
-  kundliFeatureCards: IKundliFeatureCard[] = [
+  kundliFeatureCards: IFeatureCard[] = [
     {
       title: "Marriage & Relations",
       brief: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus..",

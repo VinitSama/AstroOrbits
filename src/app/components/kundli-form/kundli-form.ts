@@ -41,16 +41,14 @@ export class KundliForm implements OnInit, OnChanges {
     }
 
     this.form.valueChanges.subscribe(val => {
-      if (this.form.valid) {
-        const updated: IKundliForm = {
-          name: val.name || '',
-          dob: val.DOB || '',
-          place: val.place || '',
-          time: val.time || '',
-          gender: this.gender
-        };
-        this.formValueEmitter.emit(updated);
-      }
+      const updated: IKundliForm = {
+        name: val.name || '',
+        dob: val.DOB || '',
+        place: val.place || '',
+        time: val.time || '',
+        gender: this.gender
+      };
+      this.formValueEmitter.emit(updated);
     });
     
   }

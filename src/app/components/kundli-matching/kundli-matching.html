@@ -20,28 +20,29 @@
                     }
                 </div>
                 <div class="form-banner">
-                    @for (card of formsCard; track $index; let index = $index) {
-                        <div class="form-container" [ngClass]="{'boy': index == 0}" [ngClass]="{'girl': index == 1}">
-                            @if (index == 1) {
-                                <div class="second-girl-design-card"></div>
-                                <div class="first-girl-design-card"></div>
-                            }
-                            <div class="form">
-                                <app-menu-card [card]="card">
-                                    <app-kundli-form [gender]="index == 0? 'm': 'f'" [showGenderOption]="false" [submitBtnOption]="2"></app-kundli-form>
-                                </app-menu-card>
-                            </div>
-                            @if (index == 0) {
-                                <div class="first-boy-design-card"></div>
-                                <div class="second-boy-design-card"></div>
-                            }
+                    <div class="form-container">
+                        <div class="form">
+                            <app-menu-card [card]="formsCard[0]">
+                                <app-kundli-form [gender]="'m'" [showGenderOption]="false" [submitBtnOption]="2" [formData]="forms.boy" (formValueEmitter)="updateForm($event, 'boy')"></app-kundli-form>
+                            </app-menu-card>
                         </div>
-                    }
+                        <div class="first-boy-design-card"></div>
+                        <div class="second-boy-design-card"></div>
+                    </div>
+                    <div class="form-container">
+                        <div class="second-girl-design-card"></div>
+                        <div class="first-girl-design-card"></div>
+                        <div class="form">
+                            <app-menu-card [card]="formsCard[1]">
+                                <app-kundli-form [gender]="'f'" [showGenderOption]="false" [submitBtnOption]="2" [formData]="forms.girl" (formValueEmitter)="updateForm($event, 'girl')"></app-kundli-form>
+                            </app-menu-card>
+                        </div>  
+                    </div>
                 </div>
             </div>
             <div class="submit-btn-wrapper">
                 <div class="design-box"></div>
-                <div class="submit-btn">Generate Kundlies & Check Compatibility</div>
+                <div class="submit-btn" (click)="submitForm()">Generate Kundlies & Check Compatibility</div>
             </div>
         </div>
     </div>
@@ -64,12 +65,12 @@
             <div class="report-container-t1">
                 <div class="report-t1-row">
                     @for (c of kundliFeatureCards.slice(0,2); track $index) {
-                        <app-kundli-feature-card [card]="c"></app-kundli-feature-card>
+                        <app-feature-card-t1 [card]="c"></app-feature-card-t1>
                     }
                 </div>
                 <div class="report-t1-row">
                     @for (c of kundliFeatureCards.slice(2); track $index) {
-                        <app-kundli-feature-card [card]="c"></app-kundli-feature-card>
+                        <app-feature-card-t1 [card]="c"></app-feature-card-t1>
                     }
                 </div>
             </div>
@@ -131,7 +132,7 @@
     </div>
     <div class="report-tags-wrapper">
         <app-section-tag [sectionTitle]="'Matching Report as per your needs'"></app-section-tag>
-        <div class="report-tag-container">
+        <div class="report-tag-container pointer">
             @for (c of reportTags; track $index) {
                 <div class="report-tag">{{c}}</div>
             }
