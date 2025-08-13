@@ -1,0 +1,147 @@
+<div class="rudraksh-calculator-page">
+    <div class="form-section"> 
+        <app-section-tag [sectionTitle]="'Rudraksh Finder'" [subHeadCol]="true" [subHeading]="sectionBrief"></app-section-tag>
+        <div class="form-banner">
+            <app-menu-card [card]="menuCard">
+                <form class="form" [formGroup]="rudrakshFormGroup" (ngSubmit)="submitForm()">
+                    <div class="form-container">
+                        <div class="column">
+                            <div class="row">
+                                <div class="input-field">
+                                    <div class="label">Rudraksh Suggested by</div>
+                                    @if (submitted && selectedPurposeId<0) {
+                                        <small class="red">*Purpose is required</small>
+                                    }
+                                    <div class="dropdown">{{selectedPurpose}}
+                                        <div class="dropdown-svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                                                <path d="M3.83203 5.25L7.33203 8.75L10.832 5.25" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field">
+                                    <div class="label">Country Code</div>
+                                    <div class="dropdown">+{{selectedCode}}
+                                        <div class="dropdown-svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                                                <path d="M3.83203 5.25L7.33203 8.75L10.832 5.25" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <div class="label">Phone Number</div>
+                                    @if (submitted && f.phone.errors?.['required']) {
+                                        <small class="red">*Phone number is required</small>
+                                    } @else if (submitted && (f.phone.errors?.['minlength']) || (f.phone.errors?.['maxlength'])) {
+                                        <small class="red">*Must have 10 digits</small>
+                                    } @else if (submitted && (f.phone.errors?.['pattern'])) {
+                                        <small class="red">*Must contain digits only</small>
+                                    }
+                                    <div class="input-area">
+                                        <input type="text" class="input" formControlName="phone" placeholder="Enter your Phone Number">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="row">
+                                <div class="input-field">
+                                    <div class="label">Full Name</div>
+                                    @if (submitted && f.name.invalid) {
+                                        <small class="red">*Name is required</small>
+                                    }
+                                    <div class="input-field">
+                                        <input type="text" formControlName="name" class="input" placeholder="Enter your Full Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field">
+                                    <div class="label">Date of Birth</div>
+                                    @if (f.dob.errors?.['invalidDate'] && submitted) {
+                                        <small class="red">*Date of Birth is Invalid.</small>
+                                    }
+                                    @else if (f.dob.errors?.['dateInFuture'] && submitted) {
+                                        <small class="red">*Date of Birth cannot be in the future.</small>
+                                    }
+                                    <div class="input-area">
+                                        <input [type]="dobFocused ? 'date' : 'text'" (focus)="dobFocused = true" (blur)="dobFocused = false" class="input" formControlName="dob" #datePicker placeholder="Enter your DOB">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" (click)="toggleDatePicker(datePicker, $event)">
+                                            <path d="M11.0833 2.33334H2.91667C2.27233 2.33334 1.75 2.85568 1.75 3.50001V11.6667C1.75 12.311 2.27233 12.8333 2.91667 12.8333H11.0833C11.7277 12.8333 12.25 12.311 12.25 11.6667V3.50001C12.25 2.85568 11.7277 2.33334 11.0833 2.33334Z" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M9.3335 1.16666V3.49999" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M4.6665 1.16666V3.49999" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M1.75 5.83334H12.25" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="input-field">
+                                    <div class="label">Time of Birth</div>
+                                    @if (f.tob.invalid && submitted) {
+                                        <small class="red" >*Time is required.</small>
+                                    }
+                                    <div class="input-area" (click)="stopPropagation($event)">
+                                        <input class="input" [type]="tobFocused ? 'time' : 'text'" (focus)="tobFocused = true" (blur)="tobFocused = false" formControlName="tob" #timePicker placeholder="Enter your TOB">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none" (click)="toggleTimePicker(timePicker, $event)">
+                                            <path d="M7.49984 12.8333C10.7215 12.8333 13.3332 10.2217 13.3332 6.99999C13.3332 3.77833 10.7215 1.16666 7.49984 1.16666C4.27818 1.16666 1.6665 3.77833 1.6665 6.99999C1.6665 10.2217 4.27818 12.8333 7.49984 12.8333Z" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M7.5 3.5V7L9.83333 8.16667" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="row">
+                                <div class="input-field">
+                                    <div class="label">Email</div>
+                                    @if (submitted && f.email.errors?.['required']) {
+                                        <small class="red" >*Email is required.</small>
+                                    } @else if (submitted && f.email.errors?.['email']) {
+                                        <small class="red">*Email is invalid</small>
+                                    }
+                                    <div class="input-area">
+                                        <input class="input" formControlName="email" placeholder="Enter your Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field">
+                                    <div class="label">Place of Birth</div>
+                                    @if (submitted && f.email.errors?.['required']) {
+                                        <small class="red" >*POB is required.</small>
+                                    }
+                                    <div class="input-area">
+                                        <input class="input" formControlName="place" placeholder="Enter your POB">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="submit" type="submit">Check Now</button>
+                </form>
+            </app-menu-card>
+        </div>
+    </div>
+    <div class="rudraksh-info-container">
+        @for (c of [].constructor(12); track $index; let i = $index) {
+            <div class="rudraksh-info-card" [ngClass]="{'reverse-card': i%2!=0}">
+                <div class="rudraksh-img" [ngStyle]="{'background': `url(./images/rudraksh/r${i+1}.png) lightgray 50% / cover no-repeat`}">
+                    <!-- <img class="rudraksh-img" [src]="'./images/rudraksh/r'+(i+1)+'.png'" [alt]="(i+1)+' Mukhi Rudraksh'"> -->
+                </div>
+                <div class="rudraksh-info-wrapper">
+                    <div class="rudraksh-info">
+                        <div class="header">{{`${i+1} Mukhi Rudraksh`}}</div>
+                        <div class="brief">{{rudrakshInfoCard[0].brief}}</div>
+                    </div>
+                    <div class="link-container">
+                        <div class="link">Check Price Now</div>
+                        <div class="link">Learn More</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

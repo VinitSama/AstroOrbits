@@ -87,7 +87,7 @@
     height: 34px;
     margin-left: 6px;
     padding: 12px 0 12px 6px;
-    color: var(--blog-brief-color);
+    color: var(--input-fore-color);
     outline: none;
     border: none;
 }

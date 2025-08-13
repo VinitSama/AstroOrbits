@@ -30,6 +30,7 @@ input{
     font-weight: 400;
     width: 100%;
     border-radius: 7px;
+    color: var(--input-fore-color);
 }
 
 input::placeholder {

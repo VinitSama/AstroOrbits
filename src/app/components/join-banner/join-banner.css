@@ -80,6 +80,7 @@
     border: none;
     outline: none;
     border-radius: 7px;
+    color: var(--input-fore-color);
 }
 
 .submit{

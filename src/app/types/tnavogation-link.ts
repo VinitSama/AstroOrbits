@@ -1,1 +1,1 @@
-export type TNavigationLink = "home" | "kundli" | "kundli-matching" | "love-calculator" | "panchang" | "horoscope" | "mantras" | "numerology" | "tarot" | "rudraksh-calculator";
+export type TNavigationLink = "home" | "kundli" | "kundli-matching" | "love-calculator" | "panchang" | "horoscope" | "mantras" | "numerology" | "tarot" | "rudrakhs-calculator";

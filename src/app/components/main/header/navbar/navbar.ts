@@ -230,7 +230,7 @@ export class Navbar {
         },
         {
           name: "Rudraksh Calculator",
-          navigationLink: "rudraksh-calculator",
+          navigationLink: "rudrakhs-calculator",
           subLink: "Rudraksh Calculator",
         },
       ],

@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="input-field">
                     <div class="label">Date of Birth</div>
-                    @if (f.DOB.errors?.['invalidDate'] && submitted && !f.DOB.errors?.['dateInFuture']) {
+                    @if (f.DOB.errors?.['invalidDate'] && submitted) {
                         <small class="red">*Date of Birth is Invalid.</small>
                     }
                     @else if (f.DOB.errors?.['dateInFuture'] && submitted) {

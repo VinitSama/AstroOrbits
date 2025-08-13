@@ -208,6 +208,22 @@ export const routes: Routes = [
                 ]
             },
             {
+                path: 'rudrakhs-calculator',
+                data: {layout: "main", breadcrumb: "Rudraksh Calculator"},
+                children: [
+                    {
+                        path: '',
+                        loadComponent: () => import('./components/rudraksha-calculator/rudraksha-calculator').then(m => m.RudrakshaCalculator),
+                        data: {breadcrumb: null},
+                    },
+                    {
+                        path: 'recommendation',
+                        loadComponent: () => import('./components/rudraksha-calculator/rudraksha-report/rudraksha-report').then( m => m.RudrakshaReport),
+                        data: {breadcrumb: 'Recommendation'}
+                    }
+                ]
+            },
+            {
                 path: 'love-calculator',
                 data: {layout: 'main', breadcrumb: "Love Calculator"},
                 children: [
