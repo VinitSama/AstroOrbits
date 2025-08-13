@@ -1,4 +1,4 @@
-<div class="circle-container">
+<div class="circle-container" [ngStyle]="{'width': card.ringSetting.size, 'height': card.ringSetting.size}">
   <!-- <svg viewBox="0 0 100 100">
     <circle class="bg" cx="50" cy="50" r="45" />
     <circle *ngIf="score>0"
@@ -33,7 +33,7 @@
 
 
 
-<svg xmlns="http://www.w3.org/2000/svg" width="136" height="137" viewBox="0 0 136 137" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" [attr.width]="card.ringSetting.size" [attr.height]="card.ringSetting.size" viewBox="0 0 136 137" fill="none">
     
     <!-- Background Ring -->
     <circle
@@ -41,26 +41,27 @@
       cx="68"
       cy="68.6666"
       r="60"
-      stroke="#DABFBF"
-      stroke-width="10"
+      [attr.stroke]="card.ringSetting.presetColor"
+      [attr.stroke-width]="card.ringSetting.bgWidth"
       fill="transparent"
     />
 
     <!-- Progress Ring (on top) -->
-    <circle
-      *ngIf="score>=0"
-      class="progress-ring"
-      cx="68"
-      cy="68.6666"
-      r="60"
-      stroke-width="7"
-      fill="transparent"
-      [attr.stroke]="color"
-      [attr.stroke-dasharray]="circumference"
-      [attr.stroke-dashoffset]="progressOffset"
-      stroke-linecap="round"
-      transform="rotate(-90 68 68.6666)"
-    />
+     @if (card.score>=0) {
+      <circle
+        class="progress-ring"
+        cx="68"
+        cy="68.6666"
+        r="60"
+        [attr.stroke-width]="card.ringSetting.width"
+        fill="transparent"
+        [attr.stroke]="color"
+        [attr.stroke-dasharray]="circumference"
+        [attr.stroke-dashoffset]="progressOffset"
+        stroke-linecap="round"
+        transform="rotate(-90 68 68.6666)"
+      />
+     }
   <defs>
       <filter id="filter0_i_713_34040" x="0" y="0.666626" width="136" height="140" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
         <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -78,8 +79,13 @@
 
 
   <div class="center-content">
-    <div class="score" *ngIf="score>-1">{{ score }}%</div>
-    <div class="score" *ngIf="score<0"> --%</div>
-    <div class="sub-heading" *ngIf="subHeading" >{{ subHeading }}</div>
+    @if (card.score>=0) {
+      <div class="score" [ngStyle]="{'color': card.scoreColor,'font-size': card.scoreFSize}">{{ card.score }}%</div>
+    } @else if (card.score < 0) {
+      <div class="score" [ngStyle]="{'color': card.scoreColor,'font-size': card.scoreFSize}"> --%</div>
+    }
+    @if (card.subHeading) {
+      <div class="sub-heading" [ngStyle]="{'color': card.subColor,'font-size': card.subFSize}" >{{ card.subHeading }}</div>
+    }
   </div>
 </div>

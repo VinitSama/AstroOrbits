@@ -1,189 +1,206 @@
 .love-calculator-page{
-    padding: 0 10px;
+    padding-bottom: 80px;
 }
-.article-container{
-    padding: 56px 0;
-    margin: 0 auto;
+
+.form-section{
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    align-items: center;
+    gap: 64px;
+    padding: 48px 0;
 }
 
-.wrapper{
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.article{
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.option-container{
-    font-size: 14px;
-    font-weight: 400;
+.form-banner{
     display: flex;
-    gap: 10px;
-    color: var(--secondary-color);
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    background: url('/images/new-banner/new-banner-bg1.jpg') lightgray 50% / cover no-repeat;
+    border-radius: 14px;
+    max-width: 1200px;
+    width: 100%;
+    z-index: 5;
 }
 
-.option{
-    background-color: var(--vastushastra-option);
-    padding: 8px 16px;
-    border-radius: 999px;
-    cursor: pointer;
-}
-
-.blog{
-    padding: 56px 0;
+.form-wrapper{
+    display: flex;
+    align-items: center;
 }
 
 .form-container{
-    max-width: 640px;
-    width: 100%;
-    font-weight: 400;
-    margin: 0 auto;
-    font-size: 12px;
-    color: var(--secondary-color);
-}
-
-.form-option-container{
-    background-color: var(--secondary-bg-color);
-    margin-bottom: 16px;
-    display: flex;
-    width: 100%;
-    padding: 12px;
-    border-radius: 7px;
+    z-index: 3;
 }
 
 .form{
+    height: 100%;
     width: 100%;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: var(--secondary-font);
     display: flex;
-    gap: 17px;
-    padding: 24px;
-    padding-bottom: 0;
-    border-radius: 7px 7px 0 0;
-    background-color: var(--light-primary-color);
+    flex-direction: column;
+    gap: 16px;
 }
 
-.form-option{
+.row{
+    display: flex;
+    gap: 12px;
     width: 100%;
-    padding: 16px;
-    text-align: center;
+}
+.input-field{
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.red{
+    color: var(--warning);
+}
+
+.input-area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
     border-radius: 7px;
-    cursor: pointer;
-}
-
-.selected-option{
-    background-color: var(--primary-color);
-}
-
-.column {
+    height: 40px;
+    border: 1px solid var(--form-border);
+    width: 100%;
+    min-width: 177px;
+    flex-grow: 1;
     width: 100%;
 }
 
-.input-feild{
-    width: 100%;
-    margin-top: 12px;
-    border-radius: 7px;
-    /* height: 40px; */
+.input-area svg {
+    margin-right: 12px;
+}
+
+.label{
+    color: var(--form-label);
 }
 
 .input{
+    align-self: center;
     width: 100%;
-    padding: 12px;
-    border-radius: 7px;
-    border: none;
+    height: 34px;
+    margin-left: 6px;
+    padding: 12px 0 12px 6px;
+    color: var(--blog-brief-color);
     outline: none;
-    color: var(--secondary-color);
+    border: none;
 }
 
-.gender-option-container{
-    display: flex;
-    gap: 2px;
+.input::placeholder{
+    color: var(--placeholder);
 }
 
-.gender-option{
-    margin-top: 16px;
-    width: 100%;
-    padding: 10px;
-    background-color: #fff;
-    text-align: center;
+svg{
     cursor: pointer;
 }
-.submit-container{
-    background-color: var(--light-primary-color);
-    padding: 24px;
-    border-radius: 0 0 7px 7px;
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+  position: relative;
+  padding-right: -240px;
+  z-index: 2;
+  display: none;
 }
-.submit-btn{
-    background-color: var(--primary-color);
+
+.form-design-b-1{
+    width: 195px;
+    height: 248px;
     border-radius: 7px;
-    text-align: center;
-    padding: 10px;
-    cursor: pointer;
+    background: #8396A3;
+    margin-left: -183px;
+    z-index: 2;
 }
 
-.left{
-    border-radius: 7px 0 0 7px;
+.form-design-b-2{
+    width: 180px;
+    height: 228px;
+    border-radius: 7px;
+    background: #46445B;
+    margin-left: -167px;
+    z-index: 1;
 }
 
-.right{
-    border-radius: 0 7px 7px 0;
+.form-design-g-1{
+    width: 195px;
+    height: 248px;
+    border-radius: 7px;
+    background: #B88387;
+    margin-right: -183px;
+    z-index: 2;
 }
 
-.selected-gender{
-    background-color: var(--form-option);
+.form-design-g-2{
+    width: 180px;
+    height: 228px;
+    border-radius: 7px;
+    background: #5A4457;
+    margin-right: -167px;
+    z-index: 1;
 }
-.result-container{
-    max-width: 640px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 24px;
+
+
+.submit-btn-wrapper{
+    align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 17px;
-    align-items: center;
-    font-weight: 400;
-    text-align: center;
-    background-color: var(--light-primary-color);
-    border-radius: 7px;
-    color: var(--secondary-color);
+    margin-top: -90px;
+    width: 50%;
 }
 
-.names{
-    font-size: 24px;
-    color: #000;
+.design-box{
+    z-index: 3;
+    height: 120px;
+    width: 100%;
+    border-radius: 14px;
+    border: 2px dashed var(--primary-color);
+    margin-bottom: -30px;
 }
 
-.breif{
-    font-size: 14px;
-}
-
-.result-option-container{
+.submit-btn{
     display: flex;
-    gap: 17px;
+    max-width: 383px;
     width: 100%;
-}
-
-.result-option{
-    width: 100%;
-    border-radius: 7px;
-    padding: 10px;
-    background-color: #fff;
-    font-size: 12px;
+    height: 60px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--secondary-color);
     cursor: pointer;
-    align-content: center;
+    background: var(--primary-color);
+    border-radius: 7px;
+    border: 1px solid var(--horoscope-banner);
+    z-index: 5;
 }
 
-.selected{
-    background-color: var(--primary-color);
+.result-card{
+    max-width: 738px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
-@media (max-width:440px) {
-    .form{
-        flex-direction: column;
-    }
+.share-btn{
+    padding: 16px;
+    display: flex;
+    gap: 5px;
+    color: var(--secondary-color);
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--secondary-font);
+    background: #fff;
+    border-radius: 7px;
+    max-width: fit-content;
+    cursor: pointer;
 }

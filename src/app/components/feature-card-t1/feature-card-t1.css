@@ -10,6 +10,7 @@
     background: #fff;
     box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
     height: 100%;
+    max-height: min-content;
 }
 
 .header{
@@ -22,7 +23,6 @@
 
 .svg{
     background: var(--svg-bg);
-    padding: 8px;
     border-radius: 7px;
     display: flex;
     align-items: center;

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { IProgressCard } from '../../interfaces/iprogress-card';
 
 @Component({
   selector: 'app-result-progress',
@@ -11,8 +12,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ResultProgress implements OnInit {
   
-  @Input() score: number = -1;
-  @Input() subHeading: string = '';
+  @Input() card!: IProgressCard;
 
   readonly radius = 60;
   readonly circumference = 2 * Math.PI * this.radius;
@@ -20,13 +20,16 @@ export class ResultProgress implements OnInit {
   progressOffset = this.circumference;
 
   ngOnInit(): void {
+    if (!this.card.score) {
+      this.card.score = -1;
+    };
     this.progressOffset = this.circumference;
     this.color = this.getColor(0);
       setTimeout(() => {
-      this.progressOffset = this.getStrokeDashOffset(this.score);
-      this.color = this.getColor(this.score);
+      this.progressOffset = this.getStrokeDashOffset(this.card.score);
+      this.color = this.getColor(this.card.score);
     }, 100);
-    this.color = this.getColor(this.score);
+    this.color = this.getColor(this.card.score);
     console.log(this.color)
   }
 

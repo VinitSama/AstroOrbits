@@ -2,7 +2,7 @@
     <div class="container-wrapper">
         <div class="love-calculator-container">
             <div class="progress-bar">
-                <app-result-progress [subHeading]="'Love Compatibility'"></app-result-progress>
+                <app-result-progress [card]="reportCard"></app-result-progress>
             </div>
             <div class="love-form">
                 <form [formGroup]="calculatorForm" (ngSubmit)="calculatorSubmit()" class="calculator-form">

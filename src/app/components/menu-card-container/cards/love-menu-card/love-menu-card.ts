@@ -6,6 +6,7 @@ import { ResultProgress } from '../../../result-progress/result-progress';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ClickLink } from "../../../click-link/click-link";
+import { IProgressCard } from '../../../../interfaces/iprogress-card';
 
 @Component({
   selector: 'app-love-menu-card',
@@ -34,6 +35,20 @@ export class LoveMenuCard implements OnInit {
   };
 
   calculatorForm: FormGroup;
+  reportCard: IProgressCard = {
+    score: -1,
+    subHeading: "Love Compatibility",
+    ringSetting: {
+      size: '136px',
+      presetColor: "#DABFBF",
+      width: "7",
+      bgWidth: '10',
+    },
+    scoreColor: "#240028",
+    subColor: "#3B3B3B",
+    scoreFSize: "24px",
+    subFSize: "9px",
+  }
 
   constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) {
     this.calculatorForm = this.fb.group({

@@ -255,10 +255,6 @@ export class Navbar {
 
   constructor(private router: Router) {}
 
-  trackByFn(index: number, item: any): any {
-    return item.name;
-  }
-
   goToPage(page: TNavigationLink | null, i: number, j: number = -1) {
     if (page == 'home') {
       this.router.navigate([page])

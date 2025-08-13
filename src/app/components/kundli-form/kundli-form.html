@@ -4,7 +4,9 @@
             <div class="row">
                 <div class="input-field">
                     <div class="label">Full Name</div>
-                    <small *ngIf="f.name.invalid && submitted" class="red" >*Name is required.</small>
+                    @if (f.name.invalid && submitted) {
+                        <small class="red" >*Name is required.</small>
+                    }
                     <div class="input-area">
                         <input class="input" formControlName="name" placeholder="Enter your Full Name">
                     </div>
@@ -13,8 +15,12 @@
             <div class="row">
                 <div class="input-field">
                     <div class="label">Date of Birth</div>
-                    <small *ngIf="f.DOB.errors?.['invalidDate'] && submitted && !f.DOB.errors?.['dateInFuture'] " class="red">*Date of Birth is Invalid.</small>
-                    <small *ngIf="f.DOB.errors?.['dateInFuture'] && submitted" class="red">*Date of Birth cannot be in the future.</small>
+                    @if (f.DOB.errors?.['invalidDate'] && submitted && !f.DOB.errors?.['dateInFuture']) {
+                        <small class="red">*Date of Birth is Invalid.</small>
+                    }
+                    @else if (f.DOB.errors?.['dateInFuture'] && submitted) {
+                        <small class="red">*Date of Birth cannot be in the future.</small>
+                    }
                     <div class="input-area">
                         <input [type]="dobFocused ? 'date' : 'text'" (focus)="dobFocused = true" (blur)="dobFocused = false" class="input" formControlName="DOB" #datePicker placeholder="Enter Date of Birth">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" (click)="toggleDatePicker(datePicker, $event)">
@@ -27,7 +33,9 @@
                 </div>
                 <div class="input-field">
                     <div class="label">Time of Birth</div>
-                    <small *ngIf="f.time.invalid && submitted" class="red" >*Time is required.</small>
+                    @if (f.time.invalid && submitted) {
+                        <small class="red" >*Time is required.</small>
+                    }
                     <div class="input-area" (click)="stopPropagation($event)">
                         <input class="input" [type]="tobFocused ? 'time' : 'text'" (focus)="tobFocused = true" (blur)="tobFocused = false" formControlName="time" #timePicker placeholder="Enter Time of Birth">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="14" viewBox="0 0 15 14" fill="none" (click)="toggleTimePicker(timePicker, $event)">
@@ -40,7 +48,9 @@
             <div class="row">
                 <div class="input-field">
                     <div class="label">Location</div>
-                    <small *ngIf="f.place.invalid && submitted" class="red" >*Location is required.</small>
+                    @if (f.place.invalid && submitted) {
+                        <small class="red" >*Location is required.</small>
+                    }
                     <div class="input-area">
                         <input class="input" formControlName="place" placeholder="Enter Location of Birth">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">

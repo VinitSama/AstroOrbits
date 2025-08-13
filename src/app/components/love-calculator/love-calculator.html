@@ -1,73 +1,123 @@
 <div class="love-calculator-page">
-    <div class="wrapper">
-        <div class="article-container">
-            <div class="section-tag">
-                <app-section-tag [sectionTitle]="pageHeading"></app-section-tag>
-            </div>
-            <div class="form-container" *ngIf="showForm">
-                <div class="form-option-container">
-                    <div class="form-option" [ngClass]="{'selected-option': selectedOption == 'User'}" (click)="chooseFormOption('User')" >
-                        Your Name
+    <div class="form-section">
+        <app-section-tag [sectionTitle]="' Love Calculator'" [subHeadCol]="true" [subHeading]="sectionBrief"></app-section-tag>
+        <div class="form-banner">
+            @if (!showReport) { 
+                <div class="form-wrapper">
+                    <div class="form-container">
+                        <app-menu-card [card]="menuCard[0]">
+                            <form class="form" [formGroup]="boyForm">
+                                <div class="row">
+                                    <div class="input-field">
+                                        <div class="label">Full Name</div>
+                                        @if (formB.name.invalid && submitted) {
+                                            <small class="red">*Name is required.</small>
+                                        }
+                                        <div class="input-area">
+                                            <input class="input" formControlName="name" placeholder="Enter your Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field">
+                                        <div class="label">Date of Birth</div>
+                                        @if (formB.dob.errors?.['invalidDate'] && submitted && !formB.dob.errors?.['dateInFuture']) {
+                                            <small class="red">*Date of Birth is Invalid.</small>
+                                        }
+                                        @else if (formB.dob.errors?.['dateInFuture'] && submitted) {
+                                            <small class="red">*Date of Birth cannot be in the future.</small>
+                                        }
+                                        <div class="input-area">
+                                            <input [type]="boyDobFocused ? 'date' : 'text'" (focus)="boyDobFocused = true" (blur)="boyDobFocused = false" class="input" formControlName="dob" #boyDobPicker placeholder="Enter Date of Birth">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" (click)="toggleDatePicker(boyDobPicker, $event)">
+                                                <path d="M11.0833 2.33334H2.91667C2.27233 2.33334 1.75 2.85568 1.75 3.50001V11.6667C1.75 12.311 2.27233 12.8333 2.91667 12.8333H11.0833C11.7277 12.8333 12.25 12.311 12.25 11.6667V3.50001C12.25 2.85568 11.7277 2.33334 11.0833 2.33334Z" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9.3335 1.16666V3.49999" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M4.6665 1.16666V3.49999" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M1.75 5.83334H12.25" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </app-menu-card>
                     </div>
-                    <div class="form-option" [ngClass]="{'selected-option': selectedOption == 'Partner'}" (click)="chooseFormOption('Partner')" >
-                        Partner's Name
+                    <div class="form-design-b-1"></div>
+                    <div class="form-design-b-2"></div>
+                </div>
+                <div class="form-wrapper">
+                    <div class="form-design-g-2"></div>
+                    <div class="form-design-g-1"></div>
+                    <div class="form-container">
+                        <app-menu-card [card]="menuCard[1]">
+                            <form class="form" [formGroup]="girlForm">
+                                <div class="row">
+                                    <div class="input-field">
+                                        <div class="label">Full Name</div>
+                                        @if (formG.name.invalid && submitted) {
+                                            <small class="red">*Name is required.</small>
+                                        }
+                                        <div class="input-area">
+                                            <input class="input" formControlName="name" placeholder="Enter your Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field">
+                                        <div class="label">Date of Birth</div>
+                                        @if (formG.dob.errors?.['invalidDate'] && submitted && !formG.dob.errors?.['dateInFuture']) {
+                                            <small class="red">*Date of Birth is Invalid.</small>
+                                        }
+                                        @else if (formG.dob.errors?.['dateInFuture'] && submitted) {
+                                            <small class="red">*Date of Birth cannot be in the future.</small>
+                                        }
+                                        <div class="input-area">
+                                            <input [type]="girlDobFocused ? 'date' : 'text'" (focus)="girlDobFocused = true" (blur)="girlDobFocused = false" class="input" formControlName="dob" #girlDobPicker placeholder="Enter Date of Birth">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none" (click)="toggleDatePicker(girlDobPicker, $event)">
+                                                <path d="M11.0833 2.33334H2.91667C2.27233 2.33334 1.75 2.85568 1.75 3.50001V11.6667C1.75 12.311 2.27233 12.8333 2.91667 12.8333H11.0833C11.7277 12.8333 12.25 12.311 12.25 11.6667V3.50001C12.25 2.85568 11.7277 2.33334 11.0833 2.33334Z" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M9.3335 1.16666V3.49999" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M4.6665 1.16666V3.49999" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M1.75 5.83334H12.25" stroke="#3B3B3B" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </app-menu-card>
                     </div>
                 </div>
-                <div class="form">
-                    <div class="column">
-                        <div class="label">
-                            Full Name
-                        </div>
-                        <div class="input-feild">
-                            <ng-container *ngIf="selectedOption == 'User'">
-                                <input class="input" [formControl]="userName" placeholder="Enter Your Full Name">
-                            </ng-container>
-                            <ng-container *ngIf="selectedOption == 'Partner'">
-                                <input class="input" [formControl]="partnerName" placeholder="Enter Partner's Full Name">
-                            </ng-container>
-                        </div>
-                    </div>
-                    <div class="column">
-                        <div class="label">
-                            Gender
-                        </div>
-                        <div class="gender-option-container">
-                            <div class="gender-option left" (click)="chooseGender('m')" [ngClass]="{'selected-gender': (selectedOption=='User' && gender.user == 'm') || (selectedOption=='Partner' && gender.partner == 'm')}" >Male</div>
-                            <div class="gender-option right" (click)="chooseGender('f')" [ngClass]="{'selected-gender': (selectedOption=='User' && gender.user == 'f') || (selectedOption=='Partner' && gender.partner == 'f')}" >Female</div>
+            } @else {
+                <div class="progress-ring">
+                    <app-result-progress [card]="reportCard"></app-result-progress>
+                </div>
+                <div class="result-card">
+                    <app-feature-card-t1 [card]="resultFeatureCard"></app-feature-card-t1>
+                    <div class="share-btn">
+                        Share
+                        <div class="share-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <g clip-path="url(#clip0_1450_438)">
+                                    <path d="M9.51562 7.78125C8.82091 7.78125 8.20873 8.12299 7.82421 8.6427L4.49977 6.94041C4.55496 6.75227 4.59375 6.5573 4.59375 6.35156C4.59375 6.07252 4.53654 5.80723 4.4377 5.56322L7.91688 3.46959C8.30407 3.924 8.87318 4.21875 9.51562 4.21875C10.6788 4.21875 11.625 3.27255 11.625 2.10938C11.625 0.946195 10.6788 0 9.51562 0C8.35245 0 7.40625 0.946195 7.40625 2.10938C7.40625 2.37743 7.46145 2.6317 7.55302 2.86777L4.06348 4.96753C3.67662 4.52663 3.11571 4.24219 2.48438 4.24219C1.3212 4.24219 0.375 5.18838 0.375 6.35156C0.375 7.51474 1.3212 8.46094 2.48438 8.46094C3.19055 8.46094 3.81307 8.10916 4.19613 7.57486L7.50963 9.27162C7.4486 9.46863 7.40625 9.67383 7.40625 9.89062C7.40625 11.0538 8.35245 12 9.51562 12C10.6788 12 11.625 11.0538 11.625 9.89062C11.625 8.72745 10.6788 7.78125 9.51562 7.78125Z" fill="#240028"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_1450_438">
+                                    <rect width="12" height="12" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
                         </div>
                     </div>
                 </div>
-                <div class="submit-container" (click)="toggleForm(false)">
-                    <div class="submit-btn">Submit</div>
-                </div>
-            </div>
-
-            <div class="result-section" *ngIf="!showForm">
-                <div class="result-container">
-                    <app-result-progress [score]="resultScore" [subHeading]="'Love Compatibility'"></app-result-progress>
-                    <div class="names">
-                        {{userName.value}} & {{partnerName.value}}
-                    </div>
-                    <div class="breif">{{resultBrief}}</div>
-                    <div class="result-option-container">
-                        <div class="result-option" (click)="toggleForm(true)">Check another love compatibility</div>
-                        <div class="result-option selected">Check Love Horoscope</div>
-                    </div>
-                </div>
-            </div>
-            <div class="information-section">
-                <app-information-section [headers]="headers" [para]="para" [svgs]="svgs"></app-information-section>
-            </div>
-            <div class="article">
-                <app-article [article]="loveCalculatorContent"></app-article>
-            </div>
-            <div class="option-container">
-                <div class="option" *ngFor="let option of loveCalculatorOptions">{{option}}</div>
-            </div>
+            }
         </div>
+        @if (!showReport) {
+            <div class="submit-btn-wrapper">
+                <div class="design-box"></div>
+                <div class="submit-btn" (click)="submitForm()">Generate Kundlies & Check Compatibility</div>
+            </div>
+        }
     </div>
-
-    <div class="blog">
-        <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>
-    </div>
+    <app-rudraksh-section></app-rudraksh-section>
+    <app-astrology-section></app-astrology-section>
+    <app-about-section></app-about-section>
+    <app-faq-section></app-faq-section>
 </div>

@@ -7,4 +7,7 @@ export interface IFeatureCard {
     svg?: string | SafeHtml;
     svgBg?: string;
     outputId?: number;
+    svgSettings?: {
+        padding?: string;
+    }
 }

@@ -27,6 +27,11 @@ export class FeatureCardT1 {
       const svg = this.card.svg as string;
       this.card.svg = this.sanitizer.bypassSecurityTrustHtml(svg);
     }
+    if (!this.card.svgSettings) {
+      this.card.svgSettings = {
+        padding: '8px',
+      };
+    }
   }
 
   onClick() {

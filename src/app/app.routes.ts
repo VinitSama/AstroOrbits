@@ -215,8 +215,12 @@ export const routes: Routes = [
                         path: '',
                         loadComponent: () => import('./components/love-calculator/love-calculator').then(m => m.LoveCalculator),
                         data: {breadcrumb: null},
-
                     },
+                    {
+                        path: 'r/:show',
+                        loadComponent: () => import('./components/love-calculator/love-calculator').then(m => m.LoveCalculator),
+                        data: {breadcrumb: null}
+                    }
                 ]
             },
             {

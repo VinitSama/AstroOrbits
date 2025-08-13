@@ -1,6 +1,8 @@
 <div class="card-container">
     <div class="header">
-        <div *ngIf="card.svg" class="svg" [ngStyle]="{'--svg-bg': card.svgBg}" [innerHTML]="card.svg"></div>
+        @if (card.svg) {
+            <div class="svg" [ngStyle]="{'--svg-bg': card.svgBg, 'padding': card.svgSettings?.padding}" [innerHTML]="card.svg"></div>
+        }
         <div class="title">{{card.title}}</div>
     </div>
     <div class="brief">{{card.brief}}</div>

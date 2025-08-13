@@ -168,6 +168,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
+svg{
+    cursor: pointer;
+}
+
 @media (max-width:440px) {
     .row{
         flex-direction: column;
