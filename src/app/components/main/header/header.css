@@ -23,6 +23,27 @@
     margin: auto;
 }
 
+.store-container{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-family: var(--secondary-font);
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.store-matter{
+    color: var(--secondary-color);
+}
+
+.store-new-tag{
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 9999px;
+    background: var(--store-tag-bg);
+}
+
 .logo-svgs{
     display: flex;
     cursor: pointer;
