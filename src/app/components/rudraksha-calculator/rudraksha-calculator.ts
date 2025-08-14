@@ -6,6 +6,12 @@ import { IMenuCard } from '../../interfaces/imenu-card';
 import { HeaderService } from '../../services/header.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
+import { AboutSection } from "../about-section/about-section";
+import { FAQSection } from "../faq-section/faq-section";
+import { IRudrakshForm } from '../../interfaces/irudraksh-form';
+import { Router } from '@angular/router';
+import { FormService } from '../../services/form.service';
 
 @Component({
   selector: 'app-rudraksha-calculator',
@@ -14,6 +20,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
     SectionTag,
     MenuCard,
     ReactiveFormsModule,
+    RudrakshSection,
+    AboutSection,
+    FAQSection
 ],
   templateUrl: './rudraksha-calculator.html',
   styleUrl: './rudraksha-calculator.css'
@@ -64,10 +73,10 @@ export class RudrakshaCalculator implements OnInit {
 
     // add when true content available
   ] 
-  constructor(private headerserveice: HeaderService, private sanitizer: DomSanitizer) {}
+  constructor(private headerserveice: HeaderService, private sanitizer: DomSanitizer, private router: Router, private formService: FormService) {}
 
   ngOnInit(): void {
-    this.headerserveice.setColorSubject(true);
+    this.headerserveice.setColorSubject(false);
     this.svgSanitizer();
   }
 
@@ -105,5 +114,39 @@ export class RudrakshaCalculator implements OnInit {
 
   submitForm() {
     this.submitted = true;
+    const form = this.patchForm(this.rudrakshFormGroup);
+    if (this.validForm(form)) {
+      this.formService.setRudrakshData(form);
+      this.router.navigate(['home/rudrakhs-calculator/recommendation'])
+    }
+  }
+
+  patchForm(formGroup: FormGroup): IRudrakshForm {
+    const rawValue = formGroup.value;
+    return {
+      name: rawValue.name || '',
+      email: rawValue.email || '',
+      phone: `${this.selectedCode}${rawValue.phone}` || '',
+      dob: rawValue.dob || '',
+      tob: rawValue.tob || '',
+      place: rawValue.place || '',
+      purpose: this.selectedPurpose,
+    };
+  }
+
+  validForm(form: IRudrakshForm): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10,}$/;
+  
+
+    return (
+      form.name.trim().length > 0 &&
+      emailRegex.test(form.email) &&
+      phoneRegex.test(form.phone) &&
+      form.dob.trim().length > 0 &&
+      form.tob.trim().length > 0 &&
+      form.place.trim().length > 0
+      // && this.selectedPurposeId > -1
+    );
   }
 }

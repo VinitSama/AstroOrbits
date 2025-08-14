@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IKundliForm, IMatchData } from '../interfaces/ikundli-form';
 import { ILoveProfile } from '../interfaces/ilove-profile';
+import { IRudrakshForm } from '../interfaces/irudraksh-form';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class FormService {
   private kundliFormData!: IKundliForm;
   private kundliMatchForm!: IMatchData
   private loveProfile!: ILoveProfile;
+  private rudrakshForm!: IRudrakshForm;
 
   constructor() { }
 
@@ -35,6 +37,14 @@ export class FormService {
 
   getLoveData(): ILoveProfile {
     return this.loveProfile;
+  } 
+  
+  setRudrakshData(form: IRudrakshForm): void {
+    this.rudrakshForm = form;
+  }
+
+  getRudrakshData(): IRudrakshForm {
+    return this.rudrakshForm;
   } 
 
 }

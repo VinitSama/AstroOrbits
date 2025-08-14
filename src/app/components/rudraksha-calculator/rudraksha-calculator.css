@@ -79,8 +79,10 @@
 }
 
 .red{
-    font-size: 8px;
+    font-size: 10px;
     color: var(--warning);
+    margin-top: -9px;
+    margin-bottom: -9px;
 }
 
 .input-area{
@@ -116,7 +118,7 @@
 
 .submit{
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,6 +132,7 @@
     border-radius: 7px;
     margin-top: 24px;
     height: 41px;
+    width: 100%;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator,
@@ -173,7 +176,6 @@ svg{
     flex-shrink: 0;
     align-self: stretch;
     border-radius: 7px;
-    
 }
 
 .rudraksh-info-wrapper{

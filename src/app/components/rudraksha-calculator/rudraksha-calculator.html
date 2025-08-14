@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field">
+                                <div class="input-field" [ngStyle]="{'width': '88px'}">
                                     <div class="label">Country Code</div>
                                     <div class="dropdown">+{{selectedCode}}
                                         <div class="dropdown-svg">
@@ -62,11 +62,11 @@
                             <div class="row">
                                 <div class="input-field">
                                     <div class="label">Date of Birth</div>
-                                    @if (f.dob.errors?.['invalidDate'] && submitted) {
-                                        <small class="red">*Date of Birth is Invalid.</small>
+                                    @if (f.dob.errors?.['required'] && submitted) {
+                                        <small class="red">*DOB is Required.</small>
                                     }
-                                    @else if (f.dob.errors?.['dateInFuture'] && submitted) {
-                                        <small class="red">*Date of Birth cannot be in the future.</small>
+                                    @else if ((f.dob.errors?.['dateInFuture'] || f.dob.errors?.['invalid']) && submitted) {
+                                        <small class="red">*DOB is invalid.</small>
                                     }
                                     <div class="input-area">
                                         <input [type]="dobFocused ? 'date' : 'text'" (focus)="dobFocused = true" (blur)="dobFocused = false" class="input" formControlName="dob" #datePicker placeholder="Enter your DOB">
@@ -110,7 +110,7 @@
                             <div class="row">
                                 <div class="input-field">
                                     <div class="label">Place of Birth</div>
-                                    @if (submitted && f.email.errors?.['required']) {
+                                    @if (submitted && f.place.errors?.['required']) {
                                         <small class="red" >*POB is required.</small>
                                     }
                                     <div class="input-area">
@@ -128,8 +128,7 @@
     <div class="rudraksh-info-container">
         @for (c of [].constructor(12); track $index; let i = $index) {
             <div class="rudraksh-info-card" [ngClass]="{'reverse-card': i%2!=0}">
-                <div class="rudraksh-img" [ngStyle]="{'background': `url(./images/rudraksh/r${i+1}.png) lightgray 50% / cover no-repeat`}">
-                    <!-- <img class="rudraksh-img" [src]="'./images/rudraksh/r'+(i+1)+'.png'" [alt]="(i+1)+' Mukhi Rudraksh'"> -->
+                <div class="rudraksh-img" [ngStyle]="{'background': `url(./images/rudraksh/r${i+1}.png) white 50% / contain no-repeat`}">
                 </div>
                 <div class="rudraksh-info-wrapper">
                     <div class="rudraksh-info">
@@ -144,4 +143,7 @@
             </div>
         }
     </div>
+    <app-rudraksh-section></app-rudraksh-section>
+    <app-about-section></app-about-section>
+    <app-faq-section></app-faq-section>
 </div>

@@ -1,0 +1,112 @@
+.recommendation-page{
+    padding-bottom: 80px;
+}
+
+.design-bg{
+    width: 100%;
+    height: 452px;
+    background: var(--primary-color);
+}
+
+.recommendation-wrapper{
+    width: 100%;
+    margin-top: -452px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 80px 0 16px 0;
+    align-items: center;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--secondary-color);
+}
+
+.welcome{
+    font-family: var(--primary-font);
+    font-size: 32px;
+}
+
+.info{
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.refresh-detail{
+    margin-left: 8px;
+    background: var(--secondary-color);
+    padding: 6px 8px;
+    border-radius: 9999px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.rudraksh-container{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.rudraksh-card{
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    max-width: fit-content;
+    background: #fff;
+    color: var(--secondary-color);
+    border-radius: 7px;
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
+    align-items: center;
+}
+
+.img-container{
+    width: 233px;
+    height: 188px;
+    padding: 24px;
+}
+
+.img{
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.rudraksh-info{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+    text-wrap: nowrap;
+}
+
+.rudraksh-name{
+    font-family: var(--primary-font);
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.link-container{
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: var(--secondary-font);
+}
+
+.link{
+    padding: 12px;
+    cursor: pointer;
+}
