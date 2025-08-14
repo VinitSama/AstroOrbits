@@ -1,0 +1,13 @@
+<div class="compability-page">
+    <app-feature-card-t1 [card]="compabilityReport"></app-feature-card-t1>
+    <div class="table">
+        @for (i of table; track $index) {
+            <div class="col">
+                <div class="header">{{i.title | titlecase}}</div>
+                @for (j of rowName; track $index) {
+                    <div class="cell">{{i.col[j].toString() | titlecase}}</div>
+                }
+            </div>
+        }
+    </div>
+</div>

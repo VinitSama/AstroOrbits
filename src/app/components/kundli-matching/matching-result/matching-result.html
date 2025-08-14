@@ -19,14 +19,21 @@
     </div>
     <div class="details-wrapper">
         @if (selectedOption == 0) {
+            <app-matching-basic-details [profiles]="profiles"></app-matching-basic-details>
         } @else if (selectedOption == 1 ) {
+            <app-matching-gunas></app-matching-gunas>
         } @else if (selectedOption == 2 ) {
+            <app-matching-compatibility></app-matching-compatibility>
         } @else if (selectedOption == 3 ) {
+            <app-doshas [doshasCard]="doshasCard" [summaryCard]="doshaSsummaryCard"></app-doshas>
         } @else if (selectedOption == 4 ) {
+            <app-dashaa [dashaasCard]="dashaasCard" [summaryCard]="dashaaSummaryCard"></app-dashaa>
         } @else if (selectedOption == 5 ) {
+            <app-mathing-characteristic-analysis></app-mathing-characteristic-analysis>
         } @else if (selectedOption == 6 ) {
             <app-position-of-planets [summaryCard]="planetSummary"></app-position-of-planets>
         } @else if (selectedOption == 7 ) {
+            <app-remedies [summaryCard]="remedieSummary" [remediesCard]="remediesCard"></app-remedies>
         }
     </div>
     <app-astrology-section></app-astrology-section>

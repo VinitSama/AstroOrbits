@@ -19,18 +19,18 @@ export class FeatureCardT1 {
   constructor(private sanitizer: DomSanitizer) {}
   
   ngOnInit(): void {
-    this.svgSanitization();
-  }
-
-  private svgSanitization(){
-    if (this.card.svg) {
-      const svg = this.card.svg as string;
-      this.card.svg = this.sanitizer.bypassSecurityTrustHtml(svg);
-    }
+    this.sanitizeSvg();
     if (!this.card.svgSettings) {
       this.card.svgSettings = {
         padding: '8px',
       };
+    }
+  }
+
+  
+  private sanitizeSvg() {
+    if (this.card.svg && this.card.svg != undefined){
+      this.card.svg = this.sanitizer.bypassSecurityTrustHtml(this.card.svg as string);
     }
   }
 

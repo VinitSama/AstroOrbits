@@ -1,0 +1,8 @@
+<div class="remedies-page">
+    <div class="remedies-content">
+        <app-feature-card-t1 [card]="summaryCard"></app-feature-card-t1>
+        @for (c of remediesCard; track $index) {
+            <app-feature-card-t2 [card]="c"></app-feature-card-t2>
+        }
+    </div>
+</div>

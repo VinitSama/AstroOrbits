@@ -117,7 +117,7 @@ export class RudrakshaCalculator implements OnInit {
     const form = this.patchForm(this.rudrakshFormGroup);
     if (this.validForm(form)) {
       this.formService.setRudrakshData(form);
-      this.router.navigate(['home/rudrakhs-calculator/recommendation'])
+      this.router.navigate(['home/rudrakhs-calculator/result'])
     }
   }
 

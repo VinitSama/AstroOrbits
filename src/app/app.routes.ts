@@ -217,9 +217,9 @@ export const routes: Routes = [
                         data: {breadcrumb: null},
                     },
                     {
-                        path: 'recommendation',
+                        path: 'result',
                         loadComponent: () => import('./components/rudraksha-calculator/rudraksha-report/rudraksha-report').then( m => m.RudrakshaReport),
-                        data: {breadcrumb: 'Recommendation'}
+                        data: {breadcrumb: 'Result'}
                     }
                 ]
             },

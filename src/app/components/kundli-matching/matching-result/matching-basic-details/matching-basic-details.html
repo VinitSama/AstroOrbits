@@ -1,14 +1,7 @@
 <div class="tables-container">
-    <div class="detail-table" *ngFor="let table of tables">
-        <app-details-table [heading]="table.title" [detailTable]="table.kundliDetail" ></app-details-table>
-    </div>
-</div>
-
-<div class="article-container">
-    <div class="section-tag">
-        <app-section-tag [sectionTitle]="articleSectionHeading" ></app-section-tag>
-    </div>
-    <div class="article">
-        <app-article [article]="article"></app-article>
-    </div>
+    @for (table of tables; track $index) {
+        <div class="detail-table">
+            <app-details-table [svg]="$index==0 ? boySvg : girlSvg" [heading]="table.title" [detailTable]="table.kundliDetail" [columns]="2" ></app-details-table>
+        </div>
+    }
 </div>

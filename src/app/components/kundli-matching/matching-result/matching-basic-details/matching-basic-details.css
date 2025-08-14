@@ -1,14 +1,5 @@
-.article-container{
-    margin: 56px auto 0 auto;
-    padding: 56px 0;
-    background-color: var(--secondary-bg-color);
-}
-
-.section-tag{
-    margin-bottom: 32px;
-}
-
-.article{
-    margin: 0 auto;
-    max-width: 1100px;
+.tables-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }

@@ -1,0 +1,12 @@
+.remedies-page{
+    display: flex;
+    justify-content: center;
+}
+
+.remedies-content{
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}

@@ -1,0 +1,28 @@
+<div class="guna-page">
+    <div class="summary-card">
+        <div class="summary-title">Guna Matching</div>
+        <div class="summary-info">
+            <div class="summary-guna-container">
+                <div class="guna-value">{{summaryInfo.guna}}</div>
+                <div class="guna-out">out of 36</div>
+            </div>
+            <div class="summary">{{summaryInfo.summary}}</div>
+        </div>
+    </div>
+    <div class="guna-table">
+        <div class="guna-col">
+            <div class="guna-header">Guna</div>
+            @for (g of gunas; track $index) {
+                <div class="guna-cell">{{g}}</div>
+            }
+        </div>
+        @for (c of table; track $index) {
+            <div class="guna-col">
+                <div class="guna-header">{{c.title | titlecase}}</div>
+                @for (r of gunaName; track $index) {
+                    <div class="guna-cell">{{c.col[r].toString() | titlecase}}</div>
+                }
+            </div>
+        }
+    </div>
+</div>

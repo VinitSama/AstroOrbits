@@ -1,0 +1,35 @@
+.compability-page{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+
+.table{
+    border-radius: 7px;
+    background: #FFF;
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
+    display: flex;
+    width: 100%;
+    font-size: 12px;
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    color: var(--fore-dark-grey);
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.header{
+    background: var(--light-primary-color);
+    padding: 8px;
+}
+
+.cell{
+    padding: 22.4px 10px;
+}

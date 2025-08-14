@@ -1,5 +1,8 @@
 <div class="detail-table-container">
   <div class="heading">
+    @if (svg) {
+      <div class="svg-container" [innerHTML]="svg"></div>
+    }
     {{ getFormattedHeading() }}
   </div>
   <div class="table">

@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IKundliDetail } from '../../interfaces/ikundli-detail';
 import { CommonModule } from '@angular/common';
 import { IMantraDetails } from '../../interfaces/imantra-details';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details-table',
@@ -11,11 +12,24 @@ import { IMantraDetails } from '../../interfaces/imantra-details';
   templateUrl: './details-table.html',
   styleUrl: './details-table.css'
 })
-export class DetailsTable {
+export class DetailsTable implements OnInit{
 
   @Input() heading!: String;
   @Input() detailTable!: IKundliDetail[];
   @Input() columns: number = 2;
+  @Input() svg?: string | SafeHtml;
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  ngOnInit(): void {
+    this.svgSanitizer();
+  }
+
+  private svgSanitizer() {
+    if (this.svg) {
+      this.svg = this.sanitizer.bypassSecurityTrustHtml(this.svg as string);
+    }
+  }
 
   get groupedDetails(): IKundliDetail[][] {
     const grouped: IKundliDetail[][] = [];

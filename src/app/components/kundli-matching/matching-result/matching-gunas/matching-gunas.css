@@ -1,0 +1,83 @@
+.guna-page{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.summary-card{
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--secondary-color);
+    border-radius: 7px;
+    background: #FFF;
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
+}
+
+.summary-title{
+    font-size: 24px;
+    font-family: var(--primary-font);
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.summary-info{
+    display: flex;
+    gap: 16px;
+}
+
+.summary-guna-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    font-family: var(--primary-font);
+    padding: 10px;
+}
+
+.guna-value{
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.guna-out{
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.summary{
+    font-size: 14px;
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.guna-table{
+    display: flex;
+    border-radius: 7px;
+    background: #fff;
+    box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
+    font-size: 12px;
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    color: var(--fore-dark-grey);
+}
+
+.guna-col{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.guna-header{
+    background: var(--light-primary-color);
+    padding: 8px;
+}
+
+.guna-cell{
+    padding: 22.4px 10px;
+}

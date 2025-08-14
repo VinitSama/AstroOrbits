@@ -19,13 +19,13 @@
         @if (selectedOption == 0) {
             <app-kundli-basic-details [profile]="profile"></app-kundli-basic-details>
         } @else if (selectedOption == 1 ) {
-            <app-doshas></app-doshas>
+            <app-doshas [doshasCard]="doshasCard" [summaryCard]="doshaSsummaryCard"></app-doshas>
         } @else if (selectedOption == 2 ) {
-            <app-dashaa></app-dashaa>
+            <app-dashaa [dashaasCard]="dashaasCard" [summaryCard]="dashaaSummaryCard"></app-dashaa>
         } @else if (selectedOption == 3 ) {
             <app-position-of-planets [summaryCard]="planetSummaryCard"></app-position-of-planets>
         } @else if (selectedOption == 4 ) {
-
+            <app-remedies [summaryCard]="remedieSummary" [remediesCard]="remediesCard"></app-remedies>
         }
     </div>
     <app-astrology-section></app-astrology-section>
