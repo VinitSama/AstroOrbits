@@ -11,7 +11,7 @@
                         </div>
                     }
                 </div>
-                <div class="card-submit" [ngClass]="{'enabeled': enableButton}">Get My Reading</div>
+                <div class="card-submit" (click)="submitCards()" [ngClass]="{'enabeled': enableButton}">Get My Reading</div>
             </div>
         </div>
         <div class="feature-container">

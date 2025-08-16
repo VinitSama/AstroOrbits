@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FeatureCardT2 } from "../../../feature-card-t2/feature-card-t2";
 import { TZodiacSign } from '../../../../types/tzodiac-sign';
 import { IFeatureCardT2 } from '../../../../interfaces/ifeature-card-t2';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-mathing-characteristic-analysis',
@@ -34,6 +35,8 @@ export class MathingCharacteristicAnalysis implements OnInit {
 
   charchterCards: IFeatureCardT2[] = [];
 
+  constructor(private santizer: DomSanitizer) {}
+
   ngOnInit(): void {
     this.setCards();
   }
@@ -45,14 +48,14 @@ export class MathingCharacteristicAnalysis implements OnInit {
     this.charchterCards.push({
       title: `Boy: ${boy.zodiac}`,
       brief: boy.brief || this.summary,
-      svg: this.svg,
+      svg: this.santizer.bypassSecurityTrustHtml(this.svg),
       svgBg: "#FFF1D6"
     });
 
     this.charchterCards.push({
       title: `Girl: ${girl.zodiac}`,
       brief: girl.brief || this.summary,
-      svg: this.svg,
+      svg: this.santizer.bypassSecurityTrustHtml(this.svg),
       svgBg: "#FFF1D6"
     });
   }

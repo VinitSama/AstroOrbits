@@ -250,9 +250,19 @@ export class KundliResult {
     //
   }
 
+  private changeSvg(svg: string): string {
+    let targets: Array<'primary' | 'secondary' | 'tertiary' | 'stroke'> = ['primary','secondary', 'tertiary' , 'stroke']
+    targets.forEach(t => {
+      svg = svg?.replace(new RegExp(t,"g"),this.svgColor[t]) || '';
+    });
+    return svg;
+  }
+
   private changeSize(svgString: string){
     
-    const newHSVG = svgString.replace(
+    const colorSvg = this.changeSvg(svgString);
+
+    const newHSVG = colorSvg.replace(
       /(<svg[^>]+)(height="[^"]*")/g, 
       (match, p1) => `${p1} height="${'16px'}"`
     );

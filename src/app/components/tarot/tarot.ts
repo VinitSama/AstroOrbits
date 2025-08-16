@@ -9,6 +9,7 @@ import { AboutSection } from "../about-section/about-section";
 import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
 import { TarotCard } from "./tarot-card/tarot-card";
 import { FAQSection } from "../faq-section/faq-section";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tarot',
@@ -95,7 +96,7 @@ export class Tarot implements OnInit {
     ]
   };
 
-  constructor(private headerSevice: HeaderService) {}
+  constructor(private headerSevice: HeaderService, private router: Router) {}
 
   ngOnInit(): void {
     this.headerSevice.setColorSubject(false);
@@ -115,5 +116,12 @@ export class Tarot implements OnInit {
 
   isSelected(index: number) {
     return this.selectedCards.has(index);
+  }
+
+  submitCards() {
+    if (this.enableButton) {
+      console.log('submited');
+      this.router.navigate(['home/tarot',this.selectedCardOption]);
+    }
   }
 }
