@@ -1,41 +1,119 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from '../../services/theme.service';
-import { ISvgColors } from '../../interfaces/isvg-link';
 import { CommonModule } from '@angular/common';
-import { TarotMenu } from "./tarot-menu/tarot-menu";
+import { HeaderService } from '../../services/header.service';
 import { SectionTag } from "../section-tag/section-tag";
-import { IArticle } from '../../interfaces/iarticle';
-import { Article } from "../article/article";
-import { BlogSection } from "../blog-section/blog-section";
+import { PersonalizeSection } from "../personalize-section/personalize-section";
+import { IPersonalisedContainer } from '../../interfaces/ipersonalised-container';
+import { AstrologySection } from "../astrology-section/astrology-section";
+import { AboutSection } from "../about-section/about-section";
+import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
+import { TarotCard } from "./tarot-card/tarot-card";
+import { FAQSection } from "../faq-section/faq-section";
 
 @Component({
   selector: 'app-tarot',
   imports: [
     CommonModule,
-    TarotMenu,
     SectionTag,
-    Article,
-    BlogSection
+    PersonalizeSection,
+    AstrologySection,
+    AboutSection,
+    RudrakshSection,
+    TarotCard,
+    FAQSection
 ],
   templateUrl: './tarot.html',
   styleUrl: './tarot.css'
 })
 export class Tarot implements OnInit {
 
-  svgColor!: ISvgColors;
-  article: IArticle = {
-    title: '',
-    content: "horoscope is an astrological chart created based on the positions of the Sun, Moon, and other celestial bodies at the time of a person's birth. It provides insights into an individual's personality, likes, dislikes, thoughts, love life, career, health, and more. Horoscopes offer a glimpse into future events and can be used to make informed decisions.<br><br>Horoscopic traditions are primarily associated with the Western Zodiac. Vedic Astrology, on the other hand, uses a different system with the Kundali (birth chart). While some debate the scientific validity of horoscopes, their accuracy in reflecting individual traits continues to intrigue many.<br><br>By reading your daily horoscope, weekly horoscope, monthly horoscope, or yearly horoscope, you can gain valuable insights into various aspects of your life. Understanding the positions of the planets and their influence on your zodiac sign can help you navigate challenges and opportunities. Whether you're interested in your love life, career prospects, financial situation, or health, your horoscope can provide guidance and support.<br><br>Horoscopes are sometimes referred to as figura charts, astrological graphs, star charts, or natal charts. Regardless of the name, the purpose remains the same: to offer astrological insights and predictions based on the positions of celestial bodies.<br><br>People also want to know about Yesterday’s horoscope, Daily Horoscope and Tomorrow’s Horoscope"
-  }
-  
-  constructor(private themeService: ThemeService) {}
+  sectionBrief = "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos";
+
+  features: {
+      heading: string;
+      subHeading: string;
+      svgName: string;
+    }[] = [
+      {
+        heading: "100% Secure and confidential",
+        subHeading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l.",
+        svgName: "confidential.svg",
+      },
+      {
+        heading: "Fully Accurate",
+        subHeading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l.",
+        svgName: "accurate.svg",
+      },
+      {
+        heading: "Personalised curated insights",
+        subHeading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l.",
+        svgName: "currated.svg",
+      },
+      {
+        heading: "Instant results",
+        subHeading: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut l.",
+        svgName: "instant.svg",
+      },
+  ];
+
+  selectedCardOption: 1 | 3 = 3;
+  selectedCards: Set<number> = new Set<number>();
+  enableButton: boolean = false;
+
+  personalisedContainer: IPersonalisedContainer = {
+    heading: "Get your Personalised Horoscope",
+    subHeading: "",
+    cards: [
+      {
+        name: "Love",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "love",
+        buttonCol: "#FFECF2"
+      },
+      {
+        name: "Health",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "health",
+        buttonCol: "#F1FFEA"
+      },
+      {
+        name: "Career",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "career",
+        buttonCol: "#EDE7FF"
+      },
+      {
+        name: "Finance",
+        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        button: "Learn how it affects you",
+        svg: "finance",
+        buttonCol: "#E3EDFF"
+      },
+    ]
+  };
+
+  constructor(private headerSevice: HeaderService) {}
 
   ngOnInit(): void {
-    this.loadSvgColor()
+    this.headerSevice.setColorSubject(false);
+    this.selectedCards = new Set<number>();
+    this.enableButton = false;
   }
 
-  private loadSvgColor(){
-    this.svgColor = this.themeService.getSvgColor()
+  selectCard(index: number) {
+    if (this.enableButton || this.isSelected(index)) {
+      return;
+    }
+    this.selectedCards.add(index);
+    if (this.selectedCards.size == this.selectedCardOption) {
+      this.enableButton = true;
+    }
   }
 
+  isSelected(index: number) {
+    return this.selectedCards.has(index);
+  }
 }

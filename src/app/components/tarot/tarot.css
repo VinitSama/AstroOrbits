@@ -1,16 +1,138 @@
-.container{
-    padding: 56px 0;
+.tarot-page{
+    padding-bottom: 80px;
 }
 
-.bgcolor{
-    background-color: var(--secondary-bg-color);
+.section-1{
+    padding: 48px;
+    display: flex;
+    gap: 64px;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
 }
 
-.section-tag{
-    margin-bottom: 32px;
+.card-select-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    align-items: center;
+    width: 100%;
 }
 
-.article{
-    max-width: 1100px;
-    margin: 0 auto;
+.card-banner{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 32px;
+    background: url('/images/rudraksh/rudraksh-form-bg.jpg') lightgray 50% / cover no-repeat;
+    border-radius: 14px;
+    width: 100%;
+    align-items: center;
+}
+
+.banner-header{
+    color: #FFF;
+    font-family: var(--primary-font);
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.card-container{
+    display: flex;
+    width: 715px;
+    padding: 32px 0;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.card {
+    position: relative;
+    margin-left: -112px; 
+    z-index: 1;
+    transition: transform 0.1s ease;
+}
+
+.card:first-child {
+    margin-left: 0; 
+}
+
+.enabeled-hover {
+    cursor: pointer;
+}
+
+.enabeled-hover:not(.selected-card):hover {
+  transform: translateY(-20px);
+}
+
+.selected-card {
+    margin-top: -30px;
+}
+
+.card-submit{
+    width: 383px;
+    height: 45px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font-family: var(--secondary-font);
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid var(--horoscope-banner);
+    background: var(--horoscope-banner);
+    cursor: default;
+    color: rgba(36, 0, 40, 0.50);
+}
+
+.enabeled{
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.feature-container{
+    display: flex;
+    gap: 32px;
+}
+
+.feature-card{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    color: var(--secondary-color);
+    font-weight: 400;
+    max-width: 252.5px;
+    width: 100%;
+    text-align: center;
+    max-height: fit-content;
+}
+
+.feature-svg{
+    padding: 12px;
+    max-width: min-content;
+    border-radius: 50%;
+    background: rgba(255, 248, 235, 0.20);
+}
+
+.feature-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.feature-heading{
+    font-family: var(--primary-font);
+    font-size: 16px;
+
+}
+
+.feature-subHeading{
+    font-family: var(--secondary-font);
+    font-size: 12px;
 }

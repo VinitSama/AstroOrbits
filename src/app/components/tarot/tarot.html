@@ -1,16 +1,36 @@
 <div class="tarot-page">
-    <div class="container">
-        <app-tarot-menu [svgColor]="svgColor"></app-tarot-menu>
-    </div>
-    <div class="container bgcolor">
-        <div class="section-tag">
-            <app-section-tag [sectionTitle]="'What You Should Know About Tarot Cards?'"></app-section-tag>
+    <div class="section-1">
+        <div class="card-select-wrapper">
+            <app-section-tag [sectionTitle]="'Tarot Reading'" [subHeadCol]="true" [subHeading]="sectionBrief"></app-section-tag>
+            <div class="card-banner">
+                <div class="banner-header">{{`Select ${selectedCardOption} ${selectedCardOption == 3 ? 'cards' : 'card'}`}}</div>
+                <div class="card-container">
+                    @for (c of [].constructor(20); track $index) {
+                        <div class="card" (click)="selectCard($index)" [ngClass]="{'selected-card': isSelected($index), 'enabeled-hover': !enableButton}">
+                            <app-tarot-card></app-tarot-card>
+                        </div>
+                    }
+                </div>
+                <div class="card-submit" [ngClass]="{'enabeled': enableButton}">Get My Reading</div>
+            </div>
         </div>
-        <div class="article">
-            <app-article [article]="article"></app-article>
+        <div class="feature-container">
+            @for (c of features; track $index) {
+                <div class="feature-card">
+                    <div class="feature-svg">
+                        <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
+                    </div>
+                    <div class="feature-info">
+                        <div class="feature-heading">{{c.heading}}</div>
+                        <div class="feature-subHeading">{{c.subHeading}}</div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-    <div class="container">
-        <app-blog-section [svgColor]="svgColor" [title]="'You may also like'"></app-blog-section>
-    </div>
+    <app-personalize-section [personalisedInfo]="personalisedContainer"></app-personalize-section>
+    <app-rudraksh-section></app-rudraksh-section>
+    <app-astrology-section></app-astrology-section>
+    <app-about-section></app-about-section>
+    <app-faq-section></app-faq-section>
 </div>

@@ -113,7 +113,7 @@ export const routes: Routes = [
             },
             {
                 path: 'tarot',
-                data: {layout: 'main', breadcrumb: "Tarot"},
+                data: {layout: 'main', breadcrumb: "Tarot Reading"},
                 children: [
                     {
                         path: '',
