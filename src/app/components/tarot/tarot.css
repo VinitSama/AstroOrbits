@@ -68,6 +68,7 @@
 
 .selected-card {
     margin-top: -30px;
+    cursor: default;
 }
 
 .card-submit{
