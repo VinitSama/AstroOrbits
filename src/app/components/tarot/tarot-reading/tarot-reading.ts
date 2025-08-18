@@ -211,5 +211,8 @@ export class TarotReading implements OnInit{
     this.getHoroscopeSVG();
   }
 
+  selectOption(i: TSelectedOption) {
+    this.router.navigate(['home/tarot/o', i]);
+  }
 
 }

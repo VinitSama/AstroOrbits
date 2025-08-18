@@ -9,7 +9,8 @@ import { AboutSection } from "../about-section/about-section";
 import { RudrakshSection } from "../rudraksh-section/rudraksh-section";
 import { TarotCard } from "./tarot-card/tarot-card";
 import { FAQSection } from "../faq-section/faq-section";
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { TSelectedOption } from './tarot-reading/tarot-reading';
 
 @Component({
   selector: 'app-tarot',
@@ -60,6 +61,8 @@ export class Tarot implements OnInit {
   selectedCardOption: 1 | 3 = 3;
   selectedCards: Set<number> = new Set<number>();
   enableButton: boolean = false;
+  selectedOption: TSelectedOption = 3;
+  
 
   personalisedContainer: IPersonalisedContainer = {
     heading: "Get your Personalised Horoscope",
@@ -96,12 +99,27 @@ export class Tarot implements OnInit {
     ]
   };
 
-  constructor(private headerSevice: HeaderService, private router: Router) {}
+  constructor(private headerSevice: HeaderService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.headerSevice.setColorSubject(false);
     this.selectedCards = new Set<number>();
     this.enableButton = false;
+    this.route.paramMap.subscribe(params => {
+      this.setSelectedOption(params);
+    })
+  }
+
+  private setSelectedOption(params: ParamMap){
+    const option = parseInt(params.get('option') || '0', 10);
+    if ([1, 3, 4, 5].includes(option as TSelectedOption)) {
+      this.selectedOption = option as TSelectedOption;
+      if (this.selectedOption == 4 || this.selectedOption == 5){
+        this.selectedCardOption = 3;
+      } else {
+        this.selectedCardOption = this.selectedOption;
+      }
+    }
   }
 
   selectCard(index: number) {
@@ -121,7 +139,7 @@ export class Tarot implements OnInit {
   submitCards() {
     if (this.enableButton) {
       console.log('submited');
-      this.router.navigate(['home/tarot',this.selectedCardOption]);
+      this.router.navigate(['home/tarot',this.selectedOption]);
     }
   }
 }

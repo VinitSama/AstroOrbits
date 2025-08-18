@@ -121,6 +121,11 @@ export const routes: Routes = [
                         data: {breadcrumb: null},
                     },
                     {
+                        path: 'o/:option',
+                        loadComponent: () => import('./components/tarot/tarot').then(m => m.Tarot),
+                        data: {breadcrumb: null},
+                    },
+                    {
                         path: ':option',
                         loadComponent: () => import('./components/tarot/tarot-reading/tarot-reading').then(m => m.TarotReading),
                         data: {layout: 'main',

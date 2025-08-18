@@ -20,7 +20,7 @@
             <div class="option-container">
                 @for (c of readingOptions; track $index) {
                     @if (c.id != selectedOption) {
-                        <div class="option">
+                        <div class="option" (click)="selectOption(c.id)">
                             <div class="option-svg" [innerHTML]="c.svg"></div>
                             <div class="optino-name">{{c.name}}</div>
                         </div>
