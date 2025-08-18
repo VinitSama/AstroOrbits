@@ -1,3 +1,7 @@
+.panchang-page{
+    margin-bottom: 80px;
+}
+
 .info-wrapper{
     display: flex;
     flex-direction: column;
@@ -212,4 +216,13 @@
     font-size: 14px;
     font-family: var(--secondary-font);
     font-weight: 400;
+}
+
+.menu-container{
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 32px 0;
 }

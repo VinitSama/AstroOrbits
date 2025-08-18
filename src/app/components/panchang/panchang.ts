@@ -6,13 +6,24 @@ import { PanchangService } from '../../services/panchang.service';
 import { SectionTag } from "../section-tag/section-tag";
 import { DetailsTable } from "../details-table/details-table";
 import { IKundliDetail } from '../../interfaces/ikundli-detail';
+import { KundliMenuCard } from "../menu-card-container/cards/kundli-menu-card/kundli-menu-card";
+import { HoroscopeMenuCard } from "../menu-card-container/cards/horoscope-menu-card/horoscope-menu-card";
+import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-menu-card";
+import { AboutSection } from "../about-section/about-section";
+import { FAQSection } from "../faq-section/faq-section";
+import { HeaderService } from '../../services/header.service';
 
 @Component({
   selector: 'app-panchang',
   imports: [
     CommonModule,
     SectionTag,
-    DetailsTable
+    DetailsTable,
+    KundliMenuCard,
+    HoroscopeMenuCard,
+    LoveMenuCard,
+    AboutSection,
+    FAQSection
 ],
   templateUrl: './panchang.html',
   styleUrl: './panchang.css'
@@ -63,9 +74,10 @@ export class Panchang {
     }
   ];
 
-  constructor(private themeService: ThemeService, private panchangService: PanchangService) {}
+  constructor(private headerService: HeaderService, private themeService: ThemeService, private panchangService: PanchangService) {}
 
   ngOnInit(): void {
+    this.headerService.setColorSubject(false);
     this.loadSVGColor();
     this.loadPanchang();
     this.date = new Date();
