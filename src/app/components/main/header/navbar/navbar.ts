@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IDropDownOption, INavbarItem } from '../../../../interfaces/inavbar-item';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -251,7 +251,7 @@ export class Navbar {
     },
   ];
 
-  constructor(private router: Router, private ren: Renderer2) {}
+  constructor(private router: Router) {}
 
   goToPage(page: TNavigationLink | null, i: number, j: number = -1) {
     if (page == 'home') {
@@ -280,43 +280,59 @@ export class Navbar {
 
   enteredButton = false;
   isMatMenuOpen = false;
-  prevButtonTrigger!: MatMenuTrigger;
+  prevButtonTrigger?: MatMenuTrigger;
 
 
   buttonEnter(trigger: MatMenuTrigger) {
+    // setTimeout(() => {
+    //   if(this.prevButtonTrigger && this.prevButtonTrigger != trigger) {
+    //     this.prevButtonTrigger.closeMenu();
+    //     this.prevButtonTrigger = trigger;
+    //     this.isMatMenuOpen = false;
+    //     trigger.openMenu();
+    //     this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-focused');
+    //     this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-program-focused');
+    //   } else if (!this.isMatMenuOpen) {
+    //     this.enteredButton = true;
+    //     this.prevButtonTrigger = trigger;
+    //     trigger.openMenu();
+    //     this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-focused');
+    //     this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-program-focused');
+    //   }  else {
+    //     this.enteredButton = true;
+    //     this.prevButtonTrigger = trigger
+    //   }
+    // });
+
     setTimeout(() => {
-      if(this.prevButtonTrigger && this.prevButtonTrigger != trigger) {
+      if (this.prevButtonTrigger && this.prevButtonTrigger !== trigger) {
         this.prevButtonTrigger.closeMenu();
-        this.prevButtonTrigger = trigger;
-        this.isMatMenuOpen = false;
-        trigger.openMenu();
-        this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-focused');
-        this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-program-focused');
-      } else if (!this.isMatMenuOpen) {
-        this.enteredButton = true;
-        this.prevButtonTrigger = trigger;
-        trigger.openMenu();
-        this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-focused');
-        this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-program-focused');
-      }  else {
-        this.enteredButton = true;
-        this.prevButtonTrigger = trigger
       }
+      this.prevButtonTrigger = trigger;
+      
+      // Corrected call with no arguments
+      trigger.openMenu(); 
     });
   }
 
   buttonLeave(trigger: MatMenuTrigger, button: MatButton) {
+    // setTimeout(() => {
+    //   if (this.enteredButton && !this.isMatMenuOpen) {
+    //     trigger.closeMenu();
+    //     this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+    //     this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+    //   } if (!this.isMatMenuOpen) {
+    //     trigger.closeMenu();
+    //     this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+    //     this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+    //   } else {
+    //     this.enteredButton = false;
+    //   }
+    // }, 100);
+
     setTimeout(() => {
-      if (this.enteredButton && !this.isMatMenuOpen) {
+      if (!this.isMatMenuOpen && !this.enteredButton) {
         trigger.closeMenu();
-        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
-        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
-      } if (!this.isMatMenuOpen) {
-        trigger.closeMenu();
-        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
-        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
-      } else {
-        this.enteredButton = false;
       }
     }, 100);
   }
@@ -326,15 +342,20 @@ export class Navbar {
   }
 
   menuLeave(trigger: MatMenuTrigger, button: MatButton) {
+    // setTimeout(() => {
+    //   if (!this.enteredButton) {
+    //     this.isMatMenuOpen = false;
+    //     trigger.closeMenu();
+    //     this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+    //     this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+    //   } else {
+    //     this.isMatMenuOpen = false;
+    //   }
+    // }, 80);
+
     setTimeout(() => {
-      if (!this.enteredButton) {
         this.isMatMenuOpen = false;
         trigger.closeMenu();
-        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
-        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
-      } else {
-        this.isMatMenuOpen = false;
-      }
     }, 80);
   }
 }

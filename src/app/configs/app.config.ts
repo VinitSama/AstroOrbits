@@ -2,10 +2,20 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 import { routes } from '../app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const baseUrl = "https://api.vedicastroapi.com/v3-json";
 // export const baseUrl = "/api/vedicastroapi.com/v3-json";
-export const api_key = "1807c7ab-ea34-50c8-b867-5fab4fd05b56"; 
+export const api_key = "1807c7ab-ea34-50c8-b867-5fab4fd05b56";
+
+const globalRippleConfig: RippleGlobalOptions = {
+  disabled: true, // This disables the ripple effect globally
+  animation: {
+    enterDuration: 0,
+    exitDuration: 0
+  }
+};
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +32,8 @@ export const appConfig: ApplicationConfig = {
     //     return next(cloned);
     //   }
     // ]))
-    provideHttpClient()
+    provideHttpClient(),
+    provideAnimations(),
+    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig }
   ]
 };
