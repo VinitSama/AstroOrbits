@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { IDropDownOption, INavbarItem } from '../../../../interfaces/inavbar-item';
-import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { TNavigationLink } from '../../../../types/tnavogation-link';
 import { MatButton, MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -315,7 +315,7 @@ export class Navbar {
     });
   }
 
-  buttonLeave(trigger: MatMenuTrigger, button: MatButton) {
+  buttonLeave(trigger: MatMenuTrigger) {
     // setTimeout(() => {
     //   if (this.enteredButton && !this.isMatMenuOpen) {
     //     trigger.closeMenu();
@@ -341,7 +341,7 @@ export class Navbar {
     this.isMatMenuOpen = true;
   }
 
-  menuLeave(trigger: MatMenuTrigger, button: MatButton) {
+  menuLeave(trigger: MatMenuTrigger) {
     // setTimeout(() => {
     //   if (!this.enteredButton) {
     //     this.isMatMenuOpen = false;

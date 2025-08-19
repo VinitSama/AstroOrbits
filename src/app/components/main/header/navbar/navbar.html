@@ -17,7 +17,7 @@
                     </div>
                 }
                 @else {
-                    <button mat-button #button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="navMenu" style="z-index: 1050;" class="item-name" (mouseenter)="buttonEnter(menuTrigger)"  (mouseleave)="buttonLeave(menuTrigger, button)"   >
+                    <button mat-button #button [disableRipple]="true" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="navMenu" style="z-index: 1050;" class="item-name" (mouseenter)="buttonEnter(menuTrigger)"  (mouseleave)="buttonLeave(menuTrigger)"   >
                         <div class="menu-button-name">
                             {{item.name}}
                             <div class="menu-arrow-svg">
@@ -28,7 +28,7 @@
                         </div>
                     </button>
                     <mat-menu #navMenu="matMenu" direction="down" yPosition="below">
-                        <div class="menu-container" (mouseenter)="menuEnter()" (mouseleave)="menuLeave(menuTrigger, button)">
+                        <div class="menu-container" (mouseenter)="menuEnter()" (mouseleave)="menuLeave(menuTrigger)">
                             @for (d of item.dropDownOption; track $index; let j = $index) {
                                 <div class="menu-item" (click)="goToPage(d.navigationLink,i,j)">{{d.name}}
                                     <div class="menu-option-svg">
