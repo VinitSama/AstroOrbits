@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Renderer2 } from '@angular/core';
 import { IDropDownOption, INavbarItem } from '../../../../interfaces/inavbar-item';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { TNavigationLink } from '../../../../types/tnavogation-link';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +21,6 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class Navbar {
   @Input() showColor: boolean = true;
-  hoveredIndex: number | null = null;
   selected: number = 0;
   navbarItems: INavbarItem[] = [         // can be fetch from API for diffrent Navbar for different webpages
     // {
@@ -251,9 +250,8 @@ export class Navbar {
       navigationLink: null,
     },
   ];
-  @Output() close = new EventEmitter<void>();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private ren: Renderer2) {}
 
   goToPage(page: TNavigationLink | null, i: number, j: number = -1) {
     if (page == 'home') {
@@ -280,43 +278,63 @@ export class Navbar {
     }
   }
 
-  openedDropdown: number | null = null;
-
-  closeFn() {
-    this.close.emit();
-    this.hoveredIndex = null;
-  }
+  enteredButton = false;
+  isMatMenuOpen = false;
+  prevButtonTrigger!: MatMenuTrigger;
 
 
-
-
-  activeTrigger: MatMenuTrigger | null = null;
-
-  openMenu(trigger: MatMenuTrigger) {
-  if (this.activeTrigger && this.activeTrigger !== trigger) {
-    this.activeTrigger.closeMenu();
+  buttonEnter(trigger: MatMenuTrigger) {
     setTimeout(() => {
-      trigger.openMenu();
-      this.activeTrigger = trigger;
-    }, 50);
-  } else {
-    trigger.openMenu();
-    this.activeTrigger = trigger;
+      if(this.prevButtonTrigger && this.prevButtonTrigger != trigger) {
+        this.prevButtonTrigger.closeMenu();
+        this.prevButtonTrigger = trigger;
+        this.isMatMenuOpen = false;
+        trigger.openMenu();
+        this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-focused');
+        this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-program-focused');
+      } else if (!this.isMatMenuOpen) {
+        this.enteredButton = true;
+        this.prevButtonTrigger = trigger;
+        trigger.openMenu();
+        this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-focused');
+        this.ren.removeClass(trigger?.menu?.items?.first['_elementRef'].nativeElement, 'cdk-program-focused');
+      }  else {
+        this.enteredButton = true;
+        this.prevButtonTrigger = trigger
+      }
+    });
   }
-}
 
-onMenuClosed(trigger: MatMenuTrigger) {
-  if (this.activeTrigger === trigger) {
-    this.activeTrigger = null;
-    this.openedDropdown = -1;
+  buttonLeave(trigger: MatMenuTrigger, button: MatButton) {
+    setTimeout(() => {
+      if (this.enteredButton && !this.isMatMenuOpen) {
+        trigger.closeMenu();
+        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+      } if (!this.isMatMenuOpen) {
+        trigger.closeMenu();
+        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+      } else {
+        this.enteredButton = false;
+      }
+    }, 100);
   }
-}
 
-handleHover(index: number, trigger: MatMenuTrigger) {
-  if (this.openedDropdown !== null) {
-    this.openMenu(trigger);
-    this.openedDropdown = index;
+  menuEnter() {
+    this.isMatMenuOpen = true;
   }
-}
 
+  menuLeave(trigger: MatMenuTrigger, button: MatButton) {
+    setTimeout(() => {
+      if (!this.enteredButton) {
+        this.isMatMenuOpen = false;
+        trigger.closeMenu();
+        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-focused');
+        this.ren.removeClass(button['_elementRef'].nativeElement, 'cdk-program-focused');
+      } else {
+        this.isMatMenuOpen = false;
+      }
+    }, 80);
+  }
 }

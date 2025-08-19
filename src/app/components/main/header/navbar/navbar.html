@@ -4,7 +4,7 @@
             <div class="list-item"
                     [ngClass]="{ 'first-item': i === 0, 'last-item': i === navbarItems.length - 1 }" >
                 @if (!item.dropDownPresent) {
-                    <div class="item-name" (click)="goToPage(item.navigationLink,i)" (click)="closeFn()">
+                    <div class="item-name" (click)="goToPage(item.navigationLink,i)">
                         {{item.name}}
                         @if (item.tagPresent){
                             <div class="tag" [style.background-color]="item.tagSettings?.eclipseColor">
@@ -17,7 +17,7 @@
                     </div>
                 }
                 @else {
-                    <div [matMenuTriggerFor]="menu" class="item-name" #trigger="matMenuTrigger" (click)="openMenu(trigger)" (mouseenter)="handleHover(i, trigger)">
+                    <button mat-button #button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="navMenu" style="z-index: 1050;" class="item-name" (mouseenter)="buttonEnter(menuTrigger)"  (mouseleave)="buttonLeave(menuTrigger, button)"   >
                         <div class="menu-button-name">
                             {{item.name}}
                             <div class="menu-arrow-svg">
@@ -26,9 +26,9 @@
                                 </svg>
                             </div>
                         </div>
-                    </div>
-                    <mat-menu #menu="matMenu" (closed)="onMenuClosed(trigger)">
-                        <div class="menu-container">
+                    </button>
+                    <mat-menu #navMenu="matMenu" direction="down" yPosition="below">
+                        <div class="menu-container" (mouseenter)="menuEnter()" (mouseleave)="menuLeave(menuTrigger, button)">
                             @for (d of item.dropDownOption; track $index; let j = $index) {
                                 <div class="menu-item" (click)="goToPage(d.navigationLink,i,j)">{{d.name}}
                                     <div class="menu-option-svg">
