@@ -1,7 +1,8 @@
+import { TNavName } from "../types/tnav-name";
 import { TNavigationLink } from "../types/tnavogation-link";
 
 export interface INavbarItem {
-    name: string | null;
+    name: TNavName | null;
     dropDownPresent: boolean;
     tagPresent: boolean;
     dropDownOption: IDropDownOption[] | null;

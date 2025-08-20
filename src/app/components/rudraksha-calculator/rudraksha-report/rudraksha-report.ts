@@ -35,6 +35,7 @@ export class RudrakshaReport implements OnInit{
 
   ngOnInit(): void {
     this.headerService.setColorSubject(true);
+    this.headerService.setNavSubject('Calculator');
     this.setProfile();
   }
 

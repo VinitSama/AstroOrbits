@@ -201,6 +201,7 @@ export class KundliDetailReport implements OnInit {
 
   ngOnInit(): void {
     this.headerService.setColorSubject(true);
+    this.headerService.setNavSubject('Kundli');
     this.setProfile();
     this.route.paramMap.subscribe(params => {
       this.setSelectedOption(params);

@@ -1,0 +1,1 @@
+export type TNavName = 'Home' | 'Kundli' | 'Horoscope' | 'Numerology' | 'Tarot Reading' | 'Panchang' | 'Calculator' | 'Blogs';

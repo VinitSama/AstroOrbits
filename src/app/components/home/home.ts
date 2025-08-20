@@ -84,6 +84,7 @@ export class Home implements OnInit {
   ngOnInit(): void {
     this.loadSVGColor();
     this.headerService.setColorSubject(true);
+    this.headerService.setNavSubject('Home');
   }
 
   private loadSVGColor() {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IDropDownOption, INavbarItem } from '../../../../interfaces/inavbar-item';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { TNavigationLink } from '../../../../types/tnavogation-link';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { HeaderService } from '../../../../services/header.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +21,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
-export class Navbar {
+export class Navbar implements OnInit {
   @Input() showColor: boolean = true;
   selected: number = 0;
   navbarItems: INavbarItem[] = [         // can be fetch from API for diffrent Navbar for different webpages
@@ -85,7 +87,7 @@ export class Navbar {
         },
       ],
       tagSettings: null,
-      navigationLink: null,
+      navigationLink: "horoscope",
     },
     {
       name: 'Numerology',
@@ -153,10 +155,10 @@ export class Navbar {
         },
       ],
       tagSettings: null,
-      navigationLink: null,
+      navigationLink: "tarot",
     },
     {
-      name: "Panchang",
+      name: 'Panchang',
       dropDownPresent: true,
       tagPresent: false,
       dropDownOption: [
@@ -207,7 +209,7 @@ export class Navbar {
         },
       ],
       tagSettings: null,
-      navigationLink: null,
+      navigationLink: "panchang",
     },
     // {
     //   name: 'Mantras',
@@ -250,31 +252,37 @@ export class Navbar {
       navigationLink: null,
     },
   ];
+  selectedNavSubscription!: Subscription;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private headerService: HeaderService) {}
+
+  ngOnInit(): void {
+    this.selectedNavSubscription = this.headerService.getNavSubject().subscribe(i => {
+      this.selected = i;
+    })
+  }
 
   goToPage(page: TNavigationLink | null, i: number, j: number = -1) {
     if (page == 'home') {
       this.router.navigate([page])
-      this.selected = i;
-        }
-        else if (page == 'numerology'){
-      const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
-        ? this.navbarItems[i].dropDownOption[j].subLink
-        : '';
-      this.router.navigate(['home', page, "d", subLink]);
-      this.selected = i;
-        }
-        else if (page == 'horoscope'){
-      const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
-        ? this.navbarItems[i].dropDownOption[j].subLink
-        : '';
-      this.router.navigate(['home', page, "d", subLink]);
-      this.selected = i;
-        }
-        else if (page){
+    }
+    else if (j<0 && page != null){
       this.router.navigate(['home', page]);
-      this.selected = i;
+    }
+    else if (page == 'numerology'){
+      const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
+        ? this.navbarItems[i].dropDownOption[j].subLink
+        : '';
+      this.router.navigate(['home', page, "d", subLink]);
+    }
+    else if (page == 'horoscope'){
+      const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
+        ? this.navbarItems[i].dropDownOption[j].subLink
+        : '';
+      this.router.navigate(['home', page, "d", subLink]);
+    }
+    else if (page){
+      this.router.navigate(['home', page]);
     }
   }
 

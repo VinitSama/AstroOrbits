@@ -190,6 +190,7 @@ export class Kundli {
   ngOnInit(): void {
     this.loadSVGColor();
     this.headerService.setColorSubject(false);
+    this.headerService.setNavSubject('Kundli');
   }
 
   private loadSVGColor() {

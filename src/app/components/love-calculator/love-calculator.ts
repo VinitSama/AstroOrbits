@@ -113,6 +113,7 @@ export class LoveCalculator implements OnInit {
 
   ngOnInit(): void {
     this.headerService.setColorSubject(false);
+    this.headerService.setNavSubject('Calculator');
     this.svgSanitizer();
     this.route.paramMap.subscribe((params) => {
       this.setShowReport(params);

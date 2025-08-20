@@ -97,6 +97,7 @@ export class NumerlogyParticular implements OnInit {
       this.loadFromRouter(params);
     });
     this.headerService.setColorSubject(true);
+    this.headerService.setNavSubject('Numerology');
     this.loadSvgColors();
   }
 

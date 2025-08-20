@@ -205,6 +205,7 @@ export class KundliResult {
 
   ngOnInit(): void {
     this.headerService.setColorSubject(true);
+    this.headerService.setNavSubject('Kundli');
     this.setProfile();
     this.loadSVGColor();
     this.getHoroscopeSVG();

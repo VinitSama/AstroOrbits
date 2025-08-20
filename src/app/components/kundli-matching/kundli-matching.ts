@@ -315,6 +315,7 @@ export class KundliMatching implements OnInit {
   ngOnInit(): void {
    this.loadSvgColor();
    this.headerService.setColorSubject(false); 
+   this.headerService.setNavSubject('Kundli');
    this.formSvgSanitizer();
    this.stepsDone = -1;
   }

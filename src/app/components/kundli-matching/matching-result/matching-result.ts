@@ -254,6 +254,7 @@ export class MatchingResult implements OnInit {
 
   ngOnInit(): void {
     this.headerService.setColorSubject(true);
+    this.headerService.setNavSubject('Kundli');
     this.setProfiles();
     this.route.paramMap.subscribe(params => {
       console.log(this.route.paramMap);

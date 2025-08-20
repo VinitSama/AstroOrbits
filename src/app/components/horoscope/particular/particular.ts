@@ -190,6 +190,7 @@ export class Particular implements OnInit{
   
   ngOnInit(): void {
     this.headerService.setColorSubject(true);
+    this.headerService.setNavSubject('Horoscope');
     this.loadSVGColor();
     this.loadCards();
     this.route.paramMap.subscribe(params => {

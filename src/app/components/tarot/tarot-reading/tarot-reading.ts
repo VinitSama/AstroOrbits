@@ -151,6 +151,7 @@ export class TarotReading implements OnInit{
   ngOnInit(): void {
     this.loadSvgColor();
     this.headerService.setColorSubject(true);
+    this.headerService.setNavSubject('Tarot Reading');
     this.route.paramMap.subscribe(params => {
       this.setSelectedOption(params);
       this.setAllSvg();

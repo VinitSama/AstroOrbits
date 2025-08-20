@@ -77,6 +77,7 @@ export class RudrakshaCalculator implements OnInit {
 
   ngOnInit(): void {
     this.headerserveice.setColorSubject(false);
+    this.headerserveice.setNavSubject('Calculator');
     this.svgSanitizer();
   }
 

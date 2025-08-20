@@ -236,6 +236,7 @@ export class Numerlogy implements OnInit {
     });
     this.svgSantization();
     this.headerService.setColorSubject(false);
+    this.headerService.setNavSubject('Numerology');
     this.setThisYear();
   }
 

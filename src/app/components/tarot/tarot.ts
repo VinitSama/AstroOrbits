@@ -103,6 +103,7 @@ export class Tarot implements OnInit {
 
   ngOnInit(): void {
     this.headerSevice.setColorSubject(false);
+    this.headerSevice.setNavSubject('Tarot Reading');
     this.selectedCards = new Set<number>();
     this.enableButton = false;
     this.route.paramMap.subscribe(params => {

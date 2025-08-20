@@ -78,6 +78,7 @@ export class Panchang {
 
   ngOnInit(): void {
     this.headerService.setColorSubject(false);
+    this.headerService.setNavSubject('Panchang');
     this.loadSVGColor();
     this.loadPanchang();
     this.date = new Date();

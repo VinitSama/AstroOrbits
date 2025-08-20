@@ -152,6 +152,7 @@ export class Horoscope implements OnInit {
   ngOnInit(): void {
     this.loadSVGColor();
     this.headerService.setColorSubject(false);
+    this.headerService.setNavSubject('Horoscope');
     this.route.paramMap.subscribe(params => {
       this.loadFromRouteIfNeeded(params);
     });
