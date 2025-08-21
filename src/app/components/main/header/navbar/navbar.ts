@@ -58,7 +58,7 @@ export class Navbar implements OnInit {
         },
       ],
       tagSettings: null,
-      navigationLink: null,
+      navigationLink: "kundli",
     },
     {
       name: 'Horoscope',
