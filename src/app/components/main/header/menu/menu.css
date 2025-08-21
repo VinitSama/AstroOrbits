@@ -12,6 +12,50 @@
   height: calc(100% - 90px);
 }
 
+.menu-container{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--secondary-color);
+  font-family: var(--secondary-font);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.option{
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.option-svg{
+  display: flex;
+  align-items: center;
+}
+
+.login-btn{
+  border-radius: 7px;
+  background: #FFF;
+  display: flex;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  color: var(--secondary-color);
+  font-family: var(--secondary-font);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.selected-option{
+  background: var(--primary-bg-color);
+  justify-content: unset;
+  gap: 11px;
+}
+
 .bg-color {
   background-color: var(--primary-color);
 }

@@ -1,16 +1,39 @@
-<div class="menu-wrapper" [ngClass]="{'bg-color': showBgColor$ | async}">
+<div class="menu-wrapper" [ngClass]="{'bg-color': showBgColor}">
     <div class="menu-container">
-        @for (c of navbarItems; track $index) {
-            <div class="option">
-                <div class="opition-name">{{c.name}}</div>
-                <div class="option-svg">
+        @if (!secondaryMenuOption.showMenu) {
+            @for (c of navbarItems; track $index) {
+                <div class="option" (click)="primaryClick($index)">
+                    <div class="opition-name">{{c.name}}</div>
+                    <div class="option-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                            <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 3.41669L11.0833 7.50002L7 11.5834" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            }
+        } @else if (secondaryMenuOption.selected) {
+            <div class="selected-option option" [ngClass]="{'bg-color': !showBgColor}" (click)="secondaryClick(secondaryMenuOption.selected.navigationLink)">
+                <div class="option-svg" (click)="backClick()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-                        <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7 3.41669L11.0833 7.50002L7 11.5834" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.0833 7.5H2.91658" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 3.41663L2.91667 7.49996L7 11.5833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
+                <div class="opition-name">{{secondaryMenuOption.selected.name}}</div>
             </div>
+            @for (c of secondaryMenuOption.selected.dropDownOption; track $index) {
+                <div class="option" (click)="secondaryClick(c.navigationLink, $index)">
+                    <div class="opition-name">{{c.name}}</div>
+                    <div class="option-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                            <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 3.41669L11.0833 7.50002L7 11.5834" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            }
         }
     </div>
-    <button class="login-btn" [ngClass]="{'bg-color': showBgColor$ | async }">Login / SignUp</button>
+    <button class="login-btn" [ngClass]="{'bg-color': !showBgColor}">Login / SignUp</button>
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { TNavName } from '../types/tnav-name';
 
 @Injectable({
@@ -7,8 +7,8 @@ import { TNavName } from '../types/tnav-name';
 })
 export class HeaderService {
 
-  private showColorSubject = new Subject<boolean>();
-  private selectedNavSubject = new Subject<number>();
+  private showColorSubject = new BehaviorSubject<boolean>(false);
+  private selectedNavSubject = new BehaviorSubject<number>(0);
   private navMapper: Map<TNavName, number> = new Map([
     ['Home', 0],
     ['Kundli', 1],
@@ -23,12 +23,11 @@ export class HeaderService {
   constructor() { }
 
   setColorSubject(val: boolean){
-    console.log("saved", this.showColorSubject)
     this.showColorSubject.next(val)
   }
 
   getColorSubject(){
-    return this.showColorSubject;
+    return this.showColorSubject.asObservable();
   }
 
   setNavSubject(val: TNavName) {
@@ -36,7 +35,7 @@ export class HeaderService {
   }
 
   getNavSubject() {
-    return this.selectedNavSubject;
+    return this.selectedNavSubject.asObservable();
   }
 
 }
