@@ -1,0 +1,13 @@
+<div class="chart-wrapper">
+    <div class="chart-container">
+        @for (c of charts; track $index) {
+            <div class="chart">
+                <div class="header">
+                    <div class="svg" [innerHTML]="c.svg" [ngStyle]="{'background': c.svgBg}"></div>
+                    <div class="name">{{c.name}}</div>
+                </div>
+                <div class="chart-img" [ngStyle]="{'background': `url(${c.chart}) lightgray 50% / cover no-repeat`}"></div>
+            </div>
+        }
+    </div>
+</div>
