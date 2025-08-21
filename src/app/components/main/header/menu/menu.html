@@ -1,6 +1,16 @@
-<div class="menu-overlay" (click)="closeMenu()">
-    <div class="menu-content" (click)="$event.stopPropagation()">
-        <div class="close-btn" (click)="closeMenu()">✕</div>
-        <app-navbar (close)="closeMenu()"></app-navbar>
+<div class="menu-wrapper" [ngClass]="{'bg-color': showBgColor$ | async}">
+    <div class="menu-container">
+        @for (c of navbarItems; track $index) {
+            <div class="option">
+                <div class="opition-name">{{c.name}}</div>
+                <div class="option-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                        <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 3.41669L11.0833 7.50002L7 11.5834" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        }
     </div>
+    <button class="login-btn" [ngClass]="{'bg-color': showBgColor$ | async }">Login / SignUp</button>
 </div>

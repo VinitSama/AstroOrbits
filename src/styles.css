@@ -18,9 +18,9 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* div{
+div{
     border: 2px solid salmon;
-} */
+}
 
 .mat-mdc-menu-content{
     padding: 0 !important;

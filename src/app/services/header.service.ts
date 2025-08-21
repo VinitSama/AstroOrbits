@@ -23,6 +23,7 @@ export class HeaderService {
   constructor() { }
 
   setColorSubject(val: boolean){
+    console.log("saved", this.showColorSubject)
     this.showColorSubject.next(val)
   }
 
