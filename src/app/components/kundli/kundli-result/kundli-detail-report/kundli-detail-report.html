@@ -9,10 +9,12 @@
                 </svg></span><span style="margin-left: 4px;">Change Details</span></span></div>
         </div>
         <div class="option-container">
-            <button class="options" *ngFor="let c of options" [ngClass]="{'selected-option': c.id == selectedOption}" (click)="optionSelect(c.id)">
-                <div class="option-svg" [ngStyle]="{'background': c.svgBg}" [innerHTML]="c.svg"></div>
-                <div class="option-name">{{c.name}}</div>
-            </button>
+            @for (c of options; track $index) {
+                <button class="options" [ngClass]="{'selected-option': c.id == selectedOption}" (click)="optionSelect(c.id)">
+                    <div class="option-svg" [ngStyle]="{'background': c.svgBg}" [innerHTML]="c.svg"></div>
+                    <div class="option-name">{{c.name}}</div>
+                </button>
+            }
         </div>
     </div>
     <div class="details-wrapper">

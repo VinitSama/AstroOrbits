@@ -76,6 +76,10 @@
     border-radius: 7px;
 }
 
+.option-name{
+    text-wrap: nowrap;
+}
+
 .selected-option{
     background: var(--secondary-color);
     color: #fff;
