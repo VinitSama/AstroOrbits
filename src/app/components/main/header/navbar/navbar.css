@@ -26,10 +26,9 @@
 
 .list-item {
     flex: 1 1 auto;
-    min-width: 0;
+    width: 100%;
     text-align: center;
     box-sizing: border-box;
-    /* padding: 0 10px; */
     background: var(--secondary-color);
     align-content: center;
     overflow-y: auto;
@@ -114,15 +113,12 @@
 }
 
 .selected-marker{
-    margin: -5px 35px 0 35px;
-    /* width: 100%; */
+    /* margin: -5px 35px 0 35px; */
+    width: 90px;
+    margin: -5px auto 0;
     height: 5px;
     border-radius: 9px 9px 0px 0px;
     background: #FFF;
-    /* position: relative;
-    left: 35px;
-    right: 35px;
-    bottom: 0px; */
 }
 
 @media (max-width: 990px) {
