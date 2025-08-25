@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { CommonModule } from '@angular/common';
-import { PanchangService } from '../../services/panchang.service';
 import { SectionTag } from "../section-tag/section-tag";
 import { DetailsTable } from "../details-table/details-table";
 import { IKundliDetail } from '../../interfaces/ikundli-detail';
@@ -74,7 +73,7 @@ export class Panchang {
     }
   ];
 
-  constructor(private headerService: HeaderService, private themeService: ThemeService, private panchangService: PanchangService) {}
+  constructor(private headerService: HeaderService, private themeService: ThemeService) {}
 
   ngOnInit(): void {
     this.headerService.setColorSubject(false);
@@ -90,15 +89,7 @@ export class Panchang {
   }
 
   private loadPanchang() {
-    this.panchangService.getPanchang(this.day).subscribe({
-      next: response => {
-        this.panchang = response;
-        this.makeTables();
-      },
-      error: err => {
-        console.error('API error:', err);
-      }
-    });
+    
   } 
 
   private makeTables() {

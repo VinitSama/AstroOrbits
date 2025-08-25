@@ -30,7 +30,6 @@ export class ResultProgress implements OnInit {
       this.color = this.getColor(this.card.score);
     }, 100);
     this.color = this.getColor(this.card.score);
-    console.log(this.color)
   }
 
   getStrokeDashOffset(score: number): number {

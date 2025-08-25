@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuCard } from "../../menu-card/menu-card";
 import { IMenuCard } from '../../../../interfaces/imenu-card';
-import { PanchangService } from '../../../../services/panchang.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -38,7 +37,7 @@ export class PanchangMenuCard implements OnInit {
       samvat: "",
     }
 
-  constructor(private panchangService: PanchangService, private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.loadPanchang();
@@ -51,15 +50,15 @@ export class PanchangMenuCard implements OnInit {
   }
 
   private loadPanchang(){
-    this.panchangService.getPanchang().subscribe({
-      next: response => {
-        const res = response; 
-        this.makePanchangObject(res);
-      },
-      error: err => {
-        console.error('API error:', err);
-      }
-    });
+    // this.panchangService.getPanchang().subscribe({
+    //   next: response => {
+    //     const res = response; 
+    //     this.makePanchangObject(res);
+    //   },
+    //   error: err => {
+    //     console.error('API error:', err);
+    //   }
+    // });
   }
 
   private makePanchangObject(response: any){

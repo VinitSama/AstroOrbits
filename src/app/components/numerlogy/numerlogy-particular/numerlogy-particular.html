@@ -38,8 +38,8 @@
                 </div>
             </div>
         </div>
-        <div class="day-container">
-            <div class="day-card" *ngFor="let d of dayOptions" [ngClass]="{'selected-day': selectedDay === d}" (click)="setDay(d)">
+        <div class="side-panel">
+            <!-- <div class="day-card" *ngFor="let d of dayOptions" [ngClass]="{'selected-day': selectedDay === d}" (click)="setDay(d)">
                 <div class="day-card-name">{{d}}</div>
                 <div class="day-card-svg">
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
@@ -47,6 +47,38 @@
                         <path d="M7 3.41669L11.0833 7.50002L7 11.5834" [attr.stroke]="selectedDay !== d ? svgColor.secondary : '#fff'" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </div>
+            </div> -->
+            <div class="horoscope">
+                <div class="horoscope-header">
+                    <div class="horoscope-svg" [innerHTML]="horoscopeSvg"></div>
+                    <div class="horoscope-info">Horoscope Sign: {{horoscope.name}}</div>
+                </div>
+                <div class="horoscope-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path d="M3.75 9H14.25" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 3.75L14.25 9L9 14.25" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg></div>
+            </div>
+            <div class="partner-detail">
+                <div class="partner-header">
+                    <div class="partner-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                        <g clip-path="url(#clip0_1186_3422)">
+                            <path d="M8.68764 22.2548C5.19182 22.057 2.40833 19.1505 2.40833 15.6058C2.40833 11.9334 5.39581 8.94565 9.06789 8.94565C10.7102 8.94565 12.2872 9.54826 13.5084 10.6425C14.9188 11.904 15.728 13.7132 15.728 15.6057C15.728 17.1929 15.1586 18.7212 14.1428 19.9175C14.8632 20.3843 15.6904 20.6632 16.5524 20.7268C17.5898 19.2166 18.1363 17.4544 18.1363 15.6057C18.1363 13.6251 17.5092 11.7438 16.323 10.1653C15.3805 8.9105 14.126 7.91718 12.6952 7.29252C11.9021 6.94565 11.0729 6.71748 10.2188 6.60985C11.9452 5.33899 12.6054 4.27385 12.6054 3.34483C12.6054 2.23001 11.7016 1.32629 10.5868 1.32629C9.98105 1.32629 9.43807 1.59347 9.06809 2.01597C8.69811 1.59347 8.15507 1.32629 7.54936 1.32629C6.43454 1.32629 5.53082 2.23001 5.53082 3.34483C5.53082 4.274 6.19119 5.3393 7.91817 6.61041C3.459 7.17716 0 10.9951 0 15.6058C0 20.6058 4.06781 24.6736 9.06789 24.6736C9.75919 24.6736 10.4378 24.5969 11.0985 24.4457C10.1908 23.8455 9.37554 23.1067 8.68764 22.2548Z" fill="#FB2B74"/>
+                            <path d="M16.9317 6.5379C16.2403 6.5379 15.5617 6.6146 14.901 6.76576C15.8087 7.36604 16.624 8.10489 17.3119 8.95675C20.8077 9.15454 23.5912 12.061 23.5912 15.6057C23.5912 19.2781 20.6038 22.2659 16.9317 22.2659C15.2895 22.2659 13.7124 21.6632 12.4911 20.569C11.0808 19.3075 10.2716 17.4983 10.2716 15.6057C10.2716 14.0186 10.841 12.4902 11.8568 11.2939C11.1363 10.8271 10.3092 10.5483 9.44718 10.4847C8.40972 11.9949 7.86328 13.757 7.86328 15.6057C7.86328 17.5864 8.49028 19.4676 9.67656 21.0462C10.6191 22.301 11.8735 23.2943 13.3044 23.9189C14.4495 24.4198 15.6697 24.6736 16.9317 24.6736C21.9318 24.6736 25.9996 20.6058 25.9996 15.6057C25.9995 10.6057 21.9317 6.5379 16.9317 6.5379Z" fill="#FB2B74"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_1186_3422">
+                            <rect width="26" height="26" fill="white"/>
+                            </clipPath>
+                        </defs>
+                        </svg>
+                    </div>
+                    <div class="partner-info">
+                        <div class="partner-heading">Add Your Partner’s Details</div>
+                        <div class="partner-sub">Take a step towards </div>
+                    </div>
+                </div>
+                <div class="partner-btn">Try Kundli Matching</div>
             </div>
         </div>
     </div>

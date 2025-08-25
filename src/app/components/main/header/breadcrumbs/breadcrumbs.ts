@@ -26,7 +26,6 @@ export class Breadcrumbs implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.breadcrumbs = this.buildBreadcrumbs(this.activatedRoute.root);
-        console.log(this.breadcrumbs)
         this.canShow();
       })
   }

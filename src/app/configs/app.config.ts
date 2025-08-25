@@ -5,9 +5,9 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { MAT_RIPPLE_GLOBAL_OPTIONS, RippleGlobalOptions } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
-export const baseUrl = "https://api.vedicastroapi.com/v3-json";
+// export const baseUrl = "https://api.vedicastroapi.com/v3-json";
 // export const baseUrl = "/api/vedicastroapi.com/v3-json";
-export const api_key = "1807c7ab-ea34-50c8-b867-5fab4fd05b56";
+export const API_KEY = "1750fc53-444d-5d3f-a6a8-38cf3ee64e90";
 
 const globalRippleConfig: RippleGlobalOptions = {
   disabled: true, // This disables the ripple effect globally

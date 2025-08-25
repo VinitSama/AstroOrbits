@@ -14,6 +14,9 @@ import { LoveMenuCard } from "../../menu-card-container/cards/love-menu-card/lov
 import { AstrologySection } from "../../astrology-section/astrology-section";
 import { AboutSection } from "../../about-section/about-section";
 import { FAQSection } from "../../faq-section/faq-section";
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { TZodiacSign } from '../../../types/tzodiac-sign';
+import { ZodiacServices } from '../../../services/zodiac.services';
 
 @Component({
   selector: 'app-numerlogy-particular',
@@ -90,7 +93,16 @@ export class NumerlogyParticular implements OnInit {
     ]
   };
 
-  constructor(private headerService: HeaderService, private route: ActivatedRoute, private router: Router, private themeService: ThemeService) {}
+  
+  horoscope: {
+    name: TZodiacSign,
+  } = {
+    name: 'Aries',
+  }
+
+  horoscopeSvg!: SafeHtml;
+
+  constructor(private headerService: HeaderService, private route: ActivatedRoute, private router: Router, private themeService: ThemeService, private sanitizer: DomSanitizer, private zodiacService: ZodiacServices) {}
   
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -99,6 +111,39 @@ export class NumerlogyParticular implements OnInit {
     this.headerService.setColorSubject(true);
     this.headerService.setNavSubject('Numerology');
     this.loadSvgColors();
+    this.getHoroscopeSVG()
+  }
+
+  private getHoroscopeSVG() {
+    const svg = this.zodiacService.getSvg(this.horoscope.name);
+    const newSVG = this.changeSize(svg);
+    this.horoscopeSvg = this.safeSVGMaker(newSVG);
+  }
+
+  private safeSVGMaker(svg: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(svg);
+  }
+
+  private changeSize(svgString: string){
+    
+    const colorSvg = this.changeSvg(svgString);
+
+    const newHSVG = colorSvg.replace(
+      /(<svg[^>]+)(height="[^"]*")/g, 
+      (match, p1) => `${p1} height="${'16px'}"`
+    );
+
+    return newHSVG.replace(
+      /(<svg[^>]+)(width="[^"]*")/g, 
+      (match, p1) => `${p1} width="${'22px'}"`
+    );
+  }
+  private changeSvg(svg: string): string {
+    let targets: Array<'primary' | 'secondary' | 'tertiary' | 'stroke'> = ['primary','secondary', 'tertiary' , 'stroke']
+    targets.forEach(t => {
+      svg = svg?.replace(new RegExp(t,"g"),this.svgColor[t]) || '';
+    });
+    return svg;
   }
 
   private loadSvgColors() {

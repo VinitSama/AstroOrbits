@@ -23,7 +23,6 @@ export class ThemeService{
       tertiary: getComputedStyle(document.documentElement).getPropertyValue('--tertiary-color').trim(),
       stroke: getComputedStyle(document.documentElement).getPropertyValue('--fourth-color').trim(),
     };
-    console.log(this.svgColor);
   }
   
 }

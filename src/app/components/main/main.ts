@@ -32,10 +32,8 @@ export class Main implements OnInit {
 
   headerModeSelector = computed(() => {
     if (this.responsiveService.largeWidth()){
-      console.log('large')
       return 'large';
     }
-    console.log('small  ')
     return 'small';
   })
 

@@ -9,7 +9,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ThemeService } from '../../../services/theme.service';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { SectionTag } from "../../section-tag/section-tag";
-import { HoroscopeService } from '../../../services/horoscope.service';
 import { HeaderService } from '../../../services/header.service';
 import { THoroscopeSign } from '../../../types/thoroscope-sign';
 import { AstrologicalInsightCard } from "../../astrological-insight-card/astrological-insight-card";
@@ -23,8 +22,9 @@ import { AboutSection } from "../../about-section/about-section";
 import { FAQSection } from "../../faq-section/faq-section";
 import { IPersonalisedContainer } from '../../../interfaces/ipersonalised-container';
 import { PersonalizeSection } from "../../personalize-section/personalize-section";
+import { HoroscopeApiService } from '../../../services/api/horoscope-api.service';
 
-type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
+export type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
 
 @Component({
   selector: 'app-particular',
@@ -47,13 +47,12 @@ type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearl
 export class Particular implements OnInit{
 
   @Input() zodiac!: TZodiacSign;
-  @Input() day!: string;
   @Input() openPrecise: number = 0;
   
+  day: TDates = 'Today';
   brief: string = "Discover what the stars have in store for you today. Select your zodiac sign and unlock personalized cosmic insights.";
   svgColor!:ISvgColors;
   openSvg!: SafeHtml;
-  // article!: IArticle;
   horoscope!: any;
   zodiacSign: THoroscopeSign = 'moon';
 
@@ -61,37 +60,19 @@ export class Particular implements OnInit{
   zodiacDetails!: IZodiacCard [];
 
   report: IZodiacHoroscope = {
-    brief: "Dear Aries, the Moon is in Capricorn today. Your legal case, which has been going on for a very long time, will finally be resolved in your favor. As a result, you will finally be relieved of the stress and anxiety this case has put on you. Astroyogi astrologers suggest you to move on with your life and resume your routine with new energy and passion. You can finally give your time to the things that matter in life and spare some time for mental peace. So, don’t wait any longer to work on your mental and emotional health.",
-    remedy: "Meditate for 10 minutes",
+    brief: "",
     luckyInformation: {
-      luckyNumber: 1,
-      luckyColor: "Cyan",
-      mood: "Innovative",
-      positivity: 85,
-    }
+      luckyNumber: [1],
+      luckyColor: "",
+    },
+    stars: [0,0,0,0],  //Love, Health, Career, Finance
+    particularBrief: ["", "", "", ""],
   }
+
+  starMapper: string[] = ["Love", "Health", "Career", "Finance"];
 
   showPreciseHoroscope: boolean = false;
   opendPreciseIndex: number = 0;
-
-  horoscopeTypes: {name: string, value: number}[] = [
-    {
-      name: "Love",
-      value: 4
-    },
-    {
-      name: "Health",
-      value: 3,
-    },
-    {
-      name: "Career",
-      value: 5
-    },
-    {
-      name: "Finance",
-      value: 4
-    },
-  ]
 
   insightCard: IInsightCard[] = [
     {
@@ -114,41 +95,6 @@ export class Particular implements OnInit{
     },
   ];
 
-  presiceHoroscope: {name: string, value: string}[] = [
-    {
-      name: "Love",
-      value: "Love",
-    },
-    {
-      name: "Career",
-      value: "Career",
-    },
-    {
-      name: "Finance",
-      value: "Finance",
-    },
-    {
-      name: "Health",
-      value: "Health",
-    },
-    {
-      name: "Lover",
-      value: "Lover",
-    },
-    {
-      name: "Man",
-      value: "Man",
-    },
-    {
-      name: "Women",
-      value: "Women",
-    },
-    {
-      name: "Traits",
-      value: "Traits",
-    },
-  ]
-
 
   horoscopeType: IPersonalisedContainer = {
     heading: "Get your Personalised Horoscope",
@@ -156,28 +102,28 @@ export class Particular implements OnInit{
     cards: [
       {
         name: "Love",
-        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        brief: "",
         button: "Learn how it affects you",
         svg: "love",
         buttonCol: "#FFECF2"
       },
       {
         name: "Health",
-        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        brief: "",
         button: "Learn how it affects you",
         svg: "health",
         buttonCol: "#F1FFEA"
       },
       {
         name: "Career",
-        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        brief: "",
         button: "Learn how it affects you",
         svg: "career",
         buttonCol: "#EDE7FF"
       },
       {
         name: "Finance",
-        brief: "You will be very enterprising and industrious today. You make your plans very carefully and execute them perfectly. Despite this, your progress will be very slow. However, Ganesha advises you not to despair and",
+        brief: "",
         button: "Learn how it affects you",
         svg: "finance",
         buttonCol: "#E3EDFF"
@@ -186,7 +132,7 @@ export class Particular implements OnInit{
   };
 
 
-  constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeService: HoroscopeService) {}
+  constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeApiService: HoroscopeApiService) {}
   
   ngOnInit(): void {
     this.headerService.setColorSubject(true);
@@ -196,7 +142,21 @@ export class Particular implements OnInit{
     this.route.paramMap.subscribe(params => {
       this.loadFromRouteIfNeeded(params);
     });
-    // this.setOpenSvg();
+  }
+
+  horoscopeTypeMapper() {
+    for (let i = 0; i<4; i++) {
+      this.horoscopeType.cards[i].brief = this.report.particularBrief[i] || "";
+    }
+  }
+
+  loadHoroscope() {
+    this.horoscopeApiService.getHoroscopeReport(this.zodiac, this.zodiacSign, this.day).subscribe({
+      next: (report) => {
+        this.report = report;
+        this.horoscopeTypeMapper();
+      },
+    });
   }
 
   onPrisiceChange(i: number){
@@ -206,13 +166,13 @@ export class Particular implements OnInit{
 
   onSignClick(sign: THoroscopeSign){
     this.zodiacSign = sign;
+    this.loadHoroscope();
   }
 
   onDayClick(day: TDates){
     this.day = day;
-    this.apiCall(this.day);
+    this.loadHoroscope()
     this.setOpenSvg();
-    // this.changeArticle(this.openPrecise);
   }
 
   getSvgFile(i: number){
@@ -227,16 +187,6 @@ export class Particular implements OnInit{
     return false;
   }
 
-  // changeArticle(i:number){
-  //   if (i<this.presiceHoroscope.length) {
-  //     this.openPrecise = i;
-  //     this.article = {
-  //       title: "",
-  //       content: this.presiceHoroscope[this.openPrecise].value
-  //     }
-  //   }
-  // }
-
   private loadSVGColor() {
     this.svgColor = this.themeService.getSvgColor();
   }
@@ -245,84 +195,18 @@ export class Particular implements OnInit{
     this.zodiacDetails = this.zodiacService.getAllCards();
   }
 
-  private apiCall(day: string){
-    if (day == 'Today'){
-      this.horoscopeService.zodiacTodayHoroscope(this.zodiac).subscribe({
-        next: response => {
-          this.horoscope = response;
-          console.log('Horoscope:', response);
-          this.makeReport();
-        },
-        error: err => {
-          console.error('API error:', err);
-        }
-      });
-    } else if (day=='Tomorrow'){
-      this.horoscopeService.zodiacTomorrowHoroscope(this.zodiac).subscribe({
-        next: response => {
-          this.horoscope = response;
-          console.log('Horoscope:', response);
-          this.makeReport();
-        },
-        error: err => {
-          console.error('API error:', err);
-        }
-      });
-    } else if (day=='Weekly'){
-      this.horoscopeService.zodiacWeeklyHoroscope(this.zodiac).subscribe({
-        next: response => {
-          this.horoscope = response;
-          console.log('Horoscope:', response);
-          this.makeReport();
-        },
-        error: err => {
-          console.error('API error:', err);
-        }
-      });
-    } else if (day=='Yearly'){
-      this.horoscopeService.zodiacYearlyHoroscope(this.zodiac).subscribe({
-        next: response => {
-          this.horoscope = response;
-          console.log('Horoscope:', response);
-          this.makeReport();
-        },
-        error: err => {
-          console.error('API error:', err);
-        }
-      });
-    }
-    
-  }
-  private makeReport(){
-    const response = this.horoscope?.response;
-    if ( this.horoscope?.status == 200 && response ){
-      this.report.brief = response?.bot_response;
-      this.report.luckyInformation = {
-        luckyColor: response?.lucky_color,
-        luckyNumber: response.lucky_number[0],
-        mood: "Innovative",
-        positivity: 80,
-      }
-    }
-    console.log(this.report)
-  }
 
   private loadFromRouteIfNeeded(params: ParamMap){
     const zodiacParam = params.get('zodiac');
-    const dayParam = params.get('day');
 
     if (zodiacParam && this.isValidZodiac(zodiacParam)) {
       this.zodiac = zodiacParam as TZodiacSign;
-    }
-
-    this.day = (dayParam as TDates) || 'Today';
-
+    } else (
+      this.router.navigate(['false'])
+    )
     this.setOpenSvg();
-    // this.changeArticle(this.openPrecise);
-    
-    this.apiCall(this.day);
+    this.loadHoroscope();
     console.log(this.horoscope);
-    
   }
 
   onZodiacClick(title: TZodiacSign | null){
@@ -363,7 +247,6 @@ export class Particular implements OnInit{
         if (t == 'secondary'){
           svg = svg?.replace(new RegExp(t,"g"),this.svgColor['primary']) || '';
         } else if (t == 'primary'){
-          console.log(this.svgColor['stroke'])
           svg = svg?.replace(new RegExp(t,"g"),this.svgColor['stroke']) || '';
         } else {
           svg = svg?.replace(new RegExp(t,"g"),this.svgColor[t]) || '';
@@ -378,8 +261,9 @@ export class Particular implements OnInit{
   }
 
   private setOpenSvg(){
-    const i = this.zodiacDetails.indexOf(this.zodiacDetails.find(z => z.title == this.zodiac) || this.zodiacDetails[0]);
-    this.openSvg = this.sanitizeSvg(this.zodiacDetails[i].svg);
+    // const i = this.zodiacDetails.indexOf(this.zodiacDetails.find(z => z.title == this.zodiac) || this.zodiacDetails[0]);
+    // this.openSvg = this.sanitizeSvg(this.zodiacDetails[i].svg);
+    this.openSvg = this.sanitizeSvg(this.zodiacService.getSvg(this.zodiac), false);
   }
 
   dateToDisplay(){
@@ -394,11 +278,5 @@ export class Particular implements OnInit{
       return d;
     }
     return d;
-  }
-
-  setDate(date: TDates) {
-    this.day = date;
-    console.log(this.day);
-    this.apiCall(this.day);
   }
 }

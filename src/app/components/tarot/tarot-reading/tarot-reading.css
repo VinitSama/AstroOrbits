@@ -130,7 +130,7 @@
 .horoscope-svg{
     padding: 6px;
     border-radius: 7px;
-    background-color: #FFF1D6;
+    background-color: var(--horoscope-option-svg-bg);
     width: 28px;
     height: 28px;
     display: flex;

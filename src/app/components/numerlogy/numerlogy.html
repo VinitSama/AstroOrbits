@@ -1,6 +1,5 @@
 <div class="numerlogy-page">
     <div class="section-title">
-        <!-- <app-section-tag [sectionTitle]="'Numerology'" [subHeading]="sectionBrief" [subHeadCol]="true"></app-section-tag> -->
         <app-section-tag [sectionTitle]="pageHeading" [subHeadCol]="true" [subHeading]="showDayInfo ? '' : showTypeInfo ? '' : sectionBrief"></app-section-tag>
         <div class="day-selector" *ngIf="showDayInfo">{{selectedDayBrief}}</div>
         <div class="day-selector" *ngIf="showTypeInfo && !showDayInfo">{{selectedTypeBrief}}</div>

@@ -67,7 +67,6 @@ export class TarotMenuCard implements OnInit {
   ngOnInit(): void {
     this.svgSantization();
     this.card.width = this.width;
-    console.log(this.card)
   }
 
   private svgSantization(){

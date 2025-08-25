@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PanchangService } from './panchang.service';
+import { BaseApiService } from './base-api.service';
 
-describe('PanchangService', () => {
-  let service: PanchangService;
+describe('BaseApiService', () => {
+  let service: BaseApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PanchangService);
+    service = TestBed.inject(BaseApiService);
   });
 
   it('should be created', () => {

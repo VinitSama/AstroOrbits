@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IZodiacCard } from '../interfaces/izodiac-card';
+import { TZodiacSign } from '../types/tzodiac-sign';
 
 @Injectable({
   providedIn: 'root'
@@ -1126,6 +1127,14 @@ export class ZodiacServices {
       return card.svg as string;
     }
     return "wrong title";
+  }
+
+  getZodiacId(zodiac: TZodiacSign): number {
+    const card = this.zodiacCards.find(c => c.title == zodiac);
+    if (card) {
+      return this.zodiacCards.indexOf(card) + 1;
+    }
+    return 0;
   }
 
 }
