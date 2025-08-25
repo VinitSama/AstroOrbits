@@ -1,17 +1,21 @@
 <div class="particular-page">
     <div class="decorative-bg">
         <div class="num-option-wrapper">
-            <div class="num-option" *ngFor="let n of numOptions" (click)="setNumber(n)">
-                <div class="num-option-icon" [ngClass]="{'selected-num-option': selectedNum === n}">
-                    <div>{{n}}</div></div>
-                <div class="num-option-name">Number {{n}}</div>
-            </div>
+            @for (n of numOptions; track $index) {
+                <div class="num-option" (click)="setNumber(n)">
+                    <div class="num-option-icon" [ngClass]="{'selected-num-option': selectedNum === n}">
+                        <div>{{n}}</div></div>
+                    <div class="num-option-name">Number {{n}}</div>
+                </div>
+            }
         </div>
         <div class="selected-num-wrapper">
             <div class="selected-num-container">
                 <div class="selected-num">Number {{selectedNum}}</div>
                 <div class="selected-num-nature-container">
-                    <div class="selected-num-nature" *ngFor="let n of nature">{{n}}</div>
+                    @for (n of nature; track $index) {
+                        <div class="selected-num-nature">{{n}}</div>
+                    }
                 </div>
             </div>
             <app-numerlogy-card [num]="selectedNum" [type]="2"></app-numerlogy-card>
@@ -23,31 +27,26 @@
                 <div class="numerology-info-name">Number {{selectedNum}}</div>
                 <div class="numerology-info-brief">{{report.breif}}</div>
                 <div class="numerology-lucky-container">
-                    <div class="numerology-lucky-card" *ngFor="let  l of report.lucky">
-                        <div class="numerology-lucky-name">{{l.name}}</div>
-                        <div class="numerology-lucky-value">{{l.value}}</div>
-                    </div>
+                    @for (l of report.lucky; track $index) {
+                        <div class="numerology-lucky-card">
+                            <div class="numerology-lucky-name">{{l.name}}</div>
+                            <div class="numerology-lucky-value">{{l.value}}</div>
+                        </div>
+                    }
                 </div>
             </div>
             <div class="numerlogy-types-container">
-                <div class="numerlogy-types-card" *ngFor="let t of numerologyTypes" (click)="goToType(t)">
-                    <div class="numerlogy-types-svg">
-                        <img [src]="`./images/numerology/${t}.svg`" [alt]="t">
+                @for (t of numerologyTypes; track $index) {
+                    <div class="numerlogy-types-card" (click)="goToType(t)">
+                        <div class="numerlogy-types-svg">
+                            <img [src]="`./images/numerology/${t}.svg`" [alt]="t">
+                        </div>
+                        <div class="numerlogy-types-name">{{t}}</div>
                     </div>
-                    <div class="numerlogy-types-name">{{t}}</div>
-                </div>
+                }
             </div>
         </div>
         <div class="side-panel">
-            <!-- <div class="day-card" *ngFor="let d of dayOptions" [ngClass]="{'selected-day': selectedDay === d}" (click)="setDay(d)">
-                <div class="day-card-name">{{d}}</div>
-                <div class="day-card-svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-                        <path d="M2.91699 7.5H11.0837" [attr.stroke]="selectedDay !== d ? svgColor.secondary : '#fff'" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7 3.41669L11.0833 7.50002L7 11.5834" [attr.stroke]="selectedDay !== d ? svgColor.secondary : '#fff'" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-            </div> -->
             <div class="horoscope">
                 <div class="horoscope-header">
                     <div class="horoscope-svg" [innerHTML]="horoscopeSvg"></div>

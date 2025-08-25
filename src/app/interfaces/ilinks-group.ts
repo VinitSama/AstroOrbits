@@ -5,5 +5,5 @@ export interface ILinksGroup {
 
 interface ILink {
     text: string;
-    url: string;
+    url?: string;
 }

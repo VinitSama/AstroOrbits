@@ -20,9 +20,9 @@ export const routes: Routes = [
                 data: { breadcrumb: null },
             },
             {
-                path: 'test',
-                loadComponent: () => import('./components/home/home').then(m => m.Home),
-                data: {layout: 'main', breadcrumb: 'test'},
+                path: 'coming-soon',
+                loadComponent: () => import('./components/coming-soon/coming-soon').then( m => m.ComingSoon),
+                data: {layout: 'main', breadcrumb: null},
             },
             {
                 path: 'zodiacSign',

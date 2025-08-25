@@ -123,12 +123,17 @@
             </div>
         </div>
         <div class="link-container">
-            <div *ngFor="let linkGroup of linkGroups; trackBy:trackByFn; let i = index" class="link-group" [ngClass]="{'last-link': i === linkGroups.length-1}" >
-                <h3>{{linkGroup.heading}}</h3>
-                <div *ngFor="let link of linkGroup.links" class="link">
-                    <a [attr.href]="link.url" class="url-text">{{link.text}}</a>
+            @for (linkGroup of linkGroups; track $index; let i = $index) {
+                <div  class="link-group" [ngClass]="{'last-link': i === linkGroups.length-1}" >
+                    <h3>{{linkGroup.heading}}</h3>
+                    @for (link of linkGroup.links; track $index) {
+                        <div class="link" (click)="goTo(link.url ? link.url : 'coming-soon')">
+                            <!-- <a [attr.href]="link.url" class="url-text">{{link.text}}</a> -->
+                             {{link.text}}
+                        </div>
+                    }
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>

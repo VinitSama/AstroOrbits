@@ -1,0 +1,19 @@
+.coming-soon-page{
+    padding-bottom: 80px;
+}
+
+.comming-soon-container{
+    width: 100%;
+    padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.comming-soon-img{
+    width: 336px;
+    height: 336px;
+    aspect-ratio: 1/1;
+    background: url('/images/coming-soon.png') white 50% / cover no-repeat;
+}
