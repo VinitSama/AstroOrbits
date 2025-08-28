@@ -11,6 +11,7 @@
     box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
     height: 100%;
     max-height: min-content;
+    width: 100%;
 }
 
 .header{

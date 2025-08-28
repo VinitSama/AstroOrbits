@@ -30,63 +30,82 @@
             <div class="section-wrapper">
                 <div class="dosha-container set-1">
                     <div class="row">
-                        <div class="doshas-card gap-1" *ngFor="let c of doshas.slice(0,2)">
-                            <div class="dosha-info-container">
-                                <div class="dosha-graphics">
-                                    <div class="svg-contaier">
-                                        <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                        @for (c of doshas.slice(0,2); track $index) {
+                            <div class="doshas-card gap-1">
+                                <div class="dosha-info-container">
+                                    <div class="dosha-graphics">
+                                        <div class="svg-contaier">
+                                            <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                                        </div>
+                                        <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
                                     </div>
-                                    <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
+                                    <div class="dosha-info-box">
+                                        <div class="dosha-name">{{c.name}}</div>
+                                        <div class="dosha-brief">{{c.brief}}</div>
+                                    </div>
                                 </div>
-                                <div class="dosha-info-box">
-                                    <div class="dosha-name">{{c.name}}</div>
-                                    <div class="dosha-brief">{{c.brief}}</div>
-                                </div>
+                                <div class="dosha-click-lick">Check My status</div>
                             </div>
-                            <div class="dosha-click-lick">Check My status</div>
-                        </div>
+                        }
                     </div>
                     <div class="row">
-                        <div class="doshas-card gap-1" *ngFor="let c of doshas.slice(2,4)">
-                            <div class="dosha-info-container">
-                                <div class="dosha-graphics">
-                                    <div class="svg-contaier">
-                                        <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                        @for (c of doshas.slice(2,4); track $index) {
+                            <div class="doshas-card gap-1">
+                                <div class="dosha-info-container">
+                                    <div class="dosha-graphics">
+                                        <div class="svg-contaier">
+                                            <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                                        </div>
+                                        <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
                                     </div>
-                                    <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
+                                    <div class="dosha-info-box">
+                                        <div class="dosha-name">{{c.name}}</div>
+                                        <div class="dosha-brief">{{c.brief}}</div>
+                                    </div>
                                 </div>
-                                <div class="dosha-info-box">
-                                    <div class="dosha-name">{{c.name}}</div>
-                                    <div class="dosha-brief">{{c.brief}}</div>
-                                </div>
+                                <div class="dosha-click-lick">Check My status</div>
                             </div>
-                            <div class="dosha-click-lick">Check My status</div>
-                        </div>
+                        }
                     </div>
                 </div>
-                <div class="other-report-container">
-                    <div class="other-report-card" *ngFor="let c of kundliFeatureCards">
-                        <app-feature-card-t1 [card]="c"></app-feature-card-t1>
+                @if (modeSelector() == 'large') {
+                    <div class="other-report-container">
+                        @for (c of kundliFeatureCards; track $index) {
+                            <div class="other-report-card">
+                                <app-feature-card-t1 [card]="c"></app-feature-card-t1>
+                            </div>
+                        }
                     </div>
-                </div>
+                }
             </div>
             <div class="dosha-container set-2">
-                <div class="doshas-card gap-2" *ngFor="let c of doshas.slice(4)">
-                    <div class="dosha-info-container">
-                        <div class="dosha-graphics">
-                            <div class="svg-contaier">
-                                <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                @for (c of doshas.slice(4); track $index) {
+                    <div class="doshas-card gap-2">
+                        <div class="dosha-info-container">
+                            <div class="dosha-graphics">
+                                <div class="svg-contaier">
+                                    <img [src]="'./images/kundli/dosha/'+c.svgName" [alt]="c.name">
+                                </div>
+                                <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
                             </div>
-                            <div class="risk-tag" [ngStyle]="{'background': riskMap.get(c.riskTag)}">{{`${c.riskTag} Risk`}}</div>
+                            <div class="dosha-info-box">
+                                <div class="dosha-name">{{c.name}}</div>
+                                <div class="dosha-brief">{{c.brief}}</div>
+                            </div>
                         </div>
-                        <div class="dosha-info-box">
-                            <div class="dosha-name">{{c.name}}</div>
-                            <div class="dosha-brief">{{c.brief}}</div>
-                        </div>
+                        <div class="dosha-click-lick">Check My status</div>
                     </div>
-                    <div class="dosha-click-lick">Check My status</div>
-                </div>
+                }
             </div>
+            @if (modeSelector() == 'small') {
+                <div class="other-report-container">
+                    @for (c of kundliFeatureCards; track $index) {
+                        <div class="other-report-card">
+                            <app-feature-card-t1 [card]="c"></app-feature-card-t1>
+                        </div>
+                    }
+                </div>
+            }
         </div>
     </div>
     <app-rudraksh-section></app-rudraksh-section>

@@ -9,6 +9,7 @@
     height: 100%;
     margin: 0 auto;
     width: 100%;
+    width: 100%;
     max-width: 430px;
     font-size: 12px;
     font-weight: 400;
@@ -26,6 +27,7 @@
     overflow: hidden;
     z-index: 0;
     height: 100%;
+    width: 100%;
     background: #fff;
     box-shadow: 0px 20px 60px 0px rgba(157, 105, 0, 0.10);
     &::before {
@@ -78,12 +80,11 @@
     flex-grow: 1;
 }
 
-.input-area svg {
-    margin-right: 12px;
-}
 
 .label{
     color: var(--form-label);
+    font-size: 14px;
+    width: 100%;
 }
 
 .input{
@@ -94,6 +95,7 @@
     color: var(--input-fore-color);
     outline: none;
     border: none;
+    font-size: inherit;
 }
 
 .input::placeholder{
@@ -113,6 +115,9 @@
     color: var(--form-label);
 }
 
+.input-area svg {
+    margin-right: 12px;
+}
 .gender-options{
     display: flex;
     gap: 2px;
@@ -155,6 +160,7 @@
     border-radius: 7px;
     margin-top: 24px;
     height: 41px;
+    width: 100%;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator,
@@ -167,6 +173,12 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   display: none;
 }
 
+input{
+    font-size: inherit;
+    width: 100%;
+    max-width: 310px;
+}
+
 svg{
     cursor: pointer;
 }
@@ -174,13 +186,32 @@ svg{
 @media (max-width:440px) {
     .row{
         flex-direction: column;
-    }
-
-    .form-container{
         width: 100%;
     }
 
-    .empty{
-        display: none;
+    .form-container{
+        max-width: 100%;
     }
+
+    /* .empty{
+        display: none;
+    } */
+    .label{
+        font-size: 10px;
+    }
+    .submit{
+        font-size: 12px;
+        width: 100%;
+    }
+    .gender-container{
+        font-size: 10px;
+        width: 100%;
+    }
+    .set-bg {
+        padding: 16px;
+    }
+    .input-area{
+        min-width: 0;
+    }
+    
 }

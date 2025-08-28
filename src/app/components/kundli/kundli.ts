@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { ThemeService } from '../../services/theme.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { IKundliForm } from '../../interfaces/ikundli-form';
 import { FormService } from '../../services/form.service';
 import { IFeatureCard } from '../../interfaces/ifeature-card';
 import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
+import { ResposiveService } from '../../services/resposive.service';
 
 @Component({
   selector: 'app-kundli',
@@ -185,7 +186,7 @@ export class Kundli {
     },
   ]
 
-  constructor(private themeService: ThemeService, private router: Router, private route: ActivatedRoute, private headerService: HeaderService, private formService: FormService) {}
+  constructor(private themeService: ThemeService, private router: Router, private route: ActivatedRoute, private headerService: HeaderService, private formService: FormService, private responsiveService: ResposiveService) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
@@ -202,5 +203,13 @@ export class Kundli {
     this.formService.setKundliFormData(form);
     this.router.navigate(['result'], { relativeTo: this.route });
   }
+
+  modeSelector = computed(() => {
+    if (this.responsiveService.xxSmallWidth() || this.responsiveService.extraSmallWidth() || this.responsiveService.smallWidth()) {
+      return 'small';
+    } else {
+      return 'large';
+    }
+  });
 
 }

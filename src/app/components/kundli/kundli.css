@@ -1,3 +1,6 @@
+.kundli-page{
+    padding-bottom: 80px;
+}
 .kundli-form-wrapper{
     display: flex;
     flex-direction: column;
@@ -20,7 +23,7 @@
 .kundli-form-container{
     display: flex;
     align-items: center;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .kundli-form-box{
@@ -111,12 +114,14 @@
 .section-wrapper{
     display: flex;
     gap: 24px;
+    align-items: center;
 }
 
 .dosha-container{
     display: flex;
     gap: 24px;
     align-items: center;
+    width: 100%;
 }
 
 .set-1{
@@ -219,4 +224,62 @@
     flex-direction: column;
     gap: 24px;
     width: 100%;
+}
+
+@media (max-width:1200px) {
+    .kundli-page{
+        padding: 0 24px 80px;
+    }
+    .kundli-form-banner{
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+        gap: 40px;
+    }
+    .kundli-form-container{
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:770px) {
+    .gap-1{
+        max-width: unset;
+    }
+
+    .gap-2{
+        min-width: 272px;
+    }
+
+    .set-2{
+        flex-wrap: wrap;
+    }
+
+    .other-report-container{
+        max-width: unset;
+    }
+}
+
+@media (max-width:670px) {
+    .feature-container, .first-design-card, .second-design-card{
+        display: none;
+    }
+    .kundli-form-banner{
+        padding: 24px;
+    }
+    .kundli-form-box{
+        z-index: unset;
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 575px) {
+    .gap-1{
+        min-width: 272px;
+    }
+    .set-2{
+        flex-wrap: wrap;
+    }
+    .row{
+        flex-wrap: wrap;
+    }
 }
