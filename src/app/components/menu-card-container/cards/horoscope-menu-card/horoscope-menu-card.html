@@ -1,7 +1,9 @@
 <app-menu-card [card]="card">
     <div class="zodiac-container">
         <div class="zodiac-prediction-container">
-            <app-zodiac-card *ngFor="let card of zodiacCards" [boxSize]="'60px'" [svgSize]="'40px'" [showName]="false" [zodiacCard]="card" [svgColor]="svgColor"></app-zodiac-card>
+            @for (card of zodiacCards; track $index) {
+                <app-zodiac-card [boxSize]="'60px'" [svgSize]="'40px'" [showName]="false" [zodiacCard]="card" [svgColor]="svgColor"></app-zodiac-card>
+            }
         </div>
         <div class="zodiac-form">
             <div class="dropdown-container">

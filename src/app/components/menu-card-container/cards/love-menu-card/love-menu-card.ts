@@ -32,6 +32,7 @@ export class LoveMenuCard implements OnInit {
     heading: "Love Calculator",
     sub: "Know your future from the best of horoscope readers.",
     blurColor:'#F00',
+    width: "100%",
   };
 
   calculatorForm: FormGroup;

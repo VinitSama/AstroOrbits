@@ -9,3 +9,9 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+@media (max-width: 575px) {
+    .sub-link{
+        font-size: 10px;
+    }
+}

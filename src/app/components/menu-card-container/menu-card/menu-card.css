@@ -1,3 +1,6 @@
+/* :host {
+  flex-basis: 380px;
+} */
 .card-background{
     padding: 32px;
     position: relative;
@@ -47,7 +50,7 @@
 
 .svg-container{
     height: 72px;
-    width: 72px;
+    min-width: 72px;
     background: #FFF;
     border-radius: 50%;
     display: flex;
@@ -97,4 +100,18 @@
 
 .information input::placeholder {
     font-family: var(--secondary-font);
+}
+
+@media (max-width: 575px) {
+    .heading{
+        font-size: 16px;
+    }
+    .sub{
+        font-size: 8px;
+    }
+    .svg-container{
+        padding: 16px;
+        min-width: 60px;
+        height: 60px;
+    }
 }

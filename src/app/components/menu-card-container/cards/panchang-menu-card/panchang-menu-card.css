@@ -31,3 +31,10 @@
 .panchang-name{
     font-weight: 600;
 }
+
+
+@media (max-width:575px) {
+    .panchang-container{
+        font-size: 10px;
+    }
+}

@@ -11,8 +11,8 @@ export class ResposiveService {
   private readonly xxSmall = '(max-width: 375px)';
   private readonly extraSmall = '(min-width: 376px) and (max-width: 575px)';
   private readonly small = '(min-width: 576px) and (max-width: 765px)';
-  private readonly medium = '(min-width: 766px) and (max-width: 991px)';
-  private readonly large = '(min-width: 992px) and (max-width: 1199px)';
+  private readonly medium = '(min-width: 766px) and (max-width: 1059px)';
+  private readonly large = '(min-width: 1060px) and (max-width: 1199px)';
   private readonly extraLarge = '(min-width: 1200px) and (max-width: 1399px)';
   private readonly xxLarge = '(min-width: 1400px)';
 

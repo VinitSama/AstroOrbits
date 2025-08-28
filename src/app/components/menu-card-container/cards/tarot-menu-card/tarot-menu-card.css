@@ -31,7 +31,7 @@ input{
     padding: 12px;
     border: 1px solid var(--form-border);
     outline: none;
-    font-size: 12px;
+    font-size: inherit;
     font-weight: 400;
     width: 100%;
     border-radius: 7px;
@@ -50,4 +50,14 @@ input::placeholder {
     border: 1px solid var(--horoscope-banner);
     background-color: var(--primary-color);
     width: 100%;
+}
+
+
+@media (max-width:575px) {
+    .submit{
+        font-size: 10px;
+    }
+    label{
+        font-size: 10px;
+    }
 }

@@ -11,18 +11,37 @@
                 </div>
                 <div class="card-section">
                     <div class="card-wrapper">
-                        <app-kundli-menu-card></app-kundli-menu-card>
-                        <app-horoscope-menu-card [svgColor]="svgColor"></app-horoscope-menu-card>
-                        <app-love-menu-card></app-love-menu-card>
-                    </div>
-                    <div class="card-wrapper spread">
                         <div>
-                        <app-panchang-menu-card></app-panchang-menu-card>
+                            <app-kundli-menu-card></app-kundli-menu-card>
                         </div>
                         <div>
-                        <app-tarot-menu-card></app-tarot-menu-card>
+                            <app-horoscope-menu-card [svgColor]="svgColor"></app-horoscope-menu-card>
                         </div>
+                        @if (modeSelector() == 'large') {
+                            <app-love-menu-card></app-love-menu-card>
+                        }
                     </div>
+                    @if (modeSelector() == 'large') {
+                        <div class="card-wrapper spread">
+                            <div>
+                                <app-panchang-menu-card></app-panchang-menu-card>
+                            </div>
+                            <div>
+                                <app-tarot-menu-card></app-tarot-menu-card>
+                            </div>
+                        </div>
+                    } @else {
+                        <div class="card-wrapper-2">
+                            <!-- <div style="width: 100%; max-width: 380px;"> -->
+                            <div class="spread-2">
+                                <app-love-menu-card></app-love-menu-card>
+                            </div>
+                            <div class="spread-2">
+                                <app-panchang-menu-card></app-panchang-menu-card>
+                                <app-tarot-menu-card></app-tarot-menu-card>
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

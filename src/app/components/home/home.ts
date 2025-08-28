@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, OnInit } from '@angular/core';
 // import { Banner } from "./banner/banner";
 // import { BannerMenu } from "./banner-menu/banner-menu";
 // import { ZodiacPrediction } from "../zodiac-prediction/zodiac-prediction";
@@ -24,6 +24,7 @@ import { HoroscopeMenuCard } from "../menu-card-container/cards/horoscope-menu-c
 import { PanchangMenuCard } from "../menu-card-container/cards/panchang-menu-card/panchang-menu-card";
 import { TarotMenuCard } from "../menu-card-container/cards/tarot-menu-card/tarot-menu-card";
 import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-menu-card";
+import { ResposiveService } from '../../services/resposive.service';
 
 @Component({
   selector: 'app-home',
@@ -79,7 +80,7 @@ export class Home implements OnInit {
 
   private themeUpdateSubscription!: Subscription; 
 
-  constructor(private themeService: ThemeService, private headerService: HeaderService) {}
+  constructor(private themeService: ThemeService, private headerService: HeaderService, private responsiveService: ResposiveService) {}
 
   ngOnInit(): void {
     this.loadSVGColor();
@@ -90,4 +91,12 @@ export class Home implements OnInit {
   private loadSVGColor() {
     this.svgColor = this.themeService.getSvgColor();
   }
+
+  modeSelector = computed(() => {
+    if (this.responsiveService.largeWidth() || this.responsiveService.extraLargeWidth() || this.responsiveService.xxLargeWidth()) {
+      return 'large';
+    } else {
+      return 'small';
+    }
+  })
 }

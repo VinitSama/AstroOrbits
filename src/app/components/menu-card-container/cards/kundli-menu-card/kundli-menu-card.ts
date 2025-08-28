@@ -38,6 +38,7 @@ export class KundliMenuCard implements OnInit {
     heading: "Free Kundali",
     sub: "Know you kundali in free with accurate details",
     blurColor:'#FFB114',
+    width: "100%",
   };
 
   kundliForm: FormGroup;

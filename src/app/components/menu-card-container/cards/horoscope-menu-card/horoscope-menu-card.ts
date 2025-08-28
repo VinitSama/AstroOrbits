@@ -37,6 +37,7 @@ export class HoroscopeMenuCard {
     heading: "Today’s Horoscope",
     sub: "Know your future from the best of horoscope readers.",
     blurColor:'#8F23AF',
+    width: "100%",
   }
 
   zodiacSelect: string = "Select Sign";

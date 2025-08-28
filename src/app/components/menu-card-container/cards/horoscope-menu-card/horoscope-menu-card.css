@@ -68,3 +68,9 @@
     color: #fff;
     background-color: var(--secondary-color);
 }
+
+@media (max-width:575px) {
+    .submit{
+        font-size: 10px;
+    }
+}

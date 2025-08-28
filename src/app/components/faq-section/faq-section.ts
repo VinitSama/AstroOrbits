@@ -36,10 +36,8 @@ export class FAQSection {
 
   modeSelector = computed(() => {
     if (this.responsiveService.xxSmallWidth() || this.responsiveService.extraSmallWidth()) {
-      console.log('small')
       return 'small';
     } else{
-      console.log('large')
       return 'large';
     }
   })
