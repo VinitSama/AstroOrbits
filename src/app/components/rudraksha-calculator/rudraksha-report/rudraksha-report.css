@@ -37,6 +37,12 @@
 .info{
     font-size: 14px;
     font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+.info-text{
+    text-wrap: wrap;
 }
 
 .refresh-detail{
@@ -46,18 +52,21 @@
     border-radius: 9999px;
     color: #fff;
     cursor: pointer;
+    text-wrap: nowrap;
 }
 
 .rudraksh-container{
     display: flex;
     gap: 16px;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     max-width: 1200px;
     width: 100%;
 }
 
 .rudraksh-card{
+    flex: 1 1 300px;
+    max-width: 360px;
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -74,14 +83,20 @@
     width: 233px;
     height: 188px;
     padding: 24px;
+    aspect-ratio: 4/3;
+    margin: 0 auto;
 }
 
 .img{
     width: 100%;
     height: 100%;
     border-radius: 7px;
-    flex: 1 0 0;
-    align-self: stretch;
+    /* flex: 1 0 0;
+    align-self: stretch; */
+    
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .rudraksh-info{
@@ -90,6 +105,8 @@
     gap: 18px;
     align-items: center;
     text-wrap: nowrap;
+    text-align: center;
+    white-space: normal;
 }
 
 .rudraksh-name{
@@ -109,4 +126,80 @@
 .link{
     padding: 12px;
     cursor: pointer;
+    flex: 1;
+}
+
+.section-container{
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width:1200px) {
+    .info-container{
+        padding: 0 24px;
+    }
+    .section-container{
+        padding: 0 24px;
+    }
+    .rudraksh-container{
+        padding: 0 24px;
+    }
+    .rudraksh-card {
+        max-width: unset;
+        flex: 1;
+    }
+}
+@media (max-width: 900px) {
+    .rudraksh-name {
+        font-size: 22px;
+    }
+    .rudraksh-card {
+        flex: 1 1 45%;
+    }
+    .img-container{
+        width: 190px;
+        height: 160px;
+    }
+}
+
+@media (max-width:775px) {
+    .img-container{
+        width: 130px;
+        height: 100px;
+    }
+}
+@media (max-width: 600px) {
+    .rudraksh-card {
+        flex: 1 1 100%;
+    }
+    .rudraksh-name {
+        font-size: 20px;
+    }
+    .link-container{
+        font-size: 10px;
+    }
+    .design-bg{
+        height: 320px;
+    }
+    .recommendation-wrapper{
+        margin-top: -350px;
+    }
+}
+@media (max-width: 575px) {
+    .img-container{
+        width: 170px;
+        height: 130px;
+    }
+    .rudraksh-name {
+        font-size: 16px;
+    }
+    .rudraksh-card{
+        padding: 16px;
+        gap: 12px;
+    }
+    .rudraksh-info{
+        gap: 10px;
+    }
+    .rudraksh-container{
+        flex-direction: column;
+    }
 }

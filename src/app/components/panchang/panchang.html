@@ -5,13 +5,17 @@
             <div class="day-adder" (click)="changeDate(-1)">
                 <div class="date">{{forDecreament | date: "dd"}}</div>
                 <div class="month">{{ forDecreament | date: "MMMM yyyy" }}</div>
-                <div class="day" *ngIf="day - 1 in dayMap">{{`(${dayMap[day-1]})`}}</div>
+                @if (day - 1 in dayMap) {
+                    <div class="day">{{`(${dayMap[day-1]})`}}</div>
+                }
             </div>
             @if (modeSelector() != 'large') {
                 <div class="day-adder" (click)="changeDate(1)">
                     <div class="date">{{forIncreament | date: "dd"}}</div>
                     <div class="month">{{ forIncreament | date: "MMMM yyyy" }}</div>
-                    <div class="day" *ngIf="day + 1 in dayMap">{{`(${dayMap[day+1]})`}}</div>
+                    @if (day + 1 in dayMap) {
+                        <div class="day">{{`(${dayMap[day+1]})`}}</div>
+                    }
                 </div>
             }
             <div class="day-information">
@@ -47,7 +51,9 @@
                 <div class="day-adder" (click)="changeDate(1)">
                     <div class="date">{{forIncreament | date: "dd"}}</div>
                     <div class="month">{{ forIncreament | date: "MMMM yyyy" }}</div>
-                    <div class="day" *ngIf="day + 1 in dayMap">{{`(${dayMap[day+1]})`}}</div>
+                    @if (day + 1 in dayMap) {
+                        <div class="day">{{`(${dayMap[day+1]})`}}</div>
+                    }
                 </div>
             }
         </div>
