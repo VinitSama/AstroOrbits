@@ -34,3 +34,37 @@
     border-radius: 7px;
     font-family: var(--secondary-font);
 }
+
+@media (max-width: 375px) {
+    .sun-img{
+        display: none;
+    }
+    .question{
+        font-size: 32px;
+    }
+    .information{
+        font-size: 9px;
+        gap: 10px;
+        margin: 30px;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 575px) {
+    .sun-img{
+        display: none;
+    }
+    .question{
+        font-size: 48px;
+    }
+    .information{
+        font-size: 12px;
+        gap: 10px;
+        margin: 35px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .banner-container{
+        margin: 0 24px;
+    }
+}

@@ -4,6 +4,7 @@
     overflow: hidden;
 }
 
+
 .banner{
     width: 100%;
 }
@@ -17,7 +18,7 @@
 }
 
 .banner-second{
-    margin-top: -70px;
+    margin-top: -55px;
 }
 
 
@@ -51,8 +52,8 @@
 
 
 
-@media (max-width:400px) {
-    .banner{
-        width: 0;
+@media (max-width: 1200px) {
+    .home-information{
+        padding: 0 24px;
     }
 }

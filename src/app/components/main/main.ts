@@ -31,8 +31,12 @@ export class Main implements OnInit {
   }
 
   headerModeSelector = computed(() => {
-    if (this.responsiveService.largeWidth()){
+    if (this.responsiveService.extraLargeWidth()){
       return 'large';
+    } else if (this.responsiveService.xxSmallWidth()) {
+      return 'xxSmall';
+    } else if (this.responsiveService.xxLargeWidth()) {
+      return 'xxLarge';
     }
     return 'small';
   })

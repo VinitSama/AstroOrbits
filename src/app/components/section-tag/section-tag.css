@@ -4,6 +4,7 @@
     align-items: center;
     justify-self: center;
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     gap: 10px;
     text-align: center;
@@ -13,6 +14,7 @@
     font-size: 36px;
     font-weight: 700;
     color: var(--secondary-color);
+    width: 100%;
     margin: 0;
     font-family: var(--primary-font);
 }
@@ -39,14 +41,34 @@
 
 @media (max-width:765px) {
     .title{
-        font-size: 16px;
+        font-size: 26px;
+    }
+    .sub-heading{
+        font-size: 14px;
+    }
+    .extra-gap h2{
+        font-size: 32px;
+    }
+    .extra-gap{
+        gap: 8px;
+    }
+    .sub-color{
+        font-size: 12px;
     }
 
     
 }
 @media (max-width:450px) {
     .title{
-        font-size: 15px;
-        text-wrap: nowrap;
+        font-size: 20px;
+    }
+    .section-tag-container{
+        gap: 2px;
+    }
+    .extra-gap{
+        gap: 4px;
+    }
+    .sub-color{
+        font-size: 10px;
     }
 }

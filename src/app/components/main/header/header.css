@@ -27,6 +27,7 @@ a:active {
 .header-options{
     display: flex;
     gap: 10px;
+    font-size: 14px;
 }
 
 .header-options div{
@@ -38,12 +39,13 @@ a:active {
     gap: 6px;
     align-items: center;
     font-family: var(--secondary-font);
-    font-size: 14px;
+    font-size: inherit;
     font-weight: 400;
     cursor: pointer;
 }
 
 .store-matter{
+    font-weight: 700;
     color: var(--secondary-color);
 }
 
@@ -62,7 +64,7 @@ a:active {
 }
 
 .login-btn{
-    font-size: 14px;
+    font-size: inherit;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -77,6 +79,8 @@ a:active {
 .language {
     padding: 12px;
     display: flex;
+    align-items: center;
+    font-size: inherit;
 }
 .language svg {
     margin-right: 4px;
@@ -87,12 +91,22 @@ a:active {
     outline: none;
     background: inherit;
     color: var(--secondary-color);
+    font-size: inherit;
+}
+
+@media (max-width: 375px) {
+    .header-container {
+        height: 60px;
+    }
 }
 
 @media (max-width: 575px) {
-    .logo{
-        padding-left: 20px;
-        font-size: 20px;
+    .header-container {
+        padding: 0 24px;
+    }
+
+    .header-options {
+        gap: unset;
     }
 }
 

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IFAQCard } from '../../../interfaces/ifaq-card';
 import { CommonModule } from '@angular/common';
+import { TResponsive } from '../../../types/responsive';
 
 @Component({
   selector: 'app-faq-card',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class FAQCard{
   @Input() card!: IFAQCard;
+  @Input() mode: TResponsive = 'large';
 
   isOpen: boolean = false;
 

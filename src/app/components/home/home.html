@@ -1,47 +1,39 @@
 <div class="home-container">
-    <!-- <div class="whole-banner">
-        <div class="banner">
-            <app-banner></app-banner>
-        </div>
-        <app-banner-menu [svgColor]="svgColor"></app-banner-menu>
-    </div> -->
     <app-new-banner></app-new-banner>
     <div class="banner-second">
         <app-banner-second></app-banner-second>
     </div>
-    <div>
-        <!-- <app-menu-card-container [svgColor]="svgColor"></app-menu-card-container> -->
-         <div class="menu-container">
-            <div class="section-tag">
-                <app-section-tag [sectionTitle]="'How Can We Guide You?'" [subHeading]="'Choose your path to clarity. Get Detailed reports or join live community sessions.'"></app-section-tag>
-            </div>
-            <div class="card-section">
-                <div class="card-wrapper">
-                    <app-kundli-menu-card></app-kundli-menu-card>
-                    <app-horoscope-menu-card [svgColor]="svgColor"></app-horoscope-menu-card>
-                    <app-love-menu-card></app-love-menu-card>
+    <div class="home-information">
+        <div>
+            <div class="menu-container">
+                <div class="section-tag">
+                    <app-section-tag [sectionTitle]="'How Can We Guide You?'" [subHeading]="'Choose your path to clarity. Get Detailed reports or join live community sessions.'"></app-section-tag>
                 </div>
-                <div class="card-wrapper spread">
-                    <div>
-                    <app-panchang-menu-card></app-panchang-menu-card>
+                <div class="card-section">
+                    <div class="card-wrapper">
+                        <app-kundli-menu-card></app-kundli-menu-card>
+                        <app-horoscope-menu-card [svgColor]="svgColor"></app-horoscope-menu-card>
+                        <app-love-menu-card></app-love-menu-card>
                     </div>
-                    <div>
-                    <app-tarot-menu-card></app-tarot-menu-card>
+                    <div class="card-wrapper spread">
+                        <div>
+                        <app-panchang-menu-card></app-panchang-menu-card>
+                        </div>
+                        <div>
+                        <app-tarot-menu-card></app-tarot-menu-card>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div>
+            <app-rudraksh-section></app-rudraksh-section>
+        </div>
+        <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>
+        <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
+        <app-review-section></app-review-section>
+        <app-about-section></app-about-section>
+        <app-faq-section></app-faq-section>
+        <app-join-banner></app-join-banner>
     </div>
-    <div>
-        <app-rudraksh-section></app-rudraksh-section>
-    </div>
-    <!-- <app-zodiac-prediction [svgColor]="svgColor" [detailed]="false" [title]="zodiacPredictionTitle"></app-zodiac-prediction> -->
-    <app-blog-section [svgColor]="svgColor" [title]="blogSectionHeading"></app-blog-section>
-    <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
-    <app-review-section></app-review-section>
-    <app-about-section></app-about-section>
-    <app-faq-section></app-faq-section>
-    <app-join-banner></app-join-banner>
-    <!-- <app-metric-section></app-metric-section>
-    <app-why-astrology-section [svgColor]="svgColor" ></app-why-astrology-section> -->
 </div>

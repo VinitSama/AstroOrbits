@@ -5,7 +5,7 @@
     <div class="card-container">
         @for (c of cards; track $index) {
             <div class="card">
-                <app-faq-card [card]="c"></app-faq-card>
+                <app-faq-card [mode]="modeSelector()" [card]="c"></app-faq-card>
             </div>
         }
     </div>

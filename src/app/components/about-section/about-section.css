@@ -31,3 +31,14 @@
 .bold{
     font-weight: 500;
 }
+
+@media (max-width: 575px) {
+    .information-container{
+        flex-direction: column;
+        gap: 30px;
+        font-size: 12px;
+    }   
+    .passage{
+        margin-top: 16px;
+    }
+}

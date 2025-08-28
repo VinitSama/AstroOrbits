@@ -11,13 +11,16 @@
     color: #fff;
     margin: 0 auto;
     align-items: center;
+    gap: 20px;
+    height: 428px;
 }
 
 .information-container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
+    /* width: 100%; */
+    min-width: 500px;
     height: 267px;
     font-family: var(--secondary-font);
 }
@@ -48,6 +51,7 @@
 .form{
     display: flex;
     gap: 6px;
+    font-size: 14px;
 }
 
 .input-filed{
@@ -57,7 +61,7 @@
     display: flex;
     align-items: center;
     color: var(--fore-dark-grey);
-    font-size: 14px;
+    font-size: inherit;
     font-weight: 400;
 }
 
@@ -80,6 +84,7 @@
     border: none;
     outline: none;
     border-radius: 7px;
+    font-size: inherit;
     color: var(--input-fore-color);
 }
 
@@ -88,7 +93,7 @@
     border-radius: 7px;
     color: #fff;
     background: var(--primary-color);
-    font-size: 14px;
+    font-size: inherit;
     font-weight: 400;
     border: none;
     outline: none;
@@ -129,4 +134,80 @@
 
 .code:last-child{
     border: none;
+}
+
+.pipe{
+    font-size: inherit;
+
+}
+.image-container {
+    width: 364px;     
+    height: 364px;
+    overflow: hidden; 
+}
+
+.image {
+    width: 100%;
+    min-width: max-content;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+@media (max-width: 1200px) {
+    .banner-component{
+        padding: 32px 0 32px 40px;
+    }
+}
+
+@media (max-width: 840px) {
+    .image-container{
+        display: none;
+    }
+    .information-container{
+        min-width: unset;
+    }
+    .banner-component{
+        padding: 32px 40px;
+    }
+}
+
+@media (max-width: 575px) {
+    .banner-component{
+        margin: auto;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        padding: 32px 40px;
+    }
+
+    .title{
+        font-size: 32px;
+    }
+
+    .brief{
+        font-size: 10px;
+    }
+    .sub{
+        font-size: 12px;
+    }
+    .information-container{
+        justify-content: unset;
+        gap: 40px;
+        height: auto;
+    }
+    .form{
+        font-size: 10px;
+        flex-direction: column;
+        max-width: 25   0px;
+    }
+}
+
+@media (max-width: 375px) {
+    .banner-component{
+        padding: 20px;
+        height: auto;
+        overflow: unset;
+        display: block;
+    }
 }

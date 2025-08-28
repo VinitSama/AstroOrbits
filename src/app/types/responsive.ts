@@ -1,1 +1,1 @@
-export type TResponsive = "extraSmall" | "small" | "medium" | "large"; 
+export type TResponsive = "xxSmall" | "extraSmall" | "small" | "medium" | "large" | "xxLarge"; 

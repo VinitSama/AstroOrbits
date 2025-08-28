@@ -12,10 +12,10 @@
             </div>
             <form class="form" (ngSubmit)="submit()" [formGroup]="phoneForm">
                 <div class="input-filed">
-                    <span class="country-code-container" [matMenuTriggerFor]="codeMenu">
+                    <span class="country-code-container" style="display: flex; align-items: center;" [matMenuTriggerFor]="codeMenu">
                         +{{selctedCode}}
                         <span class="dropdown-svg">
-                            <div> 
+                            <div style="display: flex; align-items: center;"> 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                                     <path d="M4 6.22266L8 10.2227L12 6.22266" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
@@ -29,13 +29,15 @@
             </form>
         </div>
         <div class="image-container">
-            <img src="./images/join-banner.png" alt="join banner image">
+            <img class="image" src="./images/join-banner.png" alt="join banner image">
         </div>
     </div>
 </div>
 
 <mat-menu #codeMenu="matMenu" class="custom-code-menu" yPosition="below">
     <div class="code-container">
-        <div class="code" *ngFor="let c of codes" (click)="changeCode(c)">+{{c}}</div>
+        @for (c of codes; track $index) {
+            <div class="code" (click)="changeCode(c)">+{{c}}</div>
+        }
     </div>
 </mat-menu>
