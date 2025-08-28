@@ -225,4 +225,76 @@
     justify-content: space-between;
     margin: auto;
     padding: 32px 0;
+    gap: 24px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.menu-container> div {
+    flex: 1;
+    flex: 1 1 300px;
+    min-width: 270px;
+}
+
+@media (max-width:1200px) {
+    .panchang-page{
+        padding: 0 24px 80px;
+    }
+}
+@media (max-width:775px) {
+    .day-information {
+        max-width: 720px;
+        width: 100%;
+    }
+    .day-selector{
+        flex-wrap: wrap;
+        flex: 1;
+    }
+    .day-adder{
+        flex: 1;
+    }
+    .panchang-wrapper{
+        flex-direction: column;
+    }
+    .holiday-table{
+        max-width: unset;
+    }
+}
+@media (max-width:575px) {
+    .info-wrapper{
+        padding: 24px 0;
+        gap: 24px;
+    }
+    .day-information{
+        flex-direction: column;
+        gap: 40px;
+        align-items: end;
+    }
+    .calendar-info{
+        max-width: 250px;
+    }
+    .holiday-header, .calendar-date{
+        font-size: 18px;
+    }
+    .holoday-header, .month, .hindi-sub{
+        font-size: 12px;
+    }
+    .holoday-sub, .day, .calendar-loc{
+        font-size: 10px;
+    }
+    .holoday-img{
+        width: 40px;
+        height: 40px;
+    }
+    .date, .hindi-header{
+        font-size: 24px;
+    }
+    .refresh-detail{
+        font-size: 8px;
+    }
+    .claendar-svg{
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-m
 import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
 import { HeaderService } from '../../services/header.service';
+import { ResposiveService } from '../../services/resposive.service';
 
 @Component({
   selector: 'app-panchang',
@@ -59,7 +60,16 @@ export class Panchang {
 
   location = "New Delhi, India";
 
-  pachangTable: IKundliDetail[] = [];
+  pachangTable: IKundliDetail[] = [
+    {
+      name: 'Sunrise',
+      value: "05:40 AM",
+    },
+    {
+      name: 'Sunrise',
+      value: "05:40 AM",
+    },
+  ];
   holidayTable: {
     name: string;
     date: string;
@@ -70,10 +80,15 @@ export class Panchang {
       name: "Haryali Teej",
       date: "August 27, 2025 (Sunday)",
       imgUrl: "./images/sample_holiday.jpg",
-    }
+    },
+    {
+      name: "Haryali Teej",
+      date: "August 27, 2025 (Sunday)",
+      imgUrl: "./images/sample_holiday.jpg",
+    },
   ];
 
-  constructor(private headerService: HeaderService, private themeService: ThemeService) {}
+  constructor(private headerService: HeaderService, private themeService: ThemeService, private responsiveService: ResposiveService) {}
 
   ngOnInit(): void {
     this.headerService.setColorSubject(false);
@@ -87,6 +102,14 @@ export class Panchang {
     this.forIncreament.setDate(this.date.getDate() +1);
     this.changeAllHoliday();
   }
+
+  modeSelector = computed(() => {
+    if (this.responsiveService.smallWidth() || this.responsiveService.extraSmallWidth() || this.responsiveService.xxSmallWidth()) {
+      return 'small';
+    } else {
+      return 'large';
+    }
+  });
 
   private loadPanchang() {
     
