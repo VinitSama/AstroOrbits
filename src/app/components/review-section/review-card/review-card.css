@@ -52,3 +52,15 @@
     font-weight: 700;
     color: var(--secondary-color);
 }
+
+@media (max-width: 475px) {
+    .review-container{
+        padding: 20px;
+    }
+    .review{
+        font-size: 12px;
+    }
+    .name{
+        font-size: 14px;
+    }
+}

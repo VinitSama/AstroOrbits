@@ -17,3 +17,17 @@
 .card{
     width: 100%;
 }
+
+
+@media (max-width:770px) {
+    .card-container{
+        overflow-x: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        justify-self: unset;
+    }
+
+    .card-container::-webkit-scrollbar {
+        display: none;
+    }
+}

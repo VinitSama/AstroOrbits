@@ -3,8 +3,10 @@
         <app-section-tag [sectionTitle]="'Our Stars align with yours'"></app-section-tag>
     </div>
     <div class="review-container">
-        <div class="review-card" *ngFor="let c of cards">
-            <app-review-card [card]="c"></app-review-card>
-        </div>
+        @for (c of cards; track $index) {
+            <div class="review-card">
+                <app-review-card [card]="c"></app-review-card>
+            </div>
+        }
     </div>
 </div>

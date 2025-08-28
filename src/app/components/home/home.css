@@ -39,10 +39,13 @@
 }
 
 .card-wrapper{
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     gap: 24px;
     justify-content: center;
 }
+
 
 .spread div{
     flex: 1;
@@ -55,5 +58,15 @@
 @media (max-width: 1200px) {
     .home-information{
         padding: 0 24px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .card-wrapper{
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+    .spread{
+        flex-direction: column;
     }
 }
