@@ -219,10 +219,6 @@ export class KundliDetailReport implements OnInit {
     },
   ];
 
-  
-
-  
-
   constructor(private headerService: HeaderService, private formService: FormService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {

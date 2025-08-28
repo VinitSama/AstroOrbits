@@ -79,9 +79,9 @@ input::placeholder {
     cursor: pointer;
 }
 @media (min-width: 1000px) {
-    :host {
+    /* :host {
         flex-basis: 380px;
-    }
+    } */
 }
 
 

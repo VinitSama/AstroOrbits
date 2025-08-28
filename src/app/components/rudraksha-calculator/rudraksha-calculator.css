@@ -37,11 +37,13 @@
     flex-direction: column;
     gap: 24px;
     width: 100%;
+    flex: 1;
+    min-width: 0;
 }
 
 .row{
     display: flex;
-    gap: 16px;
+    gap: 12px;
     width: 100%;
 }
 
@@ -49,7 +51,7 @@
     display: flex;
     justify-content: space-between;
     font-family: var(--secondary-font);
-    font-size: 12px;
+    font-size: inherit;
     font-weight: 400;
     color: var(--placeholder);
     background: #fff;
@@ -69,10 +71,14 @@
     flex-direction: column;
     gap: 8px;
     width: 100%;
+    min-width: 0;
+    flex: 1;
+    font-size: 12px;
 }
 
+
 .label{
-    font-size: 12px;
+    font-size: inherit;
     font-weight: 400;
     color: var(--form-label);
     text-wrap: nowrap;
@@ -94,7 +100,7 @@
     height: 40px;
     border: 1px solid var(--form-border);
     width: 100%;
-    min-width: 177px;
+    /* min-width: 177px; */
     flex-grow: 1;
 }
 
@@ -110,6 +116,7 @@
     color: var(--input-fore-color);
     outline: none;
     border: none;
+    font-size: inherit;
 }
 
 .input::placeholder{
@@ -206,12 +213,105 @@ svg{
 .link-container{
     display: flex;
     gap: 8px;
+    font-size: 12px;
 }
 
 .link{
     padding: 12px;
     cursor: pointer;
     font-family: var(--secondary-font);
-    font-size: 12px;
+    font-size: inherit;
     font-weight: 600;
+    flex: 1;
+    max-width: fit-content;
+}
+
+.special{
+    max-width: 70px;
+}
+
+@media (max-width: 1200px) {
+    .rudraksh-calculator-page{
+        padding: 0 24px 80px;
+    }
+    .input-field {
+        font-size: 10px;
+    }
+}
+@media (max-width:775px) {
+    .form-container{
+        flex-wrap: wrap;
+    }
+    .column{
+        min-width: 205px;
+        width: 100%;
+    }
+    .submit{
+        font-size: 12px;
+    }
+    .header{
+        font-size: 28px;
+    }
+    .brief{
+        font-size: 12px;
+    }
+    .link-container{
+        font-size: 10px;
+    }
+    .rudraksh-img{
+        width: 170px;
+    }
+}
+@media (max-width:575px) {
+    .form-banner{
+        padding: 24px;
+    }
+    .submit{
+        font-size: 10px;
+    }
+    .rudraksh-info-wrapper{
+        gap: 8px;
+    }
+    .header{
+        font-size: 22px;
+    }
+    .brief{
+        font-size: 10px;
+    }
+    .link-container{
+        font-size: 8px;
+    }
+    .rudraksh-img{
+        width: 120px;
+    }
+    .link{
+        padding: 8px;
+    }
+}
+@media (max-width: 375px) {
+    .form-container{
+        gap: 12px;
+    }
+    .column{
+        min-width: 170px;
+        gap: 12px;
+    }
+    .row {
+        flex-direction: column;
+    }
+    .special {
+        max-width: unset;
+    }
+    .header{
+        font-size: 20px;
+    }
+    .brief{
+        font-size: 9px;
+    }
+    .link-container{
+        font-size: 5    px;
+    }
+    .rudraksh-img{
+        width: 100px;
+    }
 }

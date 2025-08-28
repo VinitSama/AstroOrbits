@@ -268,7 +268,6 @@
     flex: 1;
 }
 .menu-column>div {
-    flex: 1;
     display: flex;
     width: 100%;
 }

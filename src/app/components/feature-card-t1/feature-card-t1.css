@@ -50,3 +50,15 @@
 .bold{
     font-weight: 700;
 }
+
+@media (max-width: 575px) {
+    .card{
+        padding: 20px;
+    }
+    .header{
+        font-size: 18px;
+    }
+    .brief{
+        font-size: 10px;
+    }
+}

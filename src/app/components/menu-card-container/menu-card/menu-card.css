@@ -101,6 +101,9 @@
 }
 
 @media (max-width: 575px) {
+    .card-background{
+        padding: 20px;
+    }
     .heading{
         font-size: 16px;
     }
