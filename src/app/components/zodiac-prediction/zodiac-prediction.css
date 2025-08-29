@@ -12,50 +12,34 @@
     gap: 32px;
 } */
 
-
 .zodiac-prediction-container {
   display: flex;
-  flex-wrap: wrap;
+  gap: 32px; 
   max-width: 1200px;
-  justify-content: space-between;
+  width: 100%;
   margin: 0 auto;
-}
-.zodiac-prediction-container > div {
-  margin: 16px 0;
-  box-sizing: border-box;
+  flex-direction: column;
 }
 
-
-.brief{
-    width: 828px;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    color: var(--secondary-color);
-    text-align: center;
-    margin: 32px auto 0 auto;
+.group {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  flex: 1;
 }
 
+.group > div {
+    width: 100%;
+    flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
 
 @media (max-width:1100px) {
     .zodiac-prediction-container{
-        max-width: 900px;
+        gap: 24px;
     }
-}
-
-
-@media (max-width: 576px) {
-    .zodiac-prediction-container{
-        display: flex;
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        justify-self: unset;
-        padding-left: 10px;
-        /* gap: 12px;
-        padding: 10px; */
-
-        scrollbar-width: none;      
-        -ms-overflow-style: none; 
+    .group{
+        gap: 24px;
     }
 }

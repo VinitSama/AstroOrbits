@@ -1,7 +1,28 @@
 <div class="today-prediction-section">
     <div class="zodiac-prediction-container">
-        <div *ngFor="let card of zodiacCards">
-            <app-zodiac-card [zodiacCard]="card" [svgColor]="svgColor" [detailed]="detailed" ></app-zodiac-card>
+        <div class="group">
+            <div>
+                @for (card of zodiacCards.slice(0,3); track $index) {
+                    <app-zodiac-card [zodiacCard]="card" [svgColor]="svgColor" [detailed]="detailed" ></app-zodiac-card>
+                }
+            </div>
+            <div>
+                @for (card of zodiacCards.slice(3,6); track $index) {
+                    <app-zodiac-card [zodiacCard]="card" [svgColor]="svgColor" [detailed]="detailed" ></app-zodiac-card>
+                }
+            </div>
+        </div>
+        <div class="group">
+            <div>
+                @for (card of zodiacCards.slice(6,9); track $index) {
+                    <app-zodiac-card [zodiacCard]="card" [svgColor]="svgColor" [detailed]="detailed" ></app-zodiac-card>
+                }
+            </div>
+            <div>
+                @for (card of zodiacCards.slice(9); track $index) {
+                    <app-zodiac-card [zodiacCard]="card" [svgColor]="svgColor" [detailed]="detailed" ></app-zodiac-card>
+                }
+            </div>
         </div>
     </div>
 </div>
