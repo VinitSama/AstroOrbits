@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, effect, OnInit } from '@angular/core';
 import { SectionTag } from "../section-tag/section-tag";
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { ThemeService } from '../../services/theme.service';
@@ -17,6 +17,7 @@ import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
 import { IKundliForm, IMatchData } from '../../interfaces/ikundli-form';
 import { FormService } from '../../services/form.service';
 import { Router } from '@angular/router';
+import { ResposiveService } from '../../services/resposive.service';
 
 type TGender = 'm' | 'f';
 
@@ -310,7 +311,7 @@ export class KundliMatching implements OnInit {
   };
   selectedCompatibilityOption: number = 0;
 
-  constructor(private themeService: ThemeService, private headerService: HeaderService, private sanitizer: DomSanitizer, private formService: FormService, private router: Router) {}
+  constructor(private themeService: ThemeService, private headerService: HeaderService, private sanitizer: DomSanitizer, private formService: FormService, private router: Router, private responsiveService: ResposiveService) {}
 
   ngOnInit(): void {
    this.loadSvgColor();
@@ -318,6 +319,28 @@ export class KundliMatching implements OnInit {
    this.headerService.setNavSubject('Kundli');
    this.formSvgSanitizer();
    this.stepsDone = -1;
+  }
+  
+  cardEffect = effect(() => {
+    if (this.responsiveService.largeWidth() || this.responsiveService.extraLargeWidth() || this.responsiveService.xxLargeWidth()) {
+      this.cardWidthSetter('430px');
+    } else {
+      this.cardWidthSetter('100%');
+    }
+  });
+
+  modeSelector = computed(() => {
+    if (this.responsiveService.largeWidth() || this.responsiveService.extraLargeWidth() || this.responsiveService.xxLargeWidth()) {
+      return 'large';
+    } else {
+      return 'small';
+    }
+  });
+
+  private cardWidthSetter(width: string) {
+    this.formsCard.forEach(c => {
+      c.width = width;
+    })
   }
 
   private loadSvgColor(): void {

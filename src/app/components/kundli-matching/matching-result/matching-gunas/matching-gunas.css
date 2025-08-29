@@ -81,3 +81,27 @@
 .guna-cell{
     padding: 22.4px 10px;
 }
+
+@media (max-width:575px) {
+    .summary-title{
+        font-size: 18px;
+    }
+    .summary{
+        font-size: 12px;
+    }
+    .summary-card{
+        padding: 20px;
+    }
+    .guna-value{
+        font-size: 24px;
+    }
+    .guna-out, .guna-header, .guna-cell{
+        font-size: 10px;
+    }
+    .guna-header{
+        padding: 6px;
+    }
+    .guna-cell{
+        padding: 8px 16px;
+    }
+}

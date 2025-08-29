@@ -127,16 +127,12 @@ export class LoveCalculator implements OnInit {
   }
 
   modeSelector = effect(() => {
-  if (this.responsiveService.largeWidth() || 
-      this.responsiveService.extraLargeWidth() || 
-      this.responsiveService.xxLargeWidth()) {
-    this.cardWidthSetter('430px');
-    console.log(111111111);
-  } else {
-    this.cardWidthSetter('100%');
-    console.log(222222222);
-  }
-});
+    if (this.responsiveService.largeWidth() || this.responsiveService.extraLargeWidth() || this.responsiveService.xxLargeWidth()) {
+      this.cardWidthSetter('430px');
+    } else {
+      this.cardWidthSetter('100%');
+    }
+  });
 
   private cardWidthSetter(width: string) {
     this.menuCard.forEach(c => {

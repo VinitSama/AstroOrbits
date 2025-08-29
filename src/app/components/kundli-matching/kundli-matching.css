@@ -170,14 +170,26 @@
 }
 
 .feature-container{
-    display: flex;
     max-width: 1200px;
+    width: 100%;
     margin: auto;
+    display: flex;
     gap: 32px;
-    padding: 32px 0 48px;
+    flex-wrap: wrap;
+}
+
+.row{
+    display: flex;
+    gap: 32px;
+    flex: 1 1 310px;
+    min-width: 250px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .feature-card{
+    flex: 1 1 210px;
+    min-width: 210px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -240,6 +252,13 @@
 .report-t1-row{
     display: flex;
     gap: 24px;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+.report-t1-row app-feature-card-t1 {
+  flex: 1 1 415px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .report-container-t2{
@@ -411,7 +430,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 80px;
+    padding: 80px 0;
     gap: 40px;
 }
 
@@ -435,4 +454,103 @@
     font-family: var(--secondary-font);
     color: var(--secondary-color);
     font-weight: 700;
+}
+
+@media (max-width:1200px) {
+    .kundli-matching-page{
+        padding: 0 24px 80px;
+    }
+}
+
+@media (max-width: 1060px) {
+    .first-boy-design-card, .first-girl-design-card, .second-boy-design-card, .second-girl-design-card, .design-box{
+        display: none;
+    }
+    .submit-btn-wrapper{
+        margin: 0;
+        width: 100%;
+    }
+    .submit-btn{
+        text-wrap: nowrap;
+        max-width: auto;
+        width: 100%;
+    }
+    .form-banner{
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+    }
+    .form-container, .form{
+        width: 100%;
+    }
+    .form-container{
+        margin: 0;
+    }
+    .compatibility-container{
+        width: 100%;
+        padding-left: 80px;
+    }
+    .compatibility-image{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width:770px) {
+    .form-steps{
+        display: none;
+    }
+    .form-banner{
+        border-radius: 14px;
+    }
+    .form-wrapper{
+        width: 100%;
+    }
+    .report-container-t2{
+        flex-direction: column;
+    }
+    .report-card, .report-container-t2{
+        width: 100%;;
+    }
+    .compatibility-name{
+        font-size: 20px;
+    }
+    .report-tag-container{
+        max-width: 770px;
+        width: 100%;
+    }
+}
+@media (max-width:575px) {
+    .form-banner{
+        padding: 24px;
+    }
+    .submit-btn{
+        font-size: 12px;
+    }
+    .report-name{
+        font-size: 18px;
+    }
+    .report-brief{
+        font-size: 12px;
+    }
+    .report-check{
+        font-size: 10px;
+    }
+    .compatibility-container{
+        padding: 0;
+    }
+    .compatibility-section{
+        gap: 32px;
+    }
+    .compatibility-image{
+        width: 250px;
+        height: 250px;
+    }
+    .report-tag-container{
+        gap: 18px;
+    }
+    .report-tag{
+        font-size: 16px;
+        padding: 12px;
+    }
 }

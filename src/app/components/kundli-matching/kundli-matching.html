@@ -47,18 +47,33 @@
         </div>
     </div>
     <div class="feature-container">
-        @for (c of features; track $index) {
-            <div class="feature-card">
-                <div class="feature-svg">
-                    <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
-                </div>
-                <div class="feature-info">
-                    <div class="feature-heading">{{c.heading}}</div>
-                    <div class="feature-subHeading">{{c.subHeading}}</div>
-                </div>
+            <div class="row">
+                @for (c of features.slice(0,2); track $index) {
+                    <div class="feature-card">
+                        <div class="feature-svg">
+                            <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-heading">{{c.heading}}</div>
+                            <div class="feature-subHeading">{{c.subHeading}}</div>
+                        </div>
+                    </div>
+                }
             </div>
-        }
-    </div>
+            <div class="row">
+                @for (c of features.slice(2); track $index) {
+                    <div class="feature-card">
+                        <div class="feature-svg">
+                            <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-heading">{{c.heading}}</div>
+                            <div class="feature-subHeading">{{c.subHeading}}</div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     <div class="report-section">
         <app-section-tag [sectionTitle]="'Your Match Making Report will Consist'"></app-section-tag>
         <div class="report-wrapper">
@@ -115,19 +130,26 @@
                                 </div>
                             </div>
                         </div>
+                        @if (modeSelector() != 'large') {
+                            <div class="compatibility-image">
+                                <img class="compatibility-img" [src]="`./images/kundli/compatibility/point-${selectedCompatibilityOption+1}.jpg`" alt="compatibility.jpg">
+                            </div>
+                        }
                     } @else {
-                        <div class="compatibility-card pointer" (mouseenter)="compatibilityHover(index)">
+                        <div class="compatibility-card pointer" (mouseenter)="compatibilityHover(index)" (click)="compatibilityHover(index)">
                             <div class="compatibility-header">
-                                <div class="compatibility-point">POINT {{`${index}: ${c.point}`}}</div>
+                                <div class="compatibility-point">POINT {{`${index+1}: ${c.point}`}}</div>
                                 <div class="compatibility-name">{{c.name}}</div>
                             </div>
                         </div>
                     }
                 }
             </div>
-            <div class="compatibility-image">
-                <img class="compatibility-img" [src]="`./images/kundli/compatibility/point-${selectedCompatibilityOption+1}.jpg`" alt="compatibility.jpg">
-            </div>
+            @if (modeSelector() == 'large') {
+                <div class="compatibility-image">
+                    <img class="compatibility-img" [src]="`./images/kundli/compatibility/point-${selectedCompatibilityOption+1}.jpg`" alt="compatibility.jpg">
+                </div>
+            }
         </div>
     </div>
     <div class="report-tags-wrapper">

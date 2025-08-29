@@ -9,8 +9,7 @@
     height: 100%;
     margin: 0 auto;
     width: 100%;
-    width: 100%;
-    max-width: 430px;
+    /* max-width: 430px; */
     font-size: 12px;
     font-weight: 400;
     font-family: var(--secondary-font);
@@ -54,13 +53,16 @@
     display: flex;
     gap: 12px;
     width: 100%;
+    flex: 1;
+    min-width: 0;
 }
 .input-field{
     width: 100%;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex: 1;
+    min-width: 0;
 }
 
 .red{
@@ -76,8 +78,8 @@
     height: 40px;
     border: 1px solid var(--form-border);
     width: 100%;
-    min-width: 177px;
-    flex-grow: 1;
+    min-width: 0;
+    flex: 1;
 }
 
 
@@ -88,6 +90,8 @@
 }
 
 .input{
+    flex: 1;
+    min-width: 0;
     align-self: center;
     width: 100%;
     height: 34px;
@@ -176,11 +180,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 input{
     font-size: inherit;
     width: 100%;
-    max-width: 310px;
+    /* max-width: 100%; */
 }
 
 svg{
     cursor: pointer;
+}
+
+@media (max-width:575px) {
+    .label{
+        font-size: 12px;
+    }
+    .input-area{
+        font-size: 10px;
+    }
 }
 
 @media (max-width:440px) {
