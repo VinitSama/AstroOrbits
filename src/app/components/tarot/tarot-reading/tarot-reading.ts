@@ -10,6 +10,9 @@ import { ZodiacServices } from '../../../services/zodiac.services';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { ThemeService } from '../../../services/theme.service';
 import { NumerologyMenuCard } from "../../menu-card-container/cards/numerology-menu-card/numerology-menu-card";
+import { AstrologySection } from "../../astrology-section/astrology-section";
+import { AboutSection } from "../../about-section/about-section";
+import { FAQSection } from "../../faq-section/faq-section";
 
 export type TSelectedOption = 1 | 3 | 4 | 5;
   // 1 -> One Card Reading
@@ -22,7 +25,10 @@ export type TSelectedOption = 1 | 3 | 4 | 5;
   imports: [
     CommonModule,
     FeatureCardT2,
-    NumerologyMenuCard
+    NumerologyMenuCard,
+    AstrologySection,
+    AboutSection,
+    FAQSection
 ],
   templateUrl: './tarot-reading.html',
   styleUrl: './tarot-reading.css'

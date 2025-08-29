@@ -32,6 +32,7 @@
     background: #FFF;
     box-shadow: 0 20px 60px 0 rgba(157, 105, 0, 0.10);
     padding: 24px;
+    align-items: center;
 }
 
 .card-img{
@@ -79,16 +80,18 @@
     max-width: 430px;
     width: 100%;
 }
-
-.option-container{
+.option-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
     width: 100%;
 }
 
-.option{
+.option {
+    flex: 1 1 130px;
+    min-width: 130px;
+    max-width: 1fr;
     display: flex;
-    flex: 1;
     flex-direction: column;
     gap: 16px;
     padding: 16px;
@@ -102,11 +105,9 @@
     font-family: var(--secondary-font);
     font-size: 14px;
     font-weight: 400;
-    width: 100%;
-    text-wrap: nowrap;
     cursor: pointer;
+    white-space: nowrap;
 }
-
 
 .horoscope{
     display: flex;
@@ -142,4 +143,41 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+}
+
+.section-container{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width:1200px) {
+    .section-1{
+        padding: 48px 24px;
+    }
+    .section-container{
+        padding: 0 24px;
+    }
+    
+}
+@media (max-width:950px) {
+    .section-1{
+        flex-direction: column;
+    }
+    .side-pannel{
+        max-width: unset;
+    }
+}
+@media (max-width:575px) {
+    .card{
+        flex-direction: column;
+    }
+    .card-tense{
+        font-size: 10px;
+    }
+    .card-title{
+        font-size: 18px;
+    }
+    .card-brief{
+        font-size: 12px;
+    }
 }

@@ -1,7 +1,9 @@
 <div class="horoscope-page-container">
     <div class="section-title">
         <app-section-tag [sectionTitle]="zodiacSectionTtitle" [subHeadCol]="true" [subHeading]="showDayDetails ? '' : zodiacSectionBrief"></app-section-tag>
-        <div class="day-selector" *ngIf="showDayDetails">{{selectedDayBrief}}</div>
+        @if (showDayDetails) {
+            <div class="day-selector">{{selectedDayBrief}}</div>
+        }
     </div>
 
     <div class="horoscope-card-wrapper">
@@ -57,53 +59,61 @@
             </div>
             <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true"></app-zodiac-prediction>
         </div>
-        <div class="special-click-link" *ngIf="!showDayDetails">
-            <div class="link-svg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
-                    <g clip-path="url(#clip0_836_1190)">
-                        <path d="M9.5 13.7461C6.88292 13.7461 4.75391 11.6171 4.75391 9C4.75391 6.38292 6.88292 4.25391 9.5 4.25391C12.1171 4.25391 14.2461 6.38292 14.2461 9C14.2461 11.6171 12.1171 13.7461 9.5 13.7461Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M9.5 3.19922C9.20859 3.19922 8.97266 2.96329 8.97266 2.67188V0.527344C8.97266 0.235931 9.20859 0 9.5 0C9.79141 0 10.0273 0.235931 10.0273 0.527344V2.67188C10.0273 2.96329 9.79141 3.19922 9.5 3.19922Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M9.5 18C9.20859 18 8.97266 17.7641 8.97266 17.4727V15.3281C8.97266 15.0367 9.20859 14.8008 9.5 14.8008C9.79141 14.8008 10.0273 15.0367 10.0273 15.3281V17.4727C10.0273 17.7641 9.79141 18 9.5 18Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M5.87921 3.78316L4.82452 1.95654C4.67868 1.70427 4.7652 1.38182 5.01761 1.23611C5.26837 1.08986 5.59233 1.17637 5.73804 1.4292L6.79272 3.25581C6.93857 3.50822 6.85205 3.83067 6.59964 3.97638C6.34819 4.12153 6.02505 4.03584 5.87921 3.78316Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M13.262 16.5708L12.2073 14.7442C12.0615 14.4918 12.148 14.1694 12.4004 14.0236C12.6506 13.8774 12.9746 13.9639 13.1208 14.2169L14.1755 16.0435C14.3214 16.2958 14.2349 16.6182 13.9825 16.7639C13.731 16.9092 13.4079 16.8234 13.262 16.5708Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M3.75575 6.29269L1.92914 5.238C1.67687 5.0923 1.59035 4.76999 1.73605 4.51757C1.88176 4.2642 2.20421 4.17768 2.45648 4.32449L4.2831 5.37918C4.53551 5.52488 4.62202 5.84719 4.47632 6.09961C4.3302 6.35257 4.00679 6.43771 3.75575 6.29269Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M16.5435 13.6755L14.7169 12.6208C14.4645 12.4751 14.3779 12.1528 14.5236 11.9004C14.6695 11.647 14.9918 11.5615 15.2442 11.7073L17.0708 12.762C17.3231 12.9077 17.4096 13.23 17.2639 13.4824C17.1178 13.7354 16.7944 13.8205 16.5435 13.6755Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M1.73605 13.4824C1.59035 13.23 1.67687 12.9077 1.92914 12.762L3.75575 11.7073C4.00761 11.5615 4.33006 11.647 4.47632 11.9004C4.62202 12.1528 4.53551 12.4751 4.2831 12.6208L2.45648 13.6755C2.20503 13.8208 1.8819 13.735 1.73605 13.4824Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M14.5236 6.09961C14.3779 5.84719 14.4645 5.52488 14.7169 5.37918L16.5435 4.32449C16.7937 4.17768 17.1177 4.2642 17.2639 4.51757C17.4096 4.76999 17.3231 5.0923 17.0708 5.238L15.2442 6.29269C14.9926 6.43798 14.6695 6.35215 14.5236 6.09961Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M5.01761 16.7639C4.7652 16.6182 4.67868 16.2958 4.82452 16.0435L5.87921 14.2169C6.02547 13.9639 6.34682 13.8774 6.59964 14.0236C6.85205 14.1695 6.93857 14.4918 6.79272 14.7442L5.73804 16.5708C5.59192 16.8238 5.26865 16.9089 5.01761 16.7639Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M12.4004 3.97638C12.148 3.83053 12.0615 3.50822 12.2073 3.25581L13.262 1.4292C13.4077 1.17637 13.7306 1.08986 13.9825 1.23611C14.2349 1.38182 14.3214 1.70427 14.1755 1.95654L13.1208 3.78316C12.9747 4.03625 12.6515 4.12126 12.4004 3.97638Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M3.17188 9.52734H1.02734C0.735931 9.52734 0.5 9.29141 0.5 9C0.5 8.70859 0.735931 8.47266 1.02734 8.47266H3.17188C3.46329 8.47266 3.69922 8.70859 3.69922 9C3.69922 9.29141 3.46329 9.52734 3.17188 9.52734Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M17.9727 9.52734H15.8281C15.5367 9.52734 15.3008 9.29141 15.3008 9C15.3008 8.70859 15.5367 8.47266 15.8281 8.47266H17.9727C18.2641 8.47266 18.5 8.70859 18.5 9C18.5 9.29141 18.2641 9.52734 17.9727 9.52734Z" [attr.fill]="svgColor.secondary"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_836_1190">
-                        <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
-                        </clipPath>
-                    </defs>
-                </svg>
+        @if (!showDayDetails) {
+            <div class="special-click-link">
+                <div class="link-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                        <g clip-path="url(#clip0_836_1190)">
+                            <path d="M9.5 13.7461C6.88292 13.7461 4.75391 11.6171 4.75391 9C4.75391 6.38292 6.88292 4.25391 9.5 4.25391C12.1171 4.25391 14.2461 6.38292 14.2461 9C14.2461 11.6171 12.1171 13.7461 9.5 13.7461Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M9.5 3.19922C9.20859 3.19922 8.97266 2.96329 8.97266 2.67188V0.527344C8.97266 0.235931 9.20859 0 9.5 0C9.79141 0 10.0273 0.235931 10.0273 0.527344V2.67188C10.0273 2.96329 9.79141 3.19922 9.5 3.19922Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M9.5 18C9.20859 18 8.97266 17.7641 8.97266 17.4727V15.3281C8.97266 15.0367 9.20859 14.8008 9.5 14.8008C9.79141 14.8008 10.0273 15.0367 10.0273 15.3281V17.4727C10.0273 17.7641 9.79141 18 9.5 18Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M5.87921 3.78316L4.82452 1.95654C4.67868 1.70427 4.7652 1.38182 5.01761 1.23611C5.26837 1.08986 5.59233 1.17637 5.73804 1.4292L6.79272 3.25581C6.93857 3.50822 6.85205 3.83067 6.59964 3.97638C6.34819 4.12153 6.02505 4.03584 5.87921 3.78316Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M13.262 16.5708L12.2073 14.7442C12.0615 14.4918 12.148 14.1694 12.4004 14.0236C12.6506 13.8774 12.9746 13.9639 13.1208 14.2169L14.1755 16.0435C14.3214 16.2958 14.2349 16.6182 13.9825 16.7639C13.731 16.9092 13.4079 16.8234 13.262 16.5708Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M3.75575 6.29269L1.92914 5.238C1.67687 5.0923 1.59035 4.76999 1.73605 4.51757C1.88176 4.2642 2.20421 4.17768 2.45648 4.32449L4.2831 5.37918C4.53551 5.52488 4.62202 5.84719 4.47632 6.09961C4.3302 6.35257 4.00679 6.43771 3.75575 6.29269Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M16.5435 13.6755L14.7169 12.6208C14.4645 12.4751 14.3779 12.1528 14.5236 11.9004C14.6695 11.647 14.9918 11.5615 15.2442 11.7073L17.0708 12.762C17.3231 12.9077 17.4096 13.23 17.2639 13.4824C17.1178 13.7354 16.7944 13.8205 16.5435 13.6755Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M1.73605 13.4824C1.59035 13.23 1.67687 12.9077 1.92914 12.762L3.75575 11.7073C4.00761 11.5615 4.33006 11.647 4.47632 11.9004C4.62202 12.1528 4.53551 12.4751 4.2831 12.6208L2.45648 13.6755C2.20503 13.8208 1.8819 13.735 1.73605 13.4824Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M14.5236 6.09961C14.3779 5.84719 14.4645 5.52488 14.7169 5.37918L16.5435 4.32449C16.7937 4.17768 17.1177 4.2642 17.2639 4.51757C17.4096 4.76999 17.3231 5.0923 17.0708 5.238L15.2442 6.29269C14.9926 6.43798 14.6695 6.35215 14.5236 6.09961Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M5.01761 16.7639C4.7652 16.6182 4.67868 16.2958 4.82452 16.0435L5.87921 14.2169C6.02547 13.9639 6.34682 13.8774 6.59964 14.0236C6.85205 14.1695 6.93857 14.4918 6.79272 14.7442L5.73804 16.5708C5.59192 16.8238 5.26865 16.9089 5.01761 16.7639Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M12.4004 3.97638C12.148 3.83053 12.0615 3.50822 12.2073 3.25581L13.262 1.4292C13.4077 1.17637 13.7306 1.08986 13.9825 1.23611C14.2349 1.38182 14.3214 1.70427 14.1755 1.95654L13.1208 3.78316C12.9747 4.03625 12.6515 4.12126 12.4004 3.97638Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M3.17188 9.52734H1.02734C0.735931 9.52734 0.5 9.29141 0.5 9C0.5 8.70859 0.735931 8.47266 1.02734 8.47266H3.17188C3.46329 8.47266 3.69922 8.70859 3.69922 9C3.69922 9.29141 3.46329 9.52734 3.17188 9.52734Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M17.9727 9.52734H15.8281C15.5367 9.52734 15.3008 9.29141 15.3008 9C15.3008 8.70859 15.5367 8.47266 15.8281 8.47266H17.9727C18.2641 8.47266 18.5 8.70859 18.5 9C18.5 9.29141 18.2641 9.52734 17.9727 9.52734Z" [attr.fill]="svgColor.secondary"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_836_1190">
+                            <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="sub-link">Lorem Ipsum dolor amet ceat?<span class="link">Click here</span></div>
             </div>
-            <div class="sub-link">Lorem Ipsum dolor amet ceat?<span class="link">Click here</span></div>
-        </div>
+        }
     </div>
     <app-trending-tags [tagInfo]="trendingTags"></app-trending-tags>
     <div class="day-selector-wrapper">
         <div class="day-selector-container">
-            <ng-container *ngFor="let d of daySelector">
-                <div class="day-selector" *ngIf="selectedDay !== d.name" >
-                    <div class="selector-name">{{`${d.name}${d.name === 'Yearly' ? " - " + thisYear: ""}`}}</div>
-                    <div class="selector-brief">{{d.brief}}</div>
-                    <div class="read-more" (click)="onDaySelect(d.name)">Read More</div>
-                </div>
-            </ng-container>
+            @for (d of daySelector; track $index) {
+                <ng-container>
+                    @if (selectedDay !== d.name) {
+                        <div class="day-selector">
+                            <div class="selector-name">{{`${d.name}${d.name === 'Yearly' ? " - " + thisYear: ""}`}}</div>
+                            <div class="selector-brief">{{d.brief}}</div>
+                            <div class="read-more" (click)="onDaySelect(d.name)">Read More</div>
+                        </div>
+                    }
+                </ng-container>
+            }
         </div>
     </div>
      <app-personalize-section [personalisedInfo]="horoscopeType"></app-personalize-section>
     <div class="insight-section">
         <app-section-tag [sectionTitle]="'Featured Astrological Insights'"></app-section-tag>
         <div class="insight-container">
-            <div class="insight-card" *ngFor="let c of insightCard">
-                <app-astrological-insight-card [card]="c"></app-astrological-insight-card>
-            </div>
+            @for (c of insightCard; track $index) {
+                <div class="insight-card">
+                    <app-astrological-insight-card [card]="c"></app-astrological-insight-card>
+                </div>
+            }
         </div>
     </div>
     <div class="first-section"> 
