@@ -1,15 +1,33 @@
 <div class="personalise-wrapper">
     <app-section-tag [sectionTitle]="personalisedInfo.heading" [subHeading]="personalisedInfo.subHeading"></app-section-tag>
     <div class="personalise-container">
-        <div class="card" *ngFor="let c of personalisedInfo.cards; let index = index">
-            <div class="header-wrapper">
-                <img class="svg-container" [src]="`./images/horoscope-type/${c.svg}.svg`">
-                <div class="header-container">
-                    <div class="name">{{c.name}}</div>
-                    <div class="brief">{{c.brief}}</div>
+        <div class="row">
+            @for (c of personalisedInfo.cards.slice(0,2); track $index; let index = $index) {
+                <div class="card">
+                    <div class="header-wrapper">
+                        <img class="svg-container" [src]="`./images/horoscope-type/${c.svg}.svg`">
+                        <div class="header-container">
+                            <div class="name">{{c.name}}</div>
+                            <div class="brief">{{c.brief}}</div>
+                        </div>
+                    </div>
+                    <div class="button" [ngStyle]="{'--button-col':c.buttonCol}" (click)="onClick(index)">{{c.button}}</div>
                 </div>
-            </div>
-            <div class="button" [ngStyle]="{'--button-col':c.buttonCol}" (click)="onClick(index)">{{c.button}}</div>
+            }
+        </div>
+        <div class="row">
+            @for (c of personalisedInfo.cards.slice(2); track $index; let index = $index) {
+                <div class="card">
+                    <div class="header-wrapper">
+                        <img class="svg-container" [src]="`./images/horoscope-type/${c.svg}.svg`">
+                        <div class="header-container">
+                            <div class="name">{{c.name}}</div>
+                            <div class="brief">{{c.brief}}</div>
+                        </div>
+                    </div>
+                    <div class="button" [ngStyle]="{'--button-col':c.buttonCol}" (click)="onClick(index)">{{c.button}}</div>
+                </div>
+            }
         </div>
     </div>
 </div>

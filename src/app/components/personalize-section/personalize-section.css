@@ -12,9 +12,21 @@
     gap: 24px;
     margin: auto;
     font-family: var(--secondary-font);
+    flex-wrap: wrap;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    flex: 1 1 300px;
+    min-width: 250px;
+    justify-content: center;
 }
 
 .card{
+    flex: 1 1 200px;
+    min-width: 110px;
     width: 100%;
     padding: 32px;
     display: flex;
@@ -67,4 +79,19 @@
     border-radius: 7px;
     background-color: var(--button-col);
     cursor: pointer;
+}
+
+@media (max-width:575px) {
+    .name{
+        font-size: 18px;
+    }
+    .brief{
+        font-size: 12px;
+    }
+    .button{
+        font-size: 10px;
+    }
+    .svg-container{
+        height: 42px;
+    }
 }

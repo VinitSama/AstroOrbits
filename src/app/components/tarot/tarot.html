@@ -15,17 +15,32 @@
             </div>
         </div>
         <div class="feature-container">
-            @for (c of features; track $index) {
-                <div class="feature-card">
-                    <div class="feature-svg">
-                        <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
+            <div class="row">
+                @for (c of features.slice(0,2); track $index) {
+                    <div class="feature-card">
+                        <div class="feature-svg">
+                            <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-heading">{{c.heading}}</div>
+                            <div class="feature-subHeading">{{c.subHeading}}</div>
+                        </div>
                     </div>
-                    <div class="feature-info">
-                        <div class="feature-heading">{{c.heading}}</div>
-                        <div class="feature-subHeading">{{c.subHeading}}</div>
+                }
+            </div>
+            <div class="row">
+                @for (c of features.slice(2); track $index) {
+                    <div class="feature-card">
+                        <div class="feature-svg">
+                            <img [src]="'./images/kundli/'+c.svgName" [alt]="c.heading">
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-heading">{{c.heading}}</div>
+                            <div class="feature-subHeading">{{c.subHeading}}</div>
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
     <app-personalize-section [personalisedInfo]="personalisedContainer"></app-personalize-section>

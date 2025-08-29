@@ -59,24 +59,28 @@
                     </div>
                 </div>
             </div>
-            <div class="gender-container" *ngIf="showGenderOption">
-                <div class="gender-field">
-                    <div class="gender">Gender</div>
-                    <div class="gender-options">
-                        <div class="male" [ngClass]="{'selected-gender': gender == 'm'}" (click)="changeGender('m')">
-                            Male
-                        </div>
-                        <div class="female" [ngClass]="{'selected-gender': gender == 'f'}" (click)="changeGender('f')">
-                            Female
+            @if (showGenderOption) { 
+                <div class="gender-container">
+                    <div class="gender-field">
+                        <div class="gender">Gender</div>
+                        <div class="gender-options">
+                            <div class="male" [ngClass]="{'selected-gender': gender == 'm'}" (click)="changeGender('m')">
+                                Male
+                            </div>
+                            <div class="female" [ngClass]="{'selected-gender': gender == 'f'}" (click)="changeGender('f')">
+                                Female
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <ng-container *ngIf="submitBtnOption == 1">
-                <div class="submit-container">
-                    <div class="submit" (click)="onSubmit()">Get My Free Kundali</div>
-                </div>
-            </ng-container>
+            }
+            @if (submitBtnOption == 1) {
+                <ng-container>
+                    <div class="submit-container">
+                        <div class="submit" (click)="onSubmit()">Get My Free Kundali</div>
+                    </div>
+                </ng-container>
+            }
             <!-- <ng-container *ngIf="submitBtnOption == 2">
                 <div class="submit-container">
                     <div class="submit" (click)="submitThroughParent()">Submit</div>
