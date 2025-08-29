@@ -60,8 +60,7 @@
   position: relative;
   z-index: 1;
   cursor: pointer;
-  transition: 
-    background-color 0.9s ease;
+  transition: background-color 0.9s ease;
 }
 
 .sign-button::after {
@@ -122,12 +121,16 @@
   max-width: 1200px;
   display: flex;
   gap: 16px;
+  flex-wrap: wrap;
   justify-self: center;
   font-family: var(--secondary-font);
 }
 
 .day-selector{
+  flex: 1 1 300px;
+  min-width: 200px;
   width: 100%;
+  max-height: fit-content;
   border-radius: 7px;
   border-top: 5px solid var(--primary-color);
   background: #FFF;
@@ -214,10 +217,13 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
 }
 
 .insight-card{
+  flex: 1 1 250px;
+  min-width: 250px;
   background: #FFF;
   box-shadow: 0px 20px 60px 0px rgba(158, 105, 0, 0.05);
 }
@@ -225,5 +231,25 @@
 @media (max-width: 1200px) {
   .horoscope-page-container{
     padding: 0 24px;
+  }
+}
+@media (max-width: 575px) {
+  .special-click-link{
+    margin-top: 40px;
+  }
+  .sub-link{
+    font-size: 12px;
+  }
+  .sign-button-conatiner{
+    padding: 10px;
+    font-size: 12px;
+  }
+  .sign-button{
+    padding: 10px;
+    width: 140px;
+  }
+  .sign-svg{
+    width: 24px;
+    height: 24px;
   }
 }

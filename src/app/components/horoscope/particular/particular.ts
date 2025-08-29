@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, computed, Input, OnInit } from '@angular/core';
 import { TZodiacSign } from '../../../types/tzodiac-sign';
 import { IZodiacHoroscope } from '../../../interfaces/izodiac-horoscope';
 import { IZodiacCard } from '../../../interfaces/izodiac-card';
@@ -23,6 +23,9 @@ import { FAQSection } from "../../faq-section/faq-section";
 import { IPersonalisedContainer } from '../../../interfaces/ipersonalised-container';
 import { PersonalizeSection } from "../../personalize-section/personalize-section";
 import { HoroscopeApiService } from '../../../services/api/horoscope-api.service';
+import { ResposiveService } from '../../../services/resposive.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 export type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
 
@@ -39,7 +42,9 @@ export type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" |
     AstrologySection,
     AboutSection,
     FAQSection,
-    PersonalizeSection
+    PersonalizeSection,
+    MatButtonModule,
+    MatMenuModule,
 ],
   templateUrl: './particular.html',
   styleUrl: './particular.css'
@@ -53,6 +58,7 @@ export class Particular implements OnInit{
   brief: string = "Discover what the stars have in store for you today. Select your zodiac sign and unlock personalized cosmic insights.";
   svgColor!:ISvgColors;
   openSvg!: SafeHtml;
+  openSvgUnSafe!: string;
   horoscope!: any;
   zodiacSign: THoroscopeSign = 'moon';
 
@@ -132,7 +138,7 @@ export class Particular implements OnInit{
   };
 
 
-  constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeApiService: HoroscopeApiService) {}
+  constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeApiService: HoroscopeApiService, private responsiveServoce: ResposiveService) {}
   
   ngOnInit(): void {
     this.headerService.setColorSubject(true);
@@ -142,7 +148,16 @@ export class Particular implements OnInit{
     this.route.paramMap.subscribe(params => {
       this.loadFromRouteIfNeeded(params);
     });
+    this.setOpenSvg();
   }
+
+  modeSelector = computed(() => {
+    if (this.responsiveServoce.largeWidth() || this.responsiveServoce.extraLargeWidth() || this.responsiveServoce.xxLargeWidth()) {
+      return 'large';
+    } else {
+      return 'small';
+    }
+  });
 
   horoscopeTypeMapper() {
     for (let i = 0; i<4; i++) {
@@ -218,10 +233,15 @@ export class Particular implements OnInit{
     return this.sanitizer.bypassSecurityTrustHtml(setColor);
   }
 
-  private setSize(svg: string){
+  private setSize(svg: string, height: string = '40px'){
     return svg
-      .replace(/height="[^"]*"/, 'height="40px"')
+      .replace(/height="[^"]*"/, `height=${height}`)
       .replace(/width="[^"]*"/, 'width="100%"');
+  }
+
+  menuSvg(svg: string | SafeHtml) {
+    const resize = this.setSize( svg as string,'14px');
+    return this.sanitizer.bypassSecurityTrustHtml(resize);
   }
 
   makeInnerHTMLSafe(svg: string, selected: boolean = false){
@@ -263,7 +283,8 @@ export class Particular implements OnInit{
   private setOpenSvg(){
     // const i = this.zodiacDetails.indexOf(this.zodiacDetails.find(z => z.title == this.zodiac) || this.zodiacDetails[0]);
     // this.openSvg = this.sanitizeSvg(this.zodiacDetails[i].svg);
-    this.openSvg = this.sanitizeSvg(this.zodiacService.getSvg(this.zodiac), false);
+    this.openSvgUnSafe = this.zodiacService.getSvg(this.zodiac);
+    this.openSvg = this.sanitizeSvg(this.openSvgUnSafe, false);
   }
 
   dateToDisplay(){

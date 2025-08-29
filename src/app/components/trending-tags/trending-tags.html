@@ -1,5 +1,5 @@
 <div class="trending-wrapper">
-    <div class="tag-container">
+    <div>
         <div class="header-tag">
             <div class="tag-svg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -21,7 +21,12 @@
             </div>
             <div>{{tagInfo.heading}}</div>
         </div>
-        <div class="normal-tag" *ngFor="let t of tagInfo.tags">{{`${t.name} ${t.number}${tagInfo.showPercentage? '%' : ''}`}}</div>
-        <div class="normal-tag" *ngIf="tagInfo.checkMore">Check More...</div>
+    </div>
+    <div class="tag-container">
+        @for (t of tagInfo.tags; track $index) {
+            <div class="normal-tag">{{`${t.name} ${t.number}${tagInfo.showPercentage? '%' : ''}`}}</div>
+        } @if (tagInfo.checkMore) {
+            <div class="normal-tag" >Check More...</div>
+        }
     </div>
 </div>

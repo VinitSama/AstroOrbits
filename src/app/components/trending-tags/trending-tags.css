@@ -4,13 +4,18 @@
   font-size: 14px;
   font-weight: 400;
   color: var(--secondary-color);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
 }
 
 .tag-container{
   display: flex;
   gap: 12px;
-  justify-content: center;
+  justify-content: start;
   font-family: var(--secondary-font);
+  flex-wrap: wrap;
 }
 
 .tag-svg{
@@ -22,6 +27,8 @@
   display: flex;
   padding: 8px;
   gap: 13px;
+  align-items: center;
+  text-wrap: nowrap;
 }
 
 .normal-tag{
@@ -31,4 +38,18 @@
   border-radius: 999px;
   display: flex;
   align-items: center;
+  text-wrap: nowrap;
+}
+
+@media (max-width:575px) {
+  .trending-wrapper{
+    font-size: 10px;
+    padding: 20px 0;
+  }
+  .tag-svg{
+    width: 14px;
+  }
+  .normal-tag{
+    padding: 6px 12px;
+  }
 }

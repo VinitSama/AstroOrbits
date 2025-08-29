@@ -2,7 +2,7 @@
     <div class="zodiac-container">
         <div class="zodiac-prediction-container">
             @for (card of zodiacCards; track $index) {
-                <app-zodiac-card [boxSize]="'60px'" [svgSize]="'40px'" [showName]="false" [zodiacCard]="card" [svgColor]="svgColor"></app-zodiac-card>
+                <app-zodiac-card [boxSize]="'60px'" [svgSize]="'40px'" [showName]="false" [zodiacCard]="card" [svgColor]="svgColor" [canResize]="false"></app-zodiac-card>
             }
         </div>
         <div class="zodiac-form">

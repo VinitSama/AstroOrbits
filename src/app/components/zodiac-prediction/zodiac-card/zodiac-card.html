@@ -1,9 +1,14 @@
-<div class="zodiac-card" [routerLink]="['/home/horoscope', zodiacCard.title]" (click)="smoothScrolling()" [ngStyle]="{'--box-size': boxSize}" [ngClass]="{'mar-bot': !isCircle}">
+<div class="zodiac-card" [routerLink]="['/home/horoscope', zodiacCard.title]" (click)="smoothScrolling()" [ngStyle]="{'--box-size': boxSize}">
     <div class="svg-container" [innerHTML]="safeSvg" [ngClass]="{'circle': isCircle}"></div>
-    <div class="title" *ngIf="showName">
-        {{zodiacCard.title}}
-    </div>
-    <div *ngIf="detailed" class="details">
-        {{zodiacCard.details}}
+    <div class="info-container">
+        @if (showName) {
+            <div class="title">
+                {{zodiacCard.title}}
+            </div>
+        } @if (detailed) {
+            <div class="details">
+                {{zodiacCard.details}}
+            </div>
+        }
     </div>
 </div>

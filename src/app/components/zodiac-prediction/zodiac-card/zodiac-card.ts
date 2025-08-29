@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, effect, Input } from '@angular/core';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IZodiacCard } from '../../../interfaces/izodiac-card';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ResposiveService } from '../../../services/resposive.service';
 
 @Component({
   selector: 'app-zodiac-card',
@@ -23,18 +24,30 @@ export class ZodiacCard {
   @Input() svgSize: string = '94px';
   @Input() boxSize: string = '180px';
   @Input() showName: boolean = true;
+  @Input() canResize: boolean = true;
 
   safeSvg!: SafeHtml;
   isCircle = false;
 
-  constructor(private sanitizer: DomSanitizer){}
+  constructor(private sanitizer: DomSanitizer, private responsiveService: ResposiveService){}
 
   ngOnInit(): void {
     this.changeSvg();
-    if (this.boxSize != '180px'){
-      this.isCircle = true;
-    }
   }
+
+  sizeEffect = effect(() => {
+    if (this.responsiveService.extraSmallWidth() || this.responsiveService.xxSmallWidth()) {
+      if (this.canResize){
+        this.svgSize = '50px';
+        this.boxSize = '90px'
+        this.changeSize();
+      }
+    } else if (this.canResize) {
+      this.svgSize = '94px';
+      this.boxSize = '180px'
+      this.changeSize();
+    }
+  })
 
   private changeSvg() {
     if (!this.zodiacCard.svg){
