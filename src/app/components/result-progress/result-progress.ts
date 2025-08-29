@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, effect, Input, OnInit } from '@angular/core';
 import { IProgressCard } from '../../interfaces/iprogress-card';
+import { ResposiveService } from '../../services/resposive.service';
 
 @Component({
   selector: 'app-result-progress',
@@ -19,6 +20,8 @@ export class ResultProgress implements OnInit {
   color = '#ff0000';
   progressOffset = this.circumference;
 
+  constructor(private responsiveService: ResposiveService) {}
+
   ngOnInit(): void {
     if (!this.card.score) {
       this.card.score = -1;
@@ -31,6 +34,22 @@ export class ResultProgress implements OnInit {
     }, 100);
     this.color = this.getColor(this.card.score);
   }
+
+  modeSelector = effect(() => {
+    if(this.responsiveService.extraSmallWidth() || this.responsiveService.xxSmallWidth()) {
+      if (!this.card.menuCard){
+        this.card.ringSetting.size = '200px';
+        this.card.ringSetting.width = '10';
+        this.card.ringSetting.bgWidth = '13';
+        this.card.scoreFSize = '24px';
+      }
+    } else if (!this.card.menuCard) {
+      this.card.ringSetting.size = '302px';
+      this.card.ringSetting.width = '12';
+      this.card.ringSetting.bgWidth = '15';
+      this.card.scoreFSize = '32px';
+    }
+  });
 
   getStrokeDashOffset(score: number): number {
     return this.circumference - (score / 100) * this.circumference;

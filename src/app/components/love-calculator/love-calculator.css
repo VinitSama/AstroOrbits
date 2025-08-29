@@ -53,6 +53,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    font-size: 12px;
 }
 
 .red{
@@ -71,6 +72,7 @@
     min-width: 177px;
     flex-grow: 1;
     width: 100%;
+    font-size: inherit;
 }
 
 .input-area svg {
@@ -79,6 +81,7 @@
 
 .label{
     color: var(--form-label);
+    font-size: inherit;
 }
 
 .input{
@@ -90,10 +93,12 @@
     color: var(--input-fore-color);
     outline: none;
     border: none;
+    font-size: inherit;
 }
 
 .input::placeholder{
     color: var(--placeholder);
+    font-size: inherit;
 }
 
 svg{
@@ -203,4 +208,44 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     border-radius: 7px;
     max-width: fit-content;
     cursor: pointer;
+}
+@media (max-width:1200px) {
+    .love-calculator-page{
+        padding: 0 24px 80px;
+    }
+}
+@media (max-width:1060px) {
+    .form-design-b-1, .form-design-b-2, .form-design-g-1, .form-design-g-2, .design-box{
+        display: none;
+    }
+    .form-banner{
+        flex-direction: column;
+        gap: 32px;
+    }
+    .form-container, .form-wrapper{
+        width: 100%;
+    }
+    .submit-btn{
+        width: fit-content;
+        white-space: nowrap;
+        margin-top: 60px;
+    }
+}
+
+
+@media (max-width:575px) {
+    .form-banner{
+        padding: 20px;
+        gap: 20px;
+    }
+    .input-field{
+        font-size: 10px;
+    }
+    .submit-btn-wrapper{
+        width: 100%;
+    }
+    .submit-btn{
+        font-size: 12px;
+        width: 100%;
+    }
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { HeaderService } from '../../services/header.service';
 import { SectionTag } from "../section-tag/section-tag";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -17,6 +17,7 @@ import { ResultProgress } from "../result-progress/result-progress";
 import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
 import { IFeatureCard } from '../../interfaces/ifeature-card';
 import { IProgressCard } from '../../interfaces/iprogress-card';
+import { ResposiveService } from '../../services/resposive.service';
 
 type TFormOption = 'User' | 'Partner';
 type TGender = "m" | "f";
@@ -96,6 +97,7 @@ export class LoveCalculator implements OnInit {
     subColor: "#fff",
     scoreFSize: "32px",
     subFSize: "9px",
+    menuCard: false,
   }
   resultFeatureCard: IFeatureCard = {
     title: "Result",
@@ -109,7 +111,7 @@ export class LoveCalculator implements OnInit {
     }
   }
 
-  constructor(private headerService: HeaderService, private sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute, private formService: FormService) {}
+  constructor(private headerService: HeaderService, private sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute, private formService: FormService, private responsiveService: ResposiveService) {}
 
   ngOnInit(): void {
     this.headerService.setColorSubject(false);
@@ -121,6 +123,24 @@ export class LoveCalculator implements OnInit {
         this.getForm();
         console.log(this.profile);
       }
+    })
+  }
+
+  modeSelector = effect(() => {
+  if (this.responsiveService.largeWidth() || 
+      this.responsiveService.extraLargeWidth() || 
+      this.responsiveService.xxLargeWidth()) {
+    this.cardWidthSetter('430px');
+    console.log(111111111);
+  } else {
+    this.cardWidthSetter('100%');
+    console.log(222222222);
+  }
+});
+
+  private cardWidthSetter(width: string) {
+    this.menuCard.forEach(c => {
+      c.width = width;
     })
   }
 

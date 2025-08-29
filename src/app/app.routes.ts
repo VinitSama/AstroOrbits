@@ -240,7 +240,7 @@ export const routes: Routes = [
                     {
                         path: 'r/:show',
                         loadComponent: () => import('./components/love-calculator/love-calculator').then(m => m.LoveCalculator),
-                        data: {breadcrumb: null}
+                        data: {breadcrumb: 'Report'}
                     }
                 ]
             },

@@ -11,4 +11,5 @@ export interface IProgressCard {
     subColor: string;
     scoreFSize: string;
     subFSize: string;
+    menuCard: boolean;
 }

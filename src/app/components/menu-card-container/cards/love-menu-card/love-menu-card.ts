@@ -49,6 +49,7 @@ export class LoveMenuCard implements OnInit {
     subColor: "#3B3B3B",
     scoreFSize: "24px",
     subFSize: "9px",
+    menuCard: true
   }
 
   constructor(private fb: FormBuilder, private sanitizer: DomSanitizer) {
