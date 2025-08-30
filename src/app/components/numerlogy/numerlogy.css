@@ -102,9 +102,12 @@ input::placeholder {
     margin: 0 auto;
     color: var(--secondary-color);
     font-family: var(--secondary-font);
+    flex-wrap: wrap;
 }
 
 .master-number-card{
+    flex: 1 1 280px;
+    min-width: 280px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -273,6 +276,47 @@ input::placeholder {
     text-align: center;
 }
 
-@media (max-width:990px) {
-    
+@media (max-width:1200px) {
+    .numerlogy-page{
+        padding: 0 24px;
+    }
+}
+
+@media (max-width:900px) {
+    .menu-container{
+        flex-direction: column;
+        flex: 1;
+        width: min-content;
+    }
+    .numerology-card-conatiner{
+        justify-content: space-between;
+        width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+    .menu-container{
+        width: 100%;
+        max-width: 450px;
+    }
+    .master-number-name{
+        font-size: 20px;
+    }
+    .master-number-breif{
+        font-size: 12px;
+    }
+    .master-number-button{
+        font-size: 10px;
+    }
+}
+@media (max-width: 375px) {
+    .master-number-name{
+        font-size: 18px;
+    }
+    .master-number-breif{
+        font-size: 10px;
+    }
+    .master-number-button{
+        font-size: 9px;
+    }
 }

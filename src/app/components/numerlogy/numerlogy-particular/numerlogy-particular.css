@@ -48,6 +48,8 @@
     font-size: 12px;
     font-weight: 400;
     cursor: pointer;
+    text-wrap: nowrap;
+    text-align: center;
 }
 
 .selected-num-option{
@@ -127,10 +129,20 @@
     display: flex;
     gap: 12px;
     width: 100%;
+    flex-wrap: wrap;
+}
+
+.numerology-lucky-group{
+    display: flex;
+    flex: 1 1 300px;
+    /* width: 100%; */
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .numerology-lucky-card{
     padding: 24px;
+    flex: 1 1 169px;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -149,37 +161,44 @@
 .numerlogy-types-container{
     display: flex;
     gap: 24px;
+    flex-wrap: wrap;
 }
+
+.numerlogy-types-group{
+    display: flex;
+    gap: 24px;
+    flex: 1 1 300px;
+    /* min-height: 200px; */
+}
+
+
 
 .numerlogy-types-card{
     padding: 24px;
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 24px;
     border-radius: 7px;
     width: 100%;
     background-color: #fff;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-}
-
-.numerlogy-types-svg{
-    display: flex;
-    width: 80px;
-    height: 80px;
-    padding: 40px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: var(--horoscope-banner);
-}
-
-.numerlogy-types-name{
     font-family: var(--secondary-font);
     font-size: 16px;
     font-weight: 400;
     color: var(--fore-dark-grey);
+    cursor: pointer;
+}
+
+.numerlogy-types-number{
+    font-size: 48px;
+}
+
+.numerlogy-types-name{
+    
+    width: 100%;
+    text-align: center;
 }
 
 .side-panel{
@@ -291,8 +310,81 @@
     max-width: 1200px;
     margin: 0 auto;
     justify-content: space-between;
+    width: 100%;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.page-menu-container> div{
+    flex: 1 1 300px;
+    min-width: 300px;
 }
 
 .last-section{
     padding-bottom: 80px;
+}
+
+.section-container{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width:1200px) {
+    .section-container{
+        padding: 0 24px;
+    }
+    .decorative-bg{
+        padding: 0 24px 112px;
+    }
+}
+
+@media (max-width: 900px) {
+    .num-option-wrapper{
+        overflow-x: auto;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        justify-self: unset;
+        gap: 24px;
+    }
+
+    .num-option-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .numerology-content-wrapper{
+        flex-direction: column;
+    }
+    .side-panel{
+        max-width: 100%;
+    }
+}
+@media (max-width:775px) {
+    .selected-num-wrapper{
+        padding: 0;
+    }
+}
+@media (max-width:575px) {
+    .numerology-info-name, .numerology-lucky-value, .horoscope-header, .partner-header{
+        font-size: 18px;
+    }
+    .numerology-info-brief, .numerlogy-types-name, .numerlogy-types-name{
+        font-size: 12px;
+    }
+    .numerlogy-types-number{
+        font-size: 32px;
+    }
+    .selected-num{
+        font-size: 48px;
+        text-align: center;
+    }
+    .selected-num-wrapper{
+        flex-direction: column-reverse;
+        gap: 40px;
+    }
+    .selected-num-container{
+        align-items: center;
+    }
+    .selected-num-nature-container{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }

@@ -93,4 +93,7 @@ input::placeholder {
     label{
         font-size: 10px;
     }
+    .row{
+        flex-direction: column;
+    }
 }

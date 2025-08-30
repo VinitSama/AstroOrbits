@@ -54,7 +54,15 @@ export class NumerlogyParticular implements OnInit {
     ] 
   }
 
-  numerologyTypes: string[] = ["Life Path Number", "Angle Number", "Master Number", "Ruling Number"];
+  numerologyTypes: {
+    name: string;
+    number: number;
+  }[] = [
+    {name: "Life Path Number", number: 1},
+    {name: "Personality Number", number: 1},
+    {name: "Expression Number", number: 1},
+    {name: "Soul Urge Number", number: 1},
+  ];
   selectedDay: string = "Today";
   dayOptions: string[] = ["Today", "Tomorrow", "Yesterday", "Weekly", "Monthly", "Yearly"];
 

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { ThemeService } from '../../services/theme.service';
@@ -23,6 +23,7 @@ import { BlogSection } from "../blog-section/blog-section";
 import { AstrologySection } from "../astrology-section/astrology-section";
 import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
+import { ResposiveService } from '../../services/resposive.service';
 
 @Component({
   selector: 'app-numerlogy',
@@ -222,7 +223,7 @@ export class Numerlogy implements OnInit {
     },
   ];
   
-  constructor(private themeService: ThemeService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private sanitizer: DomSanitizer, private headerService: HeaderService) {
+  constructor(private themeService: ThemeService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private sanitizer: DomSanitizer, private headerService: HeaderService, private responsiveService: ResposiveService) {
     this.numerologyForm = this.fb.group({
       name: ['', Validators.required],
       DOB: ['', Validators.required],
@@ -239,6 +240,14 @@ export class Numerlogy implements OnInit {
     this.headerService.setNavSubject('Numerology');
     this.setThisYear();
   }
+
+  cardResize = effect(() => {
+    if(this.responsiveService.extraSmallWidth() || this.responsiveService.xxSmallWidth()) {
+      this.menuCard.width = '100%';
+    } else {
+      this.menuCard.width = '424px'
+    }
+  });
 
   formSubmit() {
     if (this.numerologyForm.valid) {

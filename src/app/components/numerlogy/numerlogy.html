@@ -1,8 +1,11 @@
 <div class="numerlogy-page">
     <div class="section-title">
         <app-section-tag [sectionTitle]="pageHeading" [subHeadCol]="true" [subHeading]="showDayInfo ? '' : showTypeInfo ? '' : sectionBrief"></app-section-tag>
-        <div class="day-selector" *ngIf="showDayInfo">{{selectedDayBrief}}</div>
-        <div class="day-selector" *ngIf="showTypeInfo && !showDayInfo">{{selectedTypeBrief}}</div>
+        @if (showDayInfo) {
+            <div class="day-selector">{{selectedDayBrief}}</div>
+        } @if (showTypeInfo && !showDayInfo) {
+            <div class="day-selector">{{selectedTypeBrief}}</div>
+        }
     </div>
     <div class="menu-wrapper">
         <div class="menu-container">
@@ -22,7 +25,9 @@
                 </app-menu-card>
             </div>
             <div class="numerology-card-conatiner">
-                <app-numerlogy-card *ngFor="let i of numOption;" [num]="i" (click)="goToParticular(i)"></app-numerlogy-card>
+                @for (i of numOption; track $index) {
+                    <app-numerlogy-card [num]="i" (click)="goToParticular(i)"></app-numerlogy-card>
+                }
             </div>
         </div>
         <div class="special-click-link">
@@ -54,55 +59,72 @@
         </div>
     </div>
     <app-trending-tags [tagInfo]="trendingTags"></app-trending-tags>
-    <div class="master-number-wrapper" *ngIf="!showDayInfo && !showTypeInfo">
-        <app-section-tag [sectionTitle]="'Master Numbers: The Spiritual Powerhouse'"></app-section-tag>
-        <div class="master-number-container">
-            <div class="master-number-card" *ngFor="let c of masterCards;">
-                <div class="master-number-info-wrapper">
-                    <app-numerlogy-card [num]="c.num"></app-numerlogy-card>
-                    <div class="master-number-info">
-                        <div class="master-number-name">{{c.name}}</div>
-                        <div class="master-number-breif">{{c.brief}}</div>
-                    </div>
-                </div>
-                <div class="master-number-button">{{c.buttonText}}</div>
-            </div>
-        </div>
-    </div>
-    <app-personalize-section *ngIf="!showDayInfo && !showTypeInfo" [personalisedInfo]="personaliseSection"></app-personalize-section>
-    <ng-container *ngIf="showDayInfo">
-        <div class="day-selector-wrapper">
-            <div class="day-selector-container">
-                <ng-container *ngFor="let d of daySelector">
-                    <div class="day-selector" *ngIf="selectedDay !== d.name" >
-                        <div class="selector-name">{{`${d.name}${d.name === 'Yearly' ? ' - ' + thisYear: ""}`}}</div>
-                        <div class="selector-brief">{{d.brief}}</div>
-                        <div class="read-more" (click)="onDaySelect(d.name)">Read More</div>
-                    </div>
-                </ng-container>
-            </div>
-        </div>
-    </ng-container>
-    <ng-container *ngIf="showTypeInfo">
-        <div class="day-selector-wrapper">
-            <div class="day-selector-container">
-                <ng-container *ngFor="let t of typeSelector">
-                    <div class="type-selector" *ngIf="selectedType !== t.name">
-                        <div class="type-selector-header">
-                            <div class="type-selector-svg">
-                                <img [src]="'./images/numerology/'+t.name+'.svg'" [alt]="t.name">
+    @if (!showDayInfo && !showTypeInfo) {
+        <div class="master-number-wrapper">
+            <app-section-tag [sectionTitle]="'Master Numbers: The Spiritual Powerhouse'"></app-section-tag>
+            <div class="master-number-container">
+                @for (c of masterCards; track $index) {
+                    <div class="master-number-card">
+                        <div class="master-number-info-wrapper">
+                            <app-numerlogy-card [num]="c.num"></app-numerlogy-card>
+                            <div class="master-number-info">
+                                <div class="master-number-name">{{c.name}}</div>
+                                <div class="master-number-breif">{{c.brief}}</div>
                             </div>
-                            <div class="type-selector-name">{{t.name}}</div>
                         </div>
-                        <div class="type-selector-brief">{{t.brief}}</div>
-                        <div class="type-selector-btn-container">
-                            <div class="read-more" (click)="onTypeSelect(t.name)">Read More</div>
-                        </div>
+                        <div class="master-number-button">{{c.buttonText}}</div>
                     </div>
-                </ng-container>
-            </div>
+                }
+                </div>
         </div>
-    </ng-container>
+    }
+    @if (!showDayInfo && !showTypeInfo) {
+        <app-personalize-section [personalisedInfo]="personaliseSection"></app-personalize-section>
+    }
+    @if (showDayInfo) {
+        <ng-container>
+            <div class="day-selector-wrapper">
+                <div class="day-selector-container">
+                    @for (d of daySelector; track $index) {
+                        <ng-container>
+                            @if (selectedDay !== d.name) { 
+                                <div class="day-selector">
+                                    <div class="selector-name">{{`${d.name}${d.name === 'Yearly' ? ' - ' + thisYear: ""}`}}</div>
+                                    <div class="selector-brief">{{d.brief}}</div>
+                                    <div class="read-more" (click)="onDaySelect(d.name)">Read More</div>
+                                </div>
+                            }
+                        </ng-container>
+                    }
+                </div>
+            </div>
+        </ng-container>
+    } @if (showTypeInfo) {
+        <ng-container>
+            <div class="day-selector-wrapper">
+                <div class="day-selector-container">
+                    @for (t of typeSelector; track $index) {
+                        <ng-container>
+                            @if (selectedType !== t.name) {
+                                <div class="type-selector">
+                                    <div class="type-selector-header">
+                                        <div class="type-selector-svg">
+                                            <img [src]="'./images/numerology/'+t.name+'.svg'" [alt]="t.name">
+                                        </div>
+                                        <div class="type-selector-name">{{t.name}}</div>
+                                    </div>
+                                    <div class="type-selector-brief">{{t.brief}}</div>
+                                    <div class="type-selector-btn-container">
+                                        <div class="read-more" (click)="onTypeSelect(t.name)">Read More</div>
+                                    </div>
+                                </div>
+                            }
+                        </ng-container>
+                    }
+                </div>
+            </div>
+        </ng-container>
+    }
     <app-rudraksh-section></app-rudraksh-section>
     <div class="page-menu-wrapper">
         <app-section-tag [sectionTitle]="'Still feel something is missing? Try'"></app-section-tag>
