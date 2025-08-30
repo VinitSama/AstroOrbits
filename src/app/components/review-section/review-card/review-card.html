@@ -1,7 +1,10 @@
 <div class="review-container">
     <div class="profile-photo">
-        <img class="image" *ngIf="card.imageUrl" [src]="card.imageUrl" alt="{{card.name}}" />
-        <div class="no-image" *ngIf="!card.imageUrl">A</div>
+        @if (card.imageUrl) {
+            <img class="image" [src]="card.imageUrl" alt="{{card.name}}" />
+        } @else {
+            <div class="no-image">A</div>
+        }
     </div>
     <div class="review">{{card.review}}</div>
     <div class="name">{{`${card.name} ${card.surname}`}}</div>

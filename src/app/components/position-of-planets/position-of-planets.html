@@ -1,25 +1,36 @@
 <div class="planet-page-container">
-    <div class="summary" *ngIf="summaryCard">
-        <app-feature-card-t1 [card]="summaryCard"></app-feature-card-t1>
-    </div>
+    @if (summaryCard) {
+        <div class="summary">
+            <app-feature-card-t1 [card]="summaryCard"></app-feature-card-t1>
+        </div>
+    }
 
     <div class="table-container">
         <div class="cloumn-container">
             <div class="header first">Symbol</div>
             <div class="column firstc">
-                <div class="planet-img cell" *ngFor="let planet of positionOfPlanet; let i = index">
-                    <img [src]="svgFile[i]" alt="planet imgae">
-                </div>
+                @for (planet of positionOfPlanet; track $index; let i = $index) {
+                    <div class="planet-img cell">
+                        <img [src]="svgFile[i]" alt="planet imgae">
+                    </div>
+                }
             </div>
         </div>
-        <div class="cloumn-container" *ngFor="let header of tableHeaders, let i=index" >
-            <div class="header" [ngClass]="{'last': i==tableHeaders.length-1}">{{header.label}}</div>
-            <div class="column" [ngClass]="{'lastc': i==tableHeaders.length-1}">
-                <div class="cell" *ngFor="let planet of positionOfPlanet" >
-                    <ng-container *ngIf="planet[header.key]" >{{planet[header.key]}}</ng-container>
-                    <ng-container *ngIf="!planet[header.key]" >-</ng-container>
+        @for (header of tableHeaders; track $index; let i = $index) {
+            <div class="cloumn-container">
+                <div class="header" [ngClass]="{'last': i==tableHeaders.length-1}">{{header.label}}</div>
+                <div class="column" [ngClass]="{'lastc': i==tableHeaders.length-1}">
+                    @for (planet of positionOfPlanet; track $index) {
+                        <div class="cell">
+                            @if (planet[header.key]) {
+                                <ng-container >{{planet[header.key]}}</ng-container>
+                            } @else {
+                                <ng-container>-</ng-container>
+                            }
+                        </div>
+                    }
                 </div>
             </div>
-        </div>
+        }
     </div>
 </div>

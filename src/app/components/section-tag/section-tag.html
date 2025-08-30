@@ -1,6 +1,8 @@
 <div class="section-tag-container" [ngClass]="{'extra-gap': subHeadCol}">
     <h2 class="title">{{sectionTitle}}</h2>
     @if(subHeading) { 
-        <div class="sub-heading" [ngClass]="{'sub-color': subHeadCol}" *ngIf="subHeading">{{subHeading}}</div>
+        @if (subHeading) {
+            <div class="sub-heading" [ngClass]="{'sub-color': subHeadCol}">{{subHeading}}</div>
+        }
     }
 </div>

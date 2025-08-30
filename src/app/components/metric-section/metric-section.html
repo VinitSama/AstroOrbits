@@ -1,5 +1,7 @@
 <div class="metric-section-container">
-    <div *ngFor="let card of metricCards" class="metric-card" >
-        <app-metric-card [card]="card" ></app-metric-card>
-    </div>
+    @for (card of metricCards; track $index) {
+        <div class="metric-card" >
+            <app-metric-card [card]="card" ></app-metric-card>
+        </div>
+    }
 </div>

@@ -2,7 +2,9 @@
     <div class="section-tag">
         <app-section-tag [sectionTitle]="title" ></app-section-tag>
     </div>
-    <div class="article" *ngFor="let article of articles">
-        <app-article [article]="article" ></app-article>
-    </div>
+    @for (article of articles; track $index) {
+        <div class="article">
+            <app-article [article]="article" ></app-article>
+        </div>
+    }
 </div>

@@ -34,13 +34,19 @@
     <div class="report-info-wrapper">
         <div class="dosha-container">
             <div class="row">
-                <app-feature-card-t1 *ngFor="let c of doshas.slice(0,2)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
+                @for (c of doshas.slice(0,2); track $index) {
+                    <app-feature-card-t1 [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
+                }
             </div>
             <div class="row">
-                <app-feature-card-t1 *ngFor="let c of doshas.slice(2,4)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
+                @for (c of doshas.slice(2,4); track $index) {
+                    <app-feature-card-t1 [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
+                }
             </div>
             <div class="row">
-                <app-feature-card-t1 *ngFor="let c of doshas.slice(4)" [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
+                @for (c of doshas.slice(4); track $index) {
+                    <app-feature-card-t1 [card]="c" [boldClick]="true" (clickLinkEmitter)="showDetails($event)"></app-feature-card-t1>
+                }
             </div>
         </div>
         <div class="side-panel">

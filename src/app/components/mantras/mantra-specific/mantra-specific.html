@@ -9,9 +9,11 @@
                 <div class="meaning">
                     <div class="heading">Meaning of {{mantraName}}</div>
                     <ul>
-                        <li class="bullets" *ngFor="let b of meaning.bullets" >
-                            {{b}}
-                        </li>
+                        @for (b of meaning.bullets; track $index) {
+                            <li class="bullets">
+                                {{b}}
+                            </li>
+                        }
                     </ul>
                     <div class="brief">{{meaning.brief}}</div>
                 </div>
@@ -22,10 +24,12 @@
                 <div class="kinds">
                     <div class="heading">Kinds of {{mantraName}}</div>
                     <div class="brief">{{kinds.brief}}</div>
-                    <div class="type" *ngFor="let t of kinds.types">
-                        <div class="type-line"><span class="type-name">{{t.name+ ": "}}</span>{{t.mantra}}</div>
-                        <div class="type-line">{{t.effect}}</div>
-                    </div>
+                    @for (t of kinds.types; track $index) { 
+                        <div class="type">
+                            <div class="type-line"><span class="type-name">{{t.name+ ": "}}</span>{{t.mantra}}</div>
+                            <div class="type-line">{{t.effect}}</div>
+                        </div>
+                    }
                 </div>
                 <div class="mythology">
                     <div class="heading">Mythology Behind {{mantraName}}</div>
@@ -34,7 +38,9 @@
             </div>
             <div class="column">
                 <div class="mantra-container">
-                    <div class="mantra" *ngFor="let mantra of mantras" [innerHTML]="mantra"></div>
+                    @for (mantra of mantras; track $index) {
+                        <div class="mantra" [innerHTML]="mantra"></div>
+                    }
                 </div>
             </div>
         </div>

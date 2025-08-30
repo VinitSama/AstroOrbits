@@ -23,22 +23,7 @@ export const routes: Routes = [
                 path: 'coming-soon',
                 loadComponent: () => import('./components/coming-soon/coming-soon').then( m => m.ComingSoon),
                 data: {layout: 'main', breadcrumb: null},
-            },
-            {
-                path: 'zodiacSign',
-                data: {layout: 'main', breadcrumb: 'Zodiac Sign'},
-                children: [
-                    {
-                        path: '',
-                        redirectTo: 'moonSign',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: 'moonSign',
-                        loadComponent: () => import('./components/moon-sign/moon-sign').then(m => m.MoonSign),
-                    },
-                ],
-            },
+            }, 
             {
                 path: 'horoscope',
                 data: {layout: 'main', breadcrumb: 'Horoscope'},

@@ -1,11 +1,13 @@
 <div class="prediction-container-wraper" >
-    <div class="prediction-container" *ngFor="let prediction of predictions">
-        <div class="title-container">
-            <div class="svg-container">
-                <img src="/images/buletin.svg" alt="decorative buletine image">
+    @for (prediction of predictions; track $index) {
+        <div class="prediction-container">
+            <div class="title-container">
+                <div class="svg-container">
+                    <img src="/images/buletin.svg" alt="decorative buletine image">
+                </div>
+                <div class="title">{{prediction.area}}</div>
             </div>
-            <div class="title">{{prediction.area}}</div>
+            <div class="prediction">{{prediction.value}}</div>
         </div>
-        <div class="prediction">{{prediction.value}}</div>
-    </div>
+    }
 </div>

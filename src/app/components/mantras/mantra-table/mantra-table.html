@@ -4,17 +4,24 @@
         {{ heading }}
     </div>
     <div class="table">
-        <ng-container *ngFor="let row of groupedDetails">
-        <div class="row">
-            <div class="detail" *ngFor="let detail of row" (click)="goToMantra(detail.name)">
-                <div class="detail-name">{{ detail.name }}</div>
-            </div>
-
-            <ng-container *ngIf="row.length < columns">
-                <div class="detail extra" *ngFor="let _ of [].constructor(columns - row.length)"></div>
+        @for (row of groupedDetails; track $index) {
+            <ng-container>
+                <div class="row">
+                    @for (detail of row; track $index) {
+                        <div class="detail" (click)="goToMantra(detail.name)">
+                            <div class="detail-name">{{ detail.name }}</div>
+                        </div>
+                    }
+                    @if (row.length < columns) {
+                        <ng-container>
+                            @for (_ of [].constructor(columns - row.length); track $index) {
+                                <div class="detail extra"></div>
+                            }
+                        </ng-container>
+                    }
+                </div>
             </ng-container>
-        </div>
-        </ng-container>
+        }
     </div>
     </div>
 </div>

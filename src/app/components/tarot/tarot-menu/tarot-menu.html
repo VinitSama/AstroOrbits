@@ -3,11 +3,13 @@
         <app-section-tag [sectionTitle]="'Tarot Card Reading'"></app-section-tag>
     </div>
     <div class="menu-container">
-        <div class="option" *ngFor="let o of menuOption; let i = index" [ngClass]="{'selected':selectedOption == o}" (click)="onOptionClick(o)">
-            <div class="option-svg">
-                <img [src]="'/images/tarot/'+(i+1)+'.svg'" [alt]="'tarot option -' + o ">
+        @for (o of menuOption; track $index; let i = $index) {
+            <div class="option" [ngClass]="{'selected':selectedOption == o}" (click)="onOptionClick(o)">
+                <div class="option-svg">
+                    <img [src]="'/images/tarot/'+(i+1)+'.svg'" [alt]="'tarot option -' + o ">
+                </div>
+                <div class="option-name">{{o}}</div>
             </div>
-            <div class="option-name">{{o}}</div>
-        </div>
+        }
     </div>
 </div>

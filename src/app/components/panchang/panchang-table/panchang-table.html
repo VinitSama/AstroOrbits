@@ -2,48 +2,58 @@
     <div class="heading">
         <div class="title">
             {{table.title}}
-            <ng-container *ngIf="table.options?.includes('date')" >{{ ", " + (panchangDate | date:"fullDate") }}</ng-container>
+            @if (table.options?.includes('date')) {
+                <ng-container>{{ ", " + (panchangDate | date:"fullDate") }}</ng-container>
+            }
         </div>
-        <div class="option-container" *ngIf="table.isOptions">
-            <ng-container *ngIf="table.options?.includes('location')">
-                <div class="option pointer" [routerLink]="'../'">
-                    <div class="option-svg">
-                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_288_641)">
-                                <path d="M12.25 6.33334C12.25 10.4167 7 13.9167 7 13.9167C7 13.9167 1.75 10.4167 1.75 6.33334C1.75 4.94096 2.30312 3.6056 3.28769 2.62103C4.27226 1.63647 5.60761 1.08334 7 1.08334C8.39239 1.08334 9.72774 1.63647 10.7123 2.62103C11.6969 3.6056 12.25 4.94096 12.25 6.33334Z" [attr.stroke]="svgColor.primary" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7 8.08334C7.9665 8.08334 8.75 7.29984 8.75 6.33334C8.75 5.36685 7.9665 4.58334 7 4.58334C6.0335 4.58334 5.25 5.36685 5.25 6.33334C5.25 7.29984 6.0335 8.08334 7 8.08334Z" [attr.stroke]="svgColor.primary" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_288_641">
-                                    <rect width="14" height="14" fill="white" transform="translate(0 0.5)"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                        Change Location
-                </div>
-            </ng-container>
-            <ng-container *ngIf="table.options?.includes('date')" >
-                <div class="option" >
-                    <div class="option-svg pointer" (click)="changeDate(-1)" >
-                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8.75 11L5.25 7.5L8.75 4" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    {{panchangDate | date: 'fullDate'}}
-                    <div class="option-svg pointer" (click)="changeDate(1)" >
-                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.25 11L8.75 7.5L5.25 4" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                </div>
-            </ng-container>
-        </div>
+        @if (table.isOptions) {
+            <div class="option-container">
+                @if (table.options?.includes('location')) {
+                    <ng-container>
+                        <div class="option pointer" [routerLink]="'../'">
+                            <div class="option-svg">
+                                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_288_641)">
+                                        <path d="M12.25 6.33334C12.25 10.4167 7 13.9167 7 13.9167C7 13.9167 1.75 10.4167 1.75 6.33334C1.75 4.94096 2.30312 3.6056 3.28769 2.62103C4.27226 1.63647 5.60761 1.08334 7 1.08334C8.39239 1.08334 9.72774 1.63647 10.7123 2.62103C11.6969 3.6056 12.25 4.94096 12.25 6.33334Z" [attr.stroke]="svgColor.primary" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7 8.08334C7.9665 8.08334 8.75 7.29984 8.75 6.33334C8.75 5.36685 7.9665 4.58334 7 4.58334C6.0335 4.58334 5.25 5.36685 5.25 6.33334C5.25 7.29984 6.0335 8.08334 7 8.08334Z" [attr.stroke]="svgColor.primary" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_288_641">
+                                            <rect width="14" height="14" fill="white" transform="translate(0 0.5)"/>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </div>
+                                Change Location
+                        </div>
+                    </ng-container>
+                }
+                @if (table.options?.includes('date')) {
+                    <ng-container>
+                        <div class="option" >
+                            <div class="option-svg pointer" (click)="changeDate(-1)" >
+                                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.75 11L5.25 7.5L8.75 4" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            {{panchangDate | date: 'fullDate'}}
+                            <div class="option-svg pointer" (click)="changeDate(1)" >
+                                <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.25 11L8.75 7.5L5.25 4" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </ng-container>
+                }
+            </div>
+        }
     </div>
     <div class="table">
-        <div class="detail" *ngFor="let detail of table.details; let i = index; let first = first; let last = last" [ngClass]="{'first-detail':first, 'last-detail': last}" >
-            <div class="detail-name">{{detail.name}}</div>
-            <div class="detail-value">{{formatDateTime(detail.value)}}</div>
-        </div>
+        @for (detail of table.details; track $index; let i = $index; let first = $first; let last = $last) {
+            <div class="detail" [ngClass]="{'first-detail':first, 'last-detail': last}" >
+                <div class="detail-name">{{detail.name}}</div>
+                <div class="detail-value">{{formatDateTime(detail.value)}}</div>
+            </div>
+        }
     </div>
 </div>

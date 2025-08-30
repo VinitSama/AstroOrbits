@@ -8,7 +8,9 @@
                 <app-article [article]="vastushastraContent"></app-article>
             </div>
             <div class="option-container">
-                <div class="option" *ngFor="let option of vastushastraOptions">{{option}}</div>
+                @for (option of vastushastraOptions; track $index) {
+                    <div class="option">{{option}}</div>
+                }
             </div>
         </div>
     </div>
