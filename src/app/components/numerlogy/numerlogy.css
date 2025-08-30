@@ -172,6 +172,7 @@ input::placeholder {
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
+    gap: 32px;
 }
 
 .page-menu-container > div {
