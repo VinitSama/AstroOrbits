@@ -1,3 +1,6 @@
+.horoscope-particular-report, .horoscope-particular-report div{
+    z-index: 10;
+}
 .zodiac-wrapper{
     width: 100%;
     background-color: var(--primary-color);
@@ -35,7 +38,77 @@
     box-shadow: 0px 10px 30px 0px rgba(37, 0, 41, 0.1);
 }
 
+.dropdown-menu{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    flex: 1;
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+    font-size: 18px;
+    font-weight: 400;
+    z-index: 1000;
+    border-radius: 7px;
+}
+.dropdown-menu-btn{
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: var(--primary-bg-color);
+    width: 100%;
+    border-radius: 7px;
+    font-size: inherit;
+}
+.btn-radius{
+    border-radius: 7px 7px 0 0;
+}
 
+.selected-option-container, .dropdown-menu-option-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.selected-option-header, .dropdown-menu-option-header{
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.selected-option-svg, .dropdown-menu-option-svg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.selected-option-arrow, .dropdown-menu-option-arrow{
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-menu-option-container{
+    padding: 6px;
+}
+
+.dropdown-menu-container{
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: #fff;
+    border-radius: 0 0 7px 7px;
+    margin-top: 0px;
+}
+.dropdown-menu-option-container{
+    border: 1px solid var(--option-border);
+}
 
 .baner-container{
     display: flex;
@@ -45,6 +118,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    z-index: 10;
 }
 
 .information{
@@ -309,6 +383,9 @@ app-tarot-menu-card, app-numerology-menu-card{
     font-weight: 700;
     padding-left: 6px;
 }
+.section-container{
+    z-index: 10;
+}
 
 @media (max-width: 1200px) {
     .zodiac-wrapper{
@@ -336,6 +413,16 @@ app-tarot-menu-card, app-numerology-menu-card{
         grid-template-columns: repeat(2, 200px);
         gap: 12px;
         justify-content: center; 
+    }
+    .baner-container{
+        flex-direction: column-reverse;
+        gap: 32px;
+        align-items: center;
+        padding-right: 0;
+    }
+    .information{
+        align-items: center;
+        text-align: center;
     }
 }
 @media (max-width: 770px) {
@@ -369,7 +456,7 @@ app-tarot-menu-card, app-numerology-menu-card{
     .horoscope-brief, .day-option{
         font-size: 10px;
     }
-    .horoscope-type, .horoscope-lucky-info{
+    .horoscope-type, .horoscope-lucky-info, .information-brief{
         font-size: 12px;
     }
     .star-svg{
@@ -379,5 +466,11 @@ app-tarot-menu-card, app-numerology-menu-card{
     .card-section> div {
         min-width: 270px;
         flex: 1 1 270px;
+    }
+    .information-name{
+        font-size: 40px;
+    }
+    .dropdown-menu{
+        font-size: 14px;
     }
 }

@@ -10,39 +10,45 @@
                 }
             </div>
         } @else {
-            <button class="menu-btn" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="zodiacMenu">
-                <div class="menu-btn-container">
-                    <div class="menu-btn-header">
-                        <div class="menu-btn-svg" [innerHTML]="menuSvg(openSvgUnSafe)"></div>
-                        <div class="menu-btn-name">{{zodiac}}</div>
+            <div class="dropdown-menu" (click)="toggleDropdown(); $event.stopPropagation()">
+                <button class="dropdown-menu-btn" [ngClass]="{'btn-radius': dropdownOpen}">
+                    <div class="selected-option-container">
+                        <div class="selected-option-header">
+                            <div class="selected-option-svg" [innerHTML]="menuSvg(openSvgUnSafe)"></div>
+                            <div class="selected-option-name">{{zodiac}}</div>
+                        </div>
+                        <div class="selected-option-arrow">
+                            @if (!dropdownOpen) {
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M6 9L12 15L18 9" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            } @else {
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#240028" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                            }
+                        </div>
                     </div>
-                    <div class="menu-btn-arrow">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M6 9L12 15L18 9" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                </div>
-            </button>
-            <mat-menu #zodiacMenu="matMenu">
-                <div class="menu-container">
-                    @for (c of zodiacDetails; track $index) {
-                        @if(c.title != zodiac) {
-                            <div class="menu-option-container">
-                                <div class="menu-option-header">
-                                    <div class="menu-option-svg"></div>
-                                    <div class="menu-option-name">{{c.title}}</div>
-                                </div>
-                                <div class="menu-btn-arrow">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-                                        <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
-                                        <path d="M7 3.41669L11.0833 7.50002L7 11.5834" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                            </div>
+                </button>
+                @if (dropdownOpen) {
+                    <ul role="listbox" id="horoscope-dropdonw-menu" [ngClass]="{'dropdown-menu-container': true, 'open': dropdownOpen}">
+                        @for (c of zodiacDetails; track $index) {
+                            @if (c.title != zodiac) {
+                                <li role="option" [id]="'horoscope-dropdown-option-'+c.title" class="dropdown-menu-option-container" (click)="onZodiacClick(c.title)">
+                                    <div class="dropdown-menu-option-header">
+                                        <div class="dropdown-menu-option-svg" [innerHTML]="menuSvg(c.svg)"></div>
+                                        <div class="dropdown-menu-option-name">{{c.title}}</div>
+                                    </div>
+                                    <div class="dropdown-menu-option-arrow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                            <path d="M2.91663 7.5H11.0833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M7 3.41667L11.0833 7.5L7 11.5833" stroke="#240028" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                </li>
+                            }
                         }
-                    }
-                </div>
-            </mat-menu>
+                    </ul>
+                }
+            </div>
         }
         
         <div class="baner-container">
@@ -54,181 +60,181 @@
         </div>
     </div>
     <div class="section-container">
-    <div class="horoscope-wrapper">
-        @if (!showPreciseHoroscope) {
-            <div class="horoscope-information">
-                <div class="horoscope-name">{{`${day}${daySPrint(day) ? "'s" : ""} Horoscope`}}</div>
-                <div class="horoscope-brief">{{report.brief}}</div>
-                <div class="horoscope-types-container">
-                    @for (t of report.stars; track $index) {
-                        <div class="horoscope-type">
-                            <div class="horoscope-type-name">{{starMapper.at($index)}}</div>
-                            <div class="horoscope-type-stars">
-                                @for (s of [].constructor(t); track $index) {
-                                    <div xlass="star-svg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                                            <path d="M10.5979 1.8541C11.1966 0.0114751 13.8034 0.0114799 14.4021 1.8541L15.98 6.71024C16.2477 7.53428 17.0156 8.0922 17.8821 8.0922L22.9881 8.0922C24.9256 8.0922 25.7311 10.5714 24.1637 11.7102L20.0328 14.7115C19.3318 15.2208 19.0385 16.1235 19.3063 16.9476L20.8841 21.8037C21.4828 23.6463 19.3739 25.1786 17.8064 24.0398L13.6756 21.0385C12.9746 20.5292 12.0254 20.5292 11.3244 21.0385L7.19355 24.0398C5.62612 25.1786 3.51717 23.6463 4.11587 21.8037L5.69373 16.9476C5.96147 16.1235 5.66816 15.2208 4.96718 14.7115L0.836303 11.7102C-0.731125 10.5714 0.07443 8.0922 2.01188 8.0922L7.11792 8.0922C7.98437 8.0922 8.75228 7.53428 9.02003 6.71024L10.5979 1.8541Z" [attr.fill]="svgColor.secondary"/>
-                                        </svg>
-                                    </div>
-                                }
-                                @for (s of [].constructor(5-t); track $index) {
-                                    <div class="star-svg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                                            <path d="M10.5979 1.8541C11.1966 0.0114751 13.8034 0.0114799 14.4021 1.8541L15.98 6.71024C16.2477 7.53428 17.0156 8.0922 17.8821 8.0922L22.9881 8.0922C24.9256 8.0922 25.7311 10.5714 24.1637 11.7102L20.0328 14.7115C19.3318 15.2208 19.0385 16.1235 19.3063 16.9476L20.8841 21.8037C21.4828 23.6463 19.3739 25.1786 17.8064 24.0398L13.6756 21.0385C12.9746 20.5292 12.0254 20.5292 11.3244 21.0385L7.19355 24.0398C5.62612 25.1786 3.51717 23.6463 4.11587 21.8037L5.69373 16.9476C5.96147 16.1235 5.66816 15.2208 4.96718 14.7115L0.836303 11.7102C-0.731125 10.5714 0.07443 8.0922 2.01188 8.0922L7.11792 8.0922C7.98437 8.0922 8.75228 7.53428 9.02003 6.71024L10.5979 1.8541Z" [attr.fill]="svgColor.stroke"/>
-                                        </svg>
-                                    </div>
-                                }
+        <div class="horoscope-wrapper">
+            @if (!showPreciseHoroscope) {
+                <div class="horoscope-information">
+                    <div class="horoscope-name">{{`${day}${daySPrint(day) ? "'s" : ""} Horoscope`}}</div>
+                    <div class="horoscope-brief">{{report.brief}}</div>
+                    <div class="horoscope-types-container">
+                        @for (t of report.stars; track $index) {
+                            <div class="horoscope-type">
+                                <div class="horoscope-type-name">{{starMapper.at($index)}}</div>
+                                <div class="horoscope-type-stars">
+                                    @for (s of [].constructor(t); track $index) {
+                                        <div xlass="star-svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                                <path d="M10.5979 1.8541C11.1966 0.0114751 13.8034 0.0114799 14.4021 1.8541L15.98 6.71024C16.2477 7.53428 17.0156 8.0922 17.8821 8.0922L22.9881 8.0922C24.9256 8.0922 25.7311 10.5714 24.1637 11.7102L20.0328 14.7115C19.3318 15.2208 19.0385 16.1235 19.3063 16.9476L20.8841 21.8037C21.4828 23.6463 19.3739 25.1786 17.8064 24.0398L13.6756 21.0385C12.9746 20.5292 12.0254 20.5292 11.3244 21.0385L7.19355 24.0398C5.62612 25.1786 3.51717 23.6463 4.11587 21.8037L5.69373 16.9476C5.96147 16.1235 5.66816 15.2208 4.96718 14.7115L0.836303 11.7102C-0.731125 10.5714 0.07443 8.0922 2.01188 8.0922L7.11792 8.0922C7.98437 8.0922 8.75228 7.53428 9.02003 6.71024L10.5979 1.8541Z" [attr.fill]="svgColor.secondary"/>
+                                            </svg>
+                                        </div>
+                                    }
+                                    @for (s of [].constructor(5-t); track $index) {
+                                        <div class="star-svg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                                <path d="M10.5979 1.8541C11.1966 0.0114751 13.8034 0.0114799 14.4021 1.8541L15.98 6.71024C16.2477 7.53428 17.0156 8.0922 17.8821 8.0922L22.9881 8.0922C24.9256 8.0922 25.7311 10.5714 24.1637 11.7102L20.0328 14.7115C19.3318 15.2208 19.0385 16.1235 19.3063 16.9476L20.8841 21.8037C21.4828 23.6463 19.3739 25.1786 17.8064 24.0398L13.6756 21.0385C12.9746 20.5292 12.0254 20.5292 11.3244 21.0385L7.19355 24.0398C5.62612 25.1786 3.51717 23.6463 4.11587 21.8037L5.69373 16.9476C5.96147 16.1235 5.66816 15.2208 4.96718 14.7115L0.836303 11.7102C-0.731125 10.5714 0.07443 8.0922 2.01188 8.0922L7.11792 8.0922C7.98437 8.0922 8.75228 7.53428 9.02003 6.71024L10.5979 1.8541Z" [attr.fill]="svgColor.stroke"/>
+                                            </svg>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="horoscope-lucky">
+                        <div class="horoscope-lucky-info">
+                            <div class="horoscope-lucky-name">Lucky Number</div>
+                            <div class="horoscope-lucky-value">{{report.luckyInformation.luckyNumber.join(', ')}}</div>
+                        </div>
+                        <div class="horoscope-lucky-info">
+                            <div class="horoscope-lucky-name">Lucky Colour</div>
+                            <div class="horoscope-lucky-value">{{report.luckyInformation.luckyColor}}</div>
+                        </div>
+                    </div>
+                </div>
+            } @else {
+                <div class="horoscope-information">
+                    <div class="horoscope-name">{{horoscopeType.cards[opendPreciseIndex].name}}</div>
+                    <div class="horoscope-brief">{{horoscopeType.cards[opendPreciseIndex].brief}}</div>
+                </div>
+            }
+            <div class="horoscope-options">
+                <div class="sign-buttons-container">
+                    <div class="sign-button" [ngClass]="{'active-sign': zodiacSign == 'moon'}" (click)="onSignClick('moon')">
+                        <div class="sign-buttons-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                                <g clip-path="url(#clip0_836_1183)">
+                                    <path d="M18.2453 10.7694C18.0405 10.643 17.7762 10.6662 17.5989 10.8283C16.3077 11.9994 14.6375 12.6447 12.8969 12.6447C9.03337 12.6447 5.89004 9.5014 5.89004 5.63792C5.89004 3.89713 6.53535 2.22707 7.70649 0.9359C7.86799 0.757921 7.8923 0.494249 7.76541 0.289491C7.63851 0.0852825 7.39009 -0.00947471 7.16061 0.0553447C3.23862 1.16593 0.5 4.79142 0.5 8.87175C0.5 13.9244 4.6104 18.0346 9.66289 18.0346C13.7432 18.0346 17.3688 15.296 18.4794 11.3742C18.5452 11.1425 18.4495 10.8961 18.2453 10.7694Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M9.42569 7.14797L10.7026 7.78586L11.3405 9.06289C11.4315 9.24554 11.6184 9.36076 11.8226 9.36076C12.027 9.36076 12.2132 9.24554 12.3048 9.06289L12.9434 7.78586L14.2197 7.14797C14.4024 7.05637 14.5176 6.87001 14.5176 6.66581C14.5176 6.4616 14.4024 6.27524 14.2197 6.18364L12.9434 5.54561L12.3048 4.26872C12.1216 3.90343 11.5227 3.90343 11.3405 4.26872L10.7026 5.54561L9.42569 6.18364C9.24304 6.27469 9.12769 6.4616 9.12769 6.66581C9.12769 6.87001 9.24304 7.05692 9.42569 7.14797Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M15.0528 2.94283H15.5918V3.48185C15.5918 3.77971 15.833 4.02086 16.1308 4.02086C16.4287 4.02086 16.6698 3.77971 16.6698 3.48185V2.94283H17.2089C17.5067 2.94283 17.7479 2.70182 17.7479 2.40381C17.7479 2.10594 17.5067 1.86493 17.2089 1.86493H16.6698V1.32591C16.6698 1.02791 16.4287 0.786896 16.1308 0.786896C15.833 0.786896 15.5918 1.02791 15.5918 1.32591V1.86493H15.0528C14.7549 1.86493 14.5139 2.10594 14.5139 2.40381C14.5139 2.70182 14.7549 2.94283 15.0528 2.94283Z" [attr.fill]="svgColor.secondary"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_836_1183">
+                                    <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div>Moon Signs</div>
+                    </div>
+                    <div class="sign-button" [ngClass]="{'active-sign': zodiacSign == 'sun'}" (click)="onSignClick('sun')">
+                        <div class="sign-buttons-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                                <g clip-path="url(#clip0_836_1190)">
+                                    <path d="M9.5 13.7461C6.88292 13.7461 4.75391 11.6171 4.75391 9C4.75391 6.38292 6.88292 4.25391 9.5 4.25391C12.1171 4.25391 14.2461 6.38292 14.2461 9C14.2461 11.6171 12.1171 13.7461 9.5 13.7461Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M9.5 3.19922C9.20859 3.19922 8.97266 2.96329 8.97266 2.67188V0.527344C8.97266 0.235931 9.20859 0 9.5 0C9.79141 0 10.0273 0.235931 10.0273 0.527344V2.67188C10.0273 2.96329 9.79141 3.19922 9.5 3.19922Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M9.5 18C9.20859 18 8.97266 17.7641 8.97266 17.4727V15.3281C8.97266 15.0367 9.20859 14.8008 9.5 14.8008C9.79141 14.8008 10.0273 15.0367 10.0273 15.3281V17.4727C10.0273 17.7641 9.79141 18 9.5 18Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M5.87921 3.78316L4.82452 1.95654C4.67868 1.70427 4.7652 1.38182 5.01761 1.23611C5.26837 1.08986 5.59233 1.17637 5.73804 1.4292L6.79272 3.25581C6.93857 3.50822 6.85205 3.83067 6.59964 3.97638C6.34819 4.12153 6.02505 4.03584 5.87921 3.78316Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M13.262 16.5708L12.2073 14.7442C12.0615 14.4918 12.148 14.1694 12.4004 14.0236C12.6506 13.8774 12.9746 13.9639 13.1208 14.2169L14.1755 16.0435C14.3214 16.2958 14.2349 16.6182 13.9825 16.7639C13.731 16.9092 13.4079 16.8234 13.262 16.5708Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M3.75575 6.29269L1.92914 5.238C1.67687 5.0923 1.59035 4.76999 1.73605 4.51757C1.88176 4.2642 2.20421 4.17768 2.45648 4.32449L4.2831 5.37918C4.53551 5.52488 4.62202 5.84719 4.47632 6.09961C4.3302 6.35257 4.00679 6.43771 3.75575 6.29269Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M16.5435 13.6755L14.7169 12.6208C14.4645 12.4751 14.3779 12.1528 14.5236 11.9004C14.6695 11.647 14.9918 11.5615 15.2442 11.7073L17.0708 12.762C17.3231 12.9077 17.4096 13.23 17.2639 13.4824C17.1178 13.7354 16.7944 13.8205 16.5435 13.6755Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M1.73605 13.4824C1.59035 13.23 1.67687 12.9077 1.92914 12.762L3.75575 11.7073C4.00761 11.5615 4.33006 11.647 4.47632 11.9004C4.62202 12.1528 4.53551 12.4751 4.2831 12.6208L2.45648 13.6755C2.20503 13.8208 1.8819 13.735 1.73605 13.4824Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M14.5236 6.09961C14.3779 5.84719 14.4645 5.52488 14.7169 5.37918L16.5435 4.32449C16.7937 4.17768 17.1177 4.2642 17.2639 4.51757C17.4096 4.76999 17.3231 5.0923 17.0708 5.238L15.2442 6.29269C14.9926 6.43798 14.6695 6.35215 14.5236 6.09961Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M5.01761 16.7639C4.7652 16.6182 4.67868 16.2958 4.82452 16.0435L5.87921 14.2169C6.02547 13.9639 6.34682 13.8774 6.59964 14.0236C6.85205 14.1695 6.93857 14.4918 6.79272 14.7442L5.73804 16.5708C5.59192 16.8238 5.26865 16.9089 5.01761 16.7639Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M12.4004 3.97638C12.148 3.83053 12.0615 3.50822 12.2073 3.25581L13.262 1.4292C13.4077 1.17637 13.7306 1.08986 13.9825 1.23611C14.2349 1.38182 14.3214 1.70427 14.1755 1.95654L13.1208 3.78316C12.9747 4.03625 12.6515 4.12126 12.4004 3.97638Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M3.17188 9.52734H1.02734C0.735931 9.52734 0.5 9.29141 0.5 9C0.5 8.70859 0.735931 8.47266 1.02734 8.47266H3.17188C3.46329 8.47266 3.69922 8.70859 3.69922 9C3.69922 9.29141 3.46329 9.52734 3.17188 9.52734Z" [attr.fill]="svgColor.secondary"/>
+                                    <path d="M17.9727 9.52734H15.8281C15.5367 9.52734 15.3008 9.29141 15.3008 9C15.3008 8.70859 15.5367 8.47266 15.8281 8.47266H17.9727C18.2641 8.47266 18.5 8.70859 18.5 9C18.5 9.29141 18.2641 9.52734 17.9727 9.52734Z" [attr.fill]="svgColor.secondary"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_836_1190">
+                                    <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div>Sun Sign</div>
+                    </div>
+                </div>
+                <div class="day-option-container">
+                    @for (d of daysOption; track $index) {
+                        <div class="day-option" [ngClass]="{'active-day': d == day}" (click)="onDayClick(d)">
+                            <div>{{d}}</div>
+                            <div class="arrow-svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                    <path d="M2.9165 7.5H11.0832" [attr.stroke]="d == day ? svgColor.stroke: svgColor.secondary" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7 3.41669L11.0833 7.50002L7 11.5834" [attr.stroke]="d == day ? svgColor.stroke: svgColor.secondary" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                             </div>
                         </div>
                     }
                 </div>
-                <div class="horoscope-lucky">
-                    <div class="horoscope-lucky-info">
-                        <div class="horoscope-lucky-name">Lucky Number</div>
-                        <div class="horoscope-lucky-value">{{report.luckyInformation.luckyNumber.join(', ')}}</div>
-                    </div>
-                    <div class="horoscope-lucky-info">
-                        <div class="horoscope-lucky-name">Lucky Colour</div>
-                        <div class="horoscope-lucky-value">{{report.luckyInformation.luckyColor}}</div>
-                    </div>
-                </div>
             </div>
-        } @else {
-            <div class="horoscope-information">
-                <div class="horoscope-name">{{horoscopeType.cards[opendPreciseIndex].name}}</div>
-                <div class="horoscope-brief">{{horoscopeType.cards[opendPreciseIndex].brief}}</div>
-            </div>
-        }
-        <div class="horoscope-options">
-            <div class="sign-buttons-container">
-                <div class="sign-button" [ngClass]="{'active-sign': zodiacSign == 'moon'}" (click)="onSignClick('moon')">
-                    <div class="sign-buttons-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
-                            <g clip-path="url(#clip0_836_1183)">
-                                <path d="M18.2453 10.7694C18.0405 10.643 17.7762 10.6662 17.5989 10.8283C16.3077 11.9994 14.6375 12.6447 12.8969 12.6447C9.03337 12.6447 5.89004 9.5014 5.89004 5.63792C5.89004 3.89713 6.53535 2.22707 7.70649 0.9359C7.86799 0.757921 7.8923 0.494249 7.76541 0.289491C7.63851 0.0852825 7.39009 -0.00947471 7.16061 0.0553447C3.23862 1.16593 0.5 4.79142 0.5 8.87175C0.5 13.9244 4.6104 18.0346 9.66289 18.0346C13.7432 18.0346 17.3688 15.296 18.4794 11.3742C18.5452 11.1425 18.4495 10.8961 18.2453 10.7694Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M9.42569 7.14797L10.7026 7.78586L11.3405 9.06289C11.4315 9.24554 11.6184 9.36076 11.8226 9.36076C12.027 9.36076 12.2132 9.24554 12.3048 9.06289L12.9434 7.78586L14.2197 7.14797C14.4024 7.05637 14.5176 6.87001 14.5176 6.66581C14.5176 6.4616 14.4024 6.27524 14.2197 6.18364L12.9434 5.54561L12.3048 4.26872C12.1216 3.90343 11.5227 3.90343 11.3405 4.26872L10.7026 5.54561L9.42569 6.18364C9.24304 6.27469 9.12769 6.4616 9.12769 6.66581C9.12769 6.87001 9.24304 7.05692 9.42569 7.14797Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M15.0528 2.94283H15.5918V3.48185C15.5918 3.77971 15.833 4.02086 16.1308 4.02086C16.4287 4.02086 16.6698 3.77971 16.6698 3.48185V2.94283H17.2089C17.5067 2.94283 17.7479 2.70182 17.7479 2.40381C17.7479 2.10594 17.5067 1.86493 17.2089 1.86493H16.6698V1.32591C16.6698 1.02791 16.4287 0.786896 16.1308 0.786896C15.833 0.786896 15.5918 1.02791 15.5918 1.32591V1.86493H15.0528C14.7549 1.86493 14.5139 2.10594 14.5139 2.40381C14.5139 2.70182 14.7549 2.94283 15.0528 2.94283Z" [attr.fill]="svgColor.secondary"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_836_1183">
-                                <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div>Moon Signs</div>
-                </div>
-                <div class="sign-button" [ngClass]="{'active-sign': zodiacSign == 'sun'}" (click)="onSignClick('sun')">
-                    <div class="sign-buttons-svg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
-                            <g clip-path="url(#clip0_836_1190)">
-                                <path d="M9.5 13.7461C6.88292 13.7461 4.75391 11.6171 4.75391 9C4.75391 6.38292 6.88292 4.25391 9.5 4.25391C12.1171 4.25391 14.2461 6.38292 14.2461 9C14.2461 11.6171 12.1171 13.7461 9.5 13.7461Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M9.5 3.19922C9.20859 3.19922 8.97266 2.96329 8.97266 2.67188V0.527344C8.97266 0.235931 9.20859 0 9.5 0C9.79141 0 10.0273 0.235931 10.0273 0.527344V2.67188C10.0273 2.96329 9.79141 3.19922 9.5 3.19922Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M9.5 18C9.20859 18 8.97266 17.7641 8.97266 17.4727V15.3281C8.97266 15.0367 9.20859 14.8008 9.5 14.8008C9.79141 14.8008 10.0273 15.0367 10.0273 15.3281V17.4727C10.0273 17.7641 9.79141 18 9.5 18Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M5.87921 3.78316L4.82452 1.95654C4.67868 1.70427 4.7652 1.38182 5.01761 1.23611C5.26837 1.08986 5.59233 1.17637 5.73804 1.4292L6.79272 3.25581C6.93857 3.50822 6.85205 3.83067 6.59964 3.97638C6.34819 4.12153 6.02505 4.03584 5.87921 3.78316Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M13.262 16.5708L12.2073 14.7442C12.0615 14.4918 12.148 14.1694 12.4004 14.0236C12.6506 13.8774 12.9746 13.9639 13.1208 14.2169L14.1755 16.0435C14.3214 16.2958 14.2349 16.6182 13.9825 16.7639C13.731 16.9092 13.4079 16.8234 13.262 16.5708Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M3.75575 6.29269L1.92914 5.238C1.67687 5.0923 1.59035 4.76999 1.73605 4.51757C1.88176 4.2642 2.20421 4.17768 2.45648 4.32449L4.2831 5.37918C4.53551 5.52488 4.62202 5.84719 4.47632 6.09961C4.3302 6.35257 4.00679 6.43771 3.75575 6.29269Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M16.5435 13.6755L14.7169 12.6208C14.4645 12.4751 14.3779 12.1528 14.5236 11.9004C14.6695 11.647 14.9918 11.5615 15.2442 11.7073L17.0708 12.762C17.3231 12.9077 17.4096 13.23 17.2639 13.4824C17.1178 13.7354 16.7944 13.8205 16.5435 13.6755Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M1.73605 13.4824C1.59035 13.23 1.67687 12.9077 1.92914 12.762L3.75575 11.7073C4.00761 11.5615 4.33006 11.647 4.47632 11.9004C4.62202 12.1528 4.53551 12.4751 4.2831 12.6208L2.45648 13.6755C2.20503 13.8208 1.8819 13.735 1.73605 13.4824Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M14.5236 6.09961C14.3779 5.84719 14.4645 5.52488 14.7169 5.37918L16.5435 4.32449C16.7937 4.17768 17.1177 4.2642 17.2639 4.51757C17.4096 4.76999 17.3231 5.0923 17.0708 5.238L15.2442 6.29269C14.9926 6.43798 14.6695 6.35215 14.5236 6.09961Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M5.01761 16.7639C4.7652 16.6182 4.67868 16.2958 4.82452 16.0435L5.87921 14.2169C6.02547 13.9639 6.34682 13.8774 6.59964 14.0236C6.85205 14.1695 6.93857 14.4918 6.79272 14.7442L5.73804 16.5708C5.59192 16.8238 5.26865 16.9089 5.01761 16.7639Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M12.4004 3.97638C12.148 3.83053 12.0615 3.50822 12.2073 3.25581L13.262 1.4292C13.4077 1.17637 13.7306 1.08986 13.9825 1.23611C14.2349 1.38182 14.3214 1.70427 14.1755 1.95654L13.1208 3.78316C12.9747 4.03625 12.6515 4.12126 12.4004 3.97638Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M3.17188 9.52734H1.02734C0.735931 9.52734 0.5 9.29141 0.5 9C0.5 8.70859 0.735931 8.47266 1.02734 8.47266H3.17188C3.46329 8.47266 3.69922 8.70859 3.69922 9C3.69922 9.29141 3.46329 9.52734 3.17188 9.52734Z" [attr.fill]="svgColor.secondary"/>
-                                <path d="M17.9727 9.52734H15.8281C15.5367 9.52734 15.3008 9.29141 15.3008 9C15.3008 8.70859 15.5367 8.47266 15.8281 8.47266H17.9727C18.2641 8.47266 18.5 8.70859 18.5 9C18.5 9.29141 18.2641 9.52734 17.9727 9.52734Z" [attr.fill]="svgColor.secondary"/>
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_836_1190">
-                                <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div>Sun Sign</div>
-                </div>
-            </div>
-            <div class="day-option-container">
-                @for (d of daysOption; track $index) {
-                    <div class="day-option" [ngClass]="{'active-day': d == day}" (click)="onDayClick(d)">
-                        <div>{{d}}</div>
-                        <div class="arrow-svg">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
-                                <path d="M2.9165 7.5H11.0832" [attr.stroke]="d == day ? svgColor.stroke: svgColor.secondary" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M7 3.41669L11.0833 7.50002L7 11.5834" [attr.stroke]="d == day ? svgColor.stroke: svgColor.secondary" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
+        </div>
+
+        <div class="insight-section">
+            <app-section-tag [sectionTitle]="'Featured Astrological Insights'"></app-section-tag>
+            <div class="insight-container">
+                @for (c of insightCard; track $index) {
+                    <div class="insight-card">
+                        <app-astrological-insight-card [card]="c"></app-astrological-insight-card>
                     </div>
                 }
             </div>
-        </div>
-    </div>
-
-    <div class="insight-section">
-        <app-section-tag [sectionTitle]="'Featured Astrological Insights'"></app-section-tag>
-        <div class="insight-container">
-            @for (c of insightCard; track $index) {
-                <div class="insight-card">
-                    <app-astrological-insight-card [card]="c"></app-astrological-insight-card>
+            <div class="special-click-link">
+                <div class="link-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                        <g clip-path="url(#clip0_836_1190)">
+                            <path d="M9.5 13.7461C6.88292 13.7461 4.75391 11.6171 4.75391 9C4.75391 6.38292 6.88292 4.25391 9.5 4.25391C12.1171 4.25391 14.2461 6.38292 14.2461 9C14.2461 11.6171 12.1171 13.7461 9.5 13.7461Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M9.5 3.19922C9.20859 3.19922 8.97266 2.96329 8.97266 2.67188V0.527344C8.97266 0.235931 9.20859 0 9.5 0C9.79141 0 10.0273 0.235931 10.0273 0.527344V2.67188C10.0273 2.96329 9.79141 3.19922 9.5 3.19922Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M9.5 18C9.20859 18 8.97266 17.7641 8.97266 17.4727V15.3281C8.97266 15.0367 9.20859 14.8008 9.5 14.8008C9.79141 14.8008 10.0273 15.0367 10.0273 15.3281V17.4727C10.0273 17.7641 9.79141 18 9.5 18Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M5.87921 3.78316L4.82452 1.95654C4.67868 1.70427 4.7652 1.38182 5.01761 1.23611C5.26837 1.08986 5.59233 1.17637 5.73804 1.4292L6.79272 3.25581C6.93857 3.50822 6.85205 3.83067 6.59964 3.97638C6.34819 4.12153 6.02505 4.03584 5.87921 3.78316Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M13.262 16.5708L12.2073 14.7442C12.0615 14.4918 12.148 14.1694 12.4004 14.0236C12.6506 13.8774 12.9746 13.9639 13.1208 14.2169L14.1755 16.0435C14.3214 16.2958 14.2349 16.6182 13.9825 16.7639C13.731 16.9092 13.4079 16.8234 13.262 16.5708Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M3.75575 6.29269L1.92914 5.238C1.67687 5.0923 1.59035 4.76999 1.73605 4.51757C1.88176 4.2642 2.20421 4.17768 2.45648 4.32449L4.2831 5.37918C4.53551 5.52488 4.62202 5.84719 4.47632 6.09961C4.3302 6.35257 4.00679 6.43771 3.75575 6.29269Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M16.5435 13.6755L14.7169 12.6208C14.4645 12.4751 14.3779 12.1528 14.5236 11.9004C14.6695 11.647 14.9918 11.5615 15.2442 11.7073L17.0708 12.762C17.3231 12.9077 17.4096 13.23 17.2639 13.4824C17.1178 13.7354 16.7944 13.8205 16.5435 13.6755Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M1.73605 13.4824C1.59035 13.23 1.67687 12.9077 1.92914 12.762L3.75575 11.7073C4.00761 11.5615 4.33006 11.647 4.47632 11.9004C4.62202 12.1528 4.53551 12.4751 4.2831 12.6208L2.45648 13.6755C2.20503 13.8208 1.8819 13.735 1.73605 13.4824Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M14.5236 6.09961C14.3779 5.84719 14.4645 5.52488 14.7169 5.37918L16.5435 4.32449C16.7937 4.17768 17.1177 4.2642 17.2639 4.51757C17.4096 4.76999 17.3231 5.0923 17.0708 5.238L15.2442 6.29269C14.9926 6.43798 14.6695 6.35215 14.5236 6.09961Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M5.01761 16.7639C4.7652 16.6182 4.67868 16.2958 4.82452 16.0435L5.87921 14.2169C6.02547 13.9639 6.34682 13.8774 6.59964 14.0236C6.85205 14.1695 6.93857 14.4918 6.79272 14.7442L5.73804 16.5708C5.59192 16.8238 5.26865 16.9089 5.01761 16.7639Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M12.4004 3.97638C12.148 3.83053 12.0615 3.50822 12.2073 3.25581L13.262 1.4292C13.4077 1.17637 13.7306 1.08986 13.9825 1.23611C14.2349 1.38182 14.3214 1.70427 14.1755 1.95654L13.1208 3.78316C12.9747 4.03625 12.6515 4.12126 12.4004 3.97638Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M3.17188 9.52734H1.02734C0.735931 9.52734 0.5 9.29141 0.5 9C0.5 8.70859 0.735931 8.47266 1.02734 8.47266H3.17188C3.46329 8.47266 3.69922 8.70859 3.69922 9C3.69922 9.29141 3.46329 9.52734 3.17188 9.52734Z" [attr.fill]="svgColor.secondary"/>
+                            <path d="M17.9727 9.52734H15.8281C15.5367 9.52734 15.3008 9.29141 15.3008 9C15.3008 8.70859 15.5367 8.47266 15.8281 8.47266H17.9727C18.2641 8.47266 18.5 8.70859 18.5 9C18.5 9.29141 18.2641 9.52734 17.9727 9.52734Z" [attr.fill]="svgColor.secondary"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_836_1190">
+                            <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
                 </div>
-            }
-        </div>
-        <div class="special-click-link">
-            <div class="link-svg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
-                    <g clip-path="url(#clip0_836_1190)">
-                        <path d="M9.5 13.7461C6.88292 13.7461 4.75391 11.6171 4.75391 9C4.75391 6.38292 6.88292 4.25391 9.5 4.25391C12.1171 4.25391 14.2461 6.38292 14.2461 9C14.2461 11.6171 12.1171 13.7461 9.5 13.7461Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M9.5 3.19922C9.20859 3.19922 8.97266 2.96329 8.97266 2.67188V0.527344C8.97266 0.235931 9.20859 0 9.5 0C9.79141 0 10.0273 0.235931 10.0273 0.527344V2.67188C10.0273 2.96329 9.79141 3.19922 9.5 3.19922Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M9.5 18C9.20859 18 8.97266 17.7641 8.97266 17.4727V15.3281C8.97266 15.0367 9.20859 14.8008 9.5 14.8008C9.79141 14.8008 10.0273 15.0367 10.0273 15.3281V17.4727C10.0273 17.7641 9.79141 18 9.5 18Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M5.87921 3.78316L4.82452 1.95654C4.67868 1.70427 4.7652 1.38182 5.01761 1.23611C5.26837 1.08986 5.59233 1.17637 5.73804 1.4292L6.79272 3.25581C6.93857 3.50822 6.85205 3.83067 6.59964 3.97638C6.34819 4.12153 6.02505 4.03584 5.87921 3.78316Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M13.262 16.5708L12.2073 14.7442C12.0615 14.4918 12.148 14.1694 12.4004 14.0236C12.6506 13.8774 12.9746 13.9639 13.1208 14.2169L14.1755 16.0435C14.3214 16.2958 14.2349 16.6182 13.9825 16.7639C13.731 16.9092 13.4079 16.8234 13.262 16.5708Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M3.75575 6.29269L1.92914 5.238C1.67687 5.0923 1.59035 4.76999 1.73605 4.51757C1.88176 4.2642 2.20421 4.17768 2.45648 4.32449L4.2831 5.37918C4.53551 5.52488 4.62202 5.84719 4.47632 6.09961C4.3302 6.35257 4.00679 6.43771 3.75575 6.29269Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M16.5435 13.6755L14.7169 12.6208C14.4645 12.4751 14.3779 12.1528 14.5236 11.9004C14.6695 11.647 14.9918 11.5615 15.2442 11.7073L17.0708 12.762C17.3231 12.9077 17.4096 13.23 17.2639 13.4824C17.1178 13.7354 16.7944 13.8205 16.5435 13.6755Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M1.73605 13.4824C1.59035 13.23 1.67687 12.9077 1.92914 12.762L3.75575 11.7073C4.00761 11.5615 4.33006 11.647 4.47632 11.9004C4.62202 12.1528 4.53551 12.4751 4.2831 12.6208L2.45648 13.6755C2.20503 13.8208 1.8819 13.735 1.73605 13.4824Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M14.5236 6.09961C14.3779 5.84719 14.4645 5.52488 14.7169 5.37918L16.5435 4.32449C16.7937 4.17768 17.1177 4.2642 17.2639 4.51757C17.4096 4.76999 17.3231 5.0923 17.0708 5.238L15.2442 6.29269C14.9926 6.43798 14.6695 6.35215 14.5236 6.09961Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M5.01761 16.7639C4.7652 16.6182 4.67868 16.2958 4.82452 16.0435L5.87921 14.2169C6.02547 13.9639 6.34682 13.8774 6.59964 14.0236C6.85205 14.1695 6.93857 14.4918 6.79272 14.7442L5.73804 16.5708C5.59192 16.8238 5.26865 16.9089 5.01761 16.7639Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M12.4004 3.97638C12.148 3.83053 12.0615 3.50822 12.2073 3.25581L13.262 1.4292C13.4077 1.17637 13.7306 1.08986 13.9825 1.23611C14.2349 1.38182 14.3214 1.70427 14.1755 1.95654L13.1208 3.78316C12.9747 4.03625 12.6515 4.12126 12.4004 3.97638Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M3.17188 9.52734H1.02734C0.735931 9.52734 0.5 9.29141 0.5 9C0.5 8.70859 0.735931 8.47266 1.02734 8.47266H3.17188C3.46329 8.47266 3.69922 8.70859 3.69922 9C3.69922 9.29141 3.46329 9.52734 3.17188 9.52734Z" [attr.fill]="svgColor.secondary"/>
-                        <path d="M17.9727 9.52734H15.8281C15.5367 9.52734 15.3008 9.29141 15.3008 9C15.3008 8.70859 15.5367 8.47266 15.8281 8.47266H17.9727C18.2641 8.47266 18.5 8.70859 18.5 9C18.5 9.29141 18.2641 9.52734 17.9727 9.52734Z" [attr.fill]="svgColor.secondary"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_836_1190">
-                        <rect width="18" height="18" fill="white" transform="translate(0.5)"/>
-                        </clipPath>
-                    </defs>
-                </svg>
+                <div class="sub-link">Horoscope of your sun sign?<span class="link">Click here</span></div>
             </div>
-            <div class="sub-link">Horoscope of your sun sign?<span class="link">Click here</span></div>
         </div>
-    </div>
 
-    <app-personalize-section [personalisedInfo]="horoscopeType" (horoscopeIndexEmitter)="onPrisiceChange($event)"></app-personalize-section>"
+        <app-personalize-section [personalisedInfo]="horoscopeType" (horoscopeIndexEmitter)="onPrisiceChange($event)"></app-personalize-section>"
 
-    <div class="menu-container">
-        <div class="section-tag">
-            <app-section-tag [sectionTitle]="'Still feel something is missing? Try'" [subHeading]="'Choose your path to clarity. Get Detailed reports or join live community sessions.'"></app-section-tag>
-        </div>
-        <div class="card-section">
-            <div>
-                <app-kundli-menu-card></app-kundli-menu-card>
+        <div class="menu-container">
+            <div class="section-tag">
+                <app-section-tag [sectionTitle]="'Still feel something is missing? Try'" [subHeading]="'Choose your path to clarity. Get Detailed reports or join live community sessions.'"></app-section-tag>
             </div>
-            <div class="card-wrapper">
+            <div class="card-section">
                 <div>
-                    <app-tarot-menu-card></app-tarot-menu-card>
+                    <app-kundli-menu-card></app-kundli-menu-card>
+                </div>
+                <div class="card-wrapper">
+                    <div>
+                        <app-tarot-menu-card></app-tarot-menu-card>
+                    </div>
+                    <div>
+                        <app-numerology-menu-card></app-numerology-menu-card>
+                    </div>
                 </div>
                 <div>
-                    <app-numerology-menu-card></app-numerology-menu-card>
+                    <app-love-menu-card></app-love-menu-card>
                 </div>
             </div>
-            <div>
-                <app-love-menu-card></app-love-menu-card>
-            </div>
         </div>
-    </div>
 
-    <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
-    <app-about-section></app-about-section>
-    <div style="padding-bottom: 80px;">
-        <app-faq-section></app-faq-section>
-    </div>
+        <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
+        <app-about-section></app-about-section>
+        <div style="padding-bottom: 80px;">
+            <app-faq-section></app-faq-section>
+        </div>
 
     </div>
 </div>

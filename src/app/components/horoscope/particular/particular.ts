@@ -1,4 +1,4 @@
-import { Component, computed, Input, OnInit } from '@angular/core';
+import { Component, computed, HostListener, Input, OnInit } from '@angular/core';
 import { TZodiacSign } from '../../../types/tzodiac-sign';
 import { IZodiacHoroscope } from '../../../interfaces/izodiac-horoscope';
 import { IZodiacCard } from '../../../interfaces/izodiac-card';
@@ -137,6 +137,8 @@ export class Particular implements OnInit{
     ]
   };
 
+  dropdownOpen: boolean = false;
+
 
   constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeApiService: HoroscopeApiService, private responsiveServoce: ResposiveService) {}
   
@@ -158,6 +160,18 @@ export class Particular implements OnInit{
       return 'small';
     }
   });
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+  
+  @HostListener('document:click', ['$event'])
+    onClickOutside(event: Event) {
+      const target = event.target as HTMLElement;
+      if (!target.closest('.dropdown-menu')) {
+        this.dropdownOpen = false;
+      }
+  }
 
   horoscopeTypeMapper() {
     for (let i = 0; i<4; i++) {
