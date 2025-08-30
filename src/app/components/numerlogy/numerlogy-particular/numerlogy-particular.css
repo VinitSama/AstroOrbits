@@ -316,7 +316,6 @@
 }
 .page-menu-container> div{
     flex: 1 1 300px;
-    min-width: 300px;
 }
 
 .last-section{

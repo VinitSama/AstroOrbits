@@ -170,6 +170,12 @@ input::placeholder {
     max-width: 1200px;
     margin: 0 auto;
     justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.page-menu-container > div {
+    flex: 1 1 300px;
 }
 
 .last-section{
