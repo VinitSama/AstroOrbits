@@ -191,6 +191,12 @@
     flex-wrap: wrap;
 }
 
+.horoscope-type-name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .horoscope-type{
     width: 100%;
     flex: 1 1 170px;
@@ -209,6 +215,9 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    font-size: 16px;
+    font-weight: 600;
+    align-items: center;
 }
 
 .horoscope-lucky{
@@ -431,6 +440,15 @@ app-tarot-menu-card, app-numerology-menu-card{
     }
 }
 @media (max-width:575px) {
+    .horoscope-type-stars{
+        justify-content: start;
+        gap: 10px;
+    }
+    .horoscope-type{
+        min-width: none;
+        max-width: 100%;
+        flex: 1 1 140px;
+    }
     .horoscope-information{
         padding: 20px;
     }
@@ -448,7 +466,6 @@ app-tarot-menu-card, app-numerology-menu-card{
     }
     .horoscope-types-container{
         display: flex;
-        flex-direction: column;
     }
     .horoscope-name{
         font-size: 18px;
@@ -456,7 +473,7 @@ app-tarot-menu-card, app-numerology-menu-card{
     .horoscope-brief, .day-option{
         font-size: 10px;
     }
-    .horoscope-type, .horoscope-lucky-info, .information-brief{
+    .horoscope-lucky-info, .information-brief{
         font-size: 12px;
     }
     .star-svg{

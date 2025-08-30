@@ -156,6 +156,8 @@ export class Particular implements OnInit{
   modeSelector = computed(() => {
     if (this.responsiveServoce.largeWidth() || this.responsiveServoce.extraLargeWidth() || this.responsiveServoce.xxLargeWidth()) {
       return 'large';
+    } else if (this.responsiveServoce.xxSmallWidth() || this.responsiveServoce.extraSmallWidth()) {
+      return 'extraSmall';
     } else {
       return 'small';
     }
