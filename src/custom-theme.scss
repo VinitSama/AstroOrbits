@@ -14,3 +14,52 @@ html {
     density: 0,
   ));
 }
+
+:root {
+  @include mat.button-overrides((
+    // TEXT buttons (mat-button)
+    text-state-layer-color: transparent,
+    text-hover-state-layer-opacity: 0,
+    text-focus-state-layer-opacity: 0,
+    text-pressed-state-layer-opacity: 0,
+    text-ripple-color: transparent,
+
+    // FILLED buttons (mat-raised-button / mat-flat-button)
+    filled-state-layer-color: transparent,
+    filled-hover-state-layer-opacity: 0,
+    filled-focus-state-layer-opacity: 0,
+    filled-pressed-state-layer-opacity: 0,
+    filled-ripple-color: transparent,
+
+    // OUTLINED buttons (mat-stroked-button)
+    outlined-state-layer-color: transparent,
+    outlined-hover-state-layer-opacity: 0,
+    outlined-focus-state-layer-opacity: 0,
+    outlined-pressed-state-layer-opacity: 0,
+    outlined-ripple-color: transparent,
+
+    // PROTECTED / ELEVATED buttons (if you use them)
+    protected-state-layer-color: transparent,
+    protected-hover-state-layer-opacity: 0,
+    protected-focus-state-layer-opacity: 0,
+    protected-pressed-state-layer-opacity: 0,
+    protected-ripple-color: transparent,
+    protected-hover-container-elevation-shadow: none,
+    protected-focus-container-elevation-shadow: none,
+    protected-pressed-container-elevation-shadow: none,
+
+    // TONAL buttons (if you use them)
+    tonal-state-layer-color: transparent,
+    tonal-hover-state-layer-opacity: 0,
+    tonal-focus-state-layer-opacity: 0,
+    tonal-pressed-state-layer-opacity: 0,
+    tonal-ripple-color: transparent
+  ));
+}
+
+.mat-mdc-button-base:focus,
+.mat-mdc-button-base:focus-visible,
+.mat-mdc-button-base:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
