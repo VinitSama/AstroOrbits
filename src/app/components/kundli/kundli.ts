@@ -15,6 +15,7 @@ import { FormService } from '../../services/form.service';
 import { IFeatureCard } from '../../interfaces/ifeature-card';
 import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
 import { ResposiveService } from '../../services/resposive.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-kundli',
@@ -186,9 +187,13 @@ export class Kundli {
     },
   ]
 
-  constructor(private themeService: ThemeService, private router: Router, private route: ActivatedRoute, private headerService: HeaderService, private formService: FormService, private responsiveService: ResposiveService) {}
+  constructor(private themeService: ThemeService, private router: Router, private route: ActivatedRoute, private headerService: HeaderService, private formService: FormService, private responsiveService: ResposiveService, private seo: SeoService) {}
 
   ngOnInit(): void {
+    this.seo.updateTags({
+      title: "Kundli (Birth Chart) Analysis | Personalized Birth Chart at Astroorbits",
+      ogDescription: "Discover your detailed birth chart with expert Kundli analysis. Accurate, personalized astrology insights at Astroorbits."
+    })
     this.loadSVGColor();
     this.headerService.setColorSubject(false);
     this.headerService.setNavSubject('Kundli');

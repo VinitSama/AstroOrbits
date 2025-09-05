@@ -221,11 +221,11 @@ export class KundliResult {
 
   
   changDetails() {
-    this.router.navigate(['home/kundli']);
+    this.router.navigate(['kundli']);
   }
 
   showDetails(i: number) {
-    this.router.navigate(['home/kundli/details', i]);
+    this.router.navigate(['kundli/details', i]);
   }
 
   private safeSVGMaker(svg: string): SafeHtml {

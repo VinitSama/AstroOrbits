@@ -254,7 +254,7 @@ export class KundliDetailReport implements OnInit {
   }
 
   changDetails() {
-    this.router.navigate(['home/kundli']);
+    this.router.navigate(['kundli']);
   }
 
   optionSelect(id: number) {

@@ -127,7 +127,7 @@
 }
 
 .day-selector{
-  flex: 1 1 300px;
+  flex: 1 1 250px;
   min-width: 200px;
   width: 100%;
   max-height: fit-content;

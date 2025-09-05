@@ -264,7 +264,7 @@ export class MatchingResult implements OnInit {
   }
 
   changDetails() {
-    this.router.navigate(['home/kundli-matching']);
+    this.router.navigate(['kundli/matching']);
   }
 
   private sanitizeSvg() {

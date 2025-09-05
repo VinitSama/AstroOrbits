@@ -95,6 +95,17 @@
     outline: none;
     justify-content: center
 }
+.dropdown-button{
+    border: none;
+    outline: none;
+    background: inherit;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .tag {
     margin-left: 10px;

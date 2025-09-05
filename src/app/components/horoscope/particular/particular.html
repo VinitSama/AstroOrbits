@@ -67,7 +67,7 @@
                     <div class="horoscope-brief">{{report.brief}}</div>
                     <div class="horoscope-types-container">
                         @for (t of report.stars; track $index) {
-                            <div class="horoscope-type">
+                            <div class="horoscope-type" (click)="onStarClick($index)">
                                 <div class="horoscope-type-name">
                                     <div>  
                                         {{starMapper.at($index)}}

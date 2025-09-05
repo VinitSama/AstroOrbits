@@ -166,7 +166,7 @@ export class NumerlogyParticular implements OnInit {
   }
 
   setNumber(num: number) {
-    this.router.navigate(['home', 'numerology', num]);
+    this.router.navigate(['numerology', num]);
   }
 
   setDay(day: string) {
@@ -174,7 +174,7 @@ export class NumerlogyParticular implements OnInit {
   }
 
   goToType(t: string) {
-    this.router.navigate(['home/numerology','t',t,this.selectedNum]);
+    this.router.navigate(['numerology','t',t,this.selectedNum]);
   }
 
 }

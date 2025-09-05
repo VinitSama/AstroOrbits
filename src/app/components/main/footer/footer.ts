@@ -129,7 +129,7 @@ export class Footer {
     if (url == "home"){ 
       this.router.navigate(['home/']);
     } else {
-      this.router.navigate(['home', url]);
+      this.router.navigate([url]);
     }
   }
 

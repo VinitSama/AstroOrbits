@@ -16,7 +16,6 @@ import { CommonModule } from '@angular/common';
 export class Breadcrumbs implements OnInit {
   @Input() showColor: boolean = true;
   breadcrumbs: IBreadcrumb[] = [];
-
   showBreadcrumbs: boolean = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
@@ -25,7 +24,17 @@ export class Breadcrumbs implements OnInit {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.breadcrumbs = this.buildBreadcrumbs(this.activatedRoute.root);
+        const builtCrumbs = this.buildBreadcrumbs(this.activatedRoute.root);
+        const currentUrl = this.router.url;
+
+        if (currentUrl === '/home' || currentUrl === '/') {
+          this.breadcrumbs = [];
+        } else {
+          this.breadcrumbs = [
+            { label: 'Home', url: '/home' },
+            ...builtCrumbs
+          ];
+        }
         this.canShow();
       })
   }

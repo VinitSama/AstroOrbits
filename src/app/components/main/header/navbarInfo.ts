@@ -29,7 +29,7 @@ export const NavbarInfo: INavbarItem[] = [
         },
         {
           name: "Match Making",
-          navigationLink: "kundli-matching",
+          navigationLink: "kundli/matching",
           subLink: ""
         },
       ],

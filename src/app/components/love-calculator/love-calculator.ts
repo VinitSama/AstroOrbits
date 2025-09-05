@@ -18,6 +18,7 @@ import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
 import { IFeatureCard } from '../../interfaces/ifeature-card';
 import { IProgressCard } from '../../interfaces/iprogress-card';
 import { ResposiveService } from '../../services/resposive.service';
+import { SeoService } from '../../services/seo.service';
 
 type TFormOption = 'User' | 'Partner';
 type TGender = "m" | "f";
@@ -111,9 +112,16 @@ export class LoveCalculator implements OnInit {
     }
   }
 
-  constructor(private headerService: HeaderService, private sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute, private formService: FormService, private responsiveService: ResposiveService) {}
+  constructor(private headerService: HeaderService, private sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute, private formService: FormService, private responsiveService: ResposiveService, private seo: SeoService) {}
 
   ngOnInit(): void {
+    this.seo.updateTags({
+      title: "Love Calculator | Relationship Compatibility at Astroorbits",
+      description: "Calculate your love compatibility using Astroorbits Love Calculator. Accurate relationship insights based on astrology and numerology for couples.",
+      keywords: "love calculator, relationship compatibility, love match, astrology love calculator, relationship calculator",
+      ogTitle: "Love Calculator | Relationship Compatibility at Astroorbits",
+      ogDescription: "Assess your love compatibility accurately with the Astroorbits Love Calculator. Expert-based relationship insights available now."
+    })
     this.headerService.setColorSubject(false);
     this.headerService.setNavSubject('Calculator');
     this.svgSanitizer();
@@ -183,7 +191,7 @@ export class LoveCalculator implements OnInit {
         girl: girlF
       };
       this.formService.setLoveData(loveProfile);
-      this.router.navigate(['home/love-calculator/r',true]);
+      this.router.navigate(['love-calculator/r',true]);
     }
     
   }

@@ -1,4 +1,4 @@
-<div class="zodiac-card" [routerLink]="['/home/horoscope', zodiacCard.title]" (click)="smoothScrolling()" [ngStyle]="{'--box-size': boxSize}">
+<div class="zodiac-card" [routerLink]="['/horoscope', zodiacCard.title]" (click)="smoothScrolling()" [ngStyle]="{'--box-size': boxSize}">
     <div class="svg-container" [innerHTML]="safeSvg" [ngClass]="{'circle': isCircle}"></div>
     <div class="info-container">
         @if (showName) {

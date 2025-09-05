@@ -24,6 +24,7 @@ import { AstrologySection } from "../astrology-section/astrology-section";
 import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
 import { ResposiveService } from '../../services/resposive.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-numerlogy',
@@ -223,7 +224,7 @@ export class Numerlogy implements OnInit {
     },
   ];
   
-  constructor(private themeService: ThemeService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private sanitizer: DomSanitizer, private headerService: HeaderService, private responsiveService: ResposiveService) {
+  constructor(private themeService: ThemeService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private sanitizer: DomSanitizer, private headerService: HeaderService, private responsiveService: ResposiveService, private seo: SeoService) {
     this.numerologyForm = this.fb.group({
       name: ['', Validators.required],
       DOB: ['', Validators.required],
@@ -231,6 +232,10 @@ export class Numerlogy implements OnInit {
   }
   
   ngOnInit(): void {
+    this.seo.updateTags({
+      title: "Numerology Readings at Astroorbits |> \n <| Life Path & Destiny Insights at Astroorbits",
+      ogDescription: "Get expert numerology readings and discover your life path and destiny. Personalized insights available at Astroorbits.",
+    })
     this.loadSvgColors();
     this.route.paramMap.subscribe(params => {
       this.loadFromRouteIfNeeded(params);
@@ -313,12 +318,12 @@ export class Numerlogy implements OnInit {
   }
 
   onDaySelect(day: string) {
-    this.router.navigate(['/home/numerology', 'd', day]);
+    this.router.navigate(['/numerology', 'd', day]);
     this.smoothScrolling();
   }
   
   onTypeSelect(type: string) {
-    this.router.navigate(['/home/numerology', 't', type]);
+    this.router.navigate(['/numerology', 't', type]);
     this.smoothScrolling();
   }
 
@@ -337,10 +342,10 @@ export class Numerlogy implements OnInit {
 
   goToParticular(num: number) {
     if (this.showTypeInfo){
-      this.router.navigate(['home/numerology/t',this.selectedType,num])
+      this.router.navigate(['numerology/t',this.selectedType,num])
     }
     else {
-      this.router.navigate(['home', 'numerology', num]);
+      this.router.navigate(['numerology', num]);
     }
   }
 

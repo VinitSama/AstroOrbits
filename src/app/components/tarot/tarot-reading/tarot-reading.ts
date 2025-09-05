@@ -219,7 +219,7 @@ export class TarotReading implements OnInit{
   }
 
   selectOption(i: TSelectedOption) {
-    this.router.navigate(['home/tarot/o', i]);
+    this.router.navigate(['tarot/o', i]);
   }
 
 }

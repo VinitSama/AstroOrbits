@@ -11,6 +11,7 @@ import { TarotCard } from "./tarot-card/tarot-card";
 import { FAQSection } from "../faq-section/faq-section";
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TSelectedOption } from './tarot-reading/tarot-reading';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-tarot',
@@ -99,9 +100,16 @@ export class Tarot implements OnInit {
     ]
   };
 
-  constructor(private headerSevice: HeaderService, private router: Router, private route: ActivatedRoute) {}
+  constructor(private headerSevice: HeaderService, private router: Router, private route: ActivatedRoute, private seo: SeoService) {}
 
   ngOnInit(): void {
+    this.seo.updateTags({
+      title: "Tarot Reading at Astroorbits | Expert Tarot Card Insights & Guidance",
+      description: "Discover personalized tarot readings with expert insights into your past, present, and future. Experience authentic Tarot guidance updated regularly at Astroorbits.",
+      keywords: "tarot reading, tarot card insights, personalized tarot, tarot guidance, expert tarot reading, tarot predictions",
+      ogTitle: "Tarot Reading | Expert Tarot Card Insights & Guidance at Astroorbits",
+      ogDescription: "Explore accurate and personalized tarot readings with expert guidance. Updated frequently to provide fresh insights and clarity."
+    })
     this.headerSevice.setColorSubject(false);
     this.headerSevice.setNavSubject('Tarot Reading');
     this.selectedCards = new Set<number>();
@@ -140,7 +148,7 @@ export class Tarot implements OnInit {
   submitCards() {
     if (this.enableButton) {
       console.log('submited');
-      this.router.navigate(['home/tarot',this.selectedOption]);
+      this.router.navigate(['tarot',this.selectedOption]);
     }
   }
 }

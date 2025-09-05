@@ -1,8 +1,8 @@
 <div class="horoscope-page-container">
     <div class="section-title">
-        <app-section-tag [sectionTitle]="zodiacSectionTtitle" [subHeadCol]="true" [subHeading]="showDayDetails ? '' : zodiacSectionBrief"></app-section-tag>
-        @if (showDayDetails) {
-            <div class="day-selector">{{selectedDayBrief}}</div>
+        <app-section-tag [sectionTitle]="zodiacSectionTtitle" [subHeadCol]="true" [subHeading]="showDetails ? '' : zodiacSectionBrief"></app-section-tag>
+        @if (showDetails) {
+            <div class="day-selector">{{selectedBrief}}</div>
         }
     </div>
 
@@ -59,7 +59,7 @@
             </div>
             <app-zodiac-prediction [svgColor]="svgColor" [detailed]="true"></app-zodiac-prediction>
         </div>
-        @if (!showDayDetails) {
+        @if (!showDetails) {
             <div class="special-click-link">
                 <div class="link-svg">
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
@@ -96,7 +96,7 @@
                 <ng-container>
                     @if (selectedDay !== d.name) {
                         <div class="day-selector">
-                            <div class="selector-name">{{`${d.name}${d.name === 'Yearly' ? " - " + thisYear: ""}`}}</div>
+                            <div class="selector-name">{{d.name}}</div>
                             <div class="selector-brief">{{d.brief}}</div>
                             <div class="read-more" (click)="onDaySelect(d.name)">Read More</div>
                         </div>

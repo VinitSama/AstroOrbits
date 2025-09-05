@@ -86,7 +86,7 @@ export class MantraTable {
   }
 
   goToMantra(mantra: string) {
-    this.router.navigate(['home/mantras', mantra])
+    this.router.navigate(['mantras', mantra])
     this.smoothScrolling();
   }
 

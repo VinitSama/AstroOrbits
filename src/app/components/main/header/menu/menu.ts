@@ -52,7 +52,7 @@ export class Menu implements OnInit {
       this.router.navigate(['home']);
       this.close.emit();
     } else if (this.navbarItems[ind].navigationLink) {
-      this.router.navigate(['home',this.navbarItems[ind].navigationLink]);
+      this.router.navigate([,this.navbarItems[ind].navigationLink]);
       this.close.emit();
     }
   }
@@ -62,12 +62,12 @@ export class Menu implements OnInit {
     console.log(page, i)
     console.log(item);
     if (i<0 && page != null){
-      this.router.navigate(['home', page]);
+      this.router.navigate([page]);
     } else if (page == 'numerology' || page == 'horoscope'){
       const subLink = item?.dropDownOption && item?.dropDownOption[i].subLink ? item?.dropDownOption[i].subLink : '';
-      this.router.navigate(['home', page, 'd', subLink])
+      this.router.navigate([page, 'd', subLink])
     } else if (page) {
-      this.router.navigate(['home', page]);
+      this.router.navigate([page]);
     }
     this.close.emit();
   }

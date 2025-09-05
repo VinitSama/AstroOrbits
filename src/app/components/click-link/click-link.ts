@@ -20,9 +20,9 @@ export class ClickLink {
     if (page == 'home') {
       this.router.navigate([page])
     }else if (page == 'numerology'){
-      this.router.navigate(['home',page,"0","0"])
+      this.router.navigate([page,"0","0"])
     } else if (page){
-      this.router.navigate(['home', page]);
+      this.router.navigate([page]);
     }
   }
 

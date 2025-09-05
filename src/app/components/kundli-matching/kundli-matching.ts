@@ -18,6 +18,7 @@ import { IKundliForm, IMatchData } from '../../interfaces/ikundli-form';
 import { FormService } from '../../services/form.service';
 import { Router } from '@angular/router';
 import { ResposiveService } from '../../services/resposive.service';
+import { SeoService } from '../../services/seo.service';
 
 type TGender = 'm' | 'f';
 
@@ -311,14 +312,18 @@ export class KundliMatching implements OnInit {
   };
   selectedCompatibilityOption: number = 0;
 
-  constructor(private themeService: ThemeService, private headerService: HeaderService, private sanitizer: DomSanitizer, private formService: FormService, private router: Router, private responsiveService: ResposiveService) {}
+  constructor(private themeService: ThemeService, private headerService: HeaderService, private sanitizer: DomSanitizer, private formService: FormService, private router: Router, private responsiveService: ResposiveService, private seo: SeoService) {}
 
   ngOnInit(): void {
-   this.loadSvgColor();
-   this.headerService.setColorSubject(false); 
-   this.headerService.setNavSubject('Kundli');
-   this.formSvgSanitizer();
-   this.stepsDone = -1;
+    this.seo.updateTags({
+      title: "Kundli Matching for Marriage Compatibility | Marriage Compatibility Astrology at Astroorbits",
+      ogDescription: "Find your perfect match with expert Kundli matching and marriage compatibility analysis at Astroorbits. Accurate and reliable results."
+    })
+    this.loadSvgColor();
+    this.headerService.setColorSubject(false); 
+    this.headerService.setNavSubject('Kundli');
+    this.formSvgSanitizer();
+    this.stepsDone = -1;
   }
   
   cardEffect = effect(() => {
@@ -367,7 +372,7 @@ export class KundliMatching implements OnInit {
     console.log(this.forms);
     if (this.validForm(this.forms.boy) && this.validForm(this.forms.girl)){
       this.formService.setMatchData(this.forms);
-      this.router.navigate(["home/kundli-matching/result",0]);
+      this.router.navigate(["kundli/matching/result",0]);
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ISvgColors } from '../../../interfaces/isvg-link';
 import { CommonModule } from '@angular/common';
 import { SectionTag } from "../../section-tag/section-tag";
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './tarot-menu.html',
   styleUrl: './tarot-menu.css'
 })
-export class TarotMenu implements OnInit {
+export class TarotMenu {
   
   @Input() selectedOption: string = "";
   @Input() svgColor!: ISvgColors;
@@ -22,13 +22,8 @@ export class TarotMenu implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    console.log(11111111111111111111111111111111111111111111);
-    console.log(this.selectedOption);
-  }
-
   onOptionClick(option: string) {
-    this.router.navigate(['home/tarot', option]);
+    this.router.navigate(['tarot', option]);
   }
 
 }

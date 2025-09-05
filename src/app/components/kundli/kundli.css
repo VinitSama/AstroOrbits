@@ -31,6 +31,10 @@
     width: 100%;
     z-index: 3;
 }
+.kundli-form-box > app-kundli-form{
+    max-width: 430px;
+    width: 100%;
+}
 
 .first-design-card{
     width: 195px;

@@ -12,6 +12,7 @@ import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
 import { HeaderService } from '../../services/header.service';
 import { ResposiveService } from '../../services/resposive.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-panchang',
@@ -88,9 +89,16 @@ export class Panchang {
     },
   ];
 
-  constructor(private headerService: HeaderService, private themeService: ThemeService, private responsiveService: ResposiveService) {}
+  constructor(private headerService: HeaderService, private themeService: ThemeService, private responsiveService: ResposiveService, private seo: SeoService) {}
 
   ngOnInit(): void {
+    this.seo.updateTags({
+      title: "Panchang & Muhurat at Astroorbits | Accurate Hindu Calendar & Auspicious Timings",
+      description: "Access detailed Panchang information and auspicious timings for your important events. Updated regularly with precise Hindu calendar data at Astroorbits.",
+      keywords: "panchang, muhurat, hindu calendar, auspicious timings, hindu astrology, panchang details, muhurat timing",
+      ogTitle: "Panchang & Muhurat | Hindu Calendar & Auspicious Timings at Astroorbits",
+      ogDescription: "Find accurate Panchang details and auspicious muhurat timings for all occasions. Regularly updated Hindu calendar information at Astroorbits."
+    })
     this.headerService.setColorSubject(false);
     this.headerService.setNavSubject('Panchang');
     this.loadSVGColor();

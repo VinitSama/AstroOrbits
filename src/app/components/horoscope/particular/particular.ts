@@ -26,6 +26,8 @@ import { HoroscopeApiService } from '../../../services/api/horoscope-api.service
 import { ResposiveService } from '../../../services/resposive.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { SeoService, WEP_ADD } from '../../../services/seo.service';
+import { FormService } from '../../../services/form.service';
 
 export type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
 
@@ -140,9 +142,16 @@ export class Particular implements OnInit{
   dropdownOpen: boolean = false;
 
 
-  constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeApiService: HoroscopeApiService, private responsiveServoce: ResposiveService) {}
+  constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeApiService: HoroscopeApiService, private responsiveServoce: ResposiveService, private seo: SeoService, private formsService: FormService) {}
   
   ngOnInit(): void {
+    this.seo.updateTags({
+      title: 'Horoscope & Zodiac Signs: Comprehensive Astrology Predictions for All Signs',
+      description: 'Explore your horoscope and discover in-depth zodiac predictions for every sign. Get insights on love, career, health, and personality traits—expert-written, authentic astrology guidance for all.',
+      keywords: "horoscope, zodiac signs, astrology, horoscope predictions, astrology signs, birth chart, horoscope compatibility, astrology guidance, horoscope reading, star signs, sun sign, moon sign, expert astrologers",
+      ogDescription: "Comprehensive astrology predictions for all zodiac signs. Explore love, career, health, and more with real astrologers.",
+      ogUrl: `${WEP_ADD}`,
+    });
     this.headerService.setColorSubject(true);
     this.headerService.setNavSubject('Horoscope');
     this.loadSVGColor();
@@ -232,6 +241,7 @@ export class Particular implements OnInit{
 
     if (zodiacParam && this.isValidZodiac(zodiacParam)) {
       this.zodiac = zodiacParam as TZodiacSign;
+      this.formsService.setZodiacSign(this.zodiac);
     } else (
       this.router.navigate(['false'])
     )
@@ -241,7 +251,7 @@ export class Particular implements OnInit{
   }
 
   onZodiacClick(title: TZodiacSign | null){
-    this.router.navigate(['/home/horoscope', title]);
+    this.router.navigate(['/horoscope', title]);
   }
 
   private sanitizeSvg(svg: string, selected: boolean = false) {
@@ -315,5 +325,8 @@ export class Particular implements OnInit{
       return d;
     }
     return d;
+  }
+  onStarClick(ind: number){
+    this.router.navigate(['horoscope', this.starMapper.at(ind)])
   }
 }

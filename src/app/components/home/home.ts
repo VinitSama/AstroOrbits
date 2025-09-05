@@ -25,6 +25,7 @@ import { PanchangMenuCard } from "../menu-card-container/cards/panchang-menu-car
 import { TarotMenuCard } from "../menu-card-container/cards/tarot-menu-card/tarot-menu-card";
 import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-menu-card";
 import { ResposiveService } from '../../services/resposive.service';
+import { SeoService, WEP_ADD } from '../../services/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -80,9 +81,17 @@ export class Home implements OnInit {
 
   private themeUpdateSubscription!: Subscription; 
 
-  constructor(private themeService: ThemeService, private headerService: HeaderService, private responsiveService: ResposiveService) {}
+  constructor(private themeService: ThemeService, private headerService: HeaderService, private responsiveService: ResposiveService, private seo: SeoService) {}
 
   ngOnInit(): void {
+    this.seo.updateTags({
+      title: 'Astroorbits: Unlock Your Cosmic Blueprint | Free Horoscope, Numerology & Kundali Reports',
+      description: 'Discover Astroorbits.com—your gateway to free horoscope, numerology, and kundali reports. Join community sessions, get daily guidance, and explore cosmic solutions for love, career, compatibility, and spirituality. First reading free—start your journey to clarity now!',
+      keywords: "horoscope, numerology, kundali, astrology, compatibility, free reading, spiritual guidance, panchang, love calculator, planet transits, matchmaking",
+      ogTitle: "Astroorbits: Unlock Your Cosmic Blueprint",
+      ogDescription: "Free horoscope, numerology, and kundali reports. Join live sessions, get daily guidance, and find cosmic clarity. First reading free!",
+      ogUrl: `${WEP_ADD}`,
+    });
     this.loadSVGColor();
     this.headerService.setColorSubject(true);
     this.headerService.setNavSubject('Home');

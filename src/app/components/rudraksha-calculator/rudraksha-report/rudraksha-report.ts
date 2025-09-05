@@ -47,6 +47,6 @@ export class RudrakshaReport implements OnInit{
   }
 
   changDetails() {
-    this.router.navigate(['home/rudrakhs-calculator']);
+    this.router.navigate(['rudrakhs-calculator']);
   }
 }

@@ -17,6 +17,16 @@
                     </div>
                 }
                 @else {
+                    <!-- <button #button #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="navMenu" style="z-index: 1050;" class="dropdown-button" [ngClass]="{'pointer': item.navigationLink != null}" (mouseenter)="buttonEnter(menuTrigger)"  (mouseleave)="buttonLeave(menuTrigger)" (click)="goToPage(item.navigationLink, i, -1)">
+                        <div class="menu-button-name">
+                            {{item.name}}
+                            <div class="menu-arrow-svg">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="15" viewBox="0 0 14 15" fill="none">
+                                    <path d="M3.5 5.75L7 9.25L10.5 5.75" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </button> -->
                     <button mat-button #button [disableRipple]="true" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="navMenu" style="z-index: 1050;" class="item-name" [ngClass]="{'pointer': item.navigationLink != null}" (mouseenter)="buttonEnter(menuTrigger)"  (mouseleave)="buttonLeave(menuTrigger)" (click)="goToPage(item.navigationLink, i, -1)">
                         <div class="menu-button-name">
                             {{item.name}}
