@@ -44,11 +44,17 @@ export class Navbar implements OnInit {
     else if (j<0 && page != null){
       this.router.navigate([page]);
     }
-    else if (page == 'numerology' || page == 'horoscope'){
+    else if (page == 'numerology'){
       const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
         ? this.navbarItems[i].dropDownOption[j].subLink
         : '';
       this.router.navigate([page, "d", subLink]);
+    }
+    else if (page == 'horoscope'){
+      const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
+        ? this.navbarItems[i].dropDownOption[j].subLink
+        : '';
+      this.router.navigate([page, subLink]);
     }
     else if (page){
       this.router.navigate([page]);
