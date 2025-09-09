@@ -19,6 +19,9 @@ import { FAQSection } from "../../faq-section/faq-section";
 import { RudrakshSection } from "../../rudraksh-section/rudraksh-section";
 import { IFeatureCard } from '../../../interfaces/ifeature-card';
 import { FeatureCardT1 } from "../../feature-card-t1/feature-card-t1";
+import { IAboutCard } from '../../../interfaces/iabout-card';
+import { IFAQCard } from '../../../interfaces/ifaq-card';
+import { kundliAboutCard, kundliFaqCard } from '../kundli-about';
 
 @Component({
   selector: 'app-kundli-result',
@@ -200,6 +203,8 @@ export class KundliResult {
   }
 
   horoscopeSvg!: SafeHtml;
+  aboutCard!: IAboutCard;
+  faqCards!: IFAQCard[];
 
   constructor(private themeService: ThemeService, private sanitizer: DomSanitizer, private zodiacService: ZodiacServices, private headerService: HeaderService, private formService: FormService, private router: Router) {}
 
@@ -210,6 +215,8 @@ export class KundliResult {
     this.loadSVGColor();
     this.getHoroscopeSVG();
     this.setAllSvgSafe();
+    this.aboutCard = kundliAboutCard;
+    this.faqCards = kundliFaqCard;
   }
 
   private setProfile() {

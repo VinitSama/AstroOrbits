@@ -21,7 +21,7 @@
     @if (isOpen) {
         <div class="answer-container">
             <hr class="rule">
-            <div class="answer">{{card.ans}}</div>
+            <div class="answer"[innerHTML]="card.ans"></div>
         </div>
     }
 </div>

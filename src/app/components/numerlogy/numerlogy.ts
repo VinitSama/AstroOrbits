@@ -4,7 +4,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ISvgColors } from '../../interfaces/isvg-link';
 import { ThemeService } from '../../services/theme.service';
 import { SectionTag } from "../section-tag/section-tag";
-import { IArticle } from '../../interfaces/iarticle';
 import { MenuCard } from "../menu-card-container/menu-card/menu-card";
 import { IMenuCard } from '../../interfaces/imenu-card';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -25,6 +24,9 @@ import { AboutSection } from "../about-section/about-section";
 import { FAQSection } from "../faq-section/faq-section";
 import { ResposiveService } from '../../services/resposive.service';
 import { SeoService } from '../../services/seo.service';
+import { IFAQCard } from '../../interfaces/ifaq-card';
+import { IAboutCard } from '../../interfaces/iabout-card';
+import { numerlogyFaqCard, numerologyAboutCard } from './numerlogy-about';
 
 @Component({
   selector: 'app-numerlogy',
@@ -223,6 +225,8 @@ export class Numerlogy implements OnInit {
       brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
     },
   ];
+  aboutCard!: IAboutCard;
+  faqCards!: IFAQCard[];
   
   constructor(private themeService: ThemeService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private sanitizer: DomSanitizer, private headerService: HeaderService, private responsiveService: ResposiveService, private seo: SeoService) {
     this.numerologyForm = this.fb.group({
@@ -244,6 +248,8 @@ export class Numerlogy implements OnInit {
     this.headerService.setColorSubject(false);
     this.headerService.setNavSubject('Numerology');
     this.setThisYear();
+    this.aboutCard = numerologyAboutCard;
+    this.faqCards = numerlogyFaqCard;
   }
 
   cardResize = effect(() => {

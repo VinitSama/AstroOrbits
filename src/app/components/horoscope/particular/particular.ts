@@ -28,6 +28,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { SeoService, WEP_ADD } from '../../../services/seo.service';
 import { FormService } from '../../../services/form.service';
+import { IAboutCard } from '../../../interfaces/iabout-card';
+import { horoscopeLandingAbout, horoscopeLandingFaqCard } from '../horoscope-about';
+import { IFAQCard } from '../../../interfaces/ifaq-card';
 
 export type TDates = "Yesterday" | "Tomorrow" | "Today" | "Weekly" | "Monthly" | "Yearly"; 
 
@@ -140,6 +143,8 @@ export class Particular implements OnInit{
   };
 
   dropdownOpen: boolean = false;
+  aboutCard!: IAboutCard;
+  faqCard!: IFAQCard[];
 
 
   constructor( private headerService: HeaderService ,private themeService: ThemeService, private zodiacService: ZodiacServices, private sanitizer: DomSanitizer, private route: ActivatedRoute, private router: Router, private horoscopeApiService: HoroscopeApiService, private responsiveServoce: ResposiveService, private seo: SeoService, private formsService: FormService) {}
@@ -160,6 +165,8 @@ export class Particular implements OnInit{
       this.loadFromRouteIfNeeded(params);
     });
     this.setOpenSvg();
+    this.aboutCard = horoscopeLandingAbout;
+    this.faqCard = horoscopeLandingFaqCard;
   }
 
   modeSelector = computed(() => {

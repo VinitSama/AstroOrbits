@@ -54,7 +54,11 @@ export class Navbar implements OnInit {
       const subLink = this.navbarItems[i]?.dropDownOption && this.navbarItems[i].dropDownOption[j]
         ? this.navbarItems[i].dropDownOption[j].subLink
         : '';
-      this.router.navigate([page, subLink]);
+      if (subLink != 'Yearly'){
+        this.router.navigate([page, subLink]);
+      } else {
+        this.router.navigate([page, subLink, new Date().getFullYear()]);
+      }
     }
     else if (page){
       this.router.navigate([page]);

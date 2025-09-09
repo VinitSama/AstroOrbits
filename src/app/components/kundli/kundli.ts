@@ -16,6 +16,9 @@ import { IFeatureCard } from '../../interfaces/ifeature-card';
 import { FeatureCardT1 } from "../feature-card-t1/feature-card-t1";
 import { ResposiveService } from '../../services/resposive.service';
 import { SeoService } from '../../services/seo.service';
+import { IFAQCard } from '../../interfaces/ifaq-card';
+import { IAboutCard } from '../../interfaces/iabout-card';
+import { kundliAboutCard, kundliFaqCard } from './kundli-about';
 
 @Component({
   selector: 'app-kundli',
@@ -187,6 +190,8 @@ export class Kundli {
     },
   ]
 
+  aboutCard!: IAboutCard;
+  faqCards!: IFAQCard[];
   constructor(private themeService: ThemeService, private router: Router, private route: ActivatedRoute, private headerService: HeaderService, private formService: FormService, private responsiveService: ResposiveService, private seo: SeoService) {}
 
   ngOnInit(): void {
@@ -197,6 +202,8 @@ export class Kundli {
     this.loadSVGColor();
     this.headerService.setColorSubject(false);
     this.headerService.setNavSubject('Kundli');
+    this.aboutCard = kundliAboutCard;
+    this.faqCards = kundliFaqCard;
   }
 
   private loadSVGColor() {

@@ -1,12 +1,12 @@
-<div class="faq-container">
-    <div class="section-tag">
+@if (cards) {
+    <div class="faq-container">
         <app-section-tag [sectionTitle]="'Most Commonly Asked Questions (FAQs)'" [subHeading]="'Knowing more about would never hurt, just dive deep to be aware of the new trends.'"></app-section-tag>
-    </div>
-    <div class="card-container">
+        <div class="card-container">
         @for (c of cards; track $index) {
             <div class="card">
                 <app-faq-card [mode]="modeSelector()" [card]="c"></app-faq-card>
             </div>
         }
+        </div>
     </div>
-</div>
+}

@@ -15,6 +15,8 @@ import { IFeatureCardT2 } from '../../../../interfaces/ifeature-card-t2';
 import { Dashaa } from "../../../dashaa/dashaa";
 import { Remedies } from "../../../remedies/remedies";
 import { KundliChart } from "../kundli-chart/kundli-chart";
+import { IFAQCard } from '../../../../interfaces/ifaq-card';
+import { kundliFaqCard } from '../../kundli-about';
 
 @Component({
   selector: 'app-kundli-detail-report',
@@ -219,6 +221,8 @@ export class KundliDetailReport implements OnInit {
     },
   ];
 
+  faqCard!: IFAQCard[];
+
   constructor(private headerService: HeaderService, private formService: FormService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
@@ -229,6 +233,7 @@ export class KundliDetailReport implements OnInit {
       this.setSelectedOption(params);
     })
     this.sanitizeSvg();
+    this.faqCard = kundliFaqCard;
   }
 
   private sanitizeSvg() {

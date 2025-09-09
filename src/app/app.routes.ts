@@ -51,7 +51,7 @@ export const routes: Routes = [
                 data: {layout: 'main', breadcrumb: 'Monthly'},
             },
             {
-                path: `yearly/${new Date().getFullYear()}`,
+                path: `Yearly/${new Date().getFullYear()}`,
                 loadComponent: () => import('./components/horoscope/horoscope').then( m => m.Horoscope),
                 data: {layout: 'main', breadcrumb: 'Yearly'},
             },

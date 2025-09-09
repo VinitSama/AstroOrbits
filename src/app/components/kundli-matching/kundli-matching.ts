@@ -19,6 +19,9 @@ import { FormService } from '../../services/form.service';
 import { Router } from '@angular/router';
 import { ResposiveService } from '../../services/resposive.service';
 import { SeoService } from '../../services/seo.service';
+import { IAboutCard } from '../../interfaces/iabout-card';
+import { IFAQCard } from '../../interfaces/ifaq-card';
+import { matchingAboutCard, matchingFaqCard } from './matching-about';
 
 type TGender = 'm' | 'f';
 
@@ -311,6 +314,8 @@ export class KundliMatching implements OnInit {
     },
   };
   selectedCompatibilityOption: number = 0;
+  aboutCard!: IAboutCard;
+  faqCards!: IFAQCard[];
 
   constructor(private themeService: ThemeService, private headerService: HeaderService, private sanitizer: DomSanitizer, private formService: FormService, private router: Router, private responsiveService: ResposiveService, private seo: SeoService) {}
 
@@ -324,6 +329,8 @@ export class KundliMatching implements OnInit {
     this.headerService.setNavSubject('Kundli');
     this.formSvgSanitizer();
     this.stepsDone = -1;
+    this.aboutCard = matchingAboutCard;
+    this.faqCards = matchingFaqCard;
   }
   
   cardEffect = effect(() => {

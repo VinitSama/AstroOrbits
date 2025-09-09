@@ -1,9 +1,9 @@
-.about-section{
+.for-about-section{
     width: 100%;
     padding-top: 120px;    
 }
 
-.container-wrapper{
+.container-wrapper-for-about-section{
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -11,34 +11,82 @@
     margin: 0 auto;
 }
 
-.information-container{
+.information-container-for-about-section{
     display: flex;
     gap: 32px;
     width: 100%;
     color: var(--secondary-color);
-    font-size: 16px;
     font-weight: 400;
 }
 
-.heading{
-    font-weight: 700;
+.blur-effect-for-about-section{
+    flex-direction: column;
+    max-height: 300px;
+    height: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
 }
 
-.passage{
-    margin-top: 32px;
-}
-
-.bold{
+.read-more-btn-for-about-section{
+    display: flex;
+    margin: auto;
+    margin-top: -30px;
+    border-radius: 7px;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+    font-size: 14px;
     font-weight: 500;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 6px 12px;
 }
+
+.column-for-about-section{
+    flex: 1;
+    line-height: 20px;
+    font-size: 16px;
+}
+
+.column-for-about-section h2, .column-for-about-section h3, .column-for-about-section h4, .column-for-about-section h5, .column-for-about-section h6{
+    font-size: inherit;
+    font-weight: 700;
+    margin: 0;
+    line-height: inherit;
+}
+
+.column-for-about-section div{
+    margin-bottom: 16px;
+}
+
+.column-for-about-section a{
+    color: inherit;
+}
+
+.column-for-about-section ul, .column-for-about-section ol{
+    margin: 4px 0;
+    padding-left: 25px;
+    line-height: inherit;
+}
+
 
 @media (max-width: 575px) {
-    .information-container{
+    .information-container-for-about-section{
         flex-direction: column;
-        gap: 30px;
+        gap: unset;
+    }
+    .column-for-about-section{
         font-size: 12px;
-    }   
-    .passage{
-        margin-top: 16px;
+        line-height: 15px;
+    }
+    .column-for-about-section div{
+        margin-bottom: 12px;
     }
 }

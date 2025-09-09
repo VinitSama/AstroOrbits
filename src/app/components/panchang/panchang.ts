@@ -13,6 +13,8 @@ import { FAQSection } from "../faq-section/faq-section";
 import { HeaderService } from '../../services/header.service';
 import { ResposiveService } from '../../services/resposive.service';
 import { SeoService } from '../../services/seo.service';
+import { IAboutCard } from '../../interfaces/iabout-card';
+import { panchangAboutCard } from './panchang-about';
 
 @Component({
   selector: 'app-panchang',
@@ -88,6 +90,8 @@ export class Panchang {
       imgUrl: "./images/sample_holiday.jpg",
     },
   ];
+  aboutCard!: IAboutCard;
+
 
   constructor(private headerService: HeaderService, private themeService: ThemeService, private responsiveService: ResposiveService, private seo: SeoService) {}
 
@@ -109,6 +113,7 @@ export class Panchang {
     this.forDecreament.setDate(this.date.getDate() -1);
     this.forIncreament.setDate(this.date.getDate() +1);
     this.changeAllHoliday();
+    this.aboutCard = panchangAboutCard;
   }
 
   modeSelector = computed(() => {

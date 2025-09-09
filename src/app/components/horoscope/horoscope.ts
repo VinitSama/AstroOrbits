@@ -18,7 +18,7 @@ import { TarotMenuCard } from "../menu-card-container/cards/tarot-menu-card/taro
 import { LoveMenuCard } from "../menu-card-container/cards/love-menu-card/love-menu-card";
 import { IInsightCard } from '../../interfaces/iinsight-card';
 import { AstrologicalInsightCard } from "../astrological-insight-card/astrological-insight-card";
-import { ActivatedRoute, ActivatedRouteSnapshot, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { ITrendingContainer } from '../../interfaces/itrending-tag';
 import { TrendingTags } from "../trending-tags/trending-tags";
 import { IPersonalisedContainer } from '../../interfaces/ipersonalised-container';
@@ -26,6 +26,10 @@ import { PersonalizeSection } from "../personalize-section/personalize-section";
 import { SeoService, WEP_ADD } from '../../services/seo.service';
 import { FormService } from '../../services/form.service';
 import { TZodiacSign } from '../../types/tzodiac-sign';
+import { IAboutCard } from '../../interfaces/iabout-card';
+import { IFAQCard } from '../../interfaces/ifaq-card';
+import { horoscopeCareerAboutCard, horoscopeDailyAboutCard, horoscopeFinanceAboutCard, horoscopeHealthAboutCard, horoscopeHealthFaqCard, horoscopeLandingAbout, horoscopeLandingFaqCard, horoscopeLoveAboutCard, horoscopeMonthlyAboutCard, horoscopeWeeklyAboutCard, horoscopeWeeklyFaqCard } from './horoscope-about';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-horoscope',
@@ -151,7 +155,9 @@ export class Horoscope implements OnInit {
       svgName: "moon",
     },
   ];
-  constructor(private themeService: ThemeService, private headerService: HeaderService, private route: ActivatedRoute, private router: Router, private seo: SeoService, private formService: FormService) {}
+  aboutCard!: IAboutCard;
+  faqCards!: IFAQCard[];
+  constructor(private themeService: ThemeService, private headerService: HeaderService, private route: ActivatedRoute, private router: Router, private seo: SeoService, private formService: FormService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.selectedZodiac = this.formService.getZodiacSign();
@@ -162,9 +168,185 @@ export class Horoscope implements OnInit {
       this.loadFromRouteIfNeeded(this.route.snapshot);
     });
     this.setThisYear();
+    this.aboutCardSetter();
   }
 
-  seoSeter() {
+  private aboutCardSetter() {
+    if (this.selectedType) {
+      switch (this.selectedType) {
+        case 'Love':
+          this.aboutCard = horoscopeLoveAboutCard;
+          break;
+        case 'Finance':
+          this.aboutCard = horoscopeFinanceAboutCard;
+          break;
+        case 'Career':
+          this.aboutCard = horoscopeCareerAboutCard;
+          break;
+        case 'Health':
+          this.aboutCard = horoscopeHealthAboutCard;
+          break;
+      }
+    } else if (this.selectedDay) {
+      switch (this.selectedDay) {
+        case 'Daily':
+          this.aboutCard = horoscopeDailyAboutCard;
+          break;
+        case 'Weekly':
+          this.aboutCard = horoscopeWeeklyAboutCard;
+          break;
+        case 'Monthly':
+          this.aboutCard = horoscopeMonthlyAboutCard;
+          break;
+        default:
+          this.aboutCard = horoscopeLandingAbout;
+      }
+    } else {
+      this.aboutCard = horoscopeLandingAbout;
+    }
+  }
+
+  private faqSetter() {
+    if (this.selectedType == 'Health'){
+      this.faqCards = horoscopeHealthFaqCard;
+    }
+    else if (this.selectedDay){
+      switch (this.selectedDay){
+        // case 'Daily':
+        //   this.faqCards = horoscopeLandingFaqCard;
+        //   break;
+        case 'Weekly':
+          this.faqCards = horoscopeWeeklyFaqCard;
+          break;
+        default:
+          this.faqCards = horoscopeLandingFaqCard;
+      }
+    } else {
+      this.faqCards = horoscopeLandingFaqCard;
+    }
+  }
+
+
+  
+  private getWeekRange(date: Date = new Date()): string {
+    const day = date.getDay();
+    let start = new Date(date);
+    start.setDate(date.getDate() - day);
+    let end = new Date(date);
+    end.setDate(date.getDate() + (6 - day));
+    return `${this.formatDate(start)} to ${this.formatDate(end)}`;
+  }
+
+  private formatDate(date: Date): string {
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+    });
+  }
+
+  private setThisYear() {
+    this.thisYear =  new Date().getFullYear().toString();
+    this.daySelector[3].name = `Yearly - ${this.thisYear}`;
+  }
+
+  private loadFromRouteIfNeeded(route: ActivatedRouteSnapshot) {
+    const currentPath = route.routeConfig?.path ?? '';
+    const parentPath = route.parent?.routeConfig?.path ?? '';
+
+    let selectedName = '';
+    let brief = '';
+
+    // --- Detect type safely ---
+    const possibleTypes: Array<'Love' | 'Health' | 'Career' | 'Finance'> = [
+      'Love',
+      'Health',
+      'Career',
+      'Finance',
+    ];
+
+    const matchType = (path: string): typeof this.selectedType =>
+      possibleTypes.find(t => t.toLowerCase() === path.toLowerCase()) ?? null;
+
+    this.selectedType = matchType(parentPath) || matchType(currentPath);
+
+    // --- Detect day ---
+    if (['daily', 'weekly', 'monthly'].includes(currentPath.toLowerCase())) {
+      selectedName =
+        currentPath.charAt(0).toUpperCase() + currentPath.slice(1).toLowerCase();
+      brief =
+        this.daySelector.find(
+          d => d.name.toLowerCase() === selectedName.toLowerCase()
+        )?.brief || '';
+    } else if (currentPath.startsWith('Yearly')) {
+      const parts = currentPath.split('/');
+      const year = parts.length > 1 ? parts[1] : this.thisYear;
+      selectedName = `Yearly - ${year}`;
+      brief = this.daySelector[3].brief || '';
+    }
+
+    // --- Apply values ---
+    if (this.selectedType) {
+      this.zodiacSectionTtitle = `${this.selectedType} Horoscope`;
+      this.showDetails = true;
+      if (selectedName){
+        this.selectedDay = selectedName;
+        this.selectedBrief = brief;
+      } else {
+        this.selectedBrief = '';
+        //run api
+      }
+    }
+    else if (selectedName) {
+      this.selectedDay = selectedName;
+      this.showDetails = true;
+      this.zodiacSectionTtitle = `${selectedName} Horoscope`;
+      this.selectedBrief = brief;
+    } else {
+      this.selectedDay = '';
+      this.showDetails = false;
+      this.zodiacSectionTtitle = 'Horoscope';
+      this.selectedBrief = '';
+      this.formService.setZodiacSign(null);
+      this.selectedZodiac = null;
+    }
+    this.seoSeter();
+    this.aboutCardSetter();
+    this.faqSetter();
+  }
+
+  private loadSVGColor() {
+    this.svgColor = this.themeService.getSvgColor();
+  }
+
+
+  changeSign(sign: THoroscopeSign){
+    this.selectedSign = sign;
+  }
+  
+  onDaySelect(day: string) {
+    if (!day.includes('Yearly')){
+      if (this.selectedType != null ){
+        this.router.navigate(['horoscope', this.selectedType, day]);
+      } else{
+        this.router.navigate(['horoscope', day]);
+      }
+    } else if(this.selectedType != null){
+      this.router.navigate(['horoscope', this.selectedType, 'yearly', this.thisYear]);
+    } else {
+      this.router.navigate(['horoscope', 'yearly', this.thisYear]);
+    }
+    this.smoothScrolling();
+  }
+
+  private smoothScrolling():void {
+    const element = document.getElementById('header-logo');
+
+    if( element ){
+      element.scrollIntoView({behavior: 'smooth', block: 'start'})
+    }
+  }
+
+    seoSeter() {
     if(!this.selectedZodiac) {
       if (!this.selectedType) {
         if (this.selectedDay == "Daily") {
@@ -657,122 +839,6 @@ export class Horoscope implements OnInit {
           ogUrl: `${WEP_ADD}horoscope`,
         });
       }
-    }
-  }
-  
-  private getWeekRange(date: Date = new Date()): string {
-    const day = date.getDay();
-    let start = new Date(date);
-    start.setDate(date.getDate() - day);
-    let end = new Date(date);
-    end.setDate(date.getDate() + (6 - day));
-    return `${this.formatDate(start)} to ${this.formatDate(end)}`;
-  }
-
-  private formatDate(date: Date): string {
-    return date.toLocaleDateString("en-US", {
-      month: "long",
-      day: "numeric",
-    });
-  }
-
-  private setThisYear() {
-    this.thisYear =  new Date().getFullYear().toString();
-    this.daySelector[3].name = `Yearly - ${this.thisYear}`;
-  }
-
-  private loadFromRouteIfNeeded(route: ActivatedRouteSnapshot) {
-    const currentPath = route.routeConfig?.path ?? '';
-    const parentPath = route.parent?.routeConfig?.path ?? '';
-
-    let selectedName = '';
-    let brief = '';
-
-    // --- Detect type safely ---
-    const possibleTypes: Array<'Love' | 'Health' | 'Career' | 'Finance'> = [
-      'Love',
-      'Health',
-      'Career',
-      'Finance',
-    ];
-
-    const matchType = (path: string): typeof this.selectedType =>
-      possibleTypes.find(t => t.toLowerCase() === path.toLowerCase()) ?? null;
-
-    this.selectedType = matchType(parentPath) || matchType(currentPath);
-
-    // --- Detect day ---
-    if (['daily', 'weekly', 'monthly'].includes(currentPath.toLowerCase())) {
-      selectedName =
-        currentPath.charAt(0).toUpperCase() + currentPath.slice(1).toLowerCase();
-      brief =
-        this.daySelector.find(
-          d => d.name.toLowerCase() === selectedName.toLowerCase()
-        )?.brief || '';
-    } else if (currentPath.startsWith('yearly')) {
-      const parts = currentPath.split('/');
-      const year = parts.length > 1 ? parts[1] : this.thisYear;
-      selectedName = `Yearly - ${year}`;
-      brief = this.daySelector[3].brief || '';
-    }
-
-    // --- Apply values ---
-    if (this.selectedType) {
-      this.zodiacSectionTtitle = `${this.selectedType} Horoscope`;
-      this.showDetails = true;
-      if (selectedName){
-        this.selectedDay = selectedName;
-        this.selectedBrief = brief;
-      } else {
-        this.selectedBrief = '';
-        //run api
-      }
-    }
-    else if (selectedName) {
-      this.selectedDay = selectedName;
-      this.showDetails = true;
-      this.zodiacSectionTtitle = `${selectedName} Horoscope`;
-      this.selectedBrief = brief;
-    } else {
-      this.selectedDay = '';
-      this.showDetails = false;
-      this.zodiacSectionTtitle = 'Horoscope';
-      this.selectedBrief = '';
-      this.formService.setZodiacSign(null);
-      this.selectedZodiac = null;
-    }
-    this.seoSeter();
-  }
-
-  private loadSVGColor() {
-    this.svgColor = this.themeService.getSvgColor();
-  }
-
-
-  changeSign(sign: THoroscopeSign){
-    this.selectedSign = sign;
-  }
-  
-  onDaySelect(day: string) {
-    if (!day.includes('Yearly')){
-      if (this.selectedType != null ){
-        this.router.navigate(['horoscope', this.selectedType, day]);
-      } else{
-        this.router.navigate(['horoscope', day]);
-      }
-    } else if(this.selectedType != null){
-      this.router.navigate(['horoscope', this.selectedType, 'yearly', this.thisYear]);
-    } else {
-      this.router.navigate(['horoscope', 'yearly', this.thisYear]);
-    }
-    this.smoothScrolling();
-  }
-
-  private smoothScrolling():void {
-    const element = document.getElementById('header-logo');
-
-    if( element ){
-      element.scrollIntoView({behavior: 'smooth', block: 'start'})
     }
   }
 

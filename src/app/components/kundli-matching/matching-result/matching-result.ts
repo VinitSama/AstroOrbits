@@ -17,6 +17,8 @@ import { Doshas } from "../../doshas/doshas";
 import { Dashaa } from "../../dashaa/dashaa";
 import { MathingCharacteristicAnalysis } from "./mathing-characteristic-analysis/mathing-characteristic-analysis";
 import { Remedies } from "../../remedies/remedies";
+import { IFAQCard } from '../../../interfaces/ifaq-card';
+import { kundliFaqCard } from '../../kundli/kundli-about';
 
 @Component({
   selector: 'app-matching-result',
@@ -248,6 +250,8 @@ export class MatchingResult implements OnInit {
       svgBg: "#B2FFD9"
     },
   ];
+
+  faqCard!: IFAQCard[];
   
 
   constructor(private headerService: HeaderService, private formsService: FormService, private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
@@ -261,6 +265,7 @@ export class MatchingResult implements OnInit {
       this.setSelectedOption(params);
     })
     this.sanitizeSvg();
+    this.faqCard = kundliFaqCard;
   }
 
   changDetails() {

@@ -4,14 +4,14 @@
     </div>
     <div class="astrology-card-container">
         <div class="container-wrapper">
-            @for (card of astrologyCards | slice:0:4; track card) {
+            @for (card of astrologyCards.slice(0,4); track card) {
                 <div class="card">
                     <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
                 </div>
             }
         </div>
         <div class="container-wrapper">
-            @for (card of astrologyCards | slice:4; track card) {
+            @for (card of astrologyCards.slice(4); track card) {
                 <div class="card">
                     <app-astrology-card [svgColor]="svgColor" [card]="card"></app-astrology-card>
                 </div>

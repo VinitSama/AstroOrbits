@@ -59,7 +59,7 @@ export const NavbarInfo: INavbarItem[] = [
         {
           name: "Yearly",
           navigationLink: "horoscope",
-          subLink: "Yearly"
+          subLink: `Yearly`
         },
       ],
       tagSettings: null,

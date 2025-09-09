@@ -17,6 +17,8 @@ import { FAQSection } from "../../faq-section/faq-section";
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { TZodiacSign } from '../../../types/tzodiac-sign';
 import { ZodiacServices } from '../../../services/zodiac.services';
+import { IAboutCard } from '../../../interfaces/iabout-card';
+import { numerologyAboutCard } from '../numerlogy-about';
 
 @Component({
   selector: 'app-numerlogy-particular',
@@ -109,6 +111,7 @@ export class NumerlogyParticular implements OnInit {
   }
 
   horoscopeSvg!: SafeHtml;
+  aboutCard!: IAboutCard;
 
   constructor(private headerService: HeaderService, private route: ActivatedRoute, private router: Router, private themeService: ThemeService, private sanitizer: DomSanitizer, private zodiacService: ZodiacServices) {}
   
@@ -120,7 +123,9 @@ export class NumerlogyParticular implements OnInit {
     this.headerService.setNavSubject('Numerology');
     this.loadSvgColors();
     this.getHoroscopeSVG()
+    this.aboutCard = numerologyAboutCard;
   }
+
 
   private getHoroscopeSVG() {
     const svg = this.zodiacService.getSvg(this.horoscope.name);

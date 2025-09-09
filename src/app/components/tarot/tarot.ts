@@ -12,6 +12,9 @@ import { FAQSection } from "../faq-section/faq-section";
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { TSelectedOption } from './tarot-reading/tarot-reading';
 import { SeoService } from '../../services/seo.service';
+import { IAboutCard } from '../../interfaces/iabout-card';
+import { tarotAboutCard, tarotFaqCards, tarotThreeCardAbout } from './tarot-about';
+import { IFAQCard } from '../../interfaces/ifaq-card';
 
 @Component({
   selector: 'app-tarot',
@@ -63,8 +66,8 @@ export class Tarot implements OnInit {
   selectedCards: Set<number> = new Set<number>();
   enableButton: boolean = false;
   selectedOption: TSelectedOption = 3;
-  
-
+  aboutCard!: IAboutCard;
+  faqCards!: IFAQCard[];
   personalisedContainer: IPersonalisedContainer = {
     heading: "Get your Personalised Horoscope",
     subHeading: "",
@@ -117,6 +120,15 @@ export class Tarot implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.setSelectedOption(params);
     })
+    this.faqCards = tarotFaqCards;
+  }
+
+  private aboutSetter() {
+    if (this.selectedOption == 3){
+      this.aboutCard = tarotThreeCardAbout;
+    } else {
+      this.aboutCard = tarotAboutCard;
+    }
   }
 
   private setSelectedOption(params: ParamMap){
@@ -129,6 +141,7 @@ export class Tarot implements OnInit {
         this.selectedCardOption = this.selectedOption;
       }
     }
+    this.aboutSetter();
   }
 
   selectCard(index: number) {

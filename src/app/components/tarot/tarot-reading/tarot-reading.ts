@@ -13,6 +13,9 @@ import { NumerologyMenuCard } from "../../menu-card-container/cards/numerology-m
 import { AstrologySection } from "../../astrology-section/astrology-section";
 import { AboutSection } from "../../about-section/about-section";
 import { FAQSection } from "../../faq-section/faq-section";
+import { IAboutCard } from '../../../interfaces/iabout-card';
+import { IFAQCard } from '../../../interfaces/ifaq-card';
+import { tarotAboutCard, tarotFaqCards } from '../tarot-about';
 
 export type TSelectedOption = 1 | 3 | 4 | 5;
   // 1 -> One Card Reading
@@ -149,7 +152,9 @@ export class TarotReading implements OnInit{
   } = {
     name: 'Aries',
   }
-
+  
+  aboutCard!: IAboutCard;
+  faqCards!: IFAQCard[];
   horoscopeSvg!: SafeHtml;
 
   constructor(private headerService: HeaderService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer, private zodiacService: ZodiacServices, private themeService: ThemeService) {}
@@ -162,6 +167,8 @@ export class TarotReading implements OnInit{
       this.setSelectedOption(params);
       this.setAllSvg();
     });
+    this.aboutCard = tarotAboutCard;
+    this.faqCards = tarotFaqCards;
   }
 
   private loadSvgColor() {

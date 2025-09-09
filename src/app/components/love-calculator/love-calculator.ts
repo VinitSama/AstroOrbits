@@ -19,6 +19,9 @@ import { IFeatureCard } from '../../interfaces/ifeature-card';
 import { IProgressCard } from '../../interfaces/iprogress-card';
 import { ResposiveService } from '../../services/resposive.service';
 import { SeoService } from '../../services/seo.service';
+import { IAboutCard } from '../../interfaces/iabout-card';
+import { loveCalculatorAboutCard, loveCalculatorFaqCards } from './love-calculator-about';
+import { IFAQCard } from '../../interfaces/ifaq-card';
 
 type TFormOption = 'User' | 'Partner';
 type TGender = "m" | "f";
@@ -111,6 +114,8 @@ export class LoveCalculator implements OnInit {
       padding: "12px",
     }
   }
+  aboutCard!: IAboutCard;
+  faqCards!: IFAQCard[];
 
   constructor(private headerService: HeaderService, private sanitizer: DomSanitizer, private router: Router, private route: ActivatedRoute, private formService: FormService, private responsiveService: ResposiveService, private seo: SeoService) {}
 
@@ -132,6 +137,8 @@ export class LoveCalculator implements OnInit {
         console.log(this.profile);
       }
     })
+    this.aboutCard = loveCalculatorAboutCard;
+    this.faqCards = loveCalculatorFaqCards;
   }
 
   modeSelector = effect(() => {

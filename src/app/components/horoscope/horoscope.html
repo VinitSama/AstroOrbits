@@ -122,12 +122,20 @@
     <div class="menu-section">
         <app-section-tag [sectionTitle]="'Still feel something is missing? Try'"></app-section-tag>
         <div class="menu-container">
-            <app-kundli-menu-card></app-kundli-menu-card>
-            <div class="menu-stack">
-                <app-tarot-menu-card [width]="'380px'"></app-tarot-menu-card>
-                <app-numerology-menu-card [width]="'380px'"></app-numerology-menu-card>
+            <div>
+                <app-kundli-menu-card></app-kundli-menu-card>
             </div>
-            <app-love-menu-card></app-love-menu-card>
+            <div class="menu-stack">
+                <div>
+                    <app-tarot-menu-card></app-tarot-menu-card>
+                </div>
+                <div>
+                    <app-numerology-menu-card></app-numerology-menu-card>
+                </div>
+            </div>
+            <div>
+                <app-love-menu-card></app-love-menu-card>
+            </div>
         </div>
     </div>
     <div class="section">
@@ -137,9 +145,9 @@
         <app-astrology-section [svgColor]="svgColor"></app-astrology-section>
     </div>
     <div class="section">
-        <app-about-section></app-about-section>
+        <app-about-section [aboutCard]="aboutCard"></app-about-section>
     </div>
     <div class="last-section">
-        <app-faq-section></app-faq-section>
+        <app-faq-section [cards]="faqCards"></app-faq-section>
     </div>
 </div>
